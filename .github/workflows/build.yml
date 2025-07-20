@@ -24,6 +24,10 @@ jobs:
         sudo apt-get install -y emacs
         pip install jupyter nbconvert
 
+    - name: Install Python modules
+      run: |
+        pip install sympy numpy pandas matplotlib dataframe-image statsmodels
+
     - name: Clone Scimax
       run: |
         git clone https://github.com/jkitchin/scimax.git ~/Software/scimax
