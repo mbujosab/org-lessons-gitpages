@@ -21,7 +21,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y emacs
+        sudo apt-get install -y emacs pandoc aspell aspell-es
         pip install jupyter nbconvert
 
     - name: Install Python modules
@@ -44,8 +44,10 @@ jobs:
       run: |
         make all
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
+    - name: Deploy docs/ a gh-pages
+      uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./docs
+        publish_branch: gh-pages
+        destination_dir: docs
