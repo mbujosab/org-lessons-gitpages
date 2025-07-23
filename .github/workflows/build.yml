@@ -31,6 +31,11 @@ jobs:
     - name: Install LaTeX
       run: |
         sudo apt-get install -y texlive texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-xetex
+        wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+        tar -xvf install-tl-unx.tar.gz
+        cd install-tl-*
+        sudo ./install-tl --profile=texlive.profile
+        export PATH=/usr/local/texlive/2023/bin/x86_64-linux:$PATH
 
     - name: Clone Scimax
       run: |
