@@ -10,12 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check git version
-      run: git --version
-
-    - name: Install git (if needed)
-      run: sudo apt-get update && sudo apt-get install -y git
-
     - name: Checkout repository
       uses: actions/checkout@v3
 
@@ -27,16 +21,12 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y emacs
+        sudo apt-get install -y emacs pandoc aspell aspell-en texlive-full
         pip install jupyter nbconvert
 
     - name: Install Python modules
       run: |
         pip install sympy numpy pandas matplotlib dataframe-image statsmodels
-
-    - name: Install LaTeX
-      run: |
-        sudo apt-get install -y texlive texlive-latex-extra texlive-fonts-recommended texlive-xetex texlive-science
 
     - name: Clone Scimax
       run: |
@@ -45,6 +35,14 @@ jobs:
     - name: Download ox-ipynb.el
       run: |
         wget https://raw.githubusercontent.com/jkitchin/ox-ipynb/master/ox-ipynb.el -O ~/Software/scimax/ox-ipynb.el
+
+    - name: Install Indium
+      run: |
+        emacs --batch -l ~/.emacs.d/init.el --eval "(package-install 'indium)"
+
+    - name: Verify Jupyter Installation
+      run: |
+        jupyter --version
 
     - name: Execute Makefile
       run: |
