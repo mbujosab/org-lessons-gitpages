@@ -9,7 +9,7 @@ TRANSPARENCIAS = $(DOCS)/Transparencias
 SRC_FILES = $(LECCIONES_SRC)/Lecc*.org
 
 # Regla principal
-all: notebooksYslides
+all: notebooksYslides calendario
 	emacs -q -l ~/Software/scimax/init.el -batch -nw -l publica.el
 	cp -a Calendario-Econometria-Aplicada.pdf $(DOCS)
 
@@ -62,6 +62,6 @@ clean:
 	rm -r -f $(LECCIONES)
 
 cleanAll: clean
-	rm -r -f $(DOCS)
+	find $(DOCS)/ -mindepth 1 ! -name 'README.org' -exec rm -rf {} +
 	rm -f directorios
 	rm -f series_formales
