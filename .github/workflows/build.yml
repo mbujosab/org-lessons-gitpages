@@ -21,12 +21,16 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y emacs pandoc aspell aspell-en texlive-full
+        sudo apt-get install -y emacs pandoc aspell aspell-es
         pip install jupyter nbconvert
 
     - name: Install Python modules
       run: |
         pip install sympy numpy pandas matplotlib dataframe-image statsmodels
+
+    - name: Install LaTeX
+      run: |
+        sudo apt-get install -y texlive texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-xetex
 
     - name: Clone Scimax
       run: |
