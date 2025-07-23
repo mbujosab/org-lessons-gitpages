@@ -25,6 +25,12 @@ jobs:
         mkdir -p ~/texmf
         tlmgr init-usertree
 
+    - name: Update tlmgr
+      run: |
+        wget https://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.sh
+        chmod +x update-tlmgr-latest.sh
+        sudo ./update-tlmgr-latest.sh --update
+
     - name: Install Required TeX Packages
       run: |
         tlmgr install latex-bin amsmath geometry
