@@ -24,12 +24,13 @@ jobs:
         sudo apt-get install -y texlive-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
         mkdir -p ~/texmf
         tlmgr init-usertree
+        export PATH=/usr/local/texlive/2023/bin/x86_64-linux:$PATH
 
     - name: Update tlmgr
       run: |
         wget https://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.sh
         chmod +x update-tlmgr-latest.sh
-        sudo ./update-tlmgr-latest.sh
+        ./update-tlmgr-latest.sh
 
     - name: Install Required TeX Packages
       run: |
