@@ -33,7 +33,8 @@ jobs:
         sudo apt-get install -y texlive texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-xetex
         wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
         tar -xvf install-tl-unx.tar.gz
-        cd install-tl-*
+        extracted_dir=$(tar -tf install-tl-unx.tar.gz | head -n 1 | cut -f1 -d"/")
+        cd "$extracted_dir"
         sudo ./install-tl --profile=texlive.profile
         export PATH=/usr/local/texlive/2023/bin/x86_64-linux:$PATH
 
