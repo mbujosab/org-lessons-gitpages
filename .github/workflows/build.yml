@@ -40,10 +40,6 @@ jobs:
       run: |
         wget https://raw.githubusercontent.com/jkitchin/ox-ipynb/master/ox-ipynb.el -O ~/Software/scimax/ox-ipynb.el
 
-    - name: Install Indium
-      run: |
-        emacs --batch -l ~/.emacs.d/init.el --eval "(package-install 'indium)"
-
     - name: Verify Jupyter Installation
       run: |
         jupyter --version
