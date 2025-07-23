@@ -10,6 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Check git version
+      run: git --version
+
+    - name: Install git (if needed)
+      run: sudo apt-get update && sudo apt-get install -y git
+
     - name: Checkout repository
       uses: actions/checkout@v3
 
