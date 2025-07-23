@@ -11,6 +11,13 @@ SRC_FILES = $(LECCIONES_SRC)/Lecc*.org
 # Regla principal
 all: notebooksYslides
 	emacs -q -l ~/Software/scimax/init.el -batch -nw -l publica.el
+	cp -a Calendario-Econometria-Aplicada.pdf $(DOCS)
+
+calendario: $(DOCS)/Calendario-Econometria-Aplicada.pdf
+
+$(DOCS)/Calendario-Econometria-Aplicada.pdf:
+	emacs --batch Calendario/README.org -l org -f org-babel-tangle
+	cd Calendario && make Calendario-Econometria-Aplicada.pdf
 
 notebooksYslides: $(patsubst $(LECCIONES_SRC)/%.org,$(CUADERNOS)/%.ipynb,$(wildcard $(SRC_FILES)))
 

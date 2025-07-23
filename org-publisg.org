@@ -1,5 +1,7 @@
 
-#+BEGIN_SRC  makefile :noweb no-export :results silent :exports none :tangle makefile
+Fichero =makefile= que genera el directorio público =docs= con los ficheros para GitPages con subdirectorios para los =CuadernosElectronicos=, =pdfs=, =Transparencias= y los ficheros con las lecciones en ~html~:
+
+#+BEGIN_SRC makefile :noweb no-export :results silent :exports none :tangle makefile
 # Directorios
 LECCIONES_SRC = ./org-lessons
 LECCIONES = ./lecciones
@@ -11,8 +13,15 @@ TRANSPARENCIAS = $(DOCS)/Transparencias
 SRC_FILES = $(LECCIONES_SRC)/Lecc*.org
 
 # Regla principal
-all: notebooksYslides
+all: notebooksYslides calendario
 	emacs -q -l ~/Software/scimax/init.el -batch -nw -l publica.el
+	cp -a Calendario-Econometria-Aplicada.pdf $(DOCS)
+
+calendario: $(DOCS)/Calendario-Econometria-Aplicada.pdf
+
+$(DOCS)/Calendario-Econometria-Aplicada.pdf:
+	emacs --batch Calendario/README.org -l org -f org-babel-tangle
+	cd Calendario && make Calendario-Econometria-Aplicada.pdf
 
 notebooksYslides: $(patsubst $(LECCIONES_SRC)/%.org,$(CUADERNOS)/%.ipynb,$(wildcard $(SRC_FILES)))
 
@@ -63,8 +72,55 @@ cleanAll: clean
 
 #+END_SRC
 
+Este script transforma los ficheros org de las lecciones en pdfs y htmls. 
 
 #+BEGIN_SRC emacs-lisp :tangle publica.el :results silent
+(require 'ox-publish)
+
+(defun my-org-latex-publish-to-pdf (plist filename pub-dir)
+  "Publica un archivo Org como PDF después de ejecutar los bloques de código."
+  (with-current-buffer (find-file-noselect filename)
+    (org-latex-publish-to-pdf plist filename pub-dir)))
+
+(let* ((base-directory "./lecciones/")
+       (public-directory "./docs/")
+       (org-export-with-broken-links t)
+       (org-publish-project-alist `(("html"
+				     :base-directory ,base-directory
+				     :base-extension "org"
+                                     :publishing-directory ,public-directory
+				     :exclude "src\\|docs\\|Calendario"
+				     :recursive t
+				     :publishing-function org-html-publish-to-html
+				     :auto-preamble t
+				     :auto-sitemap nil)
+				    
+				    ("pdf"
+				     :base-directory ,base-directory
+				     :base-extension "org"
+				     :publishing-directory ,(concat public-directory "pdfs")
+ 				     :exclude "src\\|docs\\|Calendario"
+				     :recursive t
+				     :publishing-function my-org-latex-publish-to-pdf
+				     :auto-preamble t
+				     :auto-sitemap nil)
+				    
+				    ("static-html"
+				     :base-directory ,base-directory
+				     :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|dat\\|mov\\|txt\\|svg\\|aiff\\|csv\\|gdt\\|inp\\|ipynb"
+				     :publishing-directory ,public-directory
+				     :exclude "src\\|docs\\|Calendario"
+				     :recursive t
+				     :publishing-function org-publish-attachment)
+
+				    ;; ... all the components ...
+				    ("scimax-eln" :components ("html" "static-html" "pdf")))))
+
+  (org-publish "scimax-eln" t))
+#+END_SRC
+
+
+#+BEGIN_SRC emacs-lisp
 (require 'ox-publish)
 
 (defun my-org-babel-execute-buffer ()
