@@ -18,25 +18,19 @@ jobs:
       with:
         python-version: '3.9'
 
-    - name: Install dependencies
+    - name: Install Minimal TeX Live
       run: |
         sudo apt-get update
-        sudo apt-get install -y emacs pandoc aspell aspell-es
-        pip install jupyter nbconvert
+        sudo apt-get install -y texlive-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
+        sudo tlmgr init-usertree
+
+    - name: Install Required TeX Packages
+      run: |
+        tlmgr install latex-bin amsmath geometry
 
     - name: Install Python modules
       run: |
         pip install sympy numpy pandas matplotlib dataframe-image statsmodels
-
-    - name: Install LaTeX
-      run: |
-        sudo apt-get install -y texlive texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-xetex
-        wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
-        tar -xvf install-tl-unx.tar.gz
-        extracted_dir=$(tar -tf install-tl-unx.tar.gz | head -n 1 | cut -f1 -d"/")
-        cd "$extracted_dir"
-        sudo ./install-tl --profile=texlive.profile
-        export PATH=/usr/local/texlive/2023/bin/x86_64-linux:$PATH
 
     - name: Clone Scimax
       run: |
@@ -46,9 +40,9 @@ jobs:
       run: |
         wget https://raw.githubusercontent.com/jkitchin/ox-ipynb/master/ox-ipynb.el -O ~/Software/scimax/ox-ipynb.el
 
-    - name: Verify Jupyter Installation
+    - name: Verify ox-ipynb Installation
       run: |
-        jupyter --version
+        emacs --batch --eval "(require 'ox-ipynb)"
 
     - name: Execute Makefile
       run: |
