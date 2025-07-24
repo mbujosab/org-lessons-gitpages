@@ -34,7 +34,7 @@ jobs:
 
     - name: Install LaTeX
       run: |
-        sudo apt-get install -y texlive-full python3-pygments # texlive texlive-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-xetex texlive-science
+        sudo apt-get install -y texlive texlive-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-xetex texlive-science python3-pygments
 
     - name: Clone Scimax
       run: |
@@ -52,11 +52,16 @@ jobs:
                       --eval "(package-install 's)" \
                       --eval "(package-install 'dash)"
 
+    - name: Disable tlmgr error
+      run: echo "(setq scimax-installed-latex-packages '())" > ~/.emacs.d/no-tlmgr.el
+
     - name: Verify ox-ipynb Installation
       run: |
-        emacs --batch --eval "(add-to-list 'load-path \"~/Software/scimax/\")" \
-                      --eval "(dolist (dir (directory-files \"~/.emacs.d/elpa/\" t \"^[^.]\")) (add-to-list 'load-path dir))" \
-                      --eval "(require 'ox-ipynb)"
+        emacs --batch \
+              --load ~/.emacs.d/no-tlmgr.el \
+              --eval "(add-to-list 'load-path \"~/Software/scimax/\")" \
+              --eval "(dolist (dir (directory-files \"~/.emacs.d/elpa/\" t \"^[^.]\")) (add-to-list 'load-path dir))" \
+              --eval "(require 'ox-ipynb)"
 
     - name: Execute Makefile
       run: |
