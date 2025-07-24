@@ -34,7 +34,7 @@ jobs:
 
     - name: Install LaTeX
       run: |
-        sudo apt-get install -y texlive texlive-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-xetex texlive-science python3-pygments
+        sudo apt-get install -y texlive-full python3-pygments
 
     - name: Clone Scimax
       run: |
@@ -52,8 +52,10 @@ jobs:
                       --eval "(package-install 's)" \
                       --eval "(package-install 'dash)"
 
-    - name: Disable tlmgr error
-      run: echo "(setq scimax-installed-latex-packages '())" > ~/.emacs.d/no-tlmgr.el
+    - name: Patch Scimax to avoid tlmgr crash
+      run: |
+        echo "(defun scimax-install-latex-dependencies () 'skipped)" > ~/.emacs.d/no-tlmgr.el
+        echo "(setq org-babel-default-header-args:jupyter-python '((:eval . \"never\")))" >> ~/.emacs.d/no-tlmgr.el
 
     - name: Verify ox-ipynb Installation
       run: |
@@ -65,6 +67,13 @@ jobs:
 
     - name: Execute Makefile
       run: |
+        emacs --batch \
+              --load ~/.emacs.d/no-tlmgr.el \
+              --load ~/Software/scimax/init.el \
+              --eval "(setq org-confirm-babel-evaluate nil)" \
+              --eval "(require 'ox-ipynb)" \
+              --eval "(require 'ob-jupyter)" \
+              || true
         make all
 
     - name: Deploy docs/ a gh-pages
