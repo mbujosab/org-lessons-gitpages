@@ -11,7 +11,6 @@ SRC_FILES = $(LECCIONES_SRC)/Lecc*.org
 # Regla principal
 all: notebooksYslides calendario
 	emacs -q -l ~/Software/scimax/init.el -batch -nw -l publica.el
-	cp -a Calendario-Econometria-Aplicada.pdf $(DOCS)
 
 calendario: $(DOCS)/Calendario-Econometria-Aplicada.pdf
 

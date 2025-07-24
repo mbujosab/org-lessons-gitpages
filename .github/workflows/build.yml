@@ -18,20 +18,23 @@ jobs:
       with:
         python-version: '3.9'
 
-    - name: Install Minimal TeX Live
+    - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y texlive-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
-        mkdir -p ~/texmf
-        tlmgr init-usertree
-
-    - name: Install Required TeX Packages
-      run: |
-        tlmgr install latex-bin amsmath geometry
+        sudo apt-get install -y emacs pandoc aspell aspell-en aspell-es
+        pip install jupyter nbconvert
 
     - name: Install Python modules
       run: |
         pip install sympy numpy pandas matplotlib dataframe-image statsmodels
+
+    - name: Verify Jupyter Installation
+      run: |
+        jupyter kernelspec list
+
+    - name: Install LaTeX
+      run: |
+        sudo apt-get install -y texlive texlive-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-xetex texlive-science python3-pygments
 
     - name: Clone Scimax
       run: |
@@ -41,16 +44,33 @@ jobs:
       run: |
         wget https://raw.githubusercontent.com/jkitchin/ox-ipynb/master/ox-ipynb.el -O ~/Software/scimax/ox-ipynb.el
 
+    - name: Install s.el and dash.el
+      run: |
+        emacs --batch --eval "(require 'package)" \
+                      --eval "(add-to-list 'package-archives '(\"melpa\" . \"https://melpa.org/packages/\"))" \
+                      --eval "(package-refresh-contents)" \
+                      --eval "(package-install 's)" \
+                      --eval "(package-install 'dash)"
+
+    - name: Disable tlmgr error
+      run: echo "(setq scimax-installed-latex-packages '())" > ~/.emacs.d/no-tlmgr.el
+
     - name: Verify ox-ipynb Installation
       run: |
-        emacs --batch --eval "(require 'ox-ipynb)"
+        emacs --batch \
+              --load ~/.emacs.d/no-tlmgr.el \
+              --eval "(add-to-list 'load-path \"~/Software/scimax/\")" \
+              --eval "(dolist (dir (directory-files \"~/.emacs.d/elpa/\" t \"^[^.]\")) (add-to-list 'load-path dir))" \
+              --eval "(require 'ox-ipynb)"
 
     - name: Execute Makefile
       run: |
         make all
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
+    - name: Deploy docs/ a gh-pages
+      uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./docs
+        publish_branch: gh-pages
+        destination_dir: docs
