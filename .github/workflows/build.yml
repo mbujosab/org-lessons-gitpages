@@ -46,7 +46,7 @@ jobs:
 
     - name: Verify ox-ipynb Installation
       run: |
-        emacs --batch --eval "(require 'ox-ipynb)"
+        emacs --batch --eval "(add-to-list 'load-path \"~/Software/scimax/\")" --eval "(require 'ox-ipynb)"
 
     - name: Execute Makefile
       run: |
