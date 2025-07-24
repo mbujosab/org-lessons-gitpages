@@ -44,6 +44,13 @@ jobs:
       run: |
         wget https://raw.githubusercontent.com/jkitchin/ox-ipynb/master/ox-ipynb.el -O ~/Software/scimax/ox-ipynb.el
 
+    - name: Install s.el
+      run: |
+        emacs --batch --eval "(require 'package)" \
+                      --eval "(add-to-list 'package-archives '(\"melpa\" . \"https://melpa.org/packages/\"))" \
+                      --eval "(package-refresh-contents)" \
+                      --eval "(package-install 's)"
+
     - name: Verify ox-ipynb Installation
       run: |
         emacs --batch --eval "(add-to-list 'load-path \"~/Software/scimax/\")" --eval "(require 'ox-ipynb)"
