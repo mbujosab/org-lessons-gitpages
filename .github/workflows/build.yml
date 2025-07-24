@@ -28,6 +28,10 @@ jobs:
       run: |
         pip install sympy numpy pandas matplotlib dataframe-image statsmodels
 
+    - name: Verify Jupyter Installation
+      run: |
+        jupyter kernelspec list
+
     - name: Install LaTeX
       run: |
         sudo apt-get install -y texlive texlive-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-xetex texlive-science python3-pygments
@@ -39,6 +43,10 @@ jobs:
     - name: Download ox-ipynb.el
       run: |
         wget https://raw.githubusercontent.com/jkitchin/ox-ipynb/master/ox-ipynb.el -O ~/Software/scimax/ox-ipynb.el
+
+    - name: Verify ox-ipynb Installation
+      run: |
+        emacs --batch --eval "(require 'ox-ipynb)"
 
     - name: Execute Makefile
       run: |
