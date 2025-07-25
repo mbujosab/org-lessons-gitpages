@@ -38,15 +38,15 @@ $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 #	  --eval "(require 'ox-ipynb)" \
 #	  $(LECCIONES)/$(@F:.ipynb=.org)
 #	# Ejecutar el notebook con jupyter nbconvert
-#	jupyter nbconvert --execute --inplace $(LECCIONES)/$(@F) 
-#	jupyter nbconvert --config mycfg-GitHubPages.py --to slides --reveal-prefix "https://unpkg.com/reveal.js@5.2.1" --execute $(LECCIONES)/$(@F) 
+	jupyter nbconvert --execute --inplace $(LECCIONES)/$(@F) 
+	cp -a $(LECCIONES)/img $(DOCS)/
+	ln -snf -r $(DOCS)/img/ $(TRANSPARENCIAS)/
+	ln -snf -r $(DOCS)/img/ $(CUADERNOS)/
+	jupyter nbconvert --config mycfg-GitHubPages.py --to slides --reveal-prefix "https://unpkg.com/reveal.js@5.2.1" --execute $(LECCIONES)/$(@F) 
 #	jupyter nbconvert --execute --to html $(LECCIONES)/$(@F) 
 #	# Mover los archivos generados
 	mv $(LECCIONES)/$(@F) $(CUADERNOS)
 	mv $(LECCIONES)/$(@F:.ipynb=.slides.html) $(TRANSPARENCIAS)
-	cp -a $(LECCIONES)/img $(DOCS)/
-	ln -snf -r $(DOCS)/img/ $(TRANSPARENCIAS)/
-	ln -snf -r $(DOCS)/img/ $(CUADERNOS)/
 #	mv $(LECCIONES)/$(@F:.ipynb=.html) $(DOCS)
 
 
