@@ -81,5 +81,7 @@
   (org-publish "web-repositorio" t)
   (message "✅ Publicación del índice completada."))
 
+(unless (file-directory-p "logs")
+  (make-directory "logs"))
 (with-temp-file "logs/publica.log"
   (insert (format "Publicado el %s\n" (current-time-string))))
