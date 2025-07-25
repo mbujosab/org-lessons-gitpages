@@ -52,8 +52,8 @@ jobs:
                       --eval "(package-install 's)" \
                       --eval "(package-install 'dash)"
 
-   - name: Create no-tlmgr.el
-     run: echo '(setq system-packages-use-sudo nil)' > ~/.emacs.d/no-tlmgr.el
+    - name: Create no-tlmgr.el
+      run: echo '(setq system-packages-use-sudo nil)' > ~/.emacs.d/no-tlmgr.el
 
     - name: Verify ox-ipynb Installation
       run: |
