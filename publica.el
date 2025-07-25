@@ -22,7 +22,7 @@
            :base-directory ,base-directory
            :base-extension "org"
            :publishing-directory ,public-directory
-           :exclude "src\\|docs\\|Calendario"
+           :exclude "src"
            :recursive t
            :publishing-function org-html-publish-to-html
            :auto-preamble t)
@@ -31,7 +31,7 @@
            :base-directory ,base-directory
            :base-extension "org"
            :publishing-directory ,(concat public-directory "pdfs")
-           :exclude "src\\|docs\\|Calendario"
+           :exclude "src"
            :recursive t
            :publishing-function my-org-latex-publish-to-pdf
            :auto-preamble t)
@@ -40,7 +40,7 @@
            :base-directory ,base-directory
            :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|dat\\|mov\\|txt\\|svg\\|aiff\\|csv\\|gdt\\|inp\\|ipynb"
            :publishing-directory ,public-directory
-           :exclude "src\\|docs\\|Calendario"
+           :exclude "src"
            :recursive t
            :publishing-function org-publish-attachment)
 
@@ -57,7 +57,7 @@
                    :base-directory ,base-directory
                    :base-extension "org"
                    :publishing-directory ,(concat base-directory "docs")
-                   :exclude "docs"
+                   :exclude "docs\\|chatCopilot.org\\|org-publisg.org"
                    :recursive nil
                    :publishing-function org-html-publish-to-html
                    :auto-preamble t
@@ -71,7 +71,7 @@
                    :base-directory ,base-directory
                    :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|dat\\|mov\\|txt\\|svg\\|aiff"
                    :publishing-directory ,(concat base-directory "docs")
-                   :exclude "docs"
+                   :exclude "lecciones\\|chatCopilot.*\\|org-publisg.*"
                    :recursive nil
                    :publishing-function org-publish-attachment)
 
