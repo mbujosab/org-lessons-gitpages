@@ -30,13 +30,14 @@ $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 	emacs --batch \
 	  --load ~/.emacs.d/no-tlmgr.el \
 	  --load ~/Software/scimax/init.el \
-	  --eval "(setq org-confirm-babel-evaluate nil)" \
 	  --eval "(require 'ox-ipynb)" \
-	  --eval "(require 'ob-jupyter)" \
+	  --eval "(org-babel-execute-buffer)" \
 	  $(LECCIONES)/$(@F:.ipynb=.org) \
 	  -f org-babel-execute-buffer --kill
 	mv $(LECCIONES)/$(@F:.ipynb=.ipynb) $(CUADERNOS)
 	mv $(LECCIONES)/$(@F:.ipynb=.slides.html) $(TRANSPARENCIAS)
+
+#	#emacs -q -l ~/Software/scimax/init.el $(LECCIONES)/$(@F:.ipynb=.org) --batch -f org-babel-execute-buffer --kill
 
 series_formales: $(LECCIONES_SRC)/src/implementacion_series_formales.org
 	make directorios
