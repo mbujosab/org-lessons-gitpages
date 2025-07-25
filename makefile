@@ -31,7 +31,6 @@ $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 	  --load ~/.emacs.d/no-tlmgr.el \
 	  --load ~/Software/scimax/init.el \
 	  --eval "(require 'ox-ipynb)" \
-	  --eval "(org-babel-execute-buffer)" \
 	  $(LECCIONES)/$(@F:.ipynb=.org) \
 	  -f org-babel-execute-buffer --kill
 	mv $(LECCIONES)/$(@F:.ipynb=.ipynb) $(CUADERNOS)
