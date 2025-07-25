@@ -53,7 +53,7 @@ series_formales: $(LECCIONES_SRC)/src/implementacion_series_formales.org
 	cp $< $(LECCIONES)/src/
 	emacs --batch $(LECCIONES)/src/implementacion_series_formales.org -l org -f org-babel-tangle
 	cp -a $(LECCIONES)/src/implementacion_series_formales.py $(CUADERNOS)/src/
-	ln -s -r $(CUADERNOS)/src/implementacion_series_formales.py $(CUADERNOS)/
+	ln -sf -r $(CUADERNOS)/src/implementacion_series_formales.py $(CUADERNOS)/
 	emacs --batch \
 	  --load ~/.emacs.d/no-tlmgr.el \
 	  --load ~/Software/scimax/init.el \
