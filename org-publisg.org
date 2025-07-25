@@ -74,8 +74,8 @@ directorios:
 	mkdir -v -p $(DOCS)/pdfs
 	mkdir -v -p $(TRANSPARENCIAS)
 	mkdir -v -p $(CUADERNOS)/src
-	ln -s -r $(DOCS)/img/ $(TRANSPARENCIAS)/ || true
-	ln -s -r $(DOCS)/img/ $(CUADERNOS)/ || true
+	ln -snf -r $(DOCS)/img/ $(TRANSPARENCIAS)/
+	ln -snf -r $(DOCS)/img/ $(CUADERNOS)/
 	touch directorios
 
 clean:

@@ -34,7 +34,7 @@ jobs:
 
     - name: Install LaTeX
       run: |
-        sudo apt-get install -y texlive texlive-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-xetex texlive-science python3-pygments
+        sudo apt-get install -y texlive  texlive-latex-recommended texlive-latex-extra  texlive-fonts-extra texlive-fonts-recommended texlive-xetex texlive-science python3-pygments texlive-lang-spanish texlive-bibtex-extra texlive-binaries texlive-extra-utils textlive-font-utils texlive-luatex texlive-xetex
 
     - name: Clone Scimax
       run: |
@@ -54,6 +54,8 @@ jobs:
 
     - name: Create no-tlmgr.el
       run: echo '(setq system-packages-use-sudo nil)' > ~/.emacs.d/no-tlmgr.el
+      	   echo '(setq TeX-install-font-lock nil)'   >> ~/.emacs.d/no-tlmgr.el
+      	   echo '(setq TeX-live-install-texmf nil)'  >> ~/.emacs.d/no-tlmgr.el
 
     - name: Verify ox-ipynb Installation
       run: |
