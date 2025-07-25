@@ -9,10 +9,6 @@ SRC_FILES = $(LECCIONES_SRC)/Lecc*.org
 .PHONY: all clean cleanAll directorios series_formales calendario notebooksYslides
 
 all: notebooksYslides calendario
-	emacs --batch \
-	  --load ~/.emacs.d/no-tlmgr.el \
-	  --load ~/Software/scimax/init.el \
-	  -l publica.el
 
 calendario: $(DOCS)/Calendario-Econometria-Aplicada.pdf
 
@@ -30,21 +26,30 @@ $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 	emacs --batch \
 	  --load ~/.emacs.d/no-tlmgr.el \
 	  --load ~/Software/scimax/init.el \
-	  --eval "(require 'ox-ipynb)" \
-	  $(LECCIONES)/$(@F:.ipynb=.org) \
-	  -f org-babel-execute-buffer --kill
-	mv $(LECCIONES)/$(@F:.ipynb=.ipynb) $(CUADERNOS)
+	  -l publica.el
+#	# Exportar el archivo .org a .ipynb
+#	emacs --batch \
+#	  --load ~/.emacs.d/no-tlmgr.el \
+#	  --load ~/Software/scimax/init.el \
+#	  --eval "(require 'ox-ipynb)" \
+#	  $(LECCIONES)/$(@F:.ipynb=.org)
+#	# Ejecutar el notebook con jupyter nbconvert
+#	jupyter nbconvert --execute --inplace $(LECCIONES)/$(@F) 
+#	jupyter nbconvert --config mycfg-GitHubPages.py --to slides --reveal-prefix "https://unpkg.com/reveal.js@5.2.1" --execute $(LECCIONES)/$(@F) 
+#	jupyter nbconvert --execute --to html $(LECCIONES)/$(@F) 
+#	# Mover los archivos generados
+	mv $(LECCIONES)/$(@F) $(CUADERNOS)
 	mv $(LECCIONES)/$(@F:.ipynb=.slides.html) $(TRANSPARENCIAS)
+	cp -a $(LECCIONES)/img/* $(DOCS)/img/
+#	mv $(LECCIONES)/$(@F:.ipynb=.html) $(DOCS)
 
-#	#emacs -q -l ~/Software/scimax/init.el $(LECCIONES)/$(@F:.ipynb=.org) --batch -f org-babel-execute-buffer --kill
 
 series_formales: $(LECCIONES_SRC)/src/implementacion_series_formales.org
 	make directorios
 	cp $< $(LECCIONES)/src/
 	emacs --batch $(LECCIONES)/src/implementacion_series_formales.org -l org -f org-babel-tangle
-	#ln -s -r $(LECCIONES)/src/implementacion_series_formales.py $(LECCIONES)/
 	cp -a $(LECCIONES)/src/implementacion_series_formales.py $(CUADERNOS)/src/
-	#ln -s -r $(CUADERNOS)/src/implementacion_series_formales.py $(CUADERNOS)/
+	ln -s -r $(CUADERNOS)/src/implementacion_series_formales.py $(CUADERNOS)/
 	emacs --batch \
 	  --load ~/.emacs.d/no-tlmgr.el \
 	  --load ~/Software/scimax/init.el \
