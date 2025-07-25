@@ -40,7 +40,9 @@ $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 #	# Mover los archivos generados
 	mv $(LECCIONES)/$(@F) $(CUADERNOS)
 	mv $(LECCIONES)/$(@F:.ipynb=.slides.html) $(TRANSPARENCIAS)
-#	cp -a $(LECCIONES)/img/* $(DOCS)/img/
+	cp -a $(LECCIONES)/img/* $(DOCS)/img/
+	ln -snf -r $(DOCS)/img/ $(TRANSPARENCIAS)/
+	ln -snf -r $(DOCS)/img/ $(CUADERNOS)/
 #	mv $(LECCIONES)/$(@F:.ipynb=.html) $(DOCS)
 
 
@@ -71,8 +73,6 @@ directorios:
 	mkdir -v -p $(DOCS)/pdfs
 	mkdir -v -p $(TRANSPARENCIAS)
 	mkdir -v -p $(CUADERNOS)/src
-	ln -snf -r $(DOCS)/img/ $(TRANSPARENCIAS)/
-	ln -snf -r $(DOCS)/img/ $(CUADERNOS)/
 	touch directorios
 
 clean:
