@@ -54,9 +54,11 @@ jobs:
 
     - name: Create no-tlmgr.el
       run: |
-        echo '(setq system-packages-use-sudo nil)' > ~/.emacs.d/no-tlmgr.el
-      	echo '(setq TeX-install-font-lock nil)'   >> ~/.emacs.d/no-tlmgr.el
-      	echo '(setq TeX-live-install-texmf nil)'  >> ~/.emacs.d/no-tlmgr.el
+        mkdir -p ~/.emacs.d
+        echo "(setq system-packages-use-sudo nil)" > ~/.emacs.d/no-tlmgr.el
+        echo "(setq TeX-install-font-lock nil)" >> ~/.emacs.d/no-tlmgr.el
+        echo "(setq TeX-live-install-texmf nil)" >> ~/.emacs.d/no-tlmgr.el
+        echo "(setq TeX-live-install-texmf nil)" >> ~/.emacs.d/no-tlmgr.el
 
     - name: Verify ox-ipynb Installation
       run: |
