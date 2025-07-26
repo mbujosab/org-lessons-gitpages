@@ -82,9 +82,16 @@ jobs:
               || true
         make all
 
-    - name: Debug output
+    - name: Debug output 1
+      run: |
+        ls -l ./lecciones
+
+    - name: Debug output 2
       run: |
         ls -l ./lecciones/img
+
+    - name: Debug output 3
+      run: |
         ls -l ./docs
 
     - name: Deploy docs/ a gh-pages
