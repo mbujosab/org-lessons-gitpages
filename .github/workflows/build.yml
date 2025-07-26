@@ -75,6 +75,12 @@ jobs:
       run: |
         make notebooksYslides
 
+    - name: Inspección contenido de img
+      run: |
+        #cat emacs_build.log
+        echo "Contenido de img tras notebook:"
+        find ./lecciones_tmp/img
+	
     - name: Copia del directorio de imagenes a docs
       run: |
         cp -a ./lecciones/img ./docs
@@ -83,9 +89,6 @@ jobs:
       run: |
         make publicacion
 
-    - name: Inspección del log de emacs
-      run: |
-        cat emacs_build.log
 
     - name: Deploy docs/ a gh-pages
       uses: peaceiris/actions-gh-pages@v4
