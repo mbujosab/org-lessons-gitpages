@@ -79,7 +79,7 @@ jobs:
       run: |
         #cat emacs_build.log
         echo "Contenido de img tras notebook:"
-        find ./lecciones_tmp/img
+        find ./lecciones/img
 
     - name: Copia del directorio de imagenes a docs
       run: |
