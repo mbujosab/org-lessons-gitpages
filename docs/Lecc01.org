@@ -157,7 +157,7 @@ df4 = pd.read_csv(path+'ExportacionDeAcero.csv')
 # print(df1.head())
 
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
-#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/PIB_UEM.png :results silent
+#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/PIB_UEM.png
 df1.plot(x='obs',xlabel='',figsize=(15,4)).set_title('PIB zona euro',fontsize=18)
 #+END_SRC
 
@@ -168,7 +168,7 @@ df1.plot(x='obs',xlabel='',figsize=(15,4)).set_title('PIB zona euro',fontsize=18
 [[./img/lecc01/PIB_UEM.png]]
 
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
-#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/ProduccionCemento.png :results silent
+#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/ProduccionCemento.png
 df2.plot(x='obs',xlabel='',figsize=(15,4)).set_title('Producción de cemento en España',fontsize=18)
 #+END_SRC
 
@@ -289,7 +289,7 @@ y = sm.tsa.arma_generate_sample(ar, ma, 450)
 
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
 #+NAME: figura_serie_simulada
-#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/stationaryTimeSeriesExample.png :results silent
+#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/stationaryTimeSeriesExample.png
 # creamos el gráfico de la serie simulada
 plt.figure(figsize=(15,5))
 plt.title("Realización de un proceso estacionario (con $\mu=0$)", fontsize=20)
@@ -370,7 +370,7 @@ OrigData = OrigData.set_index(['Month'])
 
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
 #+NAME: figura-airlinepass
-#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/airlinepass+hist.png :results silent
+#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/airlinepass+hist.png
 plt.figure(figsize=(15,5))
 plt.subplot(1, 2, 1)
 plt.plot(OrigData['Passengers'])
@@ -422,7 +422,7 @@ Recuerde que /el logaritmo no está definido para valores negativos/.
 
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
 #+NAME: funcion_logaritmica
-#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/funcion_logaritmica.png :results silent
+#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/funcion_logaritmica.png
 # Definir el rango de valores para x (empezando desde un número positivo ya que log(0) no está definido)
 x = np.linspace(0.01, 7, 400)  # Valores de 0.1 a 10
 # Calcular y = log(x)
@@ -486,7 +486,7 @@ if not os.path.exists(fichero):
 
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
 #+NAME: figura-airlinepass-log
-#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/airlinepass_log+hist.png :results silent 
+#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/airlinepass_log+hist.png 
 plt.figure(figsize=(15,5))
 plt.subplot(1, 2, 1)
 plt.plot(TransformedData['dataLog'])
