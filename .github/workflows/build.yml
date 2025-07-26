@@ -84,8 +84,8 @@ jobs:
 
     - name: Debug output
       run: |
-        ls -l $(LECCIONES)/img
-        ls -l $(DOCS)
+        ls -l ./lecciones/img
+        ls -l ./docs
 
     - name: Deploy docs/ a gh-pages
       uses: peaceiris/actions-gh-pages@v4
