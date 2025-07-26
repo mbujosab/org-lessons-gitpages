@@ -83,6 +83,10 @@ jobs:
       run: |
         make publicacion
 
+    - name: Inspección del log de emacs
+      run: |
+        cat emacs_build.log
+
     - name: Deploy docs/ a gh-pages
       uses: peaceiris/actions-gh-pages@v4
       with:
