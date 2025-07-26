@@ -77,7 +77,7 @@ jobs:
 
     - name: Inspección contenido de img
       run: |
-        #cat emacs_build.log
+        cat emacs_build.log
         echo "Contenido de img tras notebook:"
         find ./lecciones/img
 
