@@ -44,6 +44,7 @@ $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 	echo "FICHEROS EN ./docs/imgs?..."
 	cp -a $(LECCIONES_tmp)/img $(DOCS)/
 	ls $(DOCS)/img
+	ls $(DOCS)/img/lecc01
 	echo "COPIO LO QUE SE HA GENERADO (.ipynb sin ejecutar y las imágenes) A /docs..."
 	cp -a $(LECCIONES_tmp)/$(@F) $(CUADERNOS)
 	cp -a $(LECCIONES_tmp)/img $(DOCS)/

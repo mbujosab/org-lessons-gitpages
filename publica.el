@@ -18,7 +18,13 @@
 (let* ((base-directory "./lecciones/")
        (public-directory "./docs/"))
   (setq org-publish-project-alist
-        `(("html"
+        `(("images"
+           :base-directory "./lecciones/img/"
+           :base-extension "jpg\\|gif\\|png"
+           :publishing-directory ,(concat public-directory "img")
+           :publishing-function org-publish-attachment)
+
+          ("html"
            :base-directory ,base-directory
            :base-extension "org"
            :publishing-directory ,public-directory
@@ -44,7 +50,7 @@
            :recursive t
            :publishing-function org-publish-attachment)
 
-          ("scimax-eln" :components ("html" "static-html" "pdf"))))
+          ("scimax-eln" :components ("html" "static-html" "pdf" "images"))))
 
   (message "🟢 Iniciando publicación de lecciones (scimax-eln)...")
   (org-publish "scimax-eln" t)

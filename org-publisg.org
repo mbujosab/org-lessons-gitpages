@@ -48,6 +48,7 @@ $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 	echo "FICHEROS EN ./docs/imgs?..."
 	cp -a $(LECCIONES_tmp)/img $(DOCS)/
 	ls $(DOCS)/img
+	ls $(DOCS)/img/lecc01
 	echo "COPIO LO QUE SE HA GENERADO (.ipynb sin ejecutar y las imágenes) A /docs..."
 	cp -a $(LECCIONES_tmp)/$(@F) $(CUADERNOS)
 	cp -a $(LECCIONES_tmp)/img $(DOCS)/
@@ -171,7 +172,13 @@ Este script transforma los ficheros org de las lecciones en pdfs y htmls.
 (let* ((base-directory "./lecciones/")
        (public-directory "./docs/"))
   (setq org-publish-project-alist
-        `(("html"
+        `(("images"
+           :base-directory "./lecciones/img/"
+           :base-extension "jpg\\|gif\\|png"
+           :publishing-directory ,(concat public-directory "img")
+           :publishing-function org-publish-attachment)
+
+          ("html"
            :base-directory ,base-directory
            :base-extension "org"
            :publishing-directory ,public-directory
@@ -197,7 +204,7 @@ Este script transforma los ficheros org de las lecciones en pdfs y htmls.
            :recursive t
            :publishing-function org-publish-attachment)
 
-          ("scimax-eln" :components ("html" "static-html" "pdf"))))
+          ("scimax-eln" :components ("html" "static-html" "pdf" "images"))))
 
   (message "🟢 Iniciando publicación de lecciones (scimax-eln)...")
   (org-publish "scimax-eln" t)
