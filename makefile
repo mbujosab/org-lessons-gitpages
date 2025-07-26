@@ -1,5 +1,5 @@
 LECCIONES_SRC = ./org-lessons
-LECCIONES = ./lecciones
+LECCIONES_tmp = ./lecciones
 DOCS = ./docs
 CUADERNOS = $(DOCS)/CuadernosElectronicos
 TRANSPARENCIAS = $(DOCS)/Transparencias
@@ -17,58 +17,73 @@ $(DOCS)/Calendario-Econometria-Aplicada.pdf:
 	cd Calendario && make Calendario-Econometria-Aplicada.pdf
 
 notebooksYslides: $(patsubst $(LECCIONES_SRC)/%.org,$(CUADERNOS)/%.ipynb,$(wildcard $(SRC_FILES)))
-
-$(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
-	make directorios
-	make series_formales
-	cp -a $(LECCIONES_SRC)/*.bib $(LECCIONES)
-	cp -a $< $(LECCIONES)
+	echo "FICHEROS EN CuadernosElectronicos y Transparencias?..."
+	mv $(LECCIONES_tmp)/Lecc*.slides.html $(TRANSPARENCIAS)
+	ls $(CUADERNOS)
+	ls $(TRANSPARENCIAS)
+	echo "EJECUCIÓN DE publica.el..."
 	emacs --batch \
 	  --load ~/.emacs.d/no-tlmgr.el \
 	  --load ~/Software/scimax/init.el \
 	  -l publica.el
-#	# Exportar el archivo .org a .ipynb
-#	emacs --batch \
-#	  --load ~/.emacs.d/no-tlmgr.el \
-#	  --load ~/Software/scimax/init.el \
-#	  --eval "(require 'ox-ipynb)" \
-#	  $(LECCIONES)/$(@F:.ipynb=.org)
-#	# Ejecutar el notebook con jupyter nbconvert
-	jupyter nbconvert --execute --inplace $(LECCIONES)/$(@F) 
-	cp -a $(LECCIONES)/img $(DOCS)/
+	echo "FICHEROS EN Docs?..."
+	ls $(DOCS)
+	ls $(DOCS)/pdfs
+
+$(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
+	make directorios
+	make series_formales
+	cp -a $(LECCIONES_SRC)/*.bib $(LECCIONES_tmp)
+	cp -a $< $(LECCIONES_tmp)
+	echo "EJECUCION DEL NOTEBOOK DE ORG: $(LECCIONES_tmp)/$(@F:.ipynb=.org)..."
+	emacs -q -l ~/Software/scimax/init.el $(LECCIONES_tmp)/$(@F:.ipynb=.org) --batch -f org-babel-execute-buffer --kill
+	echo "FICHEROS EN ./lecciones?..."
+	ls $(LECCIONES_tmp)
+	echo "FICHEROS IMG?..."
+	ls $(LECCIONES_tmp)/img
+	echo "FICHEROS EN ./docs/imgs?..."
+	cp -a $(LECCIONES_tmp)/img $(DOCS)/
+	ls $(DOCS)/img
+	echo "COPIO LO QUE SE HA GENERADO (.ipynb sin ejecutar y las imágenes) A /docs..."
+	cp -a $(LECCIONES_tmp)/$(@F) $(CUADERNOS)
+	cp -a $(LECCIONES_tmp)/img $(DOCS)/
 	ln -snf -r $(DOCS)/img/ $(TRANSPARENCIAS)/
 	ln -snf -r $(DOCS)/img/ $(CUADERNOS)/
-	jupyter nbconvert --config mycfg-GitHubPages.py --to slides --reveal-prefix "https://unpkg.com/reveal.js@5.2.1" --execute $(LECCIONES)/$(@F) 
-#	jupyter nbconvert --execute --to html $(LECCIONES)/$(@F) 
-#	# Mover los archivos generados
-	mv $(LECCIONES)/$(@F) $(CUADERNOS)
-	mv $(LECCIONES)/$(@F:.ipynb=.slides.html) $(TRANSPARENCIAS)
-#	mv $(LECCIONES)/$(@F:.ipynb=.html) $(DOCS)
+#	# Ejecutar el notebook con jupyter nbconvert
+	echo "EJECUCION DEL NOTEBOOK DE JUPYTER..."
+	jupyter nbconvert --execute --inplace $(LECCIONES_tmp)/$(@F) 
+	echo "CREACIÓN DE LAS SLIDES..."
+	jupyter nbconvert --config mycfg-GitHubPages.py --to slides --reveal-prefix "https://unpkg.com/reveal.js@5.2.1" --execute $(LECCIONES_tmp)/$(@F) 
+	echo "FICHEROS EN Docs ANTES DE PUBLICAR?..."
+	ls $(DOCS)
 
 
-series_formales: $(LECCIONES_SRC)/src/implementacion_series_formales.org
+series_formales: $(LECCIONES_tmp)/src/implementacion_series_formales.org
+
+$(LECCIONES_tmp)/src/implementacion_series_formales.org: $(LECCIONES_SRC)/src/implementacion_series_formales.org
+	echo "INICIO IMPLEMENTACION_SERIES_FORMALES.ipynb..."
 	make directorios
-	cp $< $(LECCIONES)/src/
-	emacs -q --batch $(LECCIONES)/src/implementacion_series_formales.org -l org -f org-babel-tangle
-	cp -a $(LECCIONES)/src/implementacion_series_formales.py $(CUADERNOS)/src/
+	cp $< $(LECCIONES_tmp)/src/
+	emacs -q --batch $(LECCIONES_tmp)/src/implementacion_series_formales.org -l org -f org-babel-tangle
+	cp -a $(LECCIONES_tmp)/src/implementacion_series_formales.py $(CUADERNOS)/src/
 	ln -sf -r $(CUADERNOS)/src/implementacion_series_formales.py $(CUADERNOS)/
 	emacs -q --batch \
 	  --load ~/.emacs.d/no-tlmgr.el \
 	  --load ~/Software/scimax/init.el \
 	  --eval "(require 'ox-ipynb)" \
 	  --eval "(ox-ipynb-export-org-file-to-ipynb-file \"lecciones/src/implementacion_series_formales.org\")"
-	jupyter nbconvert --execute --inplace $(LECCIONES)/src/implementacion_series_formales.ipynb
-	jupyter nbconvert --config mycfg-GitHubPages.py --to slides --reveal-prefix "https://unpkg.com/reveal.js@5.2.1" --execute $(LECCIONES)/src/implementacion_series_formales.ipynb
-	jupyter nbconvert --execute --to html $(LECCIONES)/src/implementacion_series_formales.ipynb
-	mv $(LECCIONES)/src/implementacion_series_formales.ipynb $(CUADERNOS)
-	mv $(LECCIONES)/src/implementacion_series_formales.slides.html $(TRANSPARENCIAS)
-	mv $(LECCIONES)/src/implementacion_series_formales.html $(DOCS)
-	touch $@
+	jupyter nbconvert --execute --inplace $(LECCIONES_tmp)/src/implementacion_series_formales.ipynb
+	jupyter nbconvert --config mycfg-GitHubPages.py --to slides --reveal-prefix "https://unpkg.com/reveal.js@5.2.1" --execute $(LECCIONES_tmp)/src/implementacion_series_formales.ipynb
+	jupyter nbconvert --execute --to html $(LECCIONES_tmp)/src/implementacion_series_formales.ipynb
+	mv $(LECCIONES_tmp)/src/implementacion_series_formales.ipynb $(CUADERNOS)
+	mv $(LECCIONES_tmp)/src/implementacion_series_formales.slides.html $(TRANSPARENCIAS)
+	mv $(LECCIONES_tmp)/src/implementacion_series_formales.html $(DOCS)
+	echo "TERMINADO IMPLEMENTACION_SERIES_FORMALES.ipynb..."
 
 directorios:
-	mkdir -v -p $(LECCIONES)/src
-	mkdir -v -p $(LECCIONES)/img
-	ln -snf -r ./css/ $(LECCIONES)/
+	mkdir -v -p $(LECCIONES_tmp)/src
+	mkdir -v -p $(LECCIONES_tmp)/img
+	ln -snf -r ./css/ $(LECCIONES_tmp)/
 	mkdir -v -p $(DOCS)/img
 	mkdir -v -p $(DOCS)/pdfs
 	mkdir -v -p $(TRANSPARENCIAS)
@@ -76,7 +91,7 @@ directorios:
 	touch directorios
 
 clean:
-	rm -r -f $(LECCIONES)
+	rm -r -f $(LECCIONES_tmp)
 
 cleanAll: clean
 	find $(DOCS)/ -mindepth 1 ! -name 'README.org' -exec rm -rf {} +

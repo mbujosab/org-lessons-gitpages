@@ -71,21 +71,11 @@ p=SerieConPrincipio([1,-a],0)
 p
 #+END_SRC
 
-#+RESULTS:
-:RESULTS:
-$1 - az$
-:END:
-
 
 Su inversa $p^{-\triangleright}$ (en el conjunto de series /con principio/) es:
 #+BEGIN_SRC jupyter-python 
 p.inversa()
 #+END_SRC
-
-#+RESULTS:
-:RESULTS:
-$1 + az + a^{2}z^{2} + a^{3}z^{3} + a^{4}z^{4} + \cdots$
-:END:
 
 
 Fíjese que su inversa (/con principio/) tiene cogrado -0. 
@@ -176,10 +166,6 @@ Si calculamos solo cinco términos de la inversa, se anulan todos los coeficient
 p * p.inversa()
 #+END_SRC
 
-#+RESULTS:
-:RESULTS:
-$1 - a^{5}z^{5}$
-:END:
 
 
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
@@ -189,11 +175,6 @@ Con solo cincuenta términos se anulan todos excepto el quincuagésimo (y el $1$
 p * p.inversa(50)
 #+END_SRC
 
-#+RESULTS:
-:RESULTS:
-$1 - a^{50}z^{50}$
-:END:
-
 
 
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
@@ -202,11 +183,6 @@ Con quinientos se anulan todos excepto el parámetro en la posición 500 (y el $
 #+BEGIN_SRC jupyter-python
 p * p.inversa(500)
 #+END_SRC
-
-#+RESULTS:
-:RESULTS:
-$1 - a^{500}z^{500}$
-:END:
 
 
 
@@ -224,22 +200,11 @@ p2=SerieConFinal([1,-a],1)
 p2
 #+END_SRC
 
-#+RESULTS:
-:RESULTS:
-$1 - az$
-:END:
-
 
 Su inversa $p^{\blacktriangleleft-}$ (en el conjunto de series /con final/) es:
 #+BEGIN_SRC jupyter-python
 p2.inversa()
 #+END_SRC
-
-#+RESULTS:
-:RESULTS:
-$\cdots - \frac{1}{a^{5}}z^{-5} - \frac{1}{a^{4}}z^{-4} -
-\frac{1}{a^{3}}z^{-3} - \frac{1}{a^{2}}z^{-2} - \frac{1}{a}z^{-1}$
-:END:
 
 
 
@@ -333,12 +298,6 @@ s_cp = SerieConPrincipio(lista, -1)
 s_cp
 #+END_SRC
 
-#+RESULTS:
-:RESULTS:
-$z^{-1} - 0.1 - 0.75z$
-:END:
-
-
 
 
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
@@ -353,11 +312,6 @@ s_cp.inversa(30).plot_serie(title='inversa con principio de ' + s_cp._repr_latex
 s_cf=SerieConFinal(lista, 1)
 s_cf
 #+END_SRC
-
-#+RESULTS:
-:RESULTS:
-$z^{-1} - 0.1 - 0.75z$
-:END:
 
 
 

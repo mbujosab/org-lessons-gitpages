@@ -723,10 +723,10 @@ dfi.export(TasaLogCrecimiento,
 #+END_SRC
 
 #+BEGIN_SRC sh :results silent
-jupyter nbconvert --execute --inplace Lecc01.ipynb
+#jupyter nbconvert --execute --inplace Lecc01.ipynb
 #+END_SRC
 
 #+BEGIN_SRC sh :results silent
-jupyter nbconvert --config ../mycfg-GitHubPages.py --to slides --reveal-prefix "https://unpkg.com/reveal.js@5.2.1" --execute Lecc01.ipynb
+#jupyter nbconvert --config ../mycfg-GitHubPages.py --to slides --reveal-prefix "https://unpkg.com/reveal.js@5.2.1" --execute Lecc01.ipynb
 #+END_SRC
 

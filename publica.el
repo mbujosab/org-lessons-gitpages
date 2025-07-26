@@ -12,7 +12,7 @@
   "Publica un archivo Org como PDF tras ejecutar bloques de código."
   (message "Exportando a PDF: %s" filename)
   (with-current-buffer (find-file-noselect filename)
-    (org-babel-execute-buffer)
+    ;(org-babel-execute-buffer)
     (org-latex-publish-to-pdf plist filename pub-dir)))
 
 (let* ((base-directory "./lecciones/")
@@ -38,7 +38,7 @@
 
           ("static-html"
            :base-directory ,base-directory
-           :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|dat\\|mov\\|txt\\|svg\\|aiff\\|csv\\|gdt\\|inp\\|ipynb"
+           :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|dat\\|mov\\|txt\\|svg\\|aiff\\|csv\\|gdt\\|inp"
            :publishing-directory ,public-directory
            :exclude "src"
            :recursive t
