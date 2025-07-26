@@ -82,17 +82,9 @@ jobs:
               || true
         make all
 
-    - name: Debug output 1
+    - name: Copia del directorio de imagenes a docs
       run: |
-        ls -l ./lecciones
-
-    - name: Debug output 2
-      run: |
-        ls -l ./lecciones/img
-
-    - name: Debug output 3
-      run: |
-        ls -l ./docs
+        cp -a ./lecciones/img ./docs
 
     - name: Deploy docs/ a gh-pages
       uses: peaceiris/actions-gh-pages@v4
