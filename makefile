@@ -8,7 +8,7 @@ SRC_FILES = $(LECCIONES_SRC)/Lecc*.org
 
 .PHONY: all clean cleanAll directorios series_formales calendario notebooksYslides
 
-all: notebooksYslides calendario
+all: calendario notebooksYslides publicacion
 
 calendario: $(DOCS)/Calendario-Econometria-Aplicada.pdf
 
@@ -16,7 +16,7 @@ $(DOCS)/Calendario-Econometria-Aplicada.pdf:
 	emacs --batch Calendario/README.org -l org -f org-babel-tangle
 	cd Calendario && make Calendario-Econometria-Aplicada.pdf
 
-notebooksYslides: $(patsubst $(LECCIONES_SRC)/%.org,$(CUADERNOS)/%.ipynb,$(wildcard $(SRC_FILES)))
+publicacion: notebooksYslides
 	echo "FICHEROS EN CuadernosElectronicos y Transparencias?..."
 	mv $(LECCIONES_tmp)/Lecc*.slides.html $(TRANSPARENCIAS)
 	ls $(CUADERNOS)
@@ -29,6 +29,9 @@ notebooksYslides: $(patsubst $(LECCIONES_SRC)/%.org,$(CUADERNOS)/%.ipynb,$(wildc
 	echo "FICHEROS EN Docs?..."
 	ls $(DOCS)
 	ls $(DOCS)/pdfs
+
+notebooksYslides: $(patsubst $(LECCIONES_SRC)/%.org,$(CUADERNOS)/%.ipynb,$(wildcard $(SRC_FILES)))
+	touch $@
 
 $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 	make directorios
@@ -98,3 +101,4 @@ cleanAll: clean
 	find $(DOCS)/ -mindepth 1 ! -name 'README.org' -exec rm -rf {} +
 	rm -f directorios
 	rm -f series_formales
+	rm -f publicacion

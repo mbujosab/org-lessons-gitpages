@@ -71,21 +71,18 @@ jobs:
               --eval "(dolist (dir (directory-files \"~/.emacs.d/elpa/\" t \"^[^.]\")) (add-to-list 'load-path dir))" \
               --eval "(require 'ox-ipynb)"
 
-    - name: Execute Makefile
+    - name: Execute Makefile notebooksYslides
       run: |
-        emacs --batch \
-              --load ~/.emacs.d/no-tlmgr.el \
-              --load ~/Software/scimax/init.el \
-              --eval "(setq org-confirm-babel-evaluate nil)" \
-              --eval "(require 'ox-ipynb)" \
-              --eval "(require 'ob-jupyter)" \
-              || true
-        make all
+        make notebooksYslides
 
     - name: Copia del directorio de imagenes a docs
       run: |
         cp -a ./lecciones/img ./docs
 
+    - name: Execute Makefile publicacion
+      run: |
+        make publicacion
+	
     - name: Deploy docs/ a gh-pages
       uses: peaceiris/actions-gh-pages@v4
       with:
