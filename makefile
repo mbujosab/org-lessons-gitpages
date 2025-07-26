@@ -19,6 +19,8 @@ $(DOCS)/Calendario-Econometria-Aplicada.pdf:
 publicacion: notebooksYslides
 	echo "Verificación del log de emacs..."
 	emacs -q -l ~/Software/scimax/init.el ./lecciones/Lecc01.org --batch -f org-babel-execute-buffer --kill > emacs_build.log 2>&1
+	cat emacs_build.log
+	cd ./lecciones/Lecc01.org ./docs/
 	echo "FICHEROS EN CuadernosElectronicos y Transparencias?..."
 	mv $(LECCIONES_tmp)/Lecc*.slides.html $(TRANSPARENCIAS)
 	ls $(CUADERNOS)
