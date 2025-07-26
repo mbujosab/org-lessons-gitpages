@@ -82,7 +82,7 @@ jobs:
     - name: Execute Makefile publicacion
       run: |
         make publicacion
-	
+
     - name: Deploy docs/ a gh-pages
       uses: peaceiris/actions-gh-pages@v4
       with:
