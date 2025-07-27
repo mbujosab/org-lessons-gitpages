@@ -57,7 +57,7 @@ mpl.rc('text', usetex=False)
 import matplotlib.pyplot as plt   # data visualization
 #+END_SRC
 
-****  Creación del directorio auxiliar para albergar las figuras de la lección :noexport:
+****  Creación del directorio auxiliar para albergar las figuras de la lección 
    :PROPERTIES:
    :metadata: (slideshow . ((slide_type . skip)))
    :UNNUMBERED: t 
