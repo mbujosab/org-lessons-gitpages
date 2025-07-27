@@ -77,8 +77,9 @@ jobs:
 
     - name: Inspección contenido de img
       run: |
-        cat .docs/emacs_build.log
-        echo "Contenido de img tras notebook:"
+        emacs -q -l ~/Software/scimax/init.el ./lecciones/Lecc01.org --batch -f org-babel-execute-buffer --kill > docs/emacs_build.log 2>&1
+        cat docs/emacs_build.log
+        echo "CONTENIDO DE IMG TRAS NOTEBOOK:"
         find ./lecciones/img
 
     - name: Copia del directorio de imagenes a docs

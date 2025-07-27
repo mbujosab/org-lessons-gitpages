@@ -17,10 +17,9 @@ $(DOCS)/Calendario-Econometria-Aplicada.pdf:
 	cd Calendario && make Calendario-Econometria-Aplicada.pdf
 
 publicacion: notebooksYslides
-	echo "Verificación del log de emacs..."
-	emacs -q -l ~/Software/scimax/init.el ./lecciones/Lecc01.org --batch -f org-babel-execute-buffer --kill > emacs_build.log 2>&1
-	cat emacs_build.log
-	cp ./lecciones/Lecc01.org ./docs/
+	#echo "Verificación del log de emacs..."
+	#emacs -q -l ~/Software/scimax/init.el ./lecciones/Lecc01.org --batch -f org-babel-execute-buffer --kill > $(DOCS)/emacs_build.log 2>&1
+	#cat $(DOCS)/emacs_build.log
 	echo "FICHEROS EN CuadernosElectronicos y Transparencias?..."
 	mv $(LECCIONES_tmp)/Lecc*.slides.html $(TRANSPARENCIAS)
 	ls $(CUADERNOS)
@@ -57,6 +56,7 @@ $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 	echo "COPIO LO QUE SE HA GENERADO (.ipynb sin ejecutar y las imágenes) A /docs..."
 	cp -a $(LECCIONES_tmp)/$(@F) $(CUADERNOS)
 	cp -a $(LECCIONES_tmp)/img $(DOCS)/
+	cp -a $(LECCIONES_tmp)/$(@F:.ipynb=.org) $(DOCS)/
 	ln -snf -r $(DOCS)/img/ $(TRANSPARENCIAS)/
 	ln -snf -r $(DOCS)/img/ $(CUADERNOS)/
 #	# Ejecutar el notebook con jupyter nbconvert
