@@ -38,19 +38,6 @@ En esta lección veremos algunas transformaciones de los datos para /"hacerlos e
 - [[https://mybinder.org/v2/gh/mbujosab/EconometriaAplicada-SRC/HEAD?labpath=Lecc01.ipynb][lección en mybinder]]
 
 
-#+BEGIN_SRC jupyter-python
-100+300+9999
-#+END_SRC
-
-#+begin_src jupyter-python :results file :exports results
-import matplotlib
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
-plt.plot([1,2,3],[4,5,6])
-plt.savefig("img/prueba_action.png")
-"img/prueba_action.png"
-#+end_src
-
 ***  Carga de algunos módulos de python y creación de directorios auxiliares
    :PROPERTIES:
    :metadata: (slideshow . ((slide_type . skip)))
@@ -82,6 +69,14 @@ import os
 imagenes_leccion = "./img/lecc01" # directorio para las imágenes de la lección
 # Crear el directorio si no existe
 os.makedirs(imagenes_leccion, exist_ok=True)
+#+END_SRC
+
+
+
+#+BEGIN_SRC jupyter-python :results file :exports results
+plt.plot([1,2,3],[4,5,6])
+plt.savefig("img/prueba_action.png")
+"img/prueba_action.png"
 #+END_SRC
 
 
