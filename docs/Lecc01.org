@@ -38,6 +38,11 @@ En esta lección veremos algunas transformaciones de los datos para /"hacerlos e
 - [[https://mybinder.org/v2/gh/mbujosab/EconometriaAplicada-SRC/HEAD?labpath=Lecc01.ipynb][lección en mybinder]]
 
 
+#+BEGIN_SRC jupyter-python
+100+300+9999
+#+END_SRC
+
+
 ***  Carga de algunos módulos de python y creación de directorios auxiliares
    :PROPERTIES:
    :metadata: (slideshow . ((slide_type . skip)))

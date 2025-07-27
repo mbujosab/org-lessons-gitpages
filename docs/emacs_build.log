@@ -1,0 +1,77 @@
+Loading /etc/emacs/site-start.d/00debian.el (source)...
+Loading /etc/emacs/site-start.d/50autoconf.el (source)...
+Loading /etc/emacs/site-start.d/50dictionaries-common.el (source)...
+Loading debian-ispell...
+Loading /var/cache/dictionaries-common/emacsen-ispell-default.el (source)...
+Loading /var/cache/dictionaries-common/emacsen-ispell-dicts.el (source)...
+LaTeX fragment tooltips are enabled.
+Latex fragment justification enabled
+Latex numbering enabled
+Inject latex enabled
+../../../Software/scimax/scimax-projectile.el: Warning: Missing format argument
+../../../Software/scimax/scimax-projectile.el: Warning: Missing format argument
+../../../Software/scimax/scimax-projectile.el: Warning: Missing format argument
+../../../Software/scimax/scimax-projectile.el: Warning: Missing format argument
+Loading /home/runner/Software/scimax/scimax-notebook.el (source)...
+Loaded /home/runner/Software/scimax/scimax-notebook.el
+[yas] Prepared just-in-time loading of snippets successfully.
+Loading /home/runner/Software/scimax/scimax-editmarks.el (source)...
+Loaded /home/runner/Software/scimax/scimax-editmarks.el
+Starting new Ispell process aspell with default dictionary... \ 
+Starting new Ispell process aspell with default dictionary...done
+Multiple snippets with same identity: "name-caption-figure"
+Multiple snippets with same identity: "latex subscript"
+Multiple snippets with same identity: "from ase.cluster.icosahedron import Icosahedron"
+Multiple snippets with same identity: "scipy.optimize.minimize"
+Buffer has been modified since undo-tree history was saved to
+	  "/home/runner/work/org-lessons-gitpages/org-lessons-gitpages/lecciones/.Lecc01.org.~undo-tree~"; could not load undo-tree history
+nil
+Launching python3 kernel...
+Starting python3 kernel process... \ 
+Starting python3 kernel process... | 
+Starting python3 kernel process...done
+Launching python3 kernel...done
+Requesting kernel info...
+Loading /home/runner/.emacs.d/elpa/zmq-20241006.1857/emacs-zmq (module)...
+Requesting kernel info...done
+Can’t guess python-indent-offset, using defaults: 4
+Can’t guess python-indent-offset, using defaults: 4
+nil
+86306e80-af5a-4a12-a755-2481c9d1cc50
+nil
+771ff130-9650-4d47-b5d5-34229b42b258
+nil
+1b3ff9b9-3bfc-48e7-a5cf-af56e0d5a1f2
+nil
+1dbed767-c8ee-43bd-b071-83fc7531abb3
+nil
+6a0d2aab-1d2e-45c9-bbe3-91e5ebe2e867
+nil
+e36fd150-1985-4170-a277-0bc6538a686b
+nil
+7f8e71e8-1602-4d48-a8cf-c185ad5f4dea
+nil
+6229b8c8-73d6-4fa9-93b3-9ac91062bd55
+nil
+ce6b413e-c9e9-4781-b623-3bf2c98e479e
+nil
+4b02a9d0-af84-4d0b-b604-d44cabf48f09
+nil
+54f2896b-53ef-4f39-8625-566204cbe3ba
+nil
+4e4a115d-469f-4fa6-9322-17850c720a9e
+nil
+539a4846-960d-45e5-8190-94d284a9657d
+nil
+c84a08a3-bcec-418a-ad35-9c70d85a4aef
+nil
+013db7e0-1e0e-4078-b406-aecc8cf8ca3a
+nil
+91249362-3f02-456b-9a87-2150e7b6c305
+nil
+b1625a44-b9f7-4013-8341-5dd09e975403
+Buffer has been modified since undo-tree history was saved to
+	  "/home/runner/work/org-lessons-gitpages/org-lessons-gitpages/lecciones/.Lecc01.ipynb.~undo-tree~"; could not load undo-tree history
+"Lecc01.ipynb"
+nil
+nil
