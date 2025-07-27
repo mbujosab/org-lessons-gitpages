@@ -37,39 +37,39 @@ Requesting kernel info...done
 Can’t guess python-indent-offset, using defaults: 4
 Can’t guess python-indent-offset, using defaults: 4
 nil
-86306e80-af5a-4a12-a755-2481c9d1cc50
+1ace55fd-56a4-4c15-a418-8b04dd4eb875
 nil
-771ff130-9650-4d47-b5d5-34229b42b258
+a04c769d-6297-4725-967c-be0a94e5c429
 nil
-1b3ff9b9-3bfc-48e7-a5cf-af56e0d5a1f2
+ea255bef-bb54-41ec-b3bf-4bd58c31ad15
 nil
-1dbed767-c8ee-43bd-b071-83fc7531abb3
+1d49b513-e7b3-4206-8d01-93e305bc75fa
 nil
-6a0d2aab-1d2e-45c9-bbe3-91e5ebe2e867
+60724c62-882d-45af-913f-856d46f24751
 nil
-e36fd150-1985-4170-a277-0bc6538a686b
+ea3f2c8d-d0b3-490b-ae4f-96cfbc67032f
 nil
-7f8e71e8-1602-4d48-a8cf-c185ad5f4dea
+f478693e-53ed-481c-80e0-4e977e8636c8
 nil
-6229b8c8-73d6-4fa9-93b3-9ac91062bd55
+67afbbd6-9088-4998-ae6b-d121c7c63fbd
 nil
-ce6b413e-c9e9-4781-b623-3bf2c98e479e
+89de5f92-a517-42af-a294-1cef07e2e09b
 nil
-4b02a9d0-af84-4d0b-b604-d44cabf48f09
+31549c59-d053-4da0-9b8c-d615e35c8d25
 nil
-54f2896b-53ef-4f39-8625-566204cbe3ba
+1438d1e4-dac7-48e6-86ac-308b92b3551e
 nil
-4e4a115d-469f-4fa6-9322-17850c720a9e
+681df236-bce8-476f-ab95-ed4be2072b00
 nil
-539a4846-960d-45e5-8190-94d284a9657d
+11674332-c74d-4d85-9905-46ec9bf2882c
 nil
-c84a08a3-bcec-418a-ad35-9c70d85a4aef
+95b82feb-af98-4cc1-8d7e-e6407596dee2
 nil
-013db7e0-1e0e-4078-b406-aecc8cf8ca3a
+2ac005bf-25b4-4e71-aa0b-2919a3ad62f9
 nil
-91249362-3f02-456b-9a87-2150e7b6c305
+35a0fb33-2e6e-4e2c-bfa2-f1008dcf4e12
 nil
-b1625a44-b9f7-4013-8341-5dd09e975403
+745bbe12-ddaa-4345-a0be-8939056d5f27
 Buffer has been modified since undo-tree history was saved to
 	  "/home/runner/work/org-lessons-gitpages/org-lessons-gitpages/lecciones/.Lecc01.ipynb.~undo-tree~"; could not load undo-tree history
 "Lecc01.ipynb"

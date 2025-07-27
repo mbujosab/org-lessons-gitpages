@@ -7435,7 +7435,7 @@ main {
 <main>
 <div class="reveal">
 <div class="slides"><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b8401ee9-4816-4a31-8696-900d485b6ee4">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b64bcb54-bcd7-494b-a2e3-04729a8705df">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7446,13 +7446,13 @@ main {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=32026a95-48e8-4057-9493-bb51e3a6d1f2">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e00a00c3-fc45-4f5f-8e3d-c85d287d465f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div class="abstract" id="orgf035ba9">
+<div class="abstract" id="org4c9940e">
 <p>
 En esta lección veremos algunas transformaciones de los datos para <i>"hacerlos estacionarios"</i>; y daremos interpretación a los datos transformados.
 </p>
@@ -7464,7 +7464,7 @@ En esta lección veremos algunas transformaciones de los datos para <i>"hacerlos
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9b2f1c7d-3c9a-4434-9323-a5d64e6232b8">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7a4c2457-89ec-4764-870e-f224f2d8e87e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7490,8 +7490,39 @@ En esta lección veremos algunas transformaciones de los datos para <i>"hacerlos
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=adf3e812-353c-459a-b439-207ffb7c4134">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">"Agg"</span><span class="p">)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"img/prueba_action.png"</span><span class="p">)</span>
+<span class="s2">"img/prueba_action.png"</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>'img/prueba_action.png'</pre>
+</div>
+</div>
+</div>
+</div>
 </div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bc91bd06-f8d1-41dc-ad14-4ba4dd65f02c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f343ae20-bc6e-4daa-b374-dd74766bd5e2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7502,7 +7533,7 @@ En esta lección veremos algunas transformaciones de los datos para <i>"hacerlos
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=25897f9c-7517-4ee2-9cb7-e7e43648df80">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=439766b9-74b0-4bab-bcbd-ca898e63ab5a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7525,7 +7556,7 @@ $$ (x_1, x_2,\ldots x_n) \text{ es una realización de }(X_t \mid t=1:n). $$</li
 </div>
 </div>
 </div><div class="fragment">
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0c49179a-296c-49a0-a434-5dec3483c139">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9a32b5d0-bddd-4f2f-bf11-0af4b24f2d8f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7536,7 +7567,7 @@ $$ (x_1, x_2,\ldots x_n) \text{ es una realización de }(X_t \mid t=1:n). $$</li
 </div>
 </div>
 </div></div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9c1b06db-8683-4b3c-a7df-0d78bddaeeca">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=875fd6df-545a-498c-88f2-3ad5544633c1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7547,7 +7578,7 @@ $$ (x_1, x_2,\ldots x_n) \text{ es una realización de }(X_t \mid t=1:n). $$</li
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7bc35a17-d2af-4379-b91d-1cef7b429f45">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=afda37ef-144b-45a9-8b7b-0f8cab426c8c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7565,7 +7596,7 @@ $$ (x_1, x_2,\ldots x_n) \text{ es una realización de }(X_t \mid t=1:n). $$</li
 </div>
 </div>
 </div><div class="fragment">
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=58e3e9ad-47e2-46a1-99d9-403d2c5cdab1">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=894696a6-4069-4053-aeeb-545938ea20f1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7584,7 +7615,7 @@ $$ (x_1, x_2,\ldots x_n) \text{ es una realización de }(X_t \mid t=1:n). $$</li
 </div>
 </div>
 </div></div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=18554930-35c6-4b45-9bc0-f8b96f57715d">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3c6b679e-f09a-42ec-947b-ef1ad873aef5">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7595,7 +7626,7 @@ $$ (x_1, x_2,\ldots x_n) \text{ es una realización de }(X_t \mid t=1:n). $$</li
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9fde1e28-1b4a-4c07-89dd-74af09baf601">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0f269eda-af7a-4e21-bf37-53270a0c5898">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7606,7 +7637,7 @@ $$ (x_1, x_2,\ldots x_n) \text{ es una realización de }(X_t \mid t=1:n). $$</li
 </div>
 </div>
 </div><div class="fragment">
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=19c4a923-1de0-4803-865f-d85f754197ff">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2befc625-51a3-434d-aa5e-db6856cbc16f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7624,7 +7655,7 @@ $$ (x_1, x_2,\ldots x_n) \text{ es una realización de }(X_t \mid t=1:n). $$</li
 </div>
 </div>
 </div></div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=40b829b0-798d-46ad-ac04-83cdb260d8fe">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=447e9195-6f68-43e9-b5e0-d05a9472b05f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7635,7 +7666,7 @@ $$ (x_1, x_2,\ldots x_n) \text{ es una realización de }(X_t \mid t=1:n). $$</li
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7bea46db-fc2f-4cea-9db2-f8fe1ef392f7">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=86e10319-b6ea-4300-85f7-3d29ddc5fdd6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7646,7 +7677,7 @@ $$ (x_1, x_2,\ldots x_n) \text{ es una realización de }(X_t \mid t=1:n). $$</li
 </div>
 </div>
 </div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a317a27c-9d99-43f1-a5df-ee597c62b21b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=86c82716-1291-4414-8d55-1e6b35e6bdeb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7657,7 +7688,7 @@ $$ (x_1, x_2,\ldots x_n) \text{ es una realización de }(X_t \mid t=1:n). $$</li
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b2bacaad-55ab-4467-ab5f-0c174c6e18b2">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9760bca0-b4b2-440e-aabe-aa5485f8edf2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7668,7 +7699,7 @@ $$ (x_1, x_2,\ldots x_n) \text{ es una realización de }(X_t \mid t=1:n). $$</li
 </div>
 </div>
 </div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9fc48bbe-1520-4386-b2a3-1ed03e0132c6">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=62d8e37f-4072-44f8-9919-a3a0057b39ef">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7686,7 +7717,7 @@ $$ (x_1, x_2,\ldots x_n) \text{ es una realización de }(X_t \mid t=1:n). $$</li
 </div>
 </div>
 </div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=80e203fb-8575-4afb-99fe-31160b79483e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a4b522d5-bea8-44ea-989d-cc5b8b5dcc8b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7697,7 +7728,7 @@ $$ (x_1, x_2,\ldots x_n) \text{ es una realización de }(X_t \mid t=1:n). $$</li
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=98026c63-da92-4ea2-a840-cb3beac308b1">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1d8e82bc-b39e-486c-b2b6-9173d540ff74">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7715,7 +7746,7 @@ $$ (x_1, x_2,\ldots x_n) \text{ es una realización de }(X_t \mid t=1:n). $$</li
 </div>
 </div>
 </div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=57a0563d-69c5-4fd5-b654-85cb6d944c68">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1ef67da0-0fa5-438f-8866-b4a12a8fcdc0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7726,7 +7757,7 @@ $$ (x_1, x_2,\ldots x_n) \text{ es una realización de }(X_t \mid t=1:n). $$</li
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0f526b4a-b0e5-4389-bf55-4ff0571aba42">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b610f1be-0d77-4567-a2b2-bfaf20158101">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7734,17 +7765,17 @@ $$ (x_1, x_2,\ldots x_n) \text{ es una realización de }(X_t \mid t=1:n). $$</li
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Un proceso estocástico $\boldsymbol{X}$ se dice <strong>estacionario</strong> (<em>en sentido débil</em>) si para todo $t,k\in\mathbb{Z}$</p>
 <p>\begin{equation}
-\label{org63c7b98}
+\label{orgc5b9f22}
 E(X_t)  = \mu
 \end{equation}</p>
 <p>\begin{equation}
-\label{orgeb4a38a}
+\label{orgab3b2d3}
 Cov(X_t,X_{t-k}) = \gamma_k 
 \end{equation}</p>
 <ul>
-<li><p>(<a href="#org63c7b98">1</a>) sugiere que las realizaciones de $\boldsymbol{X}$ aparecerán entorno al valor $\mu$.</p>
+<li><p>(<a href="#orgc5b9f22">1</a>) sugiere que las realizaciones de $\boldsymbol{X}$ aparecerán entorno al valor $\mu$.</p>
 </li>
-<li><p>(<a href="#orgeb4a38a">2</a>) entre otras cosas, sugiere que la variabilidad de las realizaciones de $\boldsymbol{X}$ entorno a $\mu$ es constante, ya que para el caso particular $k=0$
+<li><p>(<a href="#orgab3b2d3">2</a>) entre otras cosas, sugiere que la variabilidad de las realizaciones de $\boldsymbol{X}$ entorno a $\mu$ es constante, ya que para el caso particular $k=0$
 $$ Cov(X_t,X_{t-0})=Var(X_t) = \gamma_0\quad\text{ para todo } t, $$</p>
 <p>donde $\gamma_0$ es la varianza común a todas las variables aleatorias del proceso.</p>
 </li>
@@ -7753,7 +7784,7 @@ $$ Cov(X_t,X_{t-0})=Var(X_t) = \gamma_0\quad\text{ para todo } t, $$</p>
 </div>
 </div>
 </div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c7049d67-7ff7-482d-b497-b8e2dd28d538">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=760a5432-6a40-4e1a-b905-ba9aab8922d7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7766,7 +7797,7 @@ sugiere que para cualquier proceso estacionario (y un $c$ grande), al pintar una
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b5420014-9dc2-4b56-a462-6d21d409d768">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fed1edda-9a42-4782-a95e-715720f74c06">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7777,7 +7808,7 @@ sugiere que para cualquier proceso estacionario (y un $c$ grande), al pintar una
 </div>
 </div>
 </div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2c9b0372-7082-4ff4-92e9-47f74d080f05">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=366f6029-5db4-4a9f-afc5-f15a9b163446">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7788,7 +7819,7 @@ sugiere que para cualquier proceso estacionario (y un $c$ grande), al pintar una
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8e0bef2d-b74d-4927-ad9e-628160c114d7">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=39fca347-d080-4e72-b1da-71e0020fd062">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7802,7 +7833,7 @@ sugiere que para cualquier proceso estacionario (y un $c$ grande), al pintar una
 </div>
 </div>
 </div><div class="fragment">
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2f9bde0c-626c-4a11-801e-aa6f22d03064">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6e267c0b-76ef-41fb-958a-5b420bb03415">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7818,7 +7849,7 @@ se denomina <em>función de autocorrelación</em> (ACF).</li>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=16d8ebc6-fe3c-48c0-a4bc-d12924426098">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4224249e-6da6-4a9d-85b1-68a23cc1870a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7829,7 +7860,7 @@ se denomina <em>función de autocorrelación</em> (ACF).</li>
 </div>
 </div>
 </div></div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=596ffd03-58e5-4b4a-8356-2b9db3a5d49d">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f2e891cd-4147-4870-acd0-7ed943a97b72">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7840,7 +7871,7 @@ se denomina <em>función de autocorrelación</em> (ACF).</li>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=71501c6c-347d-443f-acc9-62e17a8a9451">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=db403e2f-fa21-436c-853d-d726416e5c22">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7856,7 +7887,7 @@ se denomina <em>función de autocorrelación</em> (ACF).</li>
 </div>
 </div>
 </div><div class="fragment">
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2940181b-d156-41a0-a241-0e62b5099cf7">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=04f64099-8fc2-436b-8be6-551fc523d53d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7874,7 +7905,7 @@ se denomina <em>función de autocorrelación</em> (ACF).</li>
 </div>
 </div>
 </div></div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c1610294-9051-47b7-b6b1-52c264bd09a9">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bd9c9e99-61d2-45db-8e7d-f9c7787db928">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7885,7 +7916,7 @@ se denomina <em>función de autocorrelación</em> (ACF).</li>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b483708a-dccd-4009-9e1b-93984f62b7f0">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9cd0defa-6b27-433f-8767-5df82758d180">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7902,7 +7933,7 @@ se denomina <em>función de autocorrelación</em> (ACF).</li>
 </div>
 </div>
 </div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7fd37fdf-dfdb-4a44-a00c-cec8be5646e7">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b448ce69-38b7-43c0-ac53-bf255614016e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7913,7 +7944,7 @@ se denomina <em>función de autocorrelación</em> (ACF).</li>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=81b0c9b3-3760-45bb-8028-ba4a129965bd">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6242d3ae-5ef8-4586-870f-12d76932d2f2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7928,7 +7959,7 @@ se denomina <em>función de autocorrelación</em> (ACF).</li>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=643fea62-31ce-4d13-9deb-06e11577fc76">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8df7458e-85c8-4e8b-b123-fe9c3fe4beee">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7939,7 +7970,7 @@ se denomina <em>función de autocorrelación</em> (ACF).</li>
 </div>
 </div>
 </div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6d6ad3b1-45f8-49e5-a945-e7c5204d7400">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=84d0da77-2d4d-4395-9118-bb33124c5bbd">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7950,7 +7981,7 @@ se denomina <em>función de autocorrelación</em> (ACF).</li>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0440bd78-ba57-4945-9d9a-24c28ffce862">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fbf4e7c8-a37a-49ca-881c-4a9f34af940a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7967,7 +7998,7 @@ se denomina <em>función de autocorrelación</em> (ACF).</li>
 </div>
 </div>
 </div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=381da5be-2658-4612-9792-fc48820d0105">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9b1aa59d-eb63-4d16-afc6-f59fcc156301">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7978,7 +8009,7 @@ se denomina <em>función de autocorrelación</em> (ACF).</li>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7d4c118c-594a-43a3-82c9-41034ae5499e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=02010a5f-d322-41ef-912d-2f6abcfccf49">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7994,7 +8025,7 @@ se denomina <em>función de autocorrelación</em> (ACF).</li>
 </div>
 </div>
 </div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=97a63c5b-6f79-4add-879a-f637f0430043">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c02943bd-82b3-4867-9beb-6915612953be">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8005,7 +8036,7 @@ se denomina <em>función de autocorrelación</em> (ACF).</li>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7dab1896-313d-499c-8e30-cf5dedce0472">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ba3e9bad-e956-4943-a390-8a97edfb5b78">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8023,7 +8054,7 @@ se denomina <em>función de autocorrelación</em> (ACF).</li>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ee93e6c2-b564-40f5-a1b2-d5367aba3253">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=44e213a0-49d8-4c52-b393-5abbe69b2e2e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8034,7 +8065,7 @@ se denomina <em>función de autocorrelación</em> (ACF).</li>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=213fcaad-ee73-4540-baf5-8ae9ddb343cf">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7eec1964-12cd-4bee-820b-103fc1dae6e6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8050,7 +8081,7 @@ y se <em>aproxima</em> a la tasa de crecimiento (en tanto por uno) si el increme
 </div>
 </div>
 </div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=63f01259-dee9-4b94-a29b-03520ff63cc5">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=148caf85-3f7a-4bf6-a101-a3d2f8d117b7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8061,7 +8092,7 @@ y se <em>aproxima</em> a la tasa de crecimiento (en tanto por uno) si el increme
 </div>
 </div>
 </div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=da5fee09-2651-4200-a75c-f0f4dbc0f892">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1f87263f-50ad-40dd-99ae-7ab148deb691">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8072,7 +8103,7 @@ y se <em>aproxima</em> a la tasa de crecimiento (en tanto por uno) si el increme
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e2f37ac2-71da-4c74-9e0c-59fa91ecbfab">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b3148000-b912-4bab-962e-520f08ac6a29">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
