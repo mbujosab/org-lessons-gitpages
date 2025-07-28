@@ -213,10 +213,10 @@ El desafío para el analista es
 
 #+BEGIN_SRC jupyter-python :results silent
 Fichero_Titulo = {
-  "PIB_UEM": "PIB zona euroooo",
-  "ProduccionCemento": "Producción de cemento en Españaaaaa",
-  "IBEX35": "Rendimiento porcentual diario del IBEX 350000",
-  "ExportacionDeAcero" : "Exportaciones españolas de acerooooo"
+  "PIB_UEM": "PIB zona euro",
+  "ProduccionCemento": "Producción de cemento en España",
+  "IBEX35": "Rendimiento porcentual diario del IBEX 35",
+  "ExportacionDeAcero" : "Exportaciones españolas de acero"
 }
 
 # Crear el directorio si no existe
@@ -306,7 +306,7 @@ plt.plot(y)
 #+attr_latex: :width 425px
 [[./img/lecc01/stationaryTimeSeriesExample.png]]
 
-**************  Codigo aux para generar el .png de la figura en batch :noexport:
+************** COMMENT Codigo aux para generar el .png de la figura en batch
 
 #+BEGIN_SRC jupyter-python :results silent :noweb yes
 fichero = './img/lecc01/stationaryTimeSeriesExample.png'
