@@ -209,7 +209,7 @@ El desafío para el analista es
 
 # ([[https://web.stat.tamu.edu/~pourahm/fts.htm][Pourahmadi 2001]])
 
-**************  Codigo aux para generar los .png de las figuras en batch
+************** COMMENT Codigo aux para generar los .png de las figuras en batch
 
 #+BEGIN_SRC jupyter-python :results silent
 Fichero_Titulo = {
@@ -306,7 +306,7 @@ plt.plot(y)
 #+attr_latex: :width 425px
 [[./img/lecc01/stationaryTimeSeriesExample.png]]
 
-**************  Codigo aux para generar el .png de la figura en batch :noexport:
+************** COMMENT Codigo aux para generar el .png de la figura en batch
 
 #+BEGIN_SRC jupyter-python :results silent :noweb yes
 fichero = './img/lecc01/stationaryTimeSeriesExample.png'
@@ -396,7 +396,7 @@ Serie /"no estacionaria"/ (!!):
 - El nivel de la serie crece de año en año.
 - La variabilidad estacional crece con el nivel (creciente diferencia entre el verano y el otoño).
 
-**************  Codigo aux para generar el .png de la figura en batch :noexport:
+************** COMMENT Codigo aux para generar el .png de la figura en batch
 
 #+BEGIN_SRC jupyter-python :results silent :noweb yes
 fichero = './img/lecc01/airlinepass+hist.png'
@@ -465,7 +465,7 @@ TransformedData['dataLogDiffDiff12'] = TransformedData['dataLogDiff'].diff(12)
 #+END_SRC
 
 
-**************  Codigo aux para generar el .png de la figura en batch :noexport:
+************** COMMENT Codigo aux para generar el .png de la figura en batch
 
 #+BEGIN_SRC jupyter-python :results silent :noweb yes
 fichero = './img/lecc01/funcion_logaritmica.png'
