@@ -150,10 +150,10 @@ plt.savefig("img/prueba_action.png")
 "img/prueba_action.png"
 #+END_SRC
 
-#+BEGIN_SRC jupyter-python :results output :exports results
-15+45
-#+END_SRC
 
+#+BEGIN_SRC jupyter-python :results output :exports results
+print(15+45)
+#+END_SRC
 
 
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
