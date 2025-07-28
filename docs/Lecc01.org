@@ -150,10 +150,16 @@ plt.savefig("img/prueba_action.png")
 "img/prueba_action.png"
 #+END_SRC
 
+#+RESULTS:
+: 1ffc2cf6-ad73-483e-9adf-f715ed8fce32
+
 
 #+BEGIN_SRC jupyter-python :results output :exports results
 print(15+45)
 #+END_SRC
+
+#+RESULTS:
+: 41fbb058-becc-4af3-9521-2f72d7bc1384
 
 
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
@@ -171,6 +177,9 @@ df4 = pd.read_csv(path+'ExportacionDeAcero.csv')
 df1.plot(x='obs',xlabel='',figsize=(15,4)).set_title('PIB zona euro',fontsize=18)
 #+END_SRC
 
+#+RESULTS:
+: 3237b50c-88e7-403b-8ab1-f52896ea4691
+
 #+attr_ipynb: (slideshow . ((slide_type . subslide)))
 #+attr_org: :width 800
 #+attr_html: :width 900px
@@ -181,6 +190,9 @@ df1.plot(x='obs',xlabel='',figsize=(15,4)).set_title('PIB zona euro',fontsize=18
 #+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/ProduccionCemento.png
 df2.plot(x='obs',xlabel='',figsize=(15,4)).set_title('Producción de cemento en España',fontsize=18)
 #+END_SRC
+
+#+RESULTS:
+: 2ef72fa1-9154-4ed7-a923-e6670040b812
 
 #+attr_org: :width 800
 #+attr_html: :width 900px
@@ -309,6 +321,9 @@ plt.tick_params(axis='both', labelsize=14)
 plt.plot(y)
 #+END_SRC
 
+#+RESULTS: figura_serie_simulada
+: 4f02af1c-40be-4c54-afef-a83d397f7dfe
+
 # plt.savefig("./img/lecc01/stationaryTimeSeriesExample.png")
 
 #+attr_org: :width 800
@@ -393,6 +408,10 @@ plt.xlabel("Number of Air Passengers in thousands", fontsize=16)
 plt.tick_params(axis='both', labelsize=14)
 plt.tight_layout()
 #+END_SRC
+
+#+RESULTS: figura-airlinepass
+: aa276c8e-412d-4929-951f-963b897067ba
+
 # plt.savefig("./img/lecc01/airlinepass+hist.png")
 
 #+attr_org: :width 800
@@ -451,6 +470,10 @@ plt.axvline(0, color='black',linewidth=0.5)
 plt.grid(color = 'gray', linestyle = '--', linewidth = 0.5)
 plt.legend(fontsize=20)
 #+END_SRC
+
+#+RESULTS: funcion_logaritmica
+: 983e1460-0508-412f-a6a4-8eacd3246761
+
 # plt.savefig("./img/lecc01/funcion_logaritmica.png")
 
 # Establecer la escala logarítmica en el eje x
@@ -509,6 +532,10 @@ plt.xlabel(r"Log-Passengers, ($\ln\boldsymbol{x}$)", fontsize=16)
 plt.tick_params(axis='both', labelsize=14)
 plt.tight_layout()
 #+END_SRC
+
+#+RESULTS: figura-airlinepass-log
+: c7d262b5-7853-4aba-9152-13d5ccb89216
+
 # plt.savefig("./img/lecc01/airlinepass_log+hist.png")
 
 #+attr_org: :width 800

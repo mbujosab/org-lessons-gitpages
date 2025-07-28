@@ -499,6 +499,9 @@ import warnings
 warnings.filterwarnings("ignore", category=UserWarning)
 #+END_SRC
 
+#+RESULTS:
+: 9448b4f4-a12a-450d-8d79-86151c2b9139
+
 #+attr_ipynb: (slideshow . ((slide_type . subslide)))
 #+BEGIN_SRC jupyter-python :results silent
 %run -i ./src/implementacion_series_formales.py
@@ -514,9 +517,15 @@ p=SerieConPrincipio([1,-a],0)
 p
 #+END_SRC
 
+#+RESULTS:
+: 79021743-038e-497b-9952-42643d6ddc13
+
 #+BEGIN_SRC jupyter-python 
 p.inversa(10)
 #+END_SRC
+
+#+RESULTS:
+: 6e1c459e-e1c5-4d80-b186-0cbe60c57bb1
 
 
 ** Cuerpo de fracciones de polinomios
@@ -754,6 +763,9 @@ Los términos de la serie pueden ser números reales o complejos; por simplicida
 
 #+RESULTS:
 #+begin_export latex
+La idea de sumabilidad es una extensión de la idea de convergencia absoluta al caso en que los términos de la serie dependen de un conjunto cualquiera de índices, y por tanto los términos de la serie no están ordenados.
+Los términos de la serie pueden ser números reales o complejos; por simplicidad, se supondrán reales.
+
 \begin{definition}[Serie sumable]
   \textit{Si $I$ es un conjunto de índices cualquiera, y $\{u_i\mid i \in I\}$ es una familia de números complejos definida por el conjunto de índices $I$, se dice que la serie $\sum_{i \in I} u_i$ es sumable y su suma es $S$, y se escribe:}
   \begin{equation}
@@ -1564,6 +1576,8 @@ El capítulo 1 del libro de Laurent Schwartz contempla el caso en que los índic
 
 #+RESULTS:
 #+begin_export latex
+El capítulo 1 del libro de Laurent Schwartz contempla el caso en que los índices son el conjunto de enteros positivos \( \mathbb{N} \). Pero el resultado de la sumabilidad y convergencia absoluta se puede extender al conjunto de enteros \( \mathbb{Z} \).
+
 \begin{corollary}[del Teorema \ref{thm:SumabilidadYConvergenciaAbsoluta}]
   \label{cor:SumabilidadYConvergenciaAbsoluta}
   Si el conjunto de índices \( I \) es el conjunto \( \mathbb{Z} \) de números enteros, entonces la serie \( \sum_{i \in I} u_i \) es sumable si y solo si es absolutamente convergente, y la suma tal como se define en la teoría de series sumables es idéntica a la suma tal como se define en la teoría de series convergentes.
@@ -1882,6 +1896,8 @@ El conjunto de series con principio se denota con $\mathbb{C}((z))$
 
 #+RESULTS:
 #+begin_export latex
+El conjunto de series con principio se denota con $\mathbb{C}((z))$
+
 \begin{prop}
   \label{prop:CuerpoFraccionesSeriesFormales}
   El conjunto de series con principio $\mathbb{C}((z))$ (con las operaciones suma y producto convolución) tiene estructura de cuerpo (se denomina cuerpo de fracciones de series formales).
@@ -2018,6 +2034,10 @@ entonces el siguiente conjunto es el cuerpo de fracciones de $R$:
 
 #+RESULTS:
 #+begin_export latex
+El \emph{cuerpo de fracciones de polinomios} es, de todos los cuerpos \(\mathbb{K}\) contenidos en  \(\mathbb{C}((z))\), el menor cuerpo\footnote{Aunque esta definición no coincide con la usual, podemos ver que es equivalente utilizando el \href{https://link.springer.com/content/pdf/10.1007/978-1-4612-6101-8.pdf\#page=164}{Colorario 4.6. del Capı́tulo III de Hungerford (1974)}; en el que se establece que si un cuerpo \(E\) contiene a un dominio de integridad \(R\) entonces existe otro cuerpo \(F\) isomorfo al cuerpo de fracciones de \(R\) de modo que \(R \subset F \subset E\). A partir de esto, como en nuestra definición no permite intercalar un cuerpo entre \(\mathbb{C}[z]\) y \(\mathbb{C}(z)\), necesariamente \(\mathbb{C}(z)\) es isomorfo al cuerpo de fracciones de los polinomios.} que contiene al \href{https://en.wikipedia.org/wiki/Polynomial\_ring}{anillo de los polinomios \(\mathbb{C}[z]\)}.
+
+\nocite{hungerford-1974-algeb}
+
 \begin{prop}
 Si $R$ es un subanillo de $(A, +, \cdot)$ tal que:
 \begin{enumerate}
