@@ -72,18 +72,6 @@ os.makedirs(imagenes_leccion, exist_ok=True)
 #+END_SRC
 
 
-
-#+BEGIN_SRC jupyter-python :results file :exports results
-plt.plot([1,2,3],[4,5,6])
-plt.savefig("img/prueba_action.png")
-"img/prueba_action.png"
-#+END_SRC
-
-#+BEGIN_SRC jupyter-python :results output :exports results
-15+45
-#+END_SRC
-
-
 **************  Codigo aux
 
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
@@ -155,6 +143,16 @@ Así pues, aunque
   #+LATEX: \newline  \noindent
   (!! /abuso del lenguaje que expresa que podemos asumir que la serie es una _realización de un proceso estocástico estacionario_, es decir, cuyos momentos no dependen del índice $t$/. Veremos una definición formal en lecciones posteriores).
 - lo habitual es que, por distintos motivos, *NO lo sea*.
+
+#+BEGIN_SRC jupyter-python :results file :exports results
+plt.plot([1,2,3],[4,5,6])
+plt.savefig("img/prueba_action.png")
+"img/prueba_action.png"
+#+END_SRC
+
+#+BEGIN_SRC jupyter-python :results output :exports results
+15+45
+#+END_SRC
 
 
 
