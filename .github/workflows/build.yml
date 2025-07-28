@@ -26,7 +26,7 @@ jobs:
 
     - name: Install Python modules
       run: |
-        pip install sympy numpy pandas matplotlib dataframe-image statsmodels
+        pip install sympy numpy pandas matplotlib dataframe-image statsmodels seaborn
 
     - name: Verify Jupyter Installation
       run: |
@@ -34,7 +34,10 @@ jobs:
 
     - name: Install LaTeX
       run: |
-        sudo apt-get install -y texlive texlive-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-xetex texlive-science python3-pygments
+        sudo apt-get install -y texlive  texlive-latex-recommended texlive-latex-extra  texlive-fonts-extra texlive-fonts-recommended texlive-xetex texlive-science python3-pygments texlive-lang-spanish texlive-bibtex-extra texlive-binaries texlive-extra-utils texlive-font-utils texlive-luatex texlive-xetex
+
+    - name: Disable tlmgr (prevent accidental calls)
+      run: sudo mv /usr/bin/tlmgr /usr/bin/tlmgr.disabled || true
 
     - name: Clone Scimax
       run: |
@@ -52,8 +55,13 @@ jobs:
                       --eval "(package-install 's)" \
                       --eval "(package-install 'dash)"
 
-    - name: Disable tlmgr error
-      run: echo "(setq scimax-installed-latex-packages '())" > ~/.emacs.d/no-tlmgr.el
+    - name: Create no-tlmgr.el
+      run: |
+        mkdir -p ~/.emacs.d
+        echo "(setq system-packages-use-sudo nil)" > ~/.emacs.d/no-tlmgr.el
+        echo "(setq TeX-install-font-lock nil)" >> ~/.emacs.d/no-tlmgr.el
+        echo "(setq TeX-live-install-texmf nil)" >> ~/.emacs.d/no-tlmgr.el
+        echo "(setq TeX-live-install-texmf nil)" >> ~/.emacs.d/no-tlmgr.el
 
     - name: Verify ox-ipynb Installation
       run: |
@@ -63,14 +71,30 @@ jobs:
               --eval "(dolist (dir (directory-files \"~/.emacs.d/elpa/\" t \"^[^.]\")) (add-to-list 'load-path dir))" \
               --eval "(require 'ox-ipynb)"
 
-    - name: Execute Makefile
+    - name: Execute Makefile notebooksYslides
       run: |
-        make all
+        make notebooksYslides
+
+    - name: Inspección contenido de img
+      run: |
+        # emacs -q -l ~/Software/scimax/init.el ./lecciones/Lecc01.org --batch -f org-babel-execute-buffer --kill > docs/emacs_build.log 2>&1
+        emacs -Q -l ~/Software/scimax/init.el ./lecciones/Lecc01.org --batch --eval "(progn (org-babel-execute-buffer) (save-buffer))" --kill > docs/emacs_build.log 2>&1
+        cat docs/emacs_build.log
+        echo "CONTENIDO DE IMG TRAS NOTEBOOK:"
+        find ./lecciones/img
+
+    - name: Copia del directorio de imagenes a docs
+      run: |
+        cp -a ./lecciones/img ./docs
+
+    - name: Execute Makefile publicacion
+      run: |
+        make publicacion calendario
 
     - name: Deploy docs/ a gh-pages
       uses: peaceiris/actions-gh-pages@v4
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.GH_PAGES_TOKEN }}
         publish_dir: ./docs
         publish_branch: gh-pages
         destination_dir: docs
