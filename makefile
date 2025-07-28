@@ -39,7 +39,8 @@ $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 	cp -a $(LECCIONES_SRC)/*.bib $(LECCIONES_tmp)
 	cp -a $< $(LECCIONES_tmp)
 	echo "EJECUCION DEL NOTEBOOK DE ORG: $(LECCIONES_tmp)/$(@F:.ipynb=.org)..."
-	MPLBACKEND=Agg emacs -q -l ~/Software/scimax/init.el $(LECCIONES_tmp)/$(@F:.ipynb=.org) --batch -f org-babel-execute-buffer --kill
+	emacs -Q -l ~/Software/scimax/init.el $(LECCIONES_tmp)/$(@F:.ipynb=.org) --batch --eval "(setq org-confirm-babel-evaluate nil)" --eval "(org-babel-execute-buffer)" --eval "(save-buffer)" --kill
+	#emacs -q -l ~/Software/scimax/init.el $(LECCIONES_tmp)/$(@F:.ipynb=.org) --batch -f org-babel-execute-buffer --kill
 	echo "FICHEROS EN ./lecciones?..."
 	ls $(LECCIONES_tmp)
 	echo "FICHEROS IMG?..."
