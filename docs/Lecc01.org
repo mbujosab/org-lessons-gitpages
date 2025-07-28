@@ -209,7 +209,7 @@ El desafío para el analista es
 
 # ([[https://web.stat.tamu.edu/~pourahm/fts.htm][Pourahmadi 2001]])
 
-**************  Codigo aux para generar los .png de las figuras en batch
+************** COMMENT Codigo aux para generar los .png de las figuras en batch
 
 #+BEGIN_SRC jupyter-python :results silent
 Fichero_Titulo = {
