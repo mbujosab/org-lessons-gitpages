@@ -17,9 +17,6 @@ $(DOCS)/Calendario-Econometria-Aplicada.pdf:
 	cd Calendario && make Calendario-Econometria-Aplicada.pdf
 
 publicacion: notebooksYslides
-	#echo "Verificación del log de emacs..."
-	#emacs -q -l ~/Software/scimax/init.el ./lecciones/Lecc01.org --batch -f org-babel-execute-buffer --kill > $(DOCS)/emacs_build.log 2>&1
-	#cat $(DOCS)/emacs_build.log
 	echo "FICHEROS EN CuadernosElectronicos y Transparencias?..."
 	mv $(LECCIONES_tmp)/Lecc*.slides.html $(TRANSPARENCIAS)
 	ls $(CUADERNOS)
@@ -42,7 +39,7 @@ $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 	cp -a $(LECCIONES_SRC)/*.bib $(LECCIONES_tmp)
 	cp -a $< $(LECCIONES_tmp)
 	echo "EJECUCION DEL NOTEBOOK DE ORG: $(LECCIONES_tmp)/$(@F:.ipynb=.org)..."
-	emacs -q -l ~/Software/scimax/init.el $(LECCIONES_tmp)/$(@F:.ipynb=.org) --batch -f org-babel-execute-buffer --kill
+	MPLBACKEND=Agg emacs -q -l ~/Software/scimax/init.el $(LECCIONES_tmp)/$(@F:.ipynb=.org) --batch -f org-babel-execute-buffer --kill
 	echo "FICHEROS EN ./lecciones?..."
 	ls $(LECCIONES_tmp)
 	echo "FICHEROS IMG?..."
