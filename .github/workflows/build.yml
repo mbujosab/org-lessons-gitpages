@@ -55,13 +55,13 @@ jobs:
                       --eval "(package-install 's)" \
                       --eval "(package-install 'dash)"
 
-    #- name: Create no-tlmgr.el
-    #  run: |
-    #    mkdir -p ~/.emacs.d
-    #    echo "(setq system-packages-use-sudo nil)" > ~/.emacs.d/no-tlmgr.el
-    #    echo "(setq TeX-install-font-lock nil)" >> ~/.emacs.d/no-tlmgr.el
-    #    echo "(setq TeX-live-install-texmf nil)" >> ~/.emacs.d/no-tlmgr.el
-    #    echo "(setq TeX-live-install-texmf nil)" >> ~/.emacs.d/no-tlmgr.el
+    - name: Create no-tlmgr.el
+      run: |
+        mkdir -p ~/.emacs.d
+        echo "(setq system-packages-use-sudo nil)" > ~/.emacs.d/no-tlmgr.el
+        echo "(setq TeX-install-font-lock nil)" >> ~/.emacs.d/no-tlmgr.el
+        echo "(setq TeX-live-install-texmf nil)" >> ~/.emacs.d/no-tlmgr.el
+        echo "(setq TeX-live-install-texmf nil)" >> ~/.emacs.d/no-tlmgr.el
 
     - name: Verify ox-ipynb Installation
       run: |
