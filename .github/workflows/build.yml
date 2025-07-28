@@ -55,13 +55,13 @@ jobs:
                       --eval "(package-install 's)" \
                       --eval "(package-install 'dash)"
 
-    - name: Create no-tlmgr.el
-      run: |
-        mkdir -p ~/.emacs.d
-        echo "(setq system-packages-use-sudo nil)" > ~/.emacs.d/no-tlmgr.el
-        echo "(setq TeX-install-font-lock nil)" >> ~/.emacs.d/no-tlmgr.el
-        echo "(setq TeX-live-install-texmf nil)" >> ~/.emacs.d/no-tlmgr.el
-        echo "(setq TeX-live-install-texmf nil)" >> ~/.emacs.d/no-tlmgr.el
+    #- name: Create no-tlmgr.el
+    #  run: |
+    #    mkdir -p ~/.emacs.d
+    #    echo "(setq system-packages-use-sudo nil)" > ~/.emacs.d/no-tlmgr.el
+    #    echo "(setq TeX-install-font-lock nil)" >> ~/.emacs.d/no-tlmgr.el
+    #    echo "(setq TeX-live-install-texmf nil)" >> ~/.emacs.d/no-tlmgr.el
+    #    echo "(setq TeX-live-install-texmf nil)" >> ~/.emacs.d/no-tlmgr.el
 
     - name: Verify ox-ipynb Installation
       run: |
@@ -71,13 +71,16 @@ jobs:
               --eval "(dolist (dir (directory-files \"~/.emacs.d/elpa/\" t \"^[^.]\")) (add-to-list 'load-path dir))" \
               --eval "(require 'ox-ipynb)"
 
+    - name: Set MPLBACKEND (matplotlib)
+      run: echo "MPLBACKEND=Agg" >> $GITHUB_ENV
+
     - name: Execute Makefile notebooksYslides
       run: |
         make notebooksYslides
 
     - name: Inspección contenido de img
       run: |
-        MPLBACKEND=Agg emacs -Q -l ~/Software/scimax/init.el ./lecciones/Lecc01.org --batch \
+        emacs -Q -l ~/Software/scimax/init.el ./lecciones/Lecc01.org --batch \
           --eval "(setq org-confirm-babel-evaluate nil)" \
           --eval "(progn (org-babel-execute-buffer) (save-buffer))" --kill > docs/emacs_build.log 2>&1
         # emacs -q -l ~/Software/scimax/init.el ./lecciones/Lecc01.org --batch -f org-babel-execute-buffer --kill > docs/emacs_build.log 2>&1

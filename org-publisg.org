@@ -43,7 +43,7 @@ $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 	cp -a $(LECCIONES_SRC)/*.bib $(LECCIONES_tmp)
 	cp -a $< $(LECCIONES_tmp)
 	echo "EJECUCION DEL NOTEBOOK DE ORG: $(LECCIONES_tmp)/$(@F:.ipynb=.org)..."
-	MPLBACKEND=Agg emacs -q -l ~/Software/scimax/init.el $(LECCIONES_tmp)/$(@F:.ipynb=.org) --batch -f org-babel-execute-buffer --kill
+	emacs -q -l ~/Software/scimax/init.el $(LECCIONES_tmp)/$(@F:.ipynb=.org) --batch -f org-babel-execute-buffer --kill
 	echo "FICHEROS EN ./lecciones?..."
 	ls $(LECCIONES_tmp)
 	echo "FICHEROS IMG?..."
@@ -1163,3 +1163,155 @@ cleanAll: clean
 	rm -f series_formales
 
 #+END_SRC
+
+* Consulta a Copilot sobre la generación de figuras
+
+#+BEGIN_QUOTE
+Anteriormente faltaba por instalar el paquete dvipng. Una vez instalado dvipng, el bloque de código:
+
+#+BEGIN_SRC jupyter-python :results file :exports results
+plt.plot([1,2,3],[4,5,6])
+plt.savefig("img/prueba_action.png")
+"img/prueba_action.png"
+#+END_SRC
+
+ha creado correctamente el fichero "img/prueba_action.png" con la figura. Sin embargo, el bloque
+
+#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/PIB_UEM.png
+df1.plot(x='obs',xlabel='',figsize=(15,4)).set_title('PIB zona euro',fontsize=18)
+#+END_SRC
+
+no ha creado el fichero ./img/lecc01/PIB_UEM.png con su correspondiente figura.
+#+END_QUOTE
+
+¡Excelente que la instalación de dvipng haya solucionado la generación de imágenes para el primer bloque!  
+Ahora, pasemos a analizar por qué el segundo bloque **no genera** el archivo `./img/lecc01/PIB_UEM.png`.
+
+---
+
+## Diagnóstico y causas probables
+
+### 1. Diferencia clave entre ambos bloques
+
+- **Bloque que funciona:**
+  ```org
+  #+BEGIN_SRC jupyter-python :results file :exports results
+  plt.plot([1,2,3],[4,5,6])
+  plt.savefig("img/prueba_action.png")
+  "img/prueba_action.png"
+  #+END_SRC
+  ```
+  - Aquí, tú generas la figura y la guardas explícitamente con `plt.savefig()`, y luego devuelves el nombre del archivo en la última línea.
+
+- **Bloque que falla:**
+  ```org
+  #+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/PIB_UEM.png
+  df1.plot(x='obs',xlabel='',figsize=(15,4)).set_title('PIB zona euro',fontsize=18)
+  #+END_SRC
+  ```
+  - Aquí confías en que org-babel/jupyter-python guardará automáticamente la figura en `:file`, pero el método pandas `df.plot()` **no guarda ni devuelve** el archivo.
+
+### 2. ¿Por qué falla el segundo bloque?
+
+- El argumento `:file ./img/lecc01/PIB_UEM.png` espera que el último comando del bloque **guarde la imagen en ese path** (o devuelva una figura que org/jupyter pueda guardar ahí).
+- El método `df1.plot(...).set_title(...)` crea y modifica una figura activa, pero **no la guarda**.
+- Si usas solo `set_title()`, no hay ninguna instrucción para guardar el gráfico.
+- Por defecto, ni org-babel ni jupyter-python pueden adivinar que la figura debe ser guardada en ese path si no se lo indicas de forma explícita.
+
+---
+
+## Solución recomendada
+
+**Debes guardar la figura manualmente al path especificado**, y devolver ese path como resultado del bloque.
+
+### Forma correcta:
+
+```org
+#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/PIB_UEM.png
+ax = df1.plot(x='obs', xlabel='', figsize=(15,4))
+ax.set_title('PIB zona euro', fontsize=18)
+import matplotlib.pyplot as plt
+plt.savefig("./img/lecc01/PIB_UEM.png")
+"./img/lecc01/PIB_UEM.png"
+#+END_SRC
+```
+
+- Esto asegura que la imagen se guarda donde deseas y que el bloque devuelve el path correcto para que org-babel inserte la imagen en el documento.
+
+### Alternativas
+
+- Si usas solo `:results file` sin `:file`, puedes devolver el nombre del archivo en la última línea.
+- Siempre asegúrate de llamar a `plt.savefig()` **después** de crear el gráfico.
+
+---
+
+## Resumen
+
+- El bloque con `plt.savefig(...)` funciona porque guarda explícitamente la imagen.
+- El bloque con pandas `plot` y solo `set_title()` **NO guarda la imagen**; debes añadir `plt.savefig()` y devolver el path.
+- Así, org-babel/jupyter-python incrustará correctamente la imagen en el documento exportado.
+
+---
+
+¿Te gustaría que te ayude a actualizar todos los bloques de tu .org para que usen esta técnica, o necesitas una guía para automatizar este patrón?
+
+#+BEGIN_QUOTE
+Sin embargo. Cuando ejecuto localmente el fichero org sí se crean las figuras en mi disco. ¿Hay algún modo de que también se creen con Actions sin modificar los bloques? Es decir, ¿hay algún modeo de que funcionen tal y como están ahora mismo?
+#+END_QUOTE
+
+¡Esta es una pregunta muy frecuente al usar org-babel/jupyter en entornos CI/CD!  
+La diferencia entre tu entorno local y GitHub Actions suele deberse a **la configuración del entorno gráfico** y de **matplotlib**.
+
+---
+
+## ¿Por qué funciona localmente pero no en Actions?
+
+- **Localmente**, matplotlib tiene acceso a un entorno gráfico (X11, Wayland, etc.) y suele usar un backend como `TkAgg`, `Qt5Agg`,…
+- **En GitHub Actions** (o cualquier entorno headless), **matplotlib no tiene acceso a un display** y por defecto puede intentar usar un backend que requiere uno, lo que impide guardar imágenes.
+
+### Backend headless necesario
+
+Para guardar imágenes sin display, **matplotlib debe usar un backend como `"Agg"`**.
+
+---
+
+## Solución: Forzar el backend "Agg" para matplotlib
+
+Esto se puede hacer **sin modificar los bloques** añadiendo una configuración previa en tu flujo de trabajo o al comienzo de la ejecución.
+
+### Opción 1: Variable de entorno en el workflow
+
+Añade esto antes de ejecutar Emacs en tu `build.yml`:
+```yaml
+- name: Set MPLBACKEND (matplotlib)
+  run: echo "MPLBACKEND=Agg" >> $GITHUB_ENV
+```
+Matplotlib detectará esto y usará el backend adecuado.
+
+### Opción 2: Variable de entorno en shell
+
+O directamente en el comando de ejecución:
+```bash
+MPLBACKEND=Agg emacs -Q -l ~/Software/scimax/init.el ./lecciones/Lecc01.org --batch ...
+```
+
+### Opción 3: Configuración en Emacs/jupyter-python
+
+Si puedes modificar la configuración de Emacs que se carga, añade a tu init.el o a la cabecera de los bloques:
+```python
+import matplotlib
+matplotlib.use("Agg")
+```
+Pero esto requeriría modificar los bloques, que quieres evitar.
+
+---
+
+## Resumen
+
+- **El problema**: matplotlib necesita el backend "Agg" para funcionar headless.
+- **La solución sin modificar los bloques**: establece la variable de entorno `MPLBACKEND=Agg` en el workflow antes de ejecutar Emacs.
+- **Así**, los bloques que generan imágenes funcionarán igual en Actions que localmente, **sin necesidad de cambiar el código de los bloques**.
+
+---
+
+¿Quieres que te proponga el fragmento exacto para tu `build.yml`?
