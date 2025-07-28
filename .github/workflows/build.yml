@@ -28,6 +28,9 @@ jobs:
       run: |
         pip install sympy numpy pandas matplotlib dataframe-image statsmodels seaborn
 
+    - name: Set MPLBACKEND (matplotlib)
+      run: echo "MPLBACKEND=Agg" >> $GITHUB_ENV
+
     - name: Verify Jupyter Installation
       run: |
         jupyter kernelspec list
@@ -70,9 +73,6 @@ jobs:
               --eval "(add-to-list 'load-path \"~/Software/scimax/\")" \
               --eval "(dolist (dir (directory-files \"~/.emacs.d/elpa/\" t \"^[^.]\")) (add-to-list 'load-path dir))" \
               --eval "(require 'ox-ipynb)"
-
-    - name: Set MPLBACKEND (matplotlib)
-      run: echo "MPLBACKEND=Agg" >> $GITHUB_ENV
 
     - name: Execute Makefile notebooksYslides
       run: |
