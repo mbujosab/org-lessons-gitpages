@@ -21,9 +21,6 @@ $(DOCS)/Calendario-Econometria-Aplicada.pdf:
 	cd Calendario && make Calendario-Econometria-Aplicada.pdf
 
 publicacion: notebooksYslides
-	#echo "Verificación del log de emacs..."
-	#emacs -q -l ~/Software/scimax/init.el ./lecciones/Lecc01.org --batch -f org-babel-execute-buffer --kill > $(DOCS)/emacs_build.log 2>&1
-	#cat $(DOCS)/emacs_build.log
 	echo "FICHEROS EN CuadernosElectronicos y Transparencias?..."
 	mv $(LECCIONES_tmp)/Lecc*.slides.html $(TRANSPARENCIAS)
 	ls $(CUADERNOS)

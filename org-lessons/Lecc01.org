@@ -79,7 +79,7 @@ plt.savefig("img/prueba_action.png")
 "img/prueba_action.png"
 #+END_SRC
 
-#+BEGIN_SRC jupyter-python
+#+BEGIN_SRC jupyter-python :results output :exports results
 15+45
 #+END_SRC
 
