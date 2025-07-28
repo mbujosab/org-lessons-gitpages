@@ -51,13 +51,12 @@ En esta lección veremos algunas transformaciones de los datos para /"hacerlos e
 import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 import matplotlib as mpl
-mpl.use("Agg")  # <-- ¡ESTO ES FUNDAMENTAL PARA GitHub Actions!
 # definimos parámetros para mejorar los gráficos
 mpl.rc('text', usetex=False)
 import matplotlib.pyplot as plt   # data visualization
 #+END_SRC
 
-****  Creación del directorio auxiliar para albergar las figuras de la lección 
+****  Creación del directorio auxiliar para albergar las figuras de la lección :noexport:
    :PROPERTIES:
    :metadata: (slideshow . ((slide_type . skip)))
    :UNNUMBERED: t 
@@ -144,22 +143,6 @@ Así pues, aunque
   (!! /abuso del lenguaje que expresa que podemos asumir que la serie es una _realización de un proceso estocástico estacionario_, es decir, cuyos momentos no dependen del índice $t$/. Veremos una definición formal en lecciones posteriores).
 - lo habitual es que, por distintos motivos, *NO lo sea*.
 
-#+BEGIN_SRC jupyter-python :results file :exports results
-plt.plot([1,2,3],[4,5,6])
-plt.savefig("img/prueba_action.png")
-"img/prueba_action.png"
-#+END_SRC
-
-#+RESULTS:
-: img/prueba_action.png
-
-
-#+BEGIN_SRC jupyter-python :results output :exports results
-print(15+45)
-#+END_SRC
-
-#+RESULTS:
-: 60
 
 
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
@@ -173,7 +156,7 @@ df4 = pd.read_csv(path+'ExportacionDeAcero.csv')
 # print(df1.head())
 
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
-#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/PIB_UEM.png
+#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/PIB_UEM.png :results silent
 df1.plot(x='obs',xlabel='',figsize=(15,4)).set_title('PIB zona euro',fontsize=18)
 #+END_SRC
 
@@ -184,7 +167,7 @@ df1.plot(x='obs',xlabel='',figsize=(15,4)).set_title('PIB zona euro',fontsize=18
 [[./img/lecc01/PIB_UEM.png]]
 
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
-#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/ProduccionCemento.png
+#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/ProduccionCemento.png :results silent
 df2.plot(x='obs',xlabel='',figsize=(15,4)).set_title('Producción de cemento en España',fontsize=18)
 #+END_SRC
 
@@ -226,7 +209,7 @@ El desafío para el analista es
 
 # ([[https://web.stat.tamu.edu/~pourahm/fts.htm][Pourahmadi 2001]])
 
-**************  Codigo aux para generar los .png de las figuras en batch :noexport:
+**************  Codigo aux para generar los .png de las figuras en batch
 
 #+BEGIN_SRC jupyter-python :results silent
 Fichero_Titulo = {
@@ -237,6 +220,7 @@ Fichero_Titulo = {
 }
 
 # Crear el directorio si no existe
+import os
 output_dir = './img/lecc01/'
 os.makedirs(output_dir, exist_ok=True)
 
@@ -305,7 +289,7 @@ y = sm.tsa.arma_generate_sample(ar, ma, 450)
 
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
 #+NAME: figura_serie_simulada
-#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/stationaryTimeSeriesExample.png
+#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/stationaryTimeSeriesExample.png :results silent
 # creamos el gráfico de la serie simulada
 plt.figure(figsize=(15,5))
 plt.title("Realización de un proceso estacionario (con $\mu=0$)", fontsize=20)
@@ -386,7 +370,7 @@ OrigData = OrigData.set_index(['Month'])
 
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
 #+NAME: figura-airlinepass
-#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/airlinepass+hist.png
+#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/airlinepass+hist.png :results silent
 plt.figure(figsize=(15,5))
 plt.subplot(1, 2, 1)
 plt.plot(OrigData['Passengers'])
@@ -438,7 +422,7 @@ Recuerde que /el logaritmo no está definido para valores negativos/.
 
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
 #+NAME: funcion_logaritmica
-#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/funcion_logaritmica.png
+#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/funcion_logaritmica.png :results silent
 # Definir el rango de valores para x (empezando desde un número positivo ya que log(0) no está definido)
 x = np.linspace(0.01, 7, 400)  # Valores de 0.1 a 10
 # Calcular y = log(x)
@@ -502,7 +486,7 @@ if not os.path.exists(fichero):
 
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
 #+NAME: figura-airlinepass-log
-#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/airlinepass_log+hist.png 
+#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/airlinepass_log+hist.png :results silent 
 plt.figure(figsize=(15,5))
 plt.subplot(1, 2, 1)
 plt.plot(TransformedData['dataLog'])
