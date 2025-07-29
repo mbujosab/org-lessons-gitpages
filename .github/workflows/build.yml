@@ -64,7 +64,6 @@ jobs:
         echo "(setq system-packages-use-sudo nil)" > ~/.emacs.d/no-tlmgr.el
         echo "(setq TeX-install-font-lock nil)" >> ~/.emacs.d/no-tlmgr.el
         echo "(setq TeX-live-install-texmf nil)" >> ~/.emacs.d/no-tlmgr.el
-        echo "(setq TeX-live-install-texmf nil)" >> ~/.emacs.d/no-tlmgr.el
 
     - name: Verify ox-ipynb Installation
       run: |
@@ -80,18 +79,12 @@ jobs:
 
     - name: Inspección contenido de img
       run: |
-        #emacs -Q -l ~/Software/scimax/init.el ./lecciones/Lecc01.org --batch \
-        #  --eval "(setq org-confirm-babel-evaluate nil)" \
-        #  --eval "(progn (org-babel-execute-buffer) (save-buffer))" --kill > docs/emacs_build.log 2>&1
-        # emacs -q -l ~/Software/scimax/init.el ./lecciones/Lecc01.org --batch -f org-babel-execute-buffer --kill > docs/emacs_build.log 2>&1
-        # emacs -Q -l ~/Software/scimax/init.el ./lecciones/Lecc01.org --batch --eval "(progn (org-babel-execute-buffer) (save-buffer))" --kill > docs/emacs_build.log 2>&1
-        #cat docs/emacs_build.log
         echo "CONTENIDO DE IMG TRAS NOTEBOOK:"
         find ./lecciones/img
 
-    - name: Copia del directorio de imagenes a docs
-      run: |
-        cp -a ./lecciones/img ./docs
+#    - name: Copia del directorio de imagenes a docs
+#      run: |
+#        cp -a ./lecciones/img ./docs
 
     - name: Execute Makefile publicacion
       run: |

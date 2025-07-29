@@ -16,9 +16,9 @@ $(DOCS)/Calendario-Econometria-Aplicada.pdf:
 	emacs --batch Calendario/README.org -l org -f org-babel-tangle
 	cd Calendario && make Calendario-Econometria-Aplicada.pdf
 
-publicacion: notebooksYslides
+publicacion: $(patsubst $(LECCIONES_SRC)/%.org,$(CUADERNOS)/%.ipynb,$(wildcard $(SRC_FILES)))
 	echo "FICHEROS EN CuadernosElectronicos y Transparencias?..."
-	mv $(LECCIONES_tmp)/Lecc*.slides.html $(TRANSPARENCIAS)
+	cp -a $(LECCIONES_tmp)/Lecc*.slides.html $(TRANSPARENCIAS)
 	ls $(CUADERNOS)
 	ls $(TRANSPARENCIAS)
 	echo "EJECUCIÓN DE publica.el..."
@@ -29,6 +29,7 @@ publicacion: notebooksYslides
 	echo "FICHEROS EN Docs?..."
 	ls $(DOCS)
 	ls $(DOCS)/pdfs
+	touch $@
 
 notebooksYslides: $(patsubst $(LECCIONES_SRC)/%.org,$(CUADERNOS)/%.ipynb,$(wildcard $(SRC_FILES)))
 	touch $@
@@ -40,9 +41,6 @@ $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 	cp -a $< $(LECCIONES_tmp)
 	echo "EJECUCION DEL NOTEBOOK DE ORG: $(LECCIONES_tmp)/$(@F:.ipynb=.org)..."
 	emacs -Q -l ~/Software/scimax/init.el $(LECCIONES_tmp)/$(@F:.ipynb=.org) --batch --eval "(org-babel-execute-buffer)" --eval "(save-buffer)" --kill
-	#emacs -Q -l ~/Software/scimax/init.el $(LECCIONES_tmp)/$(@F:.ipynb=.org) --batch --eval "(org-babel-expand-noweb-references)" --eval "(org-babel-execute-buffer)" --eval "(save-buffer)" --kill
-	#emacs -Q -l ~/Software/scimax/init.el $(LECCIONES_tmp)/$(@F:.ipynb=.org) --batch --eval "(setq org-confirm-babel-evaluate nil)" --eval "(org-babel-execute-buffer)" --eval "(save-buffer)" --kill
-	#emacs -q -l ~/Software/scimax/init.el $(LECCIONES_tmp)/$(@F:.ipynb=.org) --batch -f org-babel-execute-buffer --kill
 	echo "FICHEROS EN ./lecciones?..."
 	ls $(LECCIONES_tmp)
 	echo "FICHEROS IMG?..."
@@ -53,7 +51,7 @@ $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 	ls $(DOCS)/img/lecc01
 	echo "Contenido de img tras notebook:"
 	find $(LECCIONES_tmp)/img
-	echo "COPIO LO QUE SE HA GENERADO (.ipynb sin ejecutar y las imágenes) A /docs..."
+	echo "COPIO LO QUE SE HA GENERADO (.ipynb sin ejecutar y las imágenes) A ./docs..."
 	cp -a $(LECCIONES_tmp)/$(@F) $(CUADERNOS)
 	cp -a $(LECCIONES_tmp)/img $(DOCS)/
 	cp -a $(LECCIONES_tmp)/$(@F:.ipynb=.org) $(DOCS)/
@@ -67,7 +65,6 @@ $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 	jupyter nbconvert --config mycfg-GitHubPages.py --to slides --reveal-prefix "https://unpkg.com/reveal.js@5.2.1" --execute $(LECCIONES_tmp)/$(@F) 
 	echo "FICHEROS EN Docs ANTES DE PUBLICAR?..."
 	ls $(DOCS)
-
 
 series_formales: $(LECCIONES_tmp)/src/implementacion_series_formales.org
 
@@ -86,9 +83,9 @@ $(LECCIONES_tmp)/src/implementacion_series_formales.org: $(LECCIONES_SRC)/src/im
 	jupyter nbconvert --execute --inplace $(LECCIONES_tmp)/src/implementacion_series_formales.ipynb
 	jupyter nbconvert --config mycfg-GitHubPages.py --to slides --reveal-prefix "https://unpkg.com/reveal.js@5.2.1" --execute $(LECCIONES_tmp)/src/implementacion_series_formales.ipynb
 	jupyter nbconvert --execute --to html $(LECCIONES_tmp)/src/implementacion_series_formales.ipynb
-	mv $(LECCIONES_tmp)/src/implementacion_series_formales.ipynb $(CUADERNOS)
-	mv $(LECCIONES_tmp)/src/implementacion_series_formales.slides.html $(TRANSPARENCIAS)
-	mv $(LECCIONES_tmp)/src/implementacion_series_formales.html $(DOCS)
+	cp -a $(LECCIONES_tmp)/src/implementacion_series_formales.ipynb $(CUADERNOS)
+	cp -a $(LECCIONES_tmp)/src/implementacion_series_formales.slides.html $(TRANSPARENCIAS)
+	cp -a $(LECCIONES_tmp)/src/implementacion_series_formales.html $(DOCS)
 	echo "TERMINADO IMPLEMENTACION_SERIES_FORMALES.ipynb..."
 
 directorios:
@@ -109,3 +106,4 @@ cleanAll: clean
 	rm -f directorios
 	rm -f series_formales
 	rm -f publicacion
+	rm -r -f logs
