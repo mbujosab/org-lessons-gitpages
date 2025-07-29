@@ -500,7 +500,7 @@ warnings.filterwarnings("ignore", category=UserWarning)
 #+END_SRC
 
 #+RESULTS:
-: a4341588-1ee2-4199-8f4d-360d78c3791d
+: 55ee2d8e-dae6-4783-bbb3-81f1ba8324bb
 
 #+attr_ipynb: (slideshow . ((slide_type . subslide)))
 #+BEGIN_SRC jupyter-python :results silent
@@ -518,14 +518,14 @@ p
 #+END_SRC
 
 #+RESULTS:
-: 5a2ac16f-32c2-49e7-b426-fb24fd21e56f
+: 7a366f09-cdf8-4561-980c-a1c59d340031
 
 #+BEGIN_SRC jupyter-python 
 p.inversa(10)
 #+END_SRC
 
 #+RESULTS:
-: ea78edc6-ffc1-4eac-a852-fa0e1c5ada5d
+: 9fbac652-1ab3-4cc6-b21c-d0a62e35abb7
 
 
 ** Cuerpo de fracciones de polinomios
