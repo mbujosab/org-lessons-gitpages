@@ -56,33 +56,38 @@ mpl.rc('text', usetex=False)
 import matplotlib.pyplot as plt   # data visualization
 #+END_SRC
 
-****  Creación del directorio auxiliar para albergar las figuras de la lección :noexport:
+**** Creación del directorio auxiliar para albergar las figuras de la lección 
    :PROPERTIES:
    :metadata: (slideshow . ((slide_type . skip)))
    :UNNUMBERED: t 
    :END:
 
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
+Para publicar la lección como pdf y como página web, necesito los gráficos en forma de ficheros ~.png~ alojados en un directorio específico:
+#+attr_ipynb: (slideshow . ((slide_type . skip)))
 #+BEGIN_SRC jupyter-python :results silent
-import os
 imagenes_leccion = "./img/lecc01" # directorio para las imágenes de la lección
-# Crear el directorio si no existe
-os.makedirs(imagenes_leccion, exist_ok=True)
+import os
+os.makedirs(imagenes_leccion, exist_ok=True) # crea el directorio si no existe
 #+END_SRC
 
 
-**************  Codigo aux
+************** COMMENT Codigo aux
+   :PROPERTIES:
+   :metadata: (slideshow . ((slide_type . skip)))
+   :UNNUMBERED: t 
+   :END:
 
+#+attr_ipynb: (slideshow . ((slide_type . skip)))
+Con el siguiente código mejoro los gráficos y logro transformar las tablas con formato $\LaTeX{}$ en ficheros png.
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
 #+BEGIN_SRC jupyter-python :results none
 # definimos parámetros para mejorar los gráficos
 mpl.rc('text', usetex=True)
 mpl.rc('text.latex', preamble=r'\usepackage{amsmath}')
 
-# Usaré la siguiente función para transformar salidas en \LaTeX{} de statsmodels a ficheros png 
-# que incluiré en las transparencias
+# transformaré salidas en \LaTeX{} de statsmodels a ficheros png que incluiré en las transparencias
 import dataframe_image as dfi
-
 from sympy.printing.preview import preview
 def repr_png(tex, ImgFile):
     preamble = "\\documentclass[preview]{standalone}\n" \
@@ -144,7 +149,6 @@ Así pues, aunque
 - lo habitual es que, por distintos motivos, *NO lo sea*.
 
 
-
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
 #+BEGIN_SRC jupyter-python :results silent
 path = '../datos/'
@@ -158,6 +162,7 @@ df4 = pd.read_csv(path+'ExportacionDeAcero.csv')
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
 #+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/PIB_UEM.png :results silent
 df1.plot(x='obs',xlabel='',figsize=(15,4)).set_title('PIB zona euro',fontsize=18)
+plt.savefig('./img/lecc01/PIB_UEM.png', dpi=300, bbox_inches='tight')
 #+END_SRC
 
 #+attr_ipynb: (slideshow . ((slide_type . subslide)))
@@ -169,6 +174,7 @@ df1.plot(x='obs',xlabel='',figsize=(15,4)).set_title('PIB zona euro',fontsize=18
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
 #+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/ProduccionCemento.png :results silent
 df2.plot(x='obs',xlabel='',figsize=(15,4)).set_title('Producción de cemento en España',fontsize=18)
+plt.savefig('./img/lecc01/ProduccionCemento.png', dpi=300, bbox_inches='tight')
 #+END_SRC
 
 #+attr_org: :width 800
@@ -179,6 +185,7 @@ df2.plot(x='obs',xlabel='',figsize=(15,4)).set_title('Producción de cemento en 
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
 #+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/IBEX35.png  :results silent
 df3.plot(x='obs',xlabel='',figsize=(15,4)).set_title('Rendimiento porcentual diario del IBEX 35',fontsize=18)
+plt.savefig('./img/lecc01/IBEX35.png', dpi=300, bbox_inches='tight')
 #+END_SRC
 
 #+attr_ipynb: (slideshow . ((slide_type . subslide)))
@@ -190,6 +197,7 @@ df3.plot(x='obs',xlabel='',figsize=(15,4)).set_title('Rendimiento porcentual dia
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
 #+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/ExportacionDeAcero.png  :results silent
 df4.plot(x='obs',xlabel='',figsize=(15,4)).set_title('Exportaciones españolas de acero',fontsize=18)
+plt.savefig('./img/lecc01/ExportacionDeAcero.png', dpi=300, bbox_inches='tight')
 #+END_SRC
 
 # +attr_ipynb: (slideshow . ((slide_type . fragment)))
@@ -197,8 +205,6 @@ df4.plot(x='obs',xlabel='',figsize=(15,4)).set_title('Exportaciones españolas d
 #+attr_html: :width 900px
 #+attr_latex: :width 425px
 [[./img/lecc01/ExportacionDeAcero.png]]
-
-
 
 #+attr_ipynb: (slideshow . ((slide_type . subslide)))
 El desafío para el analista es
@@ -209,27 +215,28 @@ El desafío para el analista es
 
 # ([[https://web.stat.tamu.edu/~pourahm/fts.htm][Pourahmadi 2001]])
 
-************** COMMENT Codigo aux para generar los .png de las figuras en batch
+************** COMMENT Codigo aux para generar los .png de las figuras en batch :noexport:
 
+Este código auxiliar es para generar los anteriores gráficos en GitHub Actions (publicación en el repositorio). 
+#+attr_ipynb: (slideshow . ((slide_type . skip)))
 #+BEGIN_SRC jupyter-python :results silent
-Fichero_Titulo = {
-  "PIB_UEM": "PIB zona euro",
-  "ProduccionCemento": "Producción de cemento en España",
-  "IBEX35": "Rendimiento porcentual diario del IBEX 35",
-  "ExportacionDeAcero" : "Exportaciones españolas de acero"
-}
-
-# Crear el directorio si no existe
-import os
-output_dir = './img/lecc01/'
-os.makedirs(output_dir, exist_ok=True)
-
-for fichero, titulo in Fichero_Titulo.items(): 
-    if not os.path.exists('./img/lecc01/' + fichero + '.png'):
-        df = pd.read_csv(path + fichero + '.csv')
-        df.plot(x='obs',xlabel='',figsize=(15,4)).set_title(titulo,fontsize=18)
-        plt.savefig('./img/lecc01/' + fichero + '.png', dpi=300, bbox_inches='tight')
-        plt.close()
+#Fichero_Titulo = {
+#  "PIB_UEM": "PIB zona euro",
+#  "ProduccionCemento": "Producción de cemento en España",
+#  "IBEX35": "Rendimiento porcentual diario del IBEX 35",
+#  "ExportacionDeAcero" : "Exportaciones españolas de acero"
+#}
+#
+## Crear el directorio si no existe
+#output_dir = './img/lecc01/'
+#os.makedirs(output_dir, exist_ok=True)
+#
+#for fichero, titulo in Fichero_Titulo.items(): 
+#    if not os.path.exists('./img/lecc01/' + fichero + '.png'):
+#        df = pd.read_csv(path + fichero + '.csv')
+#        df.plot(x='obs',xlabel='',figsize=(15,4)).set_title(titulo,fontsize=18)
+#        plt.savefig('./img/lecc01/' + fichero + '.png', dpi=300, bbox_inches='tight')
+#        plt.close()
 #+END_SRC
 
 
@@ -289,7 +296,7 @@ y = sm.tsa.arma_generate_sample(ar, ma, 450)
 
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
 #+NAME: figura_serie_simulada
-#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/stationaryTimeSeriesExample.png :results silent :noweb yes
+#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/stationaryTimeSeriesExample.png :noweb yes :results silent
 # creamos el gráfico de la serie simulada
 plt.figure(figsize=(15,5))
 plt.title("Realización de un proceso estacionario (con $\mu=0$)", fontsize=20)
@@ -297,25 +304,14 @@ plt.xlabel("Índice $t$", fontsize=16)
 plt.ylabel("Valor", fontsize=16)
 plt.tick_params(axis='both', labelsize=14)
 plt.plot(y)
+plt.savefig("./img/lecc01/stationaryTimeSeriesExample.png", dpi=300, bbox_inches='tight')
 #+END_SRC
 
-# plt.savefig("./img/lecc01/stationaryTimeSeriesExample.png")
 
 #+attr_org: :width 800
 #+attr_html: :width 900px
 #+attr_latex: :width 425px
 [[./img/lecc01/stationaryTimeSeriesExample.png]]
-
-************** COMMENT Codigo aux para generar el .png de la figura en batch
-
-#+BEGIN_SRC jupyter-python :results silent :noweb yes
-fichero = './img/lecc01/stationaryTimeSeriesExample.png'
-if not os.path.exists(fichero):
-    <<figura_serie_simulada>>
-    plt.savefig(fichero, dpi=300, bbox_inches='tight')
-    plt.close()
-#+END_SRC
-
 
 
 ** Función de autocovarianzas y función de autocorrelación
@@ -382,8 +378,9 @@ plt.hist(OrigData['Passengers'], edgecolor='white', bins=11)
 plt.xlabel("Number of Air Passengers in thousands", fontsize=16)
 plt.tick_params(axis='both', labelsize=14)
 plt.tight_layout()
+plt.savefig('./img/lecc01/airlinepass+hist.png', dpi=300, bbox_inches='tight')
 #+END_SRC
-# plt.savefig("./img/lecc01/airlinepass+hist.png")
+# 
 
 #+attr_org: :width 800
 #+attr_html: :width 900px
@@ -395,19 +392,6 @@ $$\boldsymbol{x}=(x_1,\ldots x_{114})$$
 Serie /"no estacionaria"/ (!!):
 - El nivel de la serie crece de año en año.
 - La variabilidad estacional crece con el nivel (creciente diferencia entre el verano y el otoño).
-
-**************  Codigo aux para generar el .png de la figura en batch :noexport:
-
-#+BEGIN_SRC jupyter-python :results silent :noweb yes
-fichero = './img/lecc01/airlinepass+hist.png'
-if not os.path.exists(fichero):
-    <<figura-airlinepass>>
-    plt.savefig(fichero, dpi=300, bbox_inches='tight')
-    plt.close()
-#+END_SRC
-
-
-
 
 *** Trasformación logarítmica de los datos
    :PROPERTIES:
@@ -440,8 +424,9 @@ plt.axhline(0, color='black',linewidth=0.5)
 plt.axvline(0, color='black',linewidth=0.5)
 plt.grid(color = 'gray', linestyle = '--', linewidth = 0.5)
 plt.legend(fontsize=20)
+plt.savefig("./img/lecc01/funcion_logaritmica.png", dpi=300, bbox_inches='tight')
 #+END_SRC
-# plt.savefig("./img/lecc01/funcion_logaritmica.png")
+
 
 # Establecer la escala logarítmica en el eje x
 # #plt.xscale('log')
@@ -465,19 +450,6 @@ TransformedData['dataLogDiffDiff12'] = TransformedData['dataLogDiff'].diff(12)
 #+END_SRC
 
 
-**************  Codigo aux para generar el .png de la figura en batch :noexport:
-
-#+BEGIN_SRC jupyter-python :results silent :noweb yes
-fichero = './img/lecc01/funcion_logaritmica.png'
-if not os.path.exists(fichero):
-    <<funcion_logaritmica>>
-    plt.savefig(fichero, dpi=300, bbox_inches='tight')
-    plt.close()
-#+END_SRC
-
-
-
-
 *** Transformación logarítmica de los datos
    :PROPERTIES:
    :metadata: (slideshow . ((slide_type . subslide)))
@@ -498,6 +470,7 @@ plt.hist(TransformedData['dataLog'], edgecolor='white', bins=11)
 plt.xlabel(r"Log-Passengers, ($\ln\boldsymbol{x}$)", fontsize=16)
 plt.tick_params(axis='both', labelsize=14)
 plt.tight_layout()
+plt.savefig('./img/lecc01/airlinepass_log+hist.png', dpi=300, bbox_inches='tight')
 #+END_SRC
 # plt.savefig("./img/lecc01/airlinepass_log+hist.png")
 
@@ -511,18 +484,6 @@ $$\ln\boldsymbol{x}=\Big(\ln(x_1),\ldots \ln(x_{114})\Big)$$
 Ésta tampoco parece la realización de un proceso estocástico /estacionario/:
 - Aunque la variabilidad estacional parece mantenerse de año en año,
 - el nivel sigue creciendo de año en año.
-
-**************  Codigo aux para generar el .png de la figura en batch :noexport:
-
-#+BEGIN_SRC jupyter-python :results silent :noweb yes
-fichero = './img/lecc01/airlinepass_log+hist.png'
-if not os.path.exists(fichero):
-    <<figura-airlinepass-log>>
-    plt.savefig(fichero, dpi=300, bbox_inches='tight')
-    plt.close()
-#+END_SRC
-
-
 
 *** Primera diferencia del logarítmo de los datos
    :PROPERTIES:
@@ -543,6 +504,7 @@ plt.hist(TransformedData['dataLogDiff'], edgecolor='white', bins=11)
 plt.xlabel(r"$\nabla\ln\boldsymbol{x}$", fontsize=16)
 plt.tick_params(axis='both', labelsize=14)
 plt.tight_layout()
+plt.savefig('./img/lecc01/airlinepass_logDiff+hist.png', dpi=300, bbox_inches='tight')
 #+END_SRC
 # plt.savefig("./img/lecc01/airlinepass_logDiff+hist.png")
 
@@ -555,17 +517,6 @@ $$\boldsymbol{y}=\nabla\ln\boldsymbol{x}=\Big(\big[\ln(x_2)-\ln(x_1)\big],\ldots
 
 Esta serie tampoco parece "/estacionaria/" (!!):
 - Hay un /persistente/ componente periódico (de naturaleza estacional) debido a que hay pocos viajes en otoño y muchos en Navidad, Semana Santa y verano (i.e., el número esperado de viajeros parece cambiar en función del mes o estación).
-
-**************  Codigo aux para generar el .png de la figura en batch :noexport:
-
-#+BEGIN_SRC jupyter-python :results silent :noweb yes
-fichero = './img/lecc01/airlinepass_logDiff+hist.png'
-if not os.path.exists(fichero):
-    <<figura-airlinepass-log-diff>>
-    plt.savefig(fichero, dpi=300, bbox_inches='tight')
-    plt.close()
-#+END_SRC
-
 
 
 *** Diferencia estacional de la primera diferencia del logarítmo de los datos
@@ -587,6 +538,7 @@ plt.hist(TransformedData['dataLogDiffDiff12'], edgecolor='white', bins=11)
 plt.xlabel(r"$\nabla_{12}(\nabla\ln\boldsymbol{x})$", fontsize=16)
 plt.tick_params(axis='both', labelsize=14)
 plt.tight_layout()
+plt.savefig('./img/lecc01/airlinepass_logDiffDiff12+hist.png', dpi=300, bbox_inches='tight')
 #+END_SRC
 # plt.savefig("./img/lecc01/airlinepass_logDiffDiff12+hist.png")
 
@@ -600,17 +552,6 @@ $$\boldsymbol{z}=\nabla_{12}(\nabla\ln\boldsymbol{x})=\nabla_{12}(\boldsymbol{y}
 - Esta serie tiene el aspecto de realización de un proceso /estacionario/.
 # - parece haber más varianza a principios de los 50 que a finales.
 - De propina, el histograma sugiere una distribución aproximadamente Gaussiana.
-
-**************  Codigo aux para generar el .png de la figura en batch :noexport:
-
-#+BEGIN_SRC jupyter-python :results silent :noweb yes
-fichero = './img/lecc01/airlinepass_logDiffDiff12+hist.png'
-if not os.path.exists(fichero):
-    <<figura-airlinepass-log-diff-diff12>>
-    plt.savefig(fichero, dpi=300, bbox_inches='tight')
-    plt.close()
-#+END_SRC
-
 
 
 ** Tasa logarítmica de crecimiento
@@ -645,15 +586,19 @@ y se /aproxima/ a la tasa de crecimiento (en tanto por uno) si el incremento es 
 [[file:./img/lecc01/TasaLogCrecimiento.png]]
 
 
-**************  Codigo aux para generar el .png de la tabla anterior :noexport:
+************** COMMENT Codigo aux para generar el .png de la tabla anterior
+   :PROPERTIES:
+   :metadata: (slideshow . ((slide_type . skip)))
+   :END:
 
-
+#+attr_ipynb: (slideshow . ((slide_type . skip)))
+Transformamos la tabla anterior en un fichero ~.png~ para importarlo en la lección en ~.pdf~ y como página web.
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
 #+BEGIN_SRC jupyter-python :results silent
 dfi.export(TasaLogCrecimiento,
            "./img/lecc01/TasaLogCrecimiento.png",
            #use_mathjax=True,
-           dpi=200,
+           dpi=300,
            table_conversion="matplotlib")
 #+END_SRC
 # :results file :file ./img/lecc01/TasaLogCrecimiento.png 

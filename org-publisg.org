@@ -63,6 +63,7 @@ $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 	cp -a $(LECCIONES_tmp)/$(@F:.ipynb=.org) $(DOCS)/
 	ln -snf -r $(DOCS)/img/ $(TRANSPARENCIAS)/
 	ln -snf -r $(DOCS)/img/ $(CUADERNOS)/
+	ln -snf -r ./datos/ $(DOCS)
 #	# Ejecutar el notebook con jupyter nbconvert
 	echo "EJECUCION DEL NOTEBOOK DE JUPYTER..."
 	jupyter nbconvert --execute --inplace $(LECCIONES_tmp)/$(@F) 
