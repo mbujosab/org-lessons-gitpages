@@ -289,7 +289,7 @@ y = sm.tsa.arma_generate_sample(ar, ma, 450)
 
 #+attr_ipynb: (slideshow . ((slide_type . skip)))
 #+NAME: figura_serie_simulada
-#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/stationaryTimeSeriesExample.png :results silent
+#+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/stationaryTimeSeriesExample.png :results silent :noweb yes
 # creamos el gráfico de la serie simulada
 plt.figure(figsize=(15,5))
 plt.title("Realización de un proceso estacionario (con $\mu=0$)", fontsize=20)
