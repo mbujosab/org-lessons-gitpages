@@ -63,8 +63,8 @@
                    :base-directory ,base-directory
                    :base-extension "org"
                    :publishing-directory ,(concat base-directory "docs")
-                   :exclude "docs\\|chatCopilot.org\\|org-publisg.org"
-                   :recursive nil
+                   :exclude "Calendario\\|lecciones\\|chatCopilot.org\\|org-publish.org\\|README.org"
+                   :recursive t
                    :publishing-function org-html-publish-to-html
                    :auto-preamble t
                    :auto-sitemap t
@@ -77,7 +77,7 @@
                    :base-directory ,base-directory
                    :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|dat\\|mov\\|txt\\|svg\\|aiff"
                    :publishing-directory ,(concat base-directory "docs")
-                   :exclude "lecciones\\|chatCopilot.*\\|org-publisg.*"
+                   :exclude "Calendario\\|lecciones\\|chatCopilot.*\\|org-publish.*\\|README.org"
                    :recursive nil
                    :publishing-function org-publish-attachment)
 

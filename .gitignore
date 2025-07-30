@@ -1,9 +1,10 @@
 *~
-./lecciones
-./docs
-./ParaRevisar
+docs/
+logs/
+lecciones/
 directorios
 series_formales
 notebooksYslides
 publicacion
 sitemap.org
+chatCopilot.org

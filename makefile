@@ -16,16 +16,16 @@ $(DOCS)/Calendario-Econometria-Aplicada.pdf:
 	emacs --batch Calendario/README.org -l org -f org-babel-tangle
 	cd Calendario && make Calendario-Econometria-Aplicada.pdf
 
-publicacion: $(patsubst $(LECCIONES_SRC)/%.org,$(CUADERNOS)/%.ipynb,$(wildcard $(SRC_FILES)))
+publicacion: $(patsubst $(LECCIONES_SRC)/%.org,$(CUADERNOS)/%.ipynb,$(wildcard $(SRC_FILES))) README.org index.org
 	echo "FICHEROS EN CuadernosElectronicos y Transparencias?..."
 	cp -a $(LECCIONES_tmp)/Lecc*.slides.html $(TRANSPARENCIAS)
 	ls $(CUADERNOS)
 	ls $(TRANSPARENCIAS)
 	echo "EJECUCIÓN DE publica.el..."
 	emacs --batch \
-	  --load ~/.emacs.d/no-tlmgr.el \
 	  --load ~/Software/scimax/init.el \
 	  -l publica.el
+	ln -snf -r $(DOCS)/img/ $(DOCS)/org-lessons
 	echo "FICHEROS EN Docs?..."
 	ls $(DOCS)
 	ls $(DOCS)/pdfs
@@ -54,7 +54,7 @@ $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 	echo "COPIO LO QUE SE HA GENERADO (.ipynb sin ejecutar y las imágenes) A ./docs..."
 	cp -a $(LECCIONES_tmp)/$(@F) $(CUADERNOS)
 	cp -a $(LECCIONES_tmp)/img $(DOCS)/
-	cp -a $(LECCIONES_tmp)/$(@F:.ipynb=.org) $(DOCS)/
+#	cp -a $(LECCIONES_tmp)/$(@F:.ipynb=.org) $(DOCS)/
 	ln -snf -r $(DOCS)/img/ $(TRANSPARENCIAS)/
 	ln -snf -r $(DOCS)/img/ $(CUADERNOS)/
 	ln -snf -r ./datos/ $(DOCS)
@@ -76,7 +76,6 @@ $(LECCIONES_tmp)/src/implementacion_series_formales.org: $(LECCIONES_SRC)/src/im
 	cp -a $(LECCIONES_tmp)/src/implementacion_series_formales.py $(CUADERNOS)/src/
 	ln -sf -r $(CUADERNOS)/src/implementacion_series_formales.py $(CUADERNOS)/
 	emacs -q --batch \
-	  --load ~/.emacs.d/no-tlmgr.el \
 	  --load ~/Software/scimax/init.el \
 	  --eval "(require 'ox-ipynb)" \
 	  --eval "(ox-ipynb-export-org-file-to-ipynb-file \"lecciones/src/implementacion_series_formales.org\")"

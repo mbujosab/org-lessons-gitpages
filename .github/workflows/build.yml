@@ -68,7 +68,6 @@ jobs:
     - name: Verify ox-ipynb Installation
       run: |
         emacs --batch \
-              --load ~/.emacs.d/no-tlmgr.el \
               --eval "(add-to-list 'load-path \"~/Software/scimax/\")" \
               --eval "(dolist (dir (directory-files \"~/.emacs.d/elpa/\" t \"^[^.]\")) (add-to-list 'load-path dir))" \
               --eval "(require 'ox-ipynb)"
@@ -81,10 +80,6 @@ jobs:
       run: |
         echo "CONTENIDO DE IMG TRAS NOTEBOOK:"
         find ./lecciones/img
-
-#    - name: Copia del directorio de imagenes a docs
-#      run: |
-#        cp -a ./lecciones/img ./docs
 
     - name: Execute Makefile publicacion
       run: |
