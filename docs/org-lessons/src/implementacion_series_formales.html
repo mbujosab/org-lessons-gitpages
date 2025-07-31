@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
 <head>
-<!-- 2025-07-30 Wed 10:48 -->
+<!-- 2025-07-31 Thu 18:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Implementación en Python de series con grado o cogrado arbitrarios</title>
@@ -48,33 +48,33 @@
 <h2>&Iacute;ndice</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org7aad605">Ejemplos de algunas series e inversas de series</a>
+<li><a href="#orgb8aab0c">Ejemplos de algunas series e inversas de series</a>
 <ul>
-<li><a href="#org832a04c">Inversa con final e inversa con principio de un polinomio de grado uno</a>
+<li><a href="#orgce91ba5">Inversa con final e inversa con principio de un polinomio de grado uno</a>
 <ul>
-<li><a href="#orgc08a5b5">Polinomio como <code>SerieConPrincipio</code> y su inversa</a></li>
-<li><a href="#org7d50e69">Polinomio como <code>SerieConFinal</code></a></li>
+<li><a href="#orgd0a5da9">Polinomio como <code>SerieConPrincipio</code> y su inversa</a></li>
+<li><a href="#orgb8ecad4">Polinomio como <code>SerieConFinal</code></a></li>
 </ul>
 </li>
-<li><a href="#org0cdf7d1">Otro ejemplo de serie y dos inversas</a></li>
+<li><a href="#orga41aff2">Otro ejemplo de serie y dos inversas</a></li>
 </ul>
 </li>
-<li><a href="#org3f405c8">Implementación de series con principio y series con final</a>
+<li><a href="#orgfa68aa2">Implementación de series con principio y series con final</a>
 <ul>
 <li><a href="#Clase-SerieConPrincipio">Clase <code>SerieConPrincipio</code>: series con cogrado arbitrario en Python</a>
 <ul>
-<li><a href="#org8a03aa8">Importación de librerías</a></li>
-<li><a href="#orga9afe0f">Métodos generales para representar los objetos correctamente en Jupyter Notebook</a></li>
-<li><a href="#orgdd4dcce">Declaración de la clase <code>SerieConPrincipio</code></a></li>
-<li><a href="#org146691a">Constructor</a></li>
-<li><a href="#orge619dce">Representaciones: texto y \(\LaTeX{}\)</a></li>
-<li><a href="#org672d0eb">Suma de series</a></li>
-<li><a href="#orge84229c">Producto: escalar y convolución</a></li>
-<li><a href="#org2709062">Producto escalar desde la izquierda</a></li>
-<li><a href="#org9938c86">Inversa formal</a></li>
-<li><a href="#orgc1df97e">Gráfico de la serie</a></li>
-<li><a href="#orge62221e">Sustitución simbólica</a></li>
-<li><a href="#org709e826">Ejemplo de uso</a></li>
+<li><a href="#orgec8ed83">Importación de librerías</a></li>
+<li><a href="#org7372fcb">Métodos generales para representar los objetos correctamente en Jupyter Notebook</a></li>
+<li><a href="#org505b93a">Declaración de la clase <code>SerieConPrincipio</code></a></li>
+<li><a href="#org9025a25">Constructor</a></li>
+<li><a href="#org57716b7">Representaciones: texto y \(\LaTeX{}\)</a></li>
+<li><a href="#org4590512">Suma de series</a></li>
+<li><a href="#org65ff25b">Producto: escalar y convolución</a></li>
+<li><a href="#org38628e5">Producto escalar desde la izquierda</a></li>
+<li><a href="#orgcda89ad">Inversa formal</a></li>
+<li><a href="#orgce45e71">Gráfico de la serie</a></li>
+<li><a href="#org72992c8">Sustitución simbólica</a></li>
+<li><a href="#org9eefa7d">Ejemplo de uso</a></li>
 </ul>
 </li>
 <li><a href="#Clase-SerieConFinal">Clase <code>SerieConFinal</code>: series con grado arbitrario en python</a></li>
@@ -83,13 +83,13 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org7aad605" class="outline-2">
-<h2 id="org7aad605">Ejemplos de algunas series e inversas de series</h2>
-<div class="outline-text-2" id="text-org7aad605">
+<div id="outline-container-orgb8aab0c" class="outline-2">
+<h2 id="orgb8aab0c">Ejemplos de algunas series e inversas de series</h2>
+<div class="outline-text-2" id="text-orgb8aab0c">
 </div>
-<div id="outline-container-org832a04c" class="outline-3">
-<h3 id="org832a04c">Inversa con final e inversa con principio de un polinomio de grado uno</h3>
-<div class="outline-text-3" id="text-org832a04c">
+<div id="outline-container-orgce91ba5" class="outline-3">
+<h3 id="orgce91ba5">Inversa con final e inversa con principio de un polinomio de grado uno</h3>
+<div class="outline-text-3" id="text-orgce91ba5">
 <p>
 Más abajo aparece una implementación en Python de las series con principio (con cogrado) y las series con final (con grado). Dicha implementación consiste en la definición de dos clases: la clase <code>SerieConPrincipio</code> y la clase <code>SerieConFinal</code>. 
 </p>
@@ -113,9 +113,9 @@ Para mayor claridad, los ejemplos de más abajo usan un parámetro simbólico. E
 </code></pre>
 </div>
 </div>
-<div id="outline-container-orgc08a5b5" class="outline-4">
-<h4 id="orgc08a5b5">Polinomio como <code>SerieConPrincipio</code> y su inversa</h4>
-<div class="outline-text-4" id="text-orgc08a5b5">
+<div id="outline-container-orgd0a5da9" class="outline-4">
+<h4 id="orgd0a5da9">Polinomio como <code>SerieConPrincipio</code> y su inversa</h4>
+<div class="outline-text-4" id="text-orgd0a5da9">
 <p>
 Definimos un polinomio de grado 1 como una <code>SerieConPrincipio</code> (con cogrado 0):
 </p>
@@ -148,8 +148,8 @@ Mediante gráficos podemos ver el comportamiento de los coeficientes para distin
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="org95e055f"></a>Para valores de \(a\) menores a 1 en valor absoluto (<b>raíz fuera del círculo unidad</b>)<br />
-<div class="outline-text-5" id="text-org95e055f">
+<li><a id="orge946cef"></a>Para valores de \(a\) menores a 1 en valor absoluto (<b>raíz fuera del círculo unidad</b>)<br />
+<div class="outline-text-5" id="text-orge946cef">
 <div class="org-src-container">
 <pre class="src src-jupyter-python"><code><span style="font-weight: bold; font-style: italic;">valor</span> = 0.8
 p.inversa(15).subs((a,valor)).plot_serie(title=<span style="font-style: italic;">'$a='</span>+<span style="font-weight: bold;">str</span>(valor)+<span style="font-style: italic;">'$'</span>)
@@ -175,8 +175,8 @@ p.inversa(15).subs((a,valor)).plot_serie(title=<span style="font-style: italic;"
 </p>
 </div>
 </li>
-<li><a id="org0ef4225"></a>Para valores de \(a\) iguales a 1 en valor absoluto (<b>raíz sobre el círculo unidad</b>)<br />
-<div class="outline-text-5" id="text-org0ef4225">
+<li><a id="orgbb080cc"></a>Para valores de \(a\) iguales a 1 en valor absoluto (<b>raíz sobre el círculo unidad</b>)<br />
+<div class="outline-text-5" id="text-orgbb080cc">
 <div class="org-src-container">
 <pre class="src src-jupyter-python"><code><span style="font-weight: bold; font-style: italic;">valor</span> = 1
 p.inversa(15).subs((a,valor)).plot_serie(title=<span style="font-style: italic;">'$a='</span>+<span style="font-weight: bold;">str</span>(valor)+<span style="font-style: italic;">'$'</span>)
@@ -199,8 +199,8 @@ p.inversa(15).subs((a,valor)).plot_serie(title=<span style="font-style: italic;"
 </p>
 </div>
 </li>
-<li><a id="orgceafc52"></a>Para valores de \(a\) mayores a 1 en valor absoluto (<b>raíz en el interior del círculo unidad</b>)<br />
-<div class="outline-text-5" id="text-orgceafc52">
+<li><a id="org5d04d46"></a>Para valores de \(a\) mayores a 1 en valor absoluto (<b>raíz en el interior del círculo unidad</b>)<br />
+<div class="outline-text-5" id="text-org5d04d46">
 <div class="org-src-container">
 <pre class="src src-jupyter-python"><code><span style="font-weight: bold; font-style: italic;">valor</span> = 1.2
 p.inversa(15).subs((a,valor)).plot_serie(title=<span style="font-style: italic;">'$a='</span>+<span style="font-weight: bold;">str</span>(valor)+<span style="font-style: italic;">'$'</span>)
@@ -263,9 +263,9 @@ Fíjese que si \(a\ne0\), el producto <code>p*(p.inversa(500))</code> no calcula
 </li>
 </ul>
 </div>
-<div id="outline-container-org7d50e69" class="outline-4">
-<h4 id="org7d50e69">Polinomio como <code>SerieConFinal</code></h4>
-<div class="outline-text-4" id="text-org7d50e69">
+<div id="outline-container-orgb8ecad4" class="outline-4">
+<h4 id="orgb8ecad4">Polinomio como <code>SerieConFinal</code></h4>
+<div class="outline-text-4" id="text-orgb8ecad4">
 <p>
 Ahora vamos a definir exactamente el mismo polinomio, pero en esta ocasión lo haremos como una <code>SerieConFinal</code> (con <code>grado</code> igual a 1).
 </p>
@@ -300,8 +300,8 @@ Veamos con unos gráficos el comportamiento de los coeficientes de esta nueva in
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="orgd01b4ec"></a>Para valores de \(a\) menores a 1 en valor absoluto (<b>raíz fuera del círculo unidad</b>)<br />
-<div class="outline-text-5" id="text-orgd01b4ec">
+<li><a id="org527a0a3"></a>Para valores de \(a\) menores a 1 en valor absoluto (<b>raíz fuera del círculo unidad</b>)<br />
+<div class="outline-text-5" id="text-org527a0a3">
 <div class="org-src-container">
 <pre class="src src-jupyter-python"><code><span style="font-weight: bold; font-style: italic;">valor</span> = 0.8
 p2.inversa(15).subs((a,valor)).plot_serie(title=<span style="font-style: italic;">'$a='</span>+<span style="font-weight: bold;">str</span>(valor)+<span style="font-style: italic;">'$'</span>)
@@ -323,8 +323,8 @@ p2.inversa(15).subs((a,valor)).plot_serie(title=<span style="font-style: italic;
 </p>
 </div>
 </li>
-<li><a id="orga3cbfc5"></a>Para valores de \(a\) iguales a 1 en valor absoluto (<b>raíz sobre el círculo unidad</b>)<br />
-<div class="outline-text-5" id="text-orga3cbfc5">
+<li><a id="orgc7f4911"></a>Para valores de \(a\) iguales a 1 en valor absoluto (<b>raíz sobre el círculo unidad</b>)<br />
+<div class="outline-text-5" id="text-orgc7f4911">
 <div class="org-src-container">
 <pre class="src src-jupyter-python"><code><span style="font-weight: bold; font-style: italic;">valor</span> = 1
 p2.inversa(15).subs((a,valor)).plot_serie(title=<span style="font-style: italic;">'$a='</span>+<span style="font-weight: bold;">str</span>(valor)+<span style="font-style: italic;">'$'</span>)
@@ -346,8 +346,8 @@ p2.inversa(15).subs((a,valor)).plot_serie(title=<span style="font-style: italic;
 </p>
 </div>
 </li>
-<li><a id="orgc918b83"></a>Para valores de \(a\) mayores a 1 en valor absoluto (<b>raíz en el interior del círculo unidad</b>)<br />
-<div class="outline-text-5" id="text-orgc918b83">
+<li><a id="org12ed86e"></a>Para valores de \(a\) mayores a 1 en valor absoluto (<b>raíz en el interior del círculo unidad</b>)<br />
+<div class="outline-text-5" id="text-org12ed86e">
 <div class="org-src-container">
 <pre class="src src-jupyter-python"><code><span style="font-weight: bold; font-style: italic;">valor</span> = 1.2
 p2.inversa(15).subs((a,valor)).plot_serie(title=<span style="font-style: italic;">'$a='</span>+<span style="font-weight: bold;">str</span>(valor)+<span style="font-style: italic;">'$'</span>)
@@ -376,9 +376,9 @@ Este es el caso en el que  \(p^{\blacktriangleleft-}=p^{-1}\) (inversa absolutam
 </ul>
 </div>
 </div>
-<div id="outline-container-org0cdf7d1" class="outline-3">
-<h3 id="org0cdf7d1">Otro ejemplo de serie y dos inversas</h3>
-<div class="outline-text-3" id="text-org0cdf7d1">
+<div id="outline-container-orga41aff2" class="outline-3">
+<h3 id="orga41aff2">Otro ejemplo de serie y dos inversas</h3>
+<div class="outline-text-3" id="text-orga41aff2">
 <div class="org-src-container">
 <pre class="src src-jupyter-python"><code><span style="font-weight: bold; font-style: italic;">lista</span> = [1, -.1, -.75]
 <span style="font-weight: bold; font-style: italic;">s_cp</span> = SerieConPrincipio(lista, -1)
@@ -410,9 +410,9 @@ s_cf
 </div>
 </div>
 </div>
-<div id="outline-container-org3f405c8" class="outline-2">
-<h2 id="org3f405c8">Implementación de series con principio y series con final</h2>
-<div class="outline-text-2" id="text-org3f405c8">
+<div id="outline-container-orgfa68aa2" class="outline-2">
+<h2 id="orgfa68aa2">Implementación de series con principio y series con final</h2>
+<div class="outline-text-2" id="text-orgfa68aa2">
 <div class="org-src-container">
 <pre class="src src-python"><code><span style="font-weight: bold;">from</span> sympy <span style="font-weight: bold;">import</span> latex, Rational
 <span style="font-weight: bold;">from</span> fractions <span style="font-weight: bold;">import</span> Fraction
@@ -846,9 +846,9 @@ s_cf
 Este documento implementa en Python una clase llamada <code>SerieConPrincipio</code> que representa series formales con índice inicial (con cogrado) arbitrario y otra llamada <code>SerieConFinal</code> que representa series con índice final (con grado) arbitrario. Ello nos permitirá trabajar con series que comienzan, por ejemplo, en \( z^{-2} \) o \( z^3 \); y poder operar con ellas como si fueran polinomios infinitos, incluyendo suma, producto y cálculo de inversas. 
 </p>
 </div>
-<div id="outline-container-org8a03aa8" class="outline-4">
-<h4 id="org8a03aa8">Importación de librerías</h4>
-<div class="outline-text-4" id="text-org8a03aa8">
+<div id="outline-container-orgec8ed83" class="outline-4">
+<h4 id="orgec8ed83">Importación de librerías</h4>
+<div class="outline-text-4" id="text-orgec8ed83">
 <p>
 Estas series podrán contener números racionales exactos (usando la clase <code>Fraction</code>) o flotantes, así como parámetros simbólicos. Por ello
 necesitamos <code>latex</code> y <code>Rational</code> de <code>sympy</code> para la representación como funciones generatrices en formato \(\LaTeX{}\), y <code>Fraction</code> para mantener exactitud.
@@ -856,7 +856,7 @@ Con <code>sympy</code> podremos sustituir los parámetros simbólicos por valore
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python" id="org04bae87"><code><span style="font-weight: bold;">from</span> sympy <span style="font-weight: bold;">import</span> latex, Rational
+<pre class="src src-python" id="org9aa96c6"><code><span style="font-weight: bold;">from</span> sympy <span style="font-weight: bold;">import</span> latex, Rational
 <span style="font-weight: bold;">from</span> fractions <span style="font-weight: bold;">import</span> Fraction
 <span style="font-weight: bold;">import</span> sympy
 <span style="font-weight: bold;">from</span> sympy <span style="font-weight: bold;">import</span> Add
@@ -869,11 +869,11 @@ Con <code>sympy</code> podremos sustituir los parámetros simbólicos por valore
 </div>
 </div>
 </div>
-<div id="outline-container-orga9afe0f" class="outline-4">
-<h4 id="orga9afe0f">Métodos generales para representar los objetos correctamente en Jupyter Notebook</h4>
-<div class="outline-text-4" id="text-orga9afe0f">
+<div id="outline-container-org7372fcb" class="outline-4">
+<h4 id="org7372fcb">Métodos generales para representar los objetos correctamente en Jupyter Notebook</h4>
+<div class="outline-text-4" id="text-org7372fcb">
 <div class="org-src-container">
-<pre class="src src-python" id="org5e78525"><code><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">html</span>(TeX):
+<pre class="src src-python" id="orgfa4ff43"><code><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">html</span>(TeX):
     <span style="font-style: italic;">""" Plantilla HTML para insertar comandos LaTeX """</span>
     <span style="font-weight: bold;">return</span> <span style="font-style: italic;">"&lt;p style=\"text-align:center;\"&gt;$"</span> + TeX + <span style="font-style: italic;">"$&lt;/p&gt;"</span>
 
@@ -892,15 +892,15 @@ Con <code>sympy</code> podremos sustituir los parámetros simbólicos por valore
 </div>
 </div>
 </div>
-<div id="outline-container-orgdd4dcce" class="outline-4">
-<h4 id="orgdd4dcce">Declaración de la clase <code>SerieConPrincipio</code></h4>
-<div class="outline-text-4" id="text-orgdd4dcce">
+<div id="outline-container-org505b93a" class="outline-4">
+<h4 id="org505b93a">Declaración de la clase <code>SerieConPrincipio</code></h4>
+<div class="outline-text-4" id="text-org505b93a">
 <p>
 Declaramos la clase <code>SerieConPrincipio</code> y la documentamos:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python" id="org69b5a5b"><code><span style="font-weight: bold;">class</span> <span style="font-weight: bold; text-decoration: underline;">SerieConPrincipio</span>:
+<pre class="src src-python" id="org19ec9ef"><code><span style="font-weight: bold;">class</span> <span style="font-weight: bold; text-decoration: underline;">SerieConPrincipio</span>:
     <span style="font-style: italic;">"""
     Clase para representar series con un &#237;ndice inicial arbitrario.
 
@@ -922,15 +922,15 @@ Declaramos la clase <code>SerieConPrincipio</code> y la documentamos:
 </div>
 </div>
 </div>
-<div id="outline-container-org146691a" class="outline-4">
-<h4 id="org146691a">Constructor</h4>
-<div class="outline-text-4" id="text-org146691a">
+<div id="outline-container-org9025a25" class="outline-4">
+<h4 id="org9025a25">Constructor</h4>
+<div class="outline-text-4" id="text-org9025a25">
 <p>
 El constructor elimina ceros iniciales y ajusta el índice inicial (cogrado).
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python" id="org04e42c2"><code><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">__init__</span>(<span style="font-weight: bold;">self</span>, coeficientes, cogrado=0, final=<span style="font-weight: bold; text-decoration: underline;">False</span>):
+<pre class="src src-python" id="org8d9029b"><code><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">__init__</span>(<span style="font-weight: bold;">self</span>, coeficientes, cogrado=0, final=<span style="font-weight: bold; text-decoration: underline;">False</span>):
     <span style="font-weight: bold; font-style: italic;">primeros_no_nulos</span> = <span style="font-weight: bold;">next</span>((i <span style="font-weight: bold;">for</span> i, c <span style="font-weight: bold;">in</span> <span style="font-weight: bold;">enumerate</span>(coeficientes) <span style="font-weight: bold;">if</span> c != 0), <span style="font-weight: bold; text-decoration: underline;">None</span>)
     <span style="font-weight: bold;">if</span> primeros_no_nulos <span style="font-weight: bold;">is</span> <span style="font-weight: bold; text-decoration: underline;">None</span>:
         <span style="font-weight: bold;">self</span>.<span style="font-weight: bold; font-style: italic;">coeficientes</span> = []
@@ -950,15 +950,15 @@ El constructor elimina ceros iniciales y ajusta el índice inicial (cogrado).
 </div>
 </div>
 </div>
-<div id="outline-container-orge619dce" class="outline-4">
-<h4 id="orge619dce">Representaciones: texto y \(\LaTeX{}\)</h4>
-<div class="outline-text-4" id="text-orge619dce">
+<div id="outline-container-org57716b7" class="outline-4">
+<h4 id="org57716b7">Representaciones: texto y \(\LaTeX{}\)</h4>
+<div class="outline-text-4" id="text-org57716b7">
 <p>
 Métodos para mostrar la serie como par ordenado <code>(cogrado, lista de coeficientes)</code> o en formato LaTeX. En los cuadernos electrónicos de Jupyter (Notebboks) se usa por defecto la representación \(\LaTeX{}\) como función generatriz. Y si la serie se ha calculado como una inversa, la representación termina con una elipsis (\(\cdots\)) para recordar que la serie debería tener infinitos términos. Esta implementación no calcula infinitos términos, con <code>print(serie)</code> vemos su cogrado y una lista con los coeficientes que realmente se han calculado (por defecto son 5 si no se indica un número concreto).
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python" id="orgcb7c08c"><code><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">__repr__</span>(<span style="font-weight: bold;">self</span>):
+<pre class="src src-python" id="orgd54cfa5"><code><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">__repr__</span>(<span style="font-weight: bold;">self</span>):
     <span style="font-style: italic;">"""
     Representa la serie como un par (cogrado, lista de coeficientes).
 
@@ -1025,15 +1025,15 @@ Métodos para mostrar la serie como par ordenado <code>(cogrado, lista de coefic
 </div>
 </div>
 </div>
-<div id="outline-container-org672d0eb" class="outline-4">
-<h4 id="org672d0eb">Suma de series</h4>
-<div class="outline-text-4" id="text-org672d0eb">
+<div id="outline-container-org4590512" class="outline-4">
+<h4 id="org4590512">Suma de series</h4>
+<div class="outline-text-4" id="text-org4590512">
 <p>
 La suma ajusta los índices y suma término a término.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python" id="org3ee70d1"><code><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">__add__</span>(<span style="font-weight: bold;">self</span>, otra):
+<pre class="src src-python" id="org0970e6a"><code><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">__add__</span>(<span style="font-weight: bold;">self</span>, otra):
     <span style="font-style: italic;">"""
     Suma dos series.
 
@@ -1059,15 +1059,15 @@ La suma ajusta los índices y suma término a término.
 </div>
 </div>
 </div>
-<div id="outline-container-orge84229c" class="outline-4">
-<h4 id="orge84229c">Producto: escalar y convolución</h4>
-<div class="outline-text-4" id="text-orge84229c">
+<div id="outline-container-org65ff25b" class="outline-4">
+<h4 id="org65ff25b">Producto: escalar y convolución</h4>
+<div class="outline-text-4" id="text-org65ff25b">
 <p>
 El método <code>__mul__</code> permite tanto el producto escalar como el producto de Cauchy entre dos series.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python" id="org0af3854"><code><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">__mul__</span>(<span style="font-weight: bold;">self</span>, escalar_o_otra):
+<pre class="src src-python" id="orgc4ca672"><code><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">__mul__</span>(<span style="font-weight: bold;">self</span>, escalar_o_otra):
     <span style="font-style: italic;">"""
     Producto por un escalar o producto convoluci&#243;n entre series.
 
@@ -1094,11 +1094,11 @@ El método <code>__mul__</code> permite tanto el producto escalar como el produc
 </div>
 </div>
 </div>
-<div id="outline-container-org2709062" class="outline-4">
-<h4 id="org2709062">Producto escalar desde la izquierda</h4>
-<div class="outline-text-4" id="text-org2709062">
+<div id="outline-container-org38628e5" class="outline-4">
+<h4 id="org38628e5">Producto escalar desde la izquierda</h4>
+<div class="outline-text-4" id="text-org38628e5">
 <div class="org-src-container">
-<pre class="src src-python" id="org8855f2c"><code><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">__rmul__</span>(<span style="font-weight: bold;">self</span>, escalar):
+<pre class="src src-python" id="orga1e4ada"><code><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">__rmul__</span>(<span style="font-weight: bold;">self</span>, escalar):
     <span style="font-style: italic;">"""
     Producto por un escalar desde la izquierda.
 
@@ -1113,15 +1113,15 @@ El método <code>__mul__</code> permite tanto el producto escalar como el produc
 </div>
 </div>
 </div>
-<div id="outline-container-org9938c86" class="outline-4">
-<h4 id="org9938c86">Inversa formal</h4>
-<div class="outline-text-4" id="text-org9938c86">
+<div id="outline-container-orgcda89ad" class="outline-4">
+<h4 id="orgcda89ad">Inversa formal</h4>
+<div class="outline-text-4" id="text-orgcda89ad">
 <p>
 Usamos recursión sobre la fórmula clásica de inversa de series: \( b_j = - \frac{1}{a_0} \sum_{r=1}^{j} a_{j-r} b_r \)
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python" id="org22e8356"><code><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">inversa</span>(<span style="font-weight: bold;">self</span>, num_terminos=5):
+<pre class="src src-python" id="orga6f7516"><code><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">inversa</span>(<span style="font-weight: bold;">self</span>, num_terminos=5):
     <span style="font-style: italic;">"""
     Calcula la inversa de la serie.
 
@@ -1162,11 +1162,11 @@ Usamos recursión sobre la fórmula clásica de inversa de series: \( b_j = - \f
 </div>
 </div>
 </div>
-<div id="outline-container-orgc1df97e" class="outline-4">
-<h4 id="orgc1df97e">Gráfico de la serie</h4>
-<div class="outline-text-4" id="text-orgc1df97e">
+<div id="outline-container-orgce45e71" class="outline-4">
+<h4 id="orgce45e71">Gráfico de la serie</h4>
+<div class="outline-text-4" id="text-orgce45e71">
 <div class="org-src-container">
-<pre class="src src-python" id="org2ba9797"><code><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">plot_serie</span>(serie, title=<span style="font-style: italic;">"Serie con principio (con cogrado)"</span>):
+<pre class="src src-python" id="org77ddbf7"><code><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">plot_serie</span>(serie, title=<span style="font-style: italic;">"Serie con principio (con cogrado)"</span>):
     <span style="font-style: italic;">"""
     Dibuja la serie como un gr&#225;fico de barras.
     """</span>
@@ -1186,11 +1186,11 @@ Usamos recursión sobre la fórmula clásica de inversa de series: \( b_j = - \f
 </div>
 </div>
 </div>
-<div id="outline-container-orge62221e" class="outline-4">
-<h4 id="orge62221e">Sustitución simbólica</h4>
-<div class="outline-text-4" id="text-orge62221e">
+<div id="outline-container-org72992c8" class="outline-4">
+<h4 id="org72992c8">Sustitución simbólica</h4>
+<div class="outline-text-4" id="text-org72992c8">
 <div class="org-src-container">
-<pre class="src src-python" id="orgc6ddfea"><code><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">subs</span>(<span style="font-weight: bold;">self</span>, reglasDeSustitucion=[]):
+<pre class="src src-python" id="org1a00555"><code><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">subs</span>(<span style="font-weight: bold;">self</span>, reglasDeSustitucion=[]):
     <span style="font-style: italic;">""" Sustituci&#243;n de variables simb&#243;licas """</span>
 
     <span style="font-weight: bold;">def</span> <span style="font-weight: bold;">CreaLista</span>(t):
@@ -1207,9 +1207,9 @@ Usamos recursión sobre la fórmula clásica de inversa de series: \( b_j = - \f
 </div>
 </div>
 </div>
-<div id="outline-container-org709e826" class="outline-4">
-<h4 id="org709e826">Ejemplo de uso</h4>
-<div class="outline-text-4" id="text-org709e826">
+<div id="outline-container-org9eefa7d" class="outline-4">
+<h4 id="org9eefa7d">Ejemplo de uso</h4>
+<div class="outline-text-4" id="text-org9eefa7d">
 <p>
 Creamos una serie desde \( z^2 \), otra desde \( z^0 \), y calculamos su suma, producto e inversa (truncada).
 </p>
@@ -1232,7 +1232,7 @@ Creamos una serie desde \( z^2 \), otra desde \( z^0 \), y calculamos su suma, p
 <h3 id="Clase-SerieConFinal">Clase <code>SerieConFinal</code>: series con grado arbitrario en python</h3>
 <div class="outline-text-3" id="text-Clase-SerieConFinal">
 <div class="org-src-container">
-<pre class="src src-python" id="org01929b4"><code><span style="font-weight: bold;">class</span> <span style="font-weight: bold; text-decoration: underline;">SerieConFinal</span>:
+<pre class="src src-python" id="orgd7d100d"><code><span style="font-weight: bold;">class</span> <span style="font-weight: bold; text-decoration: underline;">SerieConFinal</span>:
     <span style="font-style: italic;">"""
     Clase para representar series con un &#237;ndice final arbitrario (grado).
 
@@ -1418,7 +1418,7 @@ Creamos una serie desde \( z^2 \), otra desde \( z^0 \), y calculamos su suma, p
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2025-07-30 Wed 10:48</p>
+<p class="date">Created: 2025-07-31 Thu 18:11</p>
 </div>
 </body>
 </html>
