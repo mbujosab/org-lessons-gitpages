@@ -230,15 +230,15 @@ jobs:
               --eval "(dolist (dir (directory-files \"~/.emacs.d/elpa/\" t \"^[^.]\")) (add-to-list 'load-path dir))" \
               --eval "(require 'ox-ipynb)"
 
-     - name: Crear local-init.el para Emacs
-       run: |
-         mkdir -p ~/Software/scimax
-         cat <<EOF > ~/Software/scimax/local-init.el
-     (setq straight-vc-git-default-clone-depth nil)
-     (condition-case err
-         (straight-use-package 'nongnu-elpa)
-       (error (message "straight.el failed: %s" err)))
-     EOF
+    - name: Crear local-init.el para Emacs
+      run: |
+        mkdir -p ~/Software/scimax
+        cat <<EOF > ~/Software/scimax/local-init.el
+(setq straight-vc-git-default-clone-depth nil)
+(condition-case err
+    (straight-use-package 'nongnu-elpa)
+  (error (message "straight.el failed: %s" err)))
+EOF
 
     - name: Execute Makefile notebooksYslides
       run: |
