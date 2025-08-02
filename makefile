@@ -21,11 +21,12 @@ publicacion: $(patsubst $(LECCIONES_SRC)/%.org,$(CUADERNOS)/%.ipynb,$(wildcard $
 	cp -a $(LECCIONES_tmp)/Lecc*.slides.html $(TRANSPARENCIAS)
 	ls $(CUADERNOS)
 	ls $(TRANSPARENCIAS)
+	cp -a org-practicas $(LECCIONES_tmp)/practicas
 	echo "EJECUCIÓN DE publica.el..."
 	emacs --batch \
 	  --load ~/Software/scimax/init.el \
 	  -l publica.el
-	ln -snf -r $(DOCS)/img/ $(DOCS)/org-lessons
+	#ln -snf -r $(DOCS)/img/ $(DOCS)/org-lessons/img/
 	echo "FICHEROS EN Docs?..."
 	ls $(DOCS)
 	ls $(DOCS)/pdfs
