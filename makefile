@@ -78,6 +78,7 @@ $(LECCIONES_tmp)/src/implementacion_series_formales.org: $(LECCIONES_SRC)/src/im
 	ln -sf -r $(CUADERNOS)/src/implementacion_series_formales.py $(CUADERNOS)/
 	emacs -q --batch \
 	  --load ~/Software/scimax/init.el \
+          --load ~/Software/scimax/local-init.el \
 	  --eval "(require 'ox-ipynb)" \
 	  --eval "(ox-ipynb-export-org-file-to-ipynb-file \"lecciones/src/implementacion_series_formales.org\")"
 	jupyter nbconvert --execute --inplace $(LECCIONES_tmp)/src/implementacion_series_formales.ipynb

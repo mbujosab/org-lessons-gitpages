@@ -109,6 +109,7 @@ $(LECCIONES_tmp)/src/implementacion_series_formales.org: $(LECCIONES_SRC)/src/im
 	ln -sf -r $(CUADERNOS)/src/implementacion_series_formales.py $(CUADERNOS)/
 	emacs -q --batch \
 	  --load ~/Software/scimax/init.el \
+          --load ~/Software/scimax/local-init.el \
 	  --eval "(require 'ox-ipynb)" \
 	  --eval "(ox-ipynb-export-org-file-to-ipynb-file \"lecciones/src/implementacion_series_formales.org\")"
 	jupyter nbconvert --execute --inplace $(LECCIONES_tmp)/src/implementacion_series_formales.ipynb
@@ -174,7 +175,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y emacs pandoc aspell aspell-en aspell-es
+        sudo apt-get install -y git emacs pandoc aspell aspell-en aspell-es
         pip install jupyter nbconvert
 
     - name: Install Python modules
@@ -194,6 +195,10 @@ jobs:
 
     - name: Disable tlmgr (prevent accidental calls)
       run: sudo mv /usr/bin/tlmgr /usr/bin/tlmgr.disabled || true
+
+    - name: Ensure git is installed
+      run: |
+        git --version
 
     - name: Clone Scimax
       run: |
@@ -224,6 +229,16 @@ jobs:
               --eval "(add-to-list 'load-path \"~/Software/scimax/\")" \
               --eval "(dolist (dir (directory-files \"~/.emacs.d/elpa/\" t \"^[^.]\")) (add-to-list 'load-path dir))" \
               --eval "(require 'ox-ipynb)"
+
+     - name: Crear local-init.el para Emacs
+       run: |
+         mkdir -p ~/Software/scimax
+         cat <<EOF > ~/Software/scimax/local-init.el
+     (setq straight-vc-git-default-clone-depth nil)
+     (condition-case err
+         (straight-use-package 'nongnu-elpa)
+       (error (message "straight.el failed: %s" err)))
+     EOF
 
     - name: Execute Makefile notebooksYslides
       run: |
