@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
 <head>
-<!-- 2025-07-31 Thu 18:11 -->
+<!-- 2025-08-02 Sat 10:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Econometría Aplicada. Lección 2</title>
@@ -66,77 +66,77 @@ $(function() {    $('.note').before("<p class='admonition-title note'>Note</p>")
 <h2>&Iacute;ndice</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org979f9d6">Secuencias o sucesiones de números</a>
+<li><a href="#org5ffbf10">Secuencias o sucesiones de números</a>
 <ul>
-<li><a href="#orgf0e54b7">El espacio vectorial de las secuencias infinitas \(\big({\mathbb{R}}^\mathbb{Z},+,\cdot\big)\)</a>
+<li><a href="#org2f8bf9f">El espacio vectorial de las secuencias infinitas \(\big({\mathbb{R}}^\mathbb{Z},+,\cdot\big)\)</a>
 <ul>
-<li><a href="#orgee1cc61">Notación mediante funciones generatrices</a></li>
-<li><a href="#orge9ca55f">Características de algunas secuencias</a></li>
-<li><a href="#org8061d94">Algunos subespacios vectoriales de \(\big({\mathbb{R}}^\mathbb{Z},+,\cdot\big)\)</a></li>
+<li><a href="#org615e792">Notación mediante funciones generatrices</a></li>
+<li><a href="#org431405d">Características de algunas secuencias</a></li>
+<li><a href="#orge5a3ce0">Algunos subespacios vectoriales de \(\big({\mathbb{R}}^\mathbb{Z},+,\cdot\big)\)</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org761442b">Producto convolución</a></li>
-<li><a href="#orgf6bbf93">Anillos conmutativos y cuerpos</a>
+<li><a href="#org5885484">Producto convolución</a></li>
+<li><a href="#orgb2dbac7">Anillos conmutativos y cuerpos</a>
 <ul>
-<li><a href="#org2958faa">Anillos conmutativos</a></li>
-<li><a href="#org0336792">Cuerpos</a></li>
+<li><a href="#org236647d">Anillos conmutativos</a></li>
+<li><a href="#org3bac4f5">Cuerpos</a></li>
 </ul>
 </li>
-<li><a href="#orgb72977c">Clasificación de subconjuntos de sucesiones</a></li>
-<li><a href="#org7bcba83">Inversas</a>
+<li><a href="#org6c1be0e">Clasificación de subconjuntos de sucesiones</a></li>
+<li><a href="#orgf198ec4">Inversas</a>
 <ul>
-<li><a href="#orgebc22ff">Inversas de secuencias con principio</a></li>
-<li><a href="#orgccfae23">Inversas de secuencias con final</a></li>
-<li><a href="#org251255b">Inversas de polinomios</a></li>
-<li><a href="#org3a4c559">Cuerpo de fracciones de polinomios</a></li>
+<li><a href="#orgd53cda5">Inversas de secuencias con principio</a></li>
+<li><a href="#org81b91d5">Inversas de secuencias con final</a></li>
+<li><a href="#org6741a09">Inversas de polinomios</a></li>
+<li><a href="#org9791801">Cuerpo de fracciones de polinomios</a></li>
 </ul>
 </li>
-<li><a href="#org3e3ec7a">Operador retardo \(\mathsf{B}{}\) y secuencias sumables.</a>
+<li><a href="#org39616cc">Operador retardo \(\mathsf{B}{}\) y secuencias sumables.</a>
 <ul>
-<li><a href="#org77603a8">Polinomios y secuencias en el operador retardo \(\boldsymbol{a}(\mathsf{B}{})\) actuando sobre secuencias</a></li>
-<li><a href="#org86a17c6">El operador retardo y el producto convolución de una secuencia \(\boldsymbol{x}\) por \(z\)</a></li>
+<li><a href="#orgcff2b82">Polinomios y secuencias en el operador retardo \(\boldsymbol{a}(\mathsf{B}{})\) actuando sobre secuencias</a></li>
+<li><a href="#orgc318af2">El operador retardo y el producto convolución de una secuencia \(\boldsymbol{x}\) por \(z\)</a></li>
 </ul>
 </li>
-<li><a href="#org30115ec">Convolución de una serie formal con el "<i>reverso</i>" de otra</a></li>
-<li><a href="#org60cd1af">Resultados preliminares sobre series sumables</a>
+<li><a href="#org99f76ee">Convolución de una serie formal con el "<i>reverso</i>" de otra</a></li>
+<li><a href="#org6a363e0">Resultados preliminares sobre series sumables</a>
 <ul>
-<li><a href="#org8cfcdcb">Introducción y motivación del enfoque elegido</a></li>
-<li><a href="#org19a8dcd">Series sumables</a>
+<li><a href="#orgea3a13b">Introducción y motivación del enfoque elegido</a></li>
+<li><a href="#org74a8555">Series sumables</a>
 <ul>
-<li><a href="#org6f8c71e">Propiedades de las series sumables</a></li>
+<li><a href="#orga78edb8">Propiedades de las series sumables</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org724b7cf">Demostraciones de algunos resultados sobre series en general</a>
+<li><a href="#org3213cca">Demostraciones de algunos resultados sobre series en general</a>
 <ul>
-<li><a href="#org37cfe85">Sumabilidad y convergencia absoluta</a></li>
-<li><a href="#org6ed6fed">Relación entre series absolutamente sumables y series de cuadrado sumable</a></li>
-<li><a href="#orgf2929e1">Convolución de series con principio. Convolución de series con final</a></li>
-<li><a href="#orgf63c0aa">Convolución de series absolutamente sumables.</a></li>
-<li><a href="#org00a4342">El conjunto de series absolutamente sumables es un anillo conmutativo.</a></li>
-<li><a href="#org9ce9afb">El conjunto de series con principio es un cuerpo</a></li>
-<li><a href="#org93bded1">El conjunto de fracciones de polinomios \(\mathbb{C}(z)\) es un cuerpo</a></li>
+<li><a href="#org1b91333">Sumabilidad y convergencia absoluta</a></li>
+<li><a href="#org7f6de4e">Relación entre series absolutamente sumables y series de cuadrado sumable</a></li>
+<li><a href="#org9fe30f3">Convolución de series con principio. Convolución de series con final</a></li>
+<li><a href="#org0bba772">Convolución de series absolutamente sumables.</a></li>
+<li><a href="#orge28b859">El conjunto de series absolutamente sumables es un anillo conmutativo.</a></li>
+<li><a href="#org0e7bad6">El conjunto de series con principio es un cuerpo</a></li>
+<li><a href="#org8a293c6">El conjunto de fracciones de polinomios \(\mathbb{C}(z)\) es un cuerpo</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div class="abstract" id="orgc18a8e8">
+<div class="abstract" id="org0f4dd74">
 <p>
 Hoy veremos conceptos algebraicos usados en la modelización ARIMA de series temporales.
 </p>
 
 </div>
-<div id="outline-container-org979f9d6" class="outline-2">
-<h2 id="org979f9d6">Secuencias o sucesiones de números</h2>
-<div class="outline-text-2" id="text-org979f9d6">
+<div id="outline-container-org5ffbf10" class="outline-2">
+<h2 id="org5ffbf10">Secuencias o sucesiones de números</h2>
+<div class="outline-text-2" id="text-org5ffbf10">
 </div>
-<div id="outline-container-orgf0e54b7" class="outline-3">
-<h3 id="orgf0e54b7">El espacio vectorial de las secuencias infinitas \(\big({\mathbb{R}}^\mathbb{Z},+,\cdot\big)\)</h3>
-<div class="outline-text-3" id="text-orgf0e54b7">
+<div id="outline-container-org2f8bf9f" class="outline-3">
+<h3 id="org2f8bf9f">El espacio vectorial de las secuencias infinitas \(\big({\mathbb{R}}^\mathbb{Z},+,\cdot\big)\)</h3>
+<div class="outline-text-3" id="text-org2f8bf9f">
 <p>
 Consideremos el conjunto \({\mathbb{R}}^\mathbb{Z}\) de secuencias infinitas de números reales<br />
 \[
@@ -153,9 +153,9 @@ Si \(\;\boldsymbol{x},\boldsymbol{y}\in{\mathbb{R}}^\mathbb{Z}\;\) y \(\;a\in\ma
 El conjunto \({\mathbb{R}}^\mathbb{Z}\) junto con la suma elemento a elemento \((+)\) y el producto por escalares \((\cdot)\) constituye un <b>espacio vectorial</b>.
 </p>
 </div>
-<div id="outline-container-orgee1cc61" class="outline-4">
-<h4 id="orgee1cc61">Notación mediante funciones generatrices</h4>
-<div class="outline-text-4" id="text-orgee1cc61">
+<div id="outline-container-org615e792" class="outline-4">
+<h4 id="org615e792">Notación mediante funciones generatrices</h4>
+<div class="outline-text-4" id="text-org615e792">
 <p>
 Como estas secuencias son infinitas (en ambas direcciones), no hay un primer elemento. 
 </p>
@@ -207,9 +207,9 @@ Además, denotaremos con \(\boldsymbol{1}\) la secuencia constante uno: \((\ldot
 </p>
 </div>
 </div>
-<div id="outline-container-orge9ca55f" class="outline-4">
-<h4 id="orge9ca55f">Características de algunas secuencias</h4>
-<div class="outline-text-4" id="text-orge9ca55f">
+<div id="outline-container-org431405d" class="outline-4">
+<h4 id="org431405d">Características de algunas secuencias</h4>
+<div class="outline-text-4" id="text-org431405d">
 <p>
 En una sucesión \(\boldsymbol{a}\) <span class="underline">no nula</span> llamamos:
 </p>
@@ -231,9 +231,9 @@ Una sucesión absolutamente sumable siempre es de cuadrado sumable, \(\ell^1\sub
 </p>
 </div>
 </div>
-<div id="outline-container-org8061d94" class="outline-4">
-<h4 id="org8061d94">Algunos subespacios vectoriales de \(\big({\mathbb{R}}^\mathbb{Z},+,\cdot\big)\)</h4>
-<div class="outline-text-4" id="text-org8061d94">
+<div id="outline-container-orge5a3ce0" class="outline-4">
+<h4 id="orge5a3ce0">Algunos subespacios vectoriales de \(\big({\mathbb{R}}^\mathbb{Z},+,\cdot\big)\)</h4>
+<div class="outline-text-4" id="text-orge5a3ce0">
 <dl class="org-dl">
 <dt>Secuencias con final</dt><dd>aquellas con grado (a partir de cierto índice son cero).
 \[\boldsymbol{a}(z) = (\ldots,\ a_{p-3},\ a_{p-2},\ a_{p-1},\ a_{p},\ 0,\ 0,\ 0,\ldots) = \sum_{t=-\infty}^p a_t z^t;\qquad p\in\mathbb{Z}\]</dd>
@@ -255,9 +255,9 @@ Los <b>polinomios</b> son series formales con grado finito: \(\quad\sum_{t=k}^p 
 </div>
 </div>
 </div>
-<div id="outline-container-org761442b" class="outline-2">
-<h2 id="org761442b">Producto convolución</h2>
-<div class="outline-text-2" id="text-org761442b">
+<div id="outline-container-org5885484" class="outline-2">
+<h2 id="org5885484">Producto convolución</h2>
+<div class="outline-text-2" id="text-org5885484">
 <p>
 Sean \(\boldsymbol{a}\) y \(\boldsymbol{b}\) sucesiones <span class="underline">con principio</span> (con cogrado). 
 Su producto convolución es la sucesión cuyo elemento <i>t</i>-ésimo es:
@@ -279,13 +279,13 @@ La convolución también está definida entre sucesiones:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf6bbf93" class="outline-2">
-<h2 id="orgf6bbf93">Anillos conmutativos y cuerpos</h2>
-<div class="outline-text-2" id="text-orgf6bbf93">
+<div id="outline-container-orgb2dbac7" class="outline-2">
+<h2 id="orgb2dbac7">Anillos conmutativos y cuerpos</h2>
+<div class="outline-text-2" id="text-orgb2dbac7">
 </div>
-<div id="outline-container-org2958faa" class="outline-3">
-<h3 id="org2958faa">Anillos conmutativos</h3>
-<div class="outline-text-3" id="text-org2958faa">
+<div id="outline-container-org236647d" class="outline-3">
+<h3 id="org236647d">Anillos conmutativos</h3>
+<div class="outline-text-3" id="text-org236647d">
 <p>
 Un <b>anillo conmutativo</b> es un conjunto \(\mathsf{S}\) equipado con dos
 operaciones binarias, la suma \(+\) y el producto \(*\) que satisfacen
@@ -320,9 +320,9 @@ El producto es distributivo respecto de la suma: Para todo \(\boldsymbol{a}, \bo
 </ul>
 </div>
 </div>
-<div id="outline-container-org0336792" class="outline-3">
-<h3 id="org0336792">Cuerpos</h3>
-<div class="outline-text-3" id="text-org0336792">
+<div id="outline-container-org3bac4f5" class="outline-3">
+<h3 id="org3bac4f5">Cuerpos</h3>
+<div class="outline-text-3" id="text-org3bac4f5">
 <p>
 Un <b>cuerpo</b> es un anillo conmutativo que adicionalmente satisface:
 </p>
@@ -347,9 +347,9 @@ y que \(\boldsymbol{a}\) es el inverso de \(\boldsymbol{b}\).
 </div>
 </div>
 </div>
-<div id="outline-container-orgb72977c" class="outline-2">
-<h2 id="orgb72977c">Clasificación de subconjuntos de sucesiones</h2>
-<div class="outline-text-2" id="text-orgb72977c">
+<div id="outline-container-org6c1be0e" class="outline-2">
+<h2 id="org6c1be0e">Clasificación de subconjuntos de sucesiones</h2>
+<div class="outline-text-2" id="text-org6c1be0e">
 <dl class="org-dl">
 <dt>Son anillos el conjunto de</dt><dd><p>
 <a href="https://en.wikipedia.org/wiki/Formal_power_series">series formales</a> (cogrado \(\geq0\)), <a href="https://en.wikipedia.org/wiki/Polynomial_ring">polinomios</a> y
@@ -366,7 +366,7 @@ Pero estas sucesiones o <i>no tienen inversa; o son sucesiones de otro tipo</i>
 </p></dd>
 
 <dt>Son cuerpos el conjunto de</dt><dd><p>
-secuencias con principio , las secuencias con final y las <a href="#org93bded1">fracciones de polinomios</a>.
+secuencias con principio , las secuencias con final y las <a href="#org8a293c6">fracciones de polinomios</a>.
 </p>
 
 <p>
@@ -383,13 +383,13 @@ Cuando una de estas dos inversas es una secuencia absolutamente sumable, dicha i
 </dl>
 </div>
 </div>
-<div id="outline-container-org7bcba83" class="outline-2">
-<h2 id="org7bcba83">Inversas</h2>
-<div class="outline-text-2" id="text-org7bcba83">
+<div id="outline-container-orgf198ec4" class="outline-2">
+<h2 id="orgf198ec4">Inversas</h2>
+<div class="outline-text-2" id="text-orgf198ec4">
 </div>
-<div id="outline-container-orgebc22ff" class="outline-3">
-<h3 id="orgebc22ff">Inversas de secuencias con principio</h3>
-<div class="outline-text-3" id="text-orgebc22ff">
+<div id="outline-container-orgd53cda5" class="outline-3">
+<h3 id="orgd53cda5">Inversas de secuencias con principio</h3>
+<div class="outline-text-3" id="text-orgd53cda5">
 <p>
 Supongamos que \(\boldsymbol{a}\ne\boldsymbol{0}\) y que \(k = cogrado(\boldsymbol{a})\).
 Definimos \(\boldsymbol{b}\) del siguiente modo:
@@ -420,9 +420,9 @@ es decir
 </p>
 </div>
 </div>
-<div id="outline-container-orgccfae23" class="outline-3">
-<h3 id="orgccfae23">Inversas de secuencias con final</h3>
-<div class="outline-text-3" id="text-orgccfae23">
+<div id="outline-container-org81b91d5" class="outline-3">
+<h3 id="org81b91d5">Inversas de secuencias con final</h3>
+<div class="outline-text-3" id="text-org81b91d5">
 <p>
 Supongamos que \(\boldsymbol{a}\ne\boldsymbol{0}\) y que \(p =
 grado(\boldsymbol{a})\). Definimos \(\boldsymbol{b}\) del siguiente modo:
@@ -450,9 +450,9 @@ es decir
 </p>
 </div>
 </div>
-<div id="outline-container-org251255b" class="outline-3">
-<h3 id="org251255b">Inversas de polinomios</h3>
-<div class="outline-text-3" id="text-org251255b">
+<div id="outline-container-org6741a09" class="outline-3">
+<h3 id="org6741a09">Inversas de polinomios</h3>
+<div class="outline-text-3" id="text-org6741a09">
 <p>
 Todo polinomio
 </p>
@@ -529,9 +529,9 @@ En los manuales de <i>series temporales</i> se dice que un polinomio \(\boldsymb
 </p>
 </div>
 </div>
-<div id="outline-container-org3a4c559" class="outline-3">
-<h3 id="org3a4c559">Cuerpo de fracciones de polinomios</h3>
-<div class="outline-text-3" id="text-org3a4c559">
+<div id="outline-container-org9791801" class="outline-3">
+<h3 id="org9791801">Cuerpo de fracciones de polinomios</h3>
+<div class="outline-text-3" id="text-org9791801">
 <p>
 El <i>cuerpo de fracciones de polinomios</i> 
 \[\left\{\boldsymbol{p}*\boldsymbol{q}^{-\triangleright} \mid \boldsymbol{p} \text{ y } \boldsymbol{q} \text{ son polinomios y } \boldsymbol{q}\ne\boldsymbol{0} \right\};\]
@@ -553,9 +553,9 @@ Este conjunto de sucesiones es uno de los pilares en la modelización ARIMA.
 </div>
 </div>
 </div>
-<div id="outline-container-org3e3ec7a" class="outline-2">
-<h2 id="org3e3ec7a">Operador retardo \(\mathsf{B}{}\) y secuencias sumables.</h2>
-<div class="outline-text-2" id="text-org3e3ec7a">
+<div id="outline-container-org39616cc" class="outline-2">
+<h2 id="org39616cc">Operador retardo \(\mathsf{B}{}\) y secuencias sumables.</h2>
+<div class="outline-text-2" id="text-org39616cc">
 <p>
 Es habitual usar el operador retardo \(\mathsf{B}\):
 \[\mathsf{B} x_t = x_{t-1},\quad \text{para } t\in\mathbb{Z}.\]
@@ -572,9 +572,9 @@ Así, si la secuencia \(\boldsymbol{x}(z)=\sum_{t=-\infty}^\infty x_t z^t\) es s
 tiene sentido como suma.
 </p>
 </div>
-<div id="outline-container-org77603a8" class="outline-3">
-<h3 id="org77603a8">Polinomios y secuencias en el operador retardo \(\boldsymbol{a}(\mathsf{B}{})\) actuando sobre secuencias</h3>
-<div class="outline-text-3" id="text-org77603a8">
+<div id="outline-container-orgcff2b82" class="outline-3">
+<h3 id="orgcff2b82">Polinomios y secuencias en el operador retardo \(\boldsymbol{a}(\mathsf{B}{})\) actuando sobre secuencias</h3>
+<div class="outline-text-3" id="text-orgcff2b82">
 <p>
 Así, para el polinomio \(\boldsymbol{a}(z)=a_0+a_1z+a_2z^2+a_3z^3\), y la
 secuencia \(\boldsymbol{y}\), tenemos
@@ -600,9 +600,9 @@ Y en general, si \(\boldsymbol{a}\) e \(\boldsymbol{y}\) son secuencias sumables
 \end{align*}
 </div>
 </div>
-<div id="outline-container-org86a17c6" class="outline-3">
-<h3 id="org86a17c6">El operador retardo y el producto convolución de una secuencia \(\boldsymbol{x}\) por \(z\)</h3>
-<div class="outline-text-3" id="text-org86a17c6">
+<div id="outline-container-orgc318af2" class="outline-3">
+<h3 id="orgc318af2">El operador retardo y el producto convolución de una secuencia \(\boldsymbol{x}\) por \(z\)</h3>
+<div class="outline-text-3" id="text-orgc318af2">
 <p>
 Del mismo modo que denotamos con \({1}\) la secuencia
 \[1=(\ldots,0,0,\fbox{$\color{blue}{1}$},0,0,\ldots)=1 z^0,\]
@@ -618,9 +618,9 @@ De ese modo
 </div>
 </div>
 </div>
-<div id="outline-container-org30115ec" class="outline-2">
-<h2 id="org30115ec">Convolución de una serie formal con el "<i>reverso</i>" de otra</h2>
-<div class="outline-text-2" id="text-org30115ec">
+<div id="outline-container-org99f76ee" class="outline-2">
+<h2 id="org99f76ee">Convolución de una serie formal con el "<i>reverso</i>" de otra</h2>
+<div class="outline-text-2" id="text-org99f76ee">
 <p>
 Por último, si tenemos dos series formales \(\boldsymbol{a}\) y
 \(\boldsymbol{b}\), entonces
@@ -645,76 +645,76 @@ es decir,
 \end{equation}
 </div>
 </div>
-<div id="outline-container-org60cd1af" class="outline-2">
-<h2 id="org60cd1af">Resultados preliminares sobre series sumables</h2>
-<div class="outline-text-2" id="text-org60cd1af">
+<div id="outline-container-org6a363e0" class="outline-2">
+<h2 id="org6a363e0">Resultados preliminares sobre series sumables</h2>
+<div class="outline-text-2" id="text-org6a363e0">
 <p style="color:red;"><strong>
 Esta sección contiene las demostraciones de los resultados empleados en la lección; y solo se puede ver de manera completa en la versión pdf de la lección.
 </strong></p>
 </div>
-<div id="outline-container-org8cfcdcb" class="outline-3">
-<h3 id="org8cfcdcb">Introducción y motivación del enfoque elegido</h3>
-<div class="outline-text-3" id="text-org8cfcdcb">
+<div id="outline-container-orgea3a13b" class="outline-3">
+<h3 id="orgea3a13b">Introducción y motivación del enfoque elegido</h3>
+<div class="outline-text-3" id="text-orgea3a13b">
 </div>
-<div id="outline-container-org8edeb75" class="outline-4">
-<h4 id="org8edeb75">Lo usual es interpretar las series como sumas ordenadas</h4>
-<div class="outline-text-4" id="text-org8edeb75">
-</div>
-</div>
-<div id="outline-container-org3c483cb" class="outline-4">
-<h4 id="org3c483cb">La propuesta de Schwartz: independencia del orden</h4>
-<div class="outline-text-4" id="text-org3c483cb">
+<div id="outline-container-orgcbb05af" class="outline-4">
+<h4 id="orgcbb05af">Lo usual es interpretar las series como sumas ordenadas</h4>
+<div class="outline-text-4" id="text-orgcbb05af">
 </div>
 </div>
-</div>
-<div id="outline-container-org19a8dcd" class="outline-3">
-<h3 id="org19a8dcd">Series sumables</h3>
-<div class="outline-text-3" id="text-org19a8dcd">
-</div>
-<div id="outline-container-org6f8c71e" class="outline-4">
-<h4 id="org6f8c71e">Propiedades de las series sumables</h4>
-<div class="outline-text-4" id="text-org6f8c71e">
+<div id="outline-container-org13a3313" class="outline-4">
+<h4 id="org13a3313">La propuesta de Schwartz: independencia del orden</h4>
+<div class="outline-text-4" id="text-org13a3313">
 </div>
 </div>
 </div>
+<div id="outline-container-org74a8555" class="outline-3">
+<h3 id="org74a8555">Series sumables</h3>
+<div class="outline-text-3" id="text-org74a8555">
 </div>
-<div id="outline-container-org724b7cf" class="outline-2">
-<h2 id="org724b7cf">Demostraciones de algunos resultados sobre series en general</h2>
-<div class="outline-text-2" id="text-org724b7cf">
-</div>
-<div id="outline-container-org37cfe85" class="outline-3">
-<h3 id="org37cfe85">Sumabilidad y convergencia absoluta</h3>
-<div class="outline-text-3" id="text-org37cfe85">
-</div>
-</div>
-<div id="outline-container-org6ed6fed" class="outline-3">
-<h3 id="org6ed6fed">Relación entre series absolutamente sumables y series de cuadrado sumable</h3>
-<div class="outline-text-3" id="text-org6ed6fed">
+<div id="outline-container-orga78edb8" class="outline-4">
+<h4 id="orga78edb8">Propiedades de las series sumables</h4>
+<div class="outline-text-4" id="text-orga78edb8">
 </div>
 </div>
-<div id="outline-container-orgf2929e1" class="outline-3">
-<h3 id="orgf2929e1">Convolución de series con principio. Convolución de series con final</h3>
-<div class="outline-text-3" id="text-orgf2929e1">
 </div>
 </div>
-<div id="outline-container-orgf63c0aa" class="outline-3">
-<h3 id="orgf63c0aa">Convolución de series absolutamente sumables.</h3>
-<div class="outline-text-3" id="text-orgf63c0aa">
+<div id="outline-container-org3213cca" class="outline-2">
+<h2 id="org3213cca">Demostraciones de algunos resultados sobre series en general</h2>
+<div class="outline-text-2" id="text-org3213cca">
+</div>
+<div id="outline-container-org1b91333" class="outline-3">
+<h3 id="org1b91333">Sumabilidad y convergencia absoluta</h3>
+<div class="outline-text-3" id="text-org1b91333">
 </div>
 </div>
-<div id="outline-container-org00a4342" class="outline-3">
-<h3 id="org00a4342">El conjunto de series absolutamente sumables es un anillo conmutativo.</h3>
-<div class="outline-text-3" id="text-org00a4342">
+<div id="outline-container-org7f6de4e" class="outline-3">
+<h3 id="org7f6de4e">Relación entre series absolutamente sumables y series de cuadrado sumable</h3>
+<div class="outline-text-3" id="text-org7f6de4e">
 </div>
 </div>
-<div id="outline-container-org9ce9afb" class="outline-3">
-<h3 id="org9ce9afb">El conjunto de series con principio es un cuerpo</h3>
-<div class="outline-text-3" id="text-org9ce9afb">
+<div id="outline-container-org9fe30f3" class="outline-3">
+<h3 id="org9fe30f3">Convolución de series con principio. Convolución de series con final</h3>
+<div class="outline-text-3" id="text-org9fe30f3">
 </div>
 </div>
-<div id="outline-container-org93bded1" class="outline-3">
-<h3 id="org93bded1">El conjunto de fracciones de polinomios \(\mathbb{C}(z)\) es un cuerpo</h3>
-<div class="outline-text-3" id="text-org93bded1">
+<div id="outline-container-org0bba772" class="outline-3">
+<h3 id="org0bba772">Convolución de series absolutamente sumables.</h3>
+<div class="outline-text-3" id="text-org0bba772">
+</div>
+</div>
+<div id="outline-container-orge28b859" class="outline-3">
+<h3 id="orge28b859">El conjunto de series absolutamente sumables es un anillo conmutativo.</h3>
+<div class="outline-text-3" id="text-orge28b859">
+</div>
+</div>
+<div id="outline-container-org0e7bad6" class="outline-3">
+<h3 id="org0e7bad6">El conjunto de series con principio es un cuerpo</h3>
+<div class="outline-text-3" id="text-org0e7bad6">
+</div>
+</div>
+<div id="outline-container-org8a293c6" class="outline-3">
+<h3 id="org8a293c6">El conjunto de fracciones de polinomios \(\mathbb{C}(z)\) es un cuerpo</h3>
+<div class="outline-text-3" id="text-org8a293c6">
 <p>
 
 <a href="bibliography:bibliografia.bib">bibliography:bibliografia.bib</a>
@@ -724,7 +724,7 @@ Esta sección contiene las demostraciones de los resultados empleados en la lecc
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2025-07-31 Thu 18:11</p>
+<p class="date">Created: 2025-08-02 Sat 10:27</p>
 </div>
 </body>
 </html>
