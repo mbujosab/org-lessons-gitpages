@@ -82,8 +82,6 @@ $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 	find $(LECCIONES_tmp)/img
 	echo "COPIO LO QUE SE HA GENERADO (.ipynb sin ejecutar y las imágenes) A ./docs..."
 	cp -a $(LECCIONES_tmp)/$(@F) $(CUADERNOS)
-	cp -a $(LECCIONES_tmp)/img $(DOCS)/
-#	cp -a $(LECCIONES_tmp)/$(@F:.ipynb=.org) $(DOCS)/
 	ln -snf -r $(DOCS)/Lecciones/img/ $(TRANSPARENCIAS)/
 	ln -snf -r $(DOCS)/Lecciones/img/ $(CUADERNOS)/
 	ln -snf -r ./datos/ $(DOCS)
@@ -115,8 +113,6 @@ $(LECCIONES_tmp)/src/implementacion_series_formales.org: $(LECCIONES_SRC)/src/im
 	cp -a $(LECCIONES_tmp)/src/implementacion_series_formales.slides.html $(TRANSPARENCIAS)
 	cp -a $(LECCIONES_tmp)/src/implementacion_series_formales.html $(DOCS)/Lecciones/src/
 	echo "TERMINADO IMPLEMENTACION_SERIES_FORMALES.ipynb..."
-
-#          --load ~/Software/scimax/local-init.el \
 
 directorios:
 	mkdir -v -p $(LECCIONES_tmp)/src

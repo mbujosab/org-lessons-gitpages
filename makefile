@@ -51,7 +51,7 @@ $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 	find $(LECCIONES_tmp)/img
 	echo "COPIO LO QUE SE HA GENERADO (.ipynb sin ejecutar y las imágenes) A ./docs..."
 	cp -a $(LECCIONES_tmp)/$(@F) $(CUADERNOS)
-	cp -a $(LECCIONES_tmp)/img $(DOCS)/
+#	cp -a $(LECCIONES_tmp)/img $(DOCS)/
 #	cp -a $(LECCIONES_tmp)/$(@F:.ipynb=.org) $(DOCS)/
 	ln -snf -r $(DOCS)/Lecciones/img/ $(TRANSPARENCIAS)/
 	ln -snf -r $(DOCS)/Lecciones/img/ $(CUADERNOS)/
