@@ -1,5 +1,5 @@
 LECCIONES_SRC = ./org-lessons
-LECCIONES_tmp = ./lecciones
+LECCIONES_tmp = ./Lecciones
 DOCS = ./docs
 CUADERNOS = $(DOCS)/CuadernosElectronicos
 TRANSPARENCIAS = $(DOCS)/Transparencias
@@ -26,7 +26,6 @@ publicacion: $(patsubst $(LECCIONES_SRC)/%.org,$(CUADERNOS)/%.ipynb,$(wildcard $
 	emacs --batch \
 	  --load ~/Software/scimax/init.el \
 	  -l publica.el
-	#ln -snf -r $(DOCS)/img/ $(DOCS)/org-lessons/img/
 	echo "FICHEROS EN Docs?..."
 	ls $(DOCS)
 	ls $(DOCS)/pdfs
@@ -44,20 +43,18 @@ $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 	emacs -Q -l ~/Software/scimax/init.el $(LECCIONES_tmp)/$(@F:.ipynb=.org) --batch --eval "(org-babel-execute-buffer)" --eval "(save-buffer)" --kill
 	echo "FICHEROS EN ./lecciones?..."
 	ls $(LECCIONES_tmp)
-	echo "FICHEROS IMG?..."
-	ls $(LECCIONES_tmp)/img
-	echo "FICHEROS EN ./docs/imgs?..."
-	cp -a $(LECCIONES_tmp)/img $(DOCS)/
-	ls $(DOCS)/img
-	ls $(DOCS)/img/lecc01
+	echo "FICHEROS EN ./docs/Lecciones/img?..."
+	cp -a $(LECCIONES_tmp)/img $(DOCS)/Lecciones
+	ls $(DOCS)/Lecciones/img
+	ls $(DOCS)/Lecciones/img/lecc01
 	echo "Contenido de img tras notebook:"
 	find $(LECCIONES_tmp)/img
 	echo "COPIO LO QUE SE HA GENERADO (.ipynb sin ejecutar y las imágenes) A ./docs..."
 	cp -a $(LECCIONES_tmp)/$(@F) $(CUADERNOS)
 	cp -a $(LECCIONES_tmp)/img $(DOCS)/
 #	cp -a $(LECCIONES_tmp)/$(@F:.ipynb=.org) $(DOCS)/
-	ln -snf -r $(DOCS)/img/ $(TRANSPARENCIAS)/
-	ln -snf -r $(DOCS)/img/ $(CUADERNOS)/
+	ln -snf -r $(DOCS)/Lecciones/img/ $(TRANSPARENCIAS)/
+	ln -snf -r $(DOCS)/Lecciones/img/ $(CUADERNOS)/
 	ln -snf -r ./datos/ $(DOCS)
 #	# Ejecutar el notebook con jupyter nbconvert
 	echo "EJECUCION DEL NOTEBOOK DE JUPYTER..."
@@ -79,13 +76,13 @@ $(LECCIONES_tmp)/src/implementacion_series_formales.org: $(LECCIONES_SRC)/src/im
 	emacs -q --batch \
 	  --load ~/Software/scimax/init.el \
 	  --eval "(require 'ox-ipynb)" \
-	  --eval "(ox-ipynb-export-org-file-to-ipynb-file \"lecciones/src/implementacion_series_formales.org\")"
+	  --eval "(ox-ipynb-export-org-file-to-ipynb-file \"Lecciones/src/implementacion_series_formales.org\")"
 	jupyter nbconvert --execute --inplace $(LECCIONES_tmp)/src/implementacion_series_formales.ipynb
 	jupyter nbconvert --config mycfg-GitHubPages.py --to slides --reveal-prefix "https://unpkg.com/reveal.js@5.2.1" --execute $(LECCIONES_tmp)/src/implementacion_series_formales.ipynb
 	jupyter nbconvert --execute --to html $(LECCIONES_tmp)/src/implementacion_series_formales.ipynb
 	cp -a $(LECCIONES_tmp)/src/implementacion_series_formales.ipynb $(CUADERNOS)
 	cp -a $(LECCIONES_tmp)/src/implementacion_series_formales.slides.html $(TRANSPARENCIAS)
-	cp -a $(LECCIONES_tmp)/src/implementacion_series_formales.html $(DOCS)/src/
+	cp -a $(LECCIONES_tmp)/src/implementacion_series_formales.html $(DOCS)/Lecciones/src/
 	echo "TERMINADO IMPLEMENTACION_SERIES_FORMALES.ipynb..."
 
 #          --load ~/Software/scimax/local-init.el \
@@ -94,9 +91,9 @@ directorios:
 	mkdir -v -p $(LECCIONES_tmp)/src
 	mkdir -v -p $(LECCIONES_tmp)/img
 	ln -snf -r ./css/ $(LECCIONES_tmp)/
-	mkdir -v -p $(DOCS)/img
 	mkdir -v -p $(DOCS)/pdfs
-	mkdir -v -p $(DOCS)/src
+	mkdir -v -p $(DOCS)/Lecciones/img
+	mkdir -v -p $(DOCS)/Lecciones/src
 	mkdir -v -p $(TRANSPARENCIAS)
 	mkdir -v -p $(CUADERNOS)/src
 	touch directorios

@@ -73,10 +73,10 @@ jobs:
       run: |
         make notebooksYslides
 
-    - name: Inspección contenido de img
+    - name: Inspección contenido de Lecciones/img
       run: |
         echo "CONTENIDO DE IMG TRAS NOTEBOOK:"
-        find ./lecciones/img
+        find ./Lecciones/img
 
     - name: Execute Makefile publicacion
       run: |

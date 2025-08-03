@@ -30,7 +30,7 @@ Genera el directorio público =docs= con los ficheros para GitPages con subdirec
 
 #+BEGIN_SRC makefile :noweb no-export :results silent :exports none :tangle makefile
 LECCIONES_SRC = ./org-lessons
-LECCIONES_tmp = ./lecciones
+LECCIONES_tmp = ./Lecciones
 DOCS = ./docs
 CUADERNOS = $(DOCS)/CuadernosElectronicos
 TRANSPARENCIAS = $(DOCS)/Transparencias
@@ -57,7 +57,6 @@ publicacion: $(patsubst $(LECCIONES_SRC)/%.org,$(CUADERNOS)/%.ipynb,$(wildcard $
 	emacs --batch \
 	  --load ~/Software/scimax/init.el \
 	  -l publica.el
-	#ln -snf -r $(DOCS)/img/ $(DOCS)/org-lessons/img/
 	echo "FICHEROS EN Docs?..."
 	ls $(DOCS)
 	ls $(DOCS)/pdfs
@@ -75,20 +74,18 @@ $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 	emacs -Q -l ~/Software/scimax/init.el $(LECCIONES_tmp)/$(@F:.ipynb=.org) --batch --eval "(org-babel-execute-buffer)" --eval "(save-buffer)" --kill
 	echo "FICHEROS EN ./lecciones?..."
 	ls $(LECCIONES_tmp)
-	echo "FICHEROS IMG?..."
-	ls $(LECCIONES_tmp)/img
-	echo "FICHEROS EN ./docs/imgs?..."
-	cp -a $(LECCIONES_tmp)/img $(DOCS)/
-	ls $(DOCS)/img
-	ls $(DOCS)/img/lecc01
+	echo "FICHEROS EN ./docs/Lecciones/img?..."
+	cp -a $(LECCIONES_tmp)/img $(DOCS)/Lecciones
+	ls $(DOCS)/Lecciones/img
+	ls $(DOCS)/Lecciones/img/lecc01
 	echo "Contenido de img tras notebook:"
 	find $(LECCIONES_tmp)/img
 	echo "COPIO LO QUE SE HA GENERADO (.ipynb sin ejecutar y las imágenes) A ./docs..."
 	cp -a $(LECCIONES_tmp)/$(@F) $(CUADERNOS)
 	cp -a $(LECCIONES_tmp)/img $(DOCS)/
 #	cp -a $(LECCIONES_tmp)/$(@F:.ipynb=.org) $(DOCS)/
-	ln -snf -r $(DOCS)/img/ $(TRANSPARENCIAS)/
-	ln -snf -r $(DOCS)/img/ $(CUADERNOS)/
+	ln -snf -r $(DOCS)/Lecciones/img/ $(TRANSPARENCIAS)/
+	ln -snf -r $(DOCS)/Lecciones/img/ $(CUADERNOS)/
 	ln -snf -r ./datos/ $(DOCS)
 #	# Ejecutar el notebook con jupyter nbconvert
 	echo "EJECUCION DEL NOTEBOOK DE JUPYTER..."
@@ -110,13 +107,13 @@ $(LECCIONES_tmp)/src/implementacion_series_formales.org: $(LECCIONES_SRC)/src/im
 	emacs -q --batch \
 	  --load ~/Software/scimax/init.el \
 	  --eval "(require 'ox-ipynb)" \
-	  --eval "(ox-ipynb-export-org-file-to-ipynb-file \"lecciones/src/implementacion_series_formales.org\")"
+	  --eval "(ox-ipynb-export-org-file-to-ipynb-file \"Lecciones/src/implementacion_series_formales.org\")"
 	jupyter nbconvert --execute --inplace $(LECCIONES_tmp)/src/implementacion_series_formales.ipynb
 	jupyter nbconvert --config mycfg-GitHubPages.py --to slides --reveal-prefix "https://unpkg.com/reveal.js@5.2.1" --execute $(LECCIONES_tmp)/src/implementacion_series_formales.ipynb
 	jupyter nbconvert --execute --to html $(LECCIONES_tmp)/src/implementacion_series_formales.ipynb
 	cp -a $(LECCIONES_tmp)/src/implementacion_series_formales.ipynb $(CUADERNOS)
 	cp -a $(LECCIONES_tmp)/src/implementacion_series_formales.slides.html $(TRANSPARENCIAS)
-	cp -a $(LECCIONES_tmp)/src/implementacion_series_formales.html $(DOCS)/src/
+	cp -a $(LECCIONES_tmp)/src/implementacion_series_formales.html $(DOCS)/Lecciones/src/
 	echo "TERMINADO IMPLEMENTACION_SERIES_FORMALES.ipynb..."
 
 #          --load ~/Software/scimax/local-init.el \
@@ -125,9 +122,9 @@ directorios:
 	mkdir -v -p $(LECCIONES_tmp)/src
 	mkdir -v -p $(LECCIONES_tmp)/img
 	ln -snf -r ./css/ $(LECCIONES_tmp)/
-	mkdir -v -p $(DOCS)/img
 	mkdir -v -p $(DOCS)/pdfs
-	mkdir -v -p $(DOCS)/src
+	mkdir -v -p $(DOCS)/Lecciones/img
+	mkdir -v -p $(DOCS)/Lecciones/src
 	mkdir -v -p $(TRANSPARENCIAS)
 	mkdir -v -p $(CUADERNOS)/src
 	touch directorios
@@ -145,7 +142,7 @@ cleanAll: clean
 
 ** Aclaraciones
 
-El directorio =./lecciones= es temporal. En dicho directorio se ejecutan los notebooks. Los ficheros creados se copian en distintos subdirectorios del directorio de publicación =./docs/= (es el directorio de donde "cuelgan" las páginas web; dichas páginas se distribuyen desde la rama =gh-pages= del repositorio).
+El directorio =./Lecciones= es temporal. En dicho directorio se ejecutan los notebooks. Los ficheros creados se copian en distintos subdirectorios del directorio de publicación =./docs/= (es el directorio de donde "cuelgan" las páginas web; dichas páginas se distribuyen desde la rama =gh-pages= del repositorio).
 
 
 * Fichero =build.yml=
@@ -229,10 +226,10 @@ jobs:
       run: |
         make notebooksYslides
 
-    - name: Inspección contenido de img
+    - name: Inspección contenido de Lecciones/img
       run: |
         echo "CONTENIDO DE IMG TRAS NOTEBOOK:"
-        find ./lecciones/img
+        find ./Lecciones/img
 
     - name: Execute Makefile publicacion
       run: |
@@ -469,57 +466,10 @@ Este script transforma los ficheros org de las lecciones en pdfs y htmls.
     ;(org-babel-execute-buffer)
     (org-latex-publish-to-pdf plist filename pub-dir)))
 
-;(let* ((base-directory "./lecciones/")
-;       (public-directory "./docs/"))
-;  (setq org-publish-project-alist
-;        `(("images"
-;           :base-directory "./lecciones/img/"
-;           :base-extension "jpg\\|gif\\|png"
-;           :publishing-directory ,(concat public-directory "img")
-;           :publishing-function org-publish-attachment)
-;
-;          ("html"
-;           :base-directory ,base-directory
-;           :base-extension "org"
-;           :publishing-directory ,public-directory
-;           :exclude "src"
-;           :recursive t
-;           :publishing-function org-html-publish-to-html
-;           :auto-preamble t)
-;
-;          ("pdf"
-;           :base-directory ,base-directory
-;           :base-extension "org"
-;           :publishing-directory ,(concat public-directory "pdfs")
-;           :exclude "src"
-;           :recursive t
-;           :publishing-function my-org-latex-publish-to-pdf
-;           :auto-preamble t)
-;
-;          ("static-html"
-;           :base-directory ,base-directory
-;           :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|dat\\|mov\\|txt\\|svg\\|aiff\\|csv\\|gdt\\|inp"
-;           :publishing-directory ,public-directory
-;           :exclude "src"
-;           :recursive t
-;           :publishing-function org-publish-attachment)
-;
-;          ("scimax-eln" :components ("html" "static-html" "pdf" "images"))))
-;
-;  (message "🟢 Iniciando publicación de lecciones (scimax-eln)...")
-;  (org-publish "scimax-eln" t)
-;  (message "✅ Publicación de lecciones completada."))
-
 (let* ((base-directory "./"))
   (setq org-publish-project-alist
         (append org-publish-project-alist
-                `(("images"
-                   :base-directory "./lecciones/img/"
-                   :base-extension "jpg\\|gif\\|png"
-                   :publishing-directory ,(concat base-directory "docs/img")
-                   :publishing-function org-publish-attachment)
-
-                  ("index"
+                `(("index"
                    :base-directory ,base-directory
                    :base-extension "org"
                    :publishing-directory ,(concat base-directory "docs")
@@ -534,7 +484,7 @@ Este script transforma los ficheros org de las lecciones en pdfs y htmls.
                    :section-numbers nil)
 
                   ("pdf"
-                   :base-directory "./lecciones/"
+                   :base-directory "./Lecciones/"
                    :base-extension "org"
                    :publishing-directory ,(concat base-directory "docs/pdfs")
                    :exclude "src\\|org-lessons\\|org-practicas"
@@ -569,6 +519,54 @@ Podemos chequear la versión local ejecutando el siguiente bloque
 (browse-url "docs/index.html")
 #+END_SRC
 
+
+# ("images"
+#                    :base-directory "./Lecciones/img/"
+#                    :base-extension "jpg\\|gif\\|png"
+#                    :publishing-directory ,(concat base-directory "docs/img")
+#                    :publishing-function org-publish-attachment)
+# 
+#                   
+# ;(let* ((base-directory "./lecciones/")
+# ;       (public-directory "./docs/"))
+# ;  (setq org-publish-project-alist
+# ;        `(("images"
+# ;           :base-directory "./lecciones/img/"
+# ;           :base-extension "jpg\\|gif\\|png"
+# ;           :publishing-directory ,(concat public-directory "img")
+# ;           :publishing-function org-publish-attachment)
+# ;
+# ;          ("html"
+# ;           :base-directory ,base-directory
+# ;           :base-extension "org"
+# ;           :publishing-directory ,public-directory
+# ;           :exclude "src"
+# ;           :recursive t
+# ;           :publishing-function org-html-publish-to-html
+# ;           :auto-preamble t)
+# ;
+# ;          ("pdf"
+# ;           :base-directory ,base-directory
+# ;           :base-extension "org"
+# ;           :publishing-directory ,(concat public-directory "pdfs")
+# ;           :exclude "src"
+# ;           :recursive t
+# ;           :publishing-function my-org-latex-publish-to-pdf
+# ;           :auto-preamble t)
+# ;
+# ;          ("static-html"
+# ;           :base-directory ,base-directory
+# ;           :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|dat\\|mov\\|txt\\|svg\\|aiff\\|csv\\|gdt\\|inp"
+# ;           :publishing-directory ,public-directory
+# ;           :exclude "src"
+# ;           :recursive t
+# ;           :publishing-function org-publish-attachment)
+# ;
+# ;          ("scimax-eln" :components ("html" "static-html" "pdf" "images"))))
+# ;
+# ;  (message "🟢 Iniciando publicación de lecciones (scimax-eln)...")
+# ;  (org-publish "scimax-eln" t)
+# ;  (message "✅ Publicación de lecciones completada."))
 
 
 * slides para GitHubpages
