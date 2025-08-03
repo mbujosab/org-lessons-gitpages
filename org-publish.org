@@ -109,7 +109,6 @@ $(LECCIONES_tmp)/src/implementacion_series_formales.org: $(LECCIONES_SRC)/src/im
 	ln -sf -r $(CUADERNOS)/src/implementacion_series_formales.py $(CUADERNOS)/
 	emacs -q --batch \
 	  --load ~/Software/scimax/init.el \
-          --load ~/Software/scimax/local-init.el \
 	  --eval "(require 'ox-ipynb)" \
 	  --eval "(ox-ipynb-export-org-file-to-ipynb-file \"lecciones/src/implementacion_series_formales.org\")"
 	jupyter nbconvert --execute --inplace $(LECCIONES_tmp)/src/implementacion_series_formales.ipynb
@@ -119,6 +118,8 @@ $(LECCIONES_tmp)/src/implementacion_series_formales.org: $(LECCIONES_SRC)/src/im
 	cp -a $(LECCIONES_tmp)/src/implementacion_series_formales.slides.html $(TRANSPARENCIAS)
 	cp -a $(LECCIONES_tmp)/src/implementacion_series_formales.html $(DOCS)
 	echo "TERMINADO IMPLEMENTACION_SERIES_FORMALES.ipynb..."
+
+#          --load ~/Software/scimax/local-init.el \
 
 directorios:
 	mkdir -v -p $(LECCIONES_tmp)/src
@@ -196,10 +197,6 @@ jobs:
     - name: Disable tlmgr (prevent accidental calls)
       run: sudo mv /usr/bin/tlmgr /usr/bin/tlmgr.disabled || true
 
-    - name: Ensure git is installed
-      run: |
-        git --version
-
     - name: Clone Scimax
       run: |
         git clone https://github.com/jkitchin/scimax.git ~/Software/scimax
@@ -230,14 +227,6 @@ jobs:
               --eval "(dolist (dir (directory-files \"~/.emacs.d/elpa/\" t \"^[^.]\")) (add-to-list 'load-path dir))" \
               --eval "(require 'ox-ipynb)"
 
-    - name: Crear local-init.el para Emacs
-      run: |
-        mkdir -p ~/Software/scimax
-        echo "(setq straight-vc-git-default-clone-depth nil)" > ~/Software/scimax/local-init.el
-        echo "(condition-case err" >> ~/Software/scimax/local-init.el
-        echo "    (straight-use-package 'nongnu-elpa)" > ~/Software/scimax/local-init.el
-        echo "(error (message "straight.el failed: %s" err)))" > ~/Software/scimax/local-init.el
-
     - name: Execute Makefile notebooksYslides
       run: |
         make notebooksYslides
@@ -259,6 +248,15 @@ jobs:
         publish_branch: gh-pages
         destination_dir: docs
 #+END_SRC
+
+#    - name: Crear local-init.el para Emacs
+#      run: |
+#        mkdir -p ~/Software/scimax
+#        echo "(setq straight-vc-git-default-clone-depth nil)" > ~/Software/scimax/local-init.el
+#        echo "(condition-case err" >> ~/Software/scimax/local-init.el
+#        echo "    (straight-use-package 'nongnu-elpa)" > ~/Software/scimax/local-init.el
+#        echo "(error (message "straight.el failed: %s" err)))" > ~/Software/scimax/local-init.el
+
 
 ** Aclaraciones
 
@@ -527,7 +525,7 @@ Este script transforma los ficheros org de las lecciones en pdfs y htmls.
                    :base-directory ,base-directory
                    :base-extension "org"
                    :publishing-directory ,(concat base-directory "docs")
-                   :exclude "Calendario\\|org-lessons\\|org-practicas\\|docs\\|chatCopilot.org\\|org-publish.org\\|README.org"
+                   :exclude "src\\|Calendario\\|org-lessons\\|org-practicas\\|docs\\|chatCopilot.org\\|org-publish.org\\|README.org"
                    :recursive t
                    :publishing-function org-html-publish-to-html
                    :auto-preamble t
@@ -550,7 +548,7 @@ Este script transforma los ficheros org de las lecciones en pdfs y htmls.
                    :base-directory ,base-directory
                    :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|dat\\|mov\\|txt\\|svg\\|aiff"
                    :publishing-directory ,(concat base-directory "docs")
-                   :exclude "Calendario\\|org-lessons\\|org-practicas\\|docs\\|chatCopilot.*\\|org-publish.*\\|README.org"
+                   :exclude "src\\|Calendario\\|org-lessons\\|org-practicas\\|docs\\|chatCopilot.*\\|org-publish.*\\|README.org"
                    :recursive t
                    :publishing-function org-publish-attachment)
 

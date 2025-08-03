@@ -69,7 +69,7 @@
                    :base-directory ,base-directory
                    :base-extension "org"
                    :publishing-directory ,(concat base-directory "docs")
-                   :exclude "Calendario\\|org-lessons\\|org-practicas\\|docs\\|chatCopilot.org\\|org-publish.org\\|README.org"
+                   :exclude "src\\|Calendario\\|org-lessons\\|org-practicas\\|docs\\|chatCopilot.org\\|org-publish.org\\|README.org"
                    :recursive t
                    :publishing-function org-html-publish-to-html
                    :auto-preamble t
@@ -92,7 +92,7 @@
                    :base-directory ,base-directory
                    :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|dat\\|mov\\|txt\\|svg\\|aiff"
                    :publishing-directory ,(concat base-directory "docs")
-                   :exclude "Calendario\\|org-lessons\\|org-practicas\\|docs\\|chatCopilot.*\\|org-publish.*\\|README.org"
+                   :exclude "src\\|Calendario\\|org-lessons\\|org-practicas\\|docs\\|chatCopilot.*\\|org-publish.*\\|README.org"
                    :recursive t
                    :publishing-function org-publish-attachment)
 

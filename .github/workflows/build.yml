@@ -42,10 +42,6 @@ jobs:
     - name: Disable tlmgr (prevent accidental calls)
       run: sudo mv /usr/bin/tlmgr /usr/bin/tlmgr.disabled || true
 
-    - name: Ensure git is installed
-      run: |
-        git --version
-
     - name: Clone Scimax
       run: |
         git clone https://github.com/jkitchin/scimax.git ~/Software/scimax
@@ -75,14 +71,6 @@ jobs:
               --eval "(add-to-list 'load-path \"~/Software/scimax/\")" \
               --eval "(dolist (dir (directory-files \"~/.emacs.d/elpa/\" t \"^[^.]\")) (add-to-list 'load-path dir))" \
               --eval "(require 'ox-ipynb)"
-
-    - name: Crear local-init.el para Emacs
-      run: |
-        mkdir -p ~/Software/scimax
-        echo "(setq straight-vc-git-default-clone-depth nil)" > ~/Software/scimax/local-init.el
-        echo "(condition-case err" >> ~/Software/scimax/local-init.el
-        echo "    (straight-use-package 'nongnu-elpa)" > ~/Software/scimax/local-init.el
-        echo "(error (message "straight.el failed: %s" err)))" > ~/Software/scimax/local-init.el
 
     - name: Execute Makefile notebooksYslides
       run: |
