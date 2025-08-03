@@ -85,7 +85,7 @@ $(LECCIONES_tmp)/src/implementacion_series_formales.org: $(LECCIONES_SRC)/src/im
 	jupyter nbconvert --execute --to html $(LECCIONES_tmp)/src/implementacion_series_formales.ipynb
 	cp -a $(LECCIONES_tmp)/src/implementacion_series_formales.ipynb $(CUADERNOS)
 	cp -a $(LECCIONES_tmp)/src/implementacion_series_formales.slides.html $(TRANSPARENCIAS)
-	cp -a $(LECCIONES_tmp)/src/implementacion_series_formales.html $(DOCS)
+	cp -a $(LECCIONES_tmp)/src/implementacion_series_formales.html $(DOCS)/src/
 	echo "TERMINADO IMPLEMENTACION_SERIES_FORMALES.ipynb..."
 
 #          --load ~/Software/scimax/local-init.el \
@@ -96,6 +96,7 @@ directorios:
 	ln -snf -r ./css/ $(LECCIONES_tmp)/
 	mkdir -v -p $(DOCS)/img
 	mkdir -v -p $(DOCS)/pdfs
+	mkdir -v -p $(DOCS)/src
 	mkdir -v -p $(TRANSPARENCIAS)
 	mkdir -v -p $(CUADERNOS)/src
 	touch directorios

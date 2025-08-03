@@ -28,9 +28,6 @@ jobs:
       run: |
         pip install sympy numpy pandas matplotlib dataframe-image statsmodels seaborn
 
-    - name: Set MPLBACKEND (matplotlib)
-      run: echo "MPLBACKEND=Agg" >> $GITHUB_ENV
-
     - name: Verify Jupyter Installation
       run: |
         jupyter kernelspec list
