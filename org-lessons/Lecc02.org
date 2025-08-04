@@ -1,4 +1,4 @@
-#+TITLE: Econometría Aplicada. Lección 2
+#+TITLE: Lección 2. Conceptos algebraicos 
 #+author: Marcos Bujosa
 #+LANGUAGE: es
 

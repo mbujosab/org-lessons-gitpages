@@ -34,24 +34,24 @@
     :UNNUMBERED: nil
     :END:  
 
-- [[file:./Transparencias/Lecc01.slides.html][slides]]
-- [[file:./Lecc01.html][html]]
-- [[file:./pdfs/Lecc01.pdf][pdf]]
+- ([[file:./Transparencias/Lecc01.slides.html][slides]]) --- ([[file:./Lecciones/Lecc01.html][html]]) --- ([[file:./Lecciones/Lecc01.pdf][pdf]])
+
 - [[https://mybinder.org/v2/gh/mbujosab/EconometriaAplicada-SRC/HEAD?labpath=Lecc01.ipynb][notebook en mybinder]]
 
 *** Practicas
 
-- [[file:./Practicas/PracticasGretl/pub/Prct-Lecc01.pdf][pdf file]]
-- Guiones de gretl
-  + [[file:./Practicas/PracticasGretl/pub/scripts/airlinePass.inp][airlinePass.inp]]
+- ([[file:./Lecciones/Practicas/Prct-Lecc01.html][html]]) --- ([[file:./Lecciones/Practicas/Prct-Lecc01.pdf][pdf]])
+- Guiones de gretl: 
+  + [[file:./Lecciones/Practicas/guiones/lecc01-airlinePass.inp][lecc01-airlinePass.inp]]
 
 
 ** Conceptos algebraicos (Lecc02)
 
 - [[file:./Transparencias/Lecc02.slides.html][slides]]
-- [[file:./Lecc02.html][html]]
-- [[file:./pdfs/Lecc02.pdf][pdf]]
-- [[https://mybinder.org/v2/gh/mbujosab/EconometriaAplicada-SRC/HEAD?labpath=Lecc04.ipynb][notebook en mybinder]]
+- [[file:./Lecciones/Lecc02.html][html]]
+- [[file:./Lecciones/Lecc02.pdf][pdf]]
+
+[[https://mybinder.org/v2/gh/mbujosab/EconometriaAplicada-SRC/HEAD?labpath=Lecc04.ipynb][notebook en mybinder]]
 
 
 ** Procesos estocásticos débilmente estacionarios (Lecc03)

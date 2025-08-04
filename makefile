@@ -8,7 +8,7 @@ SRC_FILES = $(LECCIONES_SRC)/Lecc*.org
 
 .PHONY: all clean cleanAll directorios series_formales calendario notebooksYslides
 
-all: calendario notebooksYslides publicacion
+all: calendario notebooksYslides practicas publicacion
 
 calendario: $(DOCS)/Calendario-Econometria-Aplicada.pdf
 
@@ -21,7 +21,6 @@ publicacion: $(patsubst $(LECCIONES_SRC)/%.org,$(CUADERNOS)/%.ipynb,$(wildcard $
 	cp -a $(LECCIONES_tmp)/Lecc*.slides.html $(TRANSPARENCIAS)
 	ls $(CUADERNOS)
 	ls $(TRANSPARENCIAS)
-	cp -a org-practicas $(LECCIONES_tmp)/practicas
 	echo "EJECUCIÓN DE publica.el..."
 	emacs --batch \
 	  --load ~/Software/scimax/init.el \
@@ -30,6 +29,7 @@ publicacion: $(patsubst $(LECCIONES_SRC)/%.org,$(CUADERNOS)/%.ipynb,$(wildcard $
 	ls $(DOCS)
 	ls $(DOCS)/pdfs
 	touch $@
+
 
 notebooksYslides: $(patsubst $(LECCIONES_SRC)/%.org,$(CUADERNOS)/%.ipynb,$(wildcard $(SRC_FILES)))
 	touch $@
@@ -51,8 +51,6 @@ $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 	find $(LECCIONES_tmp)/img
 	echo "COPIO LO QUE SE HA GENERADO (.ipynb sin ejecutar y las imágenes) A ./docs..."
 	cp -a $(LECCIONES_tmp)/$(@F) $(CUADERNOS)
-#	cp -a $(LECCIONES_tmp)/img $(DOCS)/
-#	cp -a $(LECCIONES_tmp)/$(@F:.ipynb=.org) $(DOCS)/
 	ln -snf -r $(DOCS)/Lecciones/img/ $(TRANSPARENCIAS)/
 	ln -snf -r $(DOCS)/Lecciones/img/ $(CUADERNOS)/
 	ln -snf -r ./datos/ $(DOCS)
@@ -63,6 +61,25 @@ $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 	jupyter nbconvert --config mycfg-GitHubPages.py --to slides --reveal-prefix "https://unpkg.com/reveal.js@5.2.1" --execute $(LECCIONES_tmp)/$(@F) 
 	echo "FICHEROS EN Docs ANTES DE PUBLICAR?..."
 	ls $(DOCS)
+
+
+practicas:
+	echo "➡️ Copiando prácticas desde org-practicas/ a $(LECCIONES_tmp)/Practicas..."
+	mkdir -p $(LECCIONES_tmp)/Practicas/guiones
+	cp -a org-practicas/*.org $(LECCIONES_tmp)/Practicas/
+	cp -a org-practicas/hansl.tex $(LECCIONES_tmp)/Practicas/
+	echo "🧠 Tangle y ejecución de cada práctica..."
+	for f in $(LECCIONES_tmp)/Practicas/*.org; do \
+	  echo "🔧 Procesando $$f..."; \
+	  emacs --batch \
+	        --load ~/Software/scimax/init.el \
+	        $$f \
+	        --eval "(org-babel-tangle)" \
+	        --eval "(org-babel-execute-buffer)" \
+	        --eval "(save-buffer)" \
+	        --kill; \
+	done
+	touch practicas
 
 series_formales: $(LECCIONES_tmp)/src/implementacion_series_formales.org
 
@@ -85,8 +102,6 @@ $(LECCIONES_tmp)/src/implementacion_series_formales.org: $(LECCIONES_SRC)/src/im
 	cp -a $(LECCIONES_tmp)/src/implementacion_series_formales.html $(DOCS)/Lecciones/src/
 	echo "TERMINADO IMPLEMENTACION_SERIES_FORMALES.ipynb..."
 
-#          --load ~/Software/scimax/local-init.el \
-
 directorios:
 	mkdir -v -p $(LECCIONES_tmp)/src
 	mkdir -v -p $(LECCIONES_tmp)/img
@@ -106,4 +121,5 @@ cleanAll: clean
 	rm -f directorios
 	rm -f series_formales
 	rm -f publicacion
+	rm -f practicas
 	rm -r -f logs

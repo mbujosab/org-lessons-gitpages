@@ -1,10 +1,16 @@
 *~
 docs/
 logs/
-lecciones/
+Lecciones/
 directorios
 series_formales
 notebooksYslides
 publicacion
+practicas
 sitemap.org
+sitemap.tex
+sitemap.pdf
 chatCopilot.org
+makefile.mk
+org-publish.pdf
+org-publish.tex
