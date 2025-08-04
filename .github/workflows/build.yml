@@ -21,8 +21,8 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y git emacs pandoc aspell aspell-en aspell-es
-        pip install jupyter nbconvert zip gretl
+        sudo apt-get install -y git emacs pandoc aspell aspell-en aspell-es zip gretl
+        pip install jupyter nbconvert
 
     - name: Install Python modules
       run: |
