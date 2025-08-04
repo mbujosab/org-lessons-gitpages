@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
 <head>
-<!-- 2025-08-03 Sun 19:37 -->
+<!-- 2025-08-04 Mon 16:46 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Econometría Aplicada. Lección 2</title>
+<title>Lección 2. Conceptos algebraicos</title>
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
 .org-bold { /* bold */ font-weight: bold; }.org-bold-italic { /* bold-italic */ font-weight: bold; font-style: italic; }.org-buffer-menu-buffer { /* buffer-menu-buffer */ font-weight: bold; }.org-builtin { /* font-lock-builtin-face */ color: #7a378b; }.org-button { /* button */ text-decoration: underline; }.org-calendar-today { /* calendar-today */ text-decoration: underline; }.org-change-log-acknowledgement { /* change-log-acknowledgement */ color: #b22222; }.org-change-log-conditionals { /* change-log-conditionals */ color: #a0522d; }.org-change-log-date { /* change-log-date */ color: #8b2252; }.org-change-log-email { /* change-log-email */ color: #a0522d; }.org-change-log-file { /* change-log-file */ color: #0000ff; }.org-change-log-function { /* change-log-function */ color: #a0522d; }.org-change-log-list { /* change-log-list */ color: #a020f0; }.org-change-log-name { /* change-log-name */ color: #008b8b; }.org-comint-highlight-input { /* comint-highlight-input */ font-weight: bold; }.org-comint-highlight-prompt { /* comint-highlight-prompt */ color: #00008b; }.org-comment { /* font-lock-comment-face */ color: #999988; font-style: italic; }.org-comment-delimiter { /* font-lock-comment-delimiter-face */ color: #999988; font-style: italic; }.org-completions-annotations { /* completions-annotations */ font-style: italic; }.org-completions-common-part { /* completions-common-part */ color: #000000; background-color: #ffffff; }.org-completions-first-difference { /* completions-first-difference */ font-weight: bold; }.org-constant { /* font-lock-constant-face */ color: #008b8b; }.org-diary { /* diary */ color: #ff0000; }.org-diff-context { /* diff-context */ color: #7f7f7f; }.org-diff-file-header { /* diff-file-header */ background-color: #b3b3b3; font-weight: bold; }.org-diff-function { /* diff-function */ background-color: #cccccc; }.org-diff-header { /* diff-header */ background-color: #cccccc; }.org-diff-hunk-header { /* diff-hunk-header */ background-color: #cccccc; }.org-diff-index { /* diff-index */ background-color: #b3b3b3; font-weight: bold; }.org-diff-nonexistent { /* diff-nonexistent */ background-color: #b3b3b3; font-weight: bold; }.org-diff-refine-change { /* diff-refine-change */ background-color: #d9d9d9; }.org-dired-directory { /* dired-directory */ color: #0000ff; }.org-dired-flagged { /* dired-flagged */ color: #ff0000; font-weight: bold; }.org-dired-header { /* dired-header */ color: #228b22; }.org-dired-ignored { /* dired-ignored */ color: #7f7f7f; }.org-dired-mark { /* dired-mark */ color: #008b8b; }.org-dired-marked { /* dired-marked */ color: #ff0000; font-weight: bold; }.org-dired-perm-write { /* dired-perm-write */ color: #b22222; }.org-dired-symlink { /* dired-symlink */ color: #a020f0; }.org-dired-warning { /* dired-warning */ color: #ff0000; font-weight: bold; }.org-doc { /* font-lock-doc-face */ color: #8b2252; }.org-escape-glyph { /* escape-glyph */ color: #a52a2a; }.org-file-name-shadow { /* file-name-shadow */ color: #7f7f7f; }.org-flyspell-duplicate { /* flyspell-duplicate */ color: #cdad00; font-weight: bold; text-decoration: underline; }.org-flyspell-incorrect { /* flyspell-incorrect */ color: #ff4500; font-weight: bold; text-decoration: underline; }.org-fringe { /* fringe */ background-color: #f2f2f2; }.org-function-name { /* font-lock-function-name-face */ color: teal; }.org-header-line { /* header-line */ color: #333333; background-color: #e5e5e5; }.org-help-argument-name { /* help-argument-name */ font-style: italic; }.org-highlight { /* highlight */ background-color: #b4eeb4; }.org-holiday { /* holiday */ background-color: #ffc0cb; }.org-isearch { /* isearch */ color: #b0e2ff; background-color: #cd00cd; }.org-isearch-fail { /* isearch-fail */ background-color: #ffc1c1; }.org-italic { /* italic */ font-style: italic; }.org-keyword { /* font-lock-keyword-face */ color: #0086b3; }.org-lazy-highlight { /* lazy-highlight */ background-color: #afeeee; }.org-link { /* link */ color: #0000ff; text-decoration: underline; }.org-link-visited { /* link-visited */ color: #8b008b; text-decoration: underline; }.org-log-edit-header { /* log-edit-header */ color: #a020f0; }.org-log-edit-summary { /* log-edit-summary */ color: #0000ff; }.org-log-edit-unknown-header { /* log-edit-unknown-header */ color: #b22222; }.org-match { /* match */ background-color: #ffff00; }.org-next-error { /* next-error */ background-color: #eedc82; }.org-nobreak-space { /* nobreak-space */ color: #a52a2a; text-decoration: underline; }.org-org-archived { /* org-archived */ color: #7f7f7f; }.org-org-block { /* org-block */ color: #7f7f7f; }.org-org-block-begin-line { /* org-block-begin-line */ color: #b22222; }.org-org-block-end-line { /* org-block-end-line */ color: #b22222; }.org-org-checkbox { /* org-checkbox */ font-weight: bold; }.org-org-checkbox-statistics-done { /* org-checkbox-statistics-done */ color: #228b22; font-weight: bold; }.org-org-checkbox-statistics-todo { /* org-checkbox-statistics-todo */ color: #ff0000; font-weight: bold; }.org-org-clock-overlay { /* org-clock-overlay */ background-color: #ffff00; }.org-org-code { /* org-code */ color: #7f7f7f; }.org-org-column { /* org-column */ background-color: #e5e5e5; }.org-org-column-title { /* org-column-title */ background-color: #e5e5e5; font-weight: bold; text-decoration: underline; }.org-org-date { /* org-date */ color: #a020f0; text-decoration: underline; }.org-org-document-info { /* org-document-info */ color: #191970; }.org-org-document-info-keyword { /* org-document-info-keyword */ color: #7f7f7f; }.org-org-document-title { /* org-document-title */ color: #191970; font-size: 144%; font-weight: bold; }.org-org-done { /* org-done */ color: #228b22; font-weight: bold; }.org-org-drawer { /* org-drawer */ color: #0000ff; }.org-org-ellipsis { /* org-ellipsis */ color: #b8860b; text-decoration: underline; }.org-org-footnote { /* org-footnote */ color: #a020f0; text-decoration: underline; }.org-org-formula { /* org-formula */ color: #b22222; }.org-org-headline-done { /* org-headline-done */ color: #bc8f8f; }.org-org-hide { /* org-hide */ color: #ffffff; }.org-org-latex-and-export-specials { /* org-latex-and-export-specials */ color: #8b4513; }.org-org-level-1 { /* org-level-1 */ color: #0000ff; }.org-org-level-2 { /* org-level-2 */ color: #a0522d; }.org-org-level-3 { /* org-level-3 */ color: #a020f0; }.org-org-level-4 { /* org-level-4 */ color: #b22222; }.org-org-level-5 { /* org-level-5 */ color: #228b22; }.org-org-level-6 { /* org-level-6 */ color: #008b8b; }.org-org-level-7 { /* org-level-7 */ color: #7a378b; }.org-org-level-8 { /* org-level-8 */ color: #8b2252; }.org-org-link { /* org-link */ color: #0000ff; text-decoration: underline; }.org-org-meta-line { /* org-meta-line */ color: #b22222; }.org-org-mode-line-clock { /* org-mode-line-clock */ color: #000000; background-color: #bfbfbf; }.org-org-mode-line-clock-overrun { /* org-mode-line-clock-overrun */ color: #000000; background-color: #ff0000; }.org-org-quote { /* org-quote */ color: #7f7f7f; }.org-org-scheduled { /* org-scheduled */ color: #006400; }.org-org-scheduled-previously { /* org-scheduled-previously */ color: #b22222; }.org-org-scheduled-today { /* org-scheduled-today */ color: #006400; }.org-org-sexp-date { /* org-sexp-date */ color: #a020f0; }.org-org-special-keyword { /* org-special-keyword */ color: #a020f0; }.org-org-table { /* org-table */ color: #0000ff; }.org-org-tag { /* org-tag */ font-weight: bold; }.org-org-target { /* org-target */ text-decoration: underline; }.org-org-time-grid { /* org-time-grid */ color: #b8860b; }.org-org-todo { /* org-todo */ color: #ff0000; font-weight: bold; }.org-org-upcoming-deadline { /* org-upcoming-deadline */ color: #b22222; }.org-org-verbatim { /* org-verbatim */ color: #7f7f7f; }.org-org-verse { /* org-verse */ color: #7f7f7f; }.org-org-warning { /* org-warning */ color: #ff0000; font-weight: bold; }.org-outline-1 { /* outline-1 */ color: #0000ff; }.org-outline-2 { /* outline-2 */ color: #a0522d; }.org-outline-3 { /* outline-3 */ color: #a020f0; }.org-outline-4 { /* outline-4 */ color: #b22222; }.org-outline-5 { /* outline-5 */ color: #228b22; }.org-outline-6 { /* outline-6 */ color: #008b8b; }.org-outline-7 { /* outline-7 */ color: #7a378b; }.org-outline-8 { /* outline-8 */ color: #8b2252; }.org-preprocessor { /* font-lock-preprocessor-face */ color: #7a378b; }.org-query-replace { /* query-replace */ color: #b0e2ff; background-color: #cd00cd; }.org-regexp-grouping-backslash { /* font-lock-regexp-grouping-backslash */ font-weight: bold; }.org-regexp-grouping-construct { /* font-lock-regexp-grouping-construct */ font-weight: bold; }.org-region { /* region */ background-color: #eedc82; }.org-secondary-selection { /* secondary-selection */ background-color: #ffff00; }.org-shadow { /* shadow */ color: #7f7f7f; }.org-show-paren-match { /* show-paren-match */ background-color: #40e0d0; }.org-show-paren-mismatch { /* show-paren-mismatch */ color: #ffffff; background-color: #a020f0; }.org-string { /* font-lock-string-face */ color: #dd1144; }.org-tool-bar { /* tool-bar */ color: #000000; background-color: #bfbfbf; }.org-tooltip { /* tooltip */ color: #000000; background-color: #ffffe0; }.org-trailing-whitespace { /* trailing-whitespace */ background-color: #ff0000; }.org-type { /* font-lock-type-face */ color: #228b22; }.org-underline { /* underline */ text-decoration: underline; }.org-variable-name { /* font-lock-variable-name-face */ color: teal; }.org-warning { /* font-lock-warning-face */ color: #ff0000; font-weight: bold; }.org-widget-button { /* widget-button */ font-weight: bold; }.org-widget-button-pressed { /* widget-button-pressed */ color: #ff0000; }.org-widget-documentation { /* widget-documentation */ color: #006400; }.org-widget-field { /* widget-field */ background-color: #d9d9d9; }.org-widget-inactive { /* widget-inactive */ color: #7f7f7f; }.org-widget-single-line-field { /* widget-single-line-field */ background-color: #d9d9d9; }
@@ -61,82 +61,82 @@ $(function() {    $('.note').before("<p class='admonition-title note'>Note</p>")
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Econometría Aplicada. Lección 2</h1>
+<h1 class="title">Lección 2. Conceptos algebraicos</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>&Iacute;ndice</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgddf3926">Secuencias o sucesiones de números</a>
+<li><a href="#orgf12654d">Secuencias o sucesiones de números</a>
 <ul>
-<li><a href="#orga11a82b">El espacio vectorial de las secuencias infinitas \(\big({\mathbb{R}}^\mathbb{Z},+,\cdot\big)\)</a>
+<li><a href="#orgac99001">El espacio vectorial de las secuencias infinitas \(\big({\mathbb{R}}^\mathbb{Z},+,\cdot\big)\)</a>
 <ul>
-<li><a href="#org02b9775">Notación mediante funciones generatrices</a></li>
-<li><a href="#orga3060d5">Características de algunas secuencias</a></li>
-<li><a href="#orgbc35c17">Algunos subespacios vectoriales de \(\big({\mathbb{R}}^\mathbb{Z},+,\cdot\big)\)</a></li>
+<li><a href="#orgf62e9a5">Notación mediante funciones generatrices</a></li>
+<li><a href="#orge070cbd">Características de algunas secuencias</a></li>
+<li><a href="#org4062857">Algunos subespacios vectoriales de \(\big({\mathbb{R}}^\mathbb{Z},+,\cdot\big)\)</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org1027f29">Producto convolución</a></li>
-<li><a href="#org08a8b3d">Anillos conmutativos y cuerpos</a>
+<li><a href="#org74f3c77">Producto convolución</a></li>
+<li><a href="#org384bb4a">Anillos conmutativos y cuerpos</a>
 <ul>
-<li><a href="#orgd86fea4">Anillos conmutativos</a></li>
-<li><a href="#org2606723">Cuerpos</a></li>
+<li><a href="#orge19372c">Anillos conmutativos</a></li>
+<li><a href="#org1793fb7">Cuerpos</a></li>
 </ul>
 </li>
-<li><a href="#orgcde6c34">Clasificación de subconjuntos de sucesiones</a></li>
-<li><a href="#org7141142">Inversas</a>
+<li><a href="#org7929cf0">Clasificación de subconjuntos de sucesiones</a></li>
+<li><a href="#orgeabe06d">Inversas</a>
 <ul>
-<li><a href="#org19eea73">Inversas de secuencias con principio</a></li>
-<li><a href="#org9371bb0">Inversas de secuencias con final</a></li>
-<li><a href="#orgc957e56">Inversas de polinomios</a></li>
-<li><a href="#orgb8c5f86">Cuerpo de fracciones de polinomios</a></li>
+<li><a href="#org416e161">Inversas de secuencias con principio</a></li>
+<li><a href="#orgeee0ba1">Inversas de secuencias con final</a></li>
+<li><a href="#org6221e1f">Inversas de polinomios</a></li>
+<li><a href="#org7b6d8b6">Cuerpo de fracciones de polinomios</a></li>
 </ul>
 </li>
-<li><a href="#org4c56a46">Operador retardo \(\mathsf{B}{}\) y secuencias sumables.</a>
+<li><a href="#orgf6e8124">Operador retardo \(\mathsf{B}{}\) y secuencias sumables.</a>
 <ul>
-<li><a href="#orge23b29b">Polinomios y secuencias en el operador retardo \(\boldsymbol{a}(\mathsf{B}{})\) actuando sobre secuencias</a></li>
-<li><a href="#org4d7f257">El operador retardo y el producto convolución de una secuencia \(\boldsymbol{x}\) por \(z\)</a></li>
+<li><a href="#orga679c78">Polinomios y secuencias en el operador retardo \(\boldsymbol{a}(\mathsf{B}{})\) actuando sobre secuencias</a></li>
+<li><a href="#orge5e0c86">El operador retardo y el producto convolución de una secuencia \(\boldsymbol{x}\) por \(z\)</a></li>
 </ul>
 </li>
-<li><a href="#org812f4df">Convolución de una serie formal con el "<i>reverso</i>" de otra</a></li>
-<li><a href="#org7ba086f">Resultados preliminares sobre series sumables</a>
+<li><a href="#orgc475f18">Convolución de una serie formal con el "<i>reverso</i>" de otra</a></li>
+<li><a href="#orga6cac17">Resultados preliminares sobre series sumables</a>
 <ul>
-<li><a href="#org138e3c4">Introducción y motivación del enfoque elegido</a></li>
-<li><a href="#orga8f019d">Series sumables</a>
+<li><a href="#org13f469d">Introducción y motivación del enfoque elegido</a></li>
+<li><a href="#orgcc79d19">Series sumables</a>
 <ul>
-<li><a href="#orgb250be2">Propiedades de las series sumables</a></li>
+<li><a href="#org2aaf562">Propiedades de las series sumables</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org1a06e06">Demostraciones de algunos resultados sobre series en general</a>
+<li><a href="#org28615c4">Demostraciones de algunos resultados sobre series en general</a>
 <ul>
-<li><a href="#org0fe5d2c">Sumabilidad y convergencia absoluta</a></li>
-<li><a href="#org54765a7">Relación entre series absolutamente sumables y series de cuadrado sumable</a></li>
-<li><a href="#orga092287">Convolución de series con principio. Convolución de series con final</a></li>
-<li><a href="#org1cfa7e4">Convolución de series absolutamente sumables.</a></li>
-<li><a href="#orgc8fe756">El conjunto de series absolutamente sumables es un anillo conmutativo.</a></li>
-<li><a href="#org9a5941e">El conjunto de series con principio es un cuerpo</a></li>
-<li><a href="#org5bc114a">El conjunto de fracciones de polinomios \(\mathbb{C}(z)\) es un cuerpo</a></li>
+<li><a href="#orgbe587a3">Sumabilidad y convergencia absoluta</a></li>
+<li><a href="#org38248f6">Relación entre series absolutamente sumables y series de cuadrado sumable</a></li>
+<li><a href="#orga0f1970">Convolución de series con principio. Convolución de series con final</a></li>
+<li><a href="#orgd291270">Convolución de series absolutamente sumables.</a></li>
+<li><a href="#org26838ab">El conjunto de series absolutamente sumables es un anillo conmutativo.</a></li>
+<li><a href="#org1f58ab6">El conjunto de series con principio es un cuerpo</a></li>
+<li><a href="#org5f3bc93">El conjunto de fracciones de polinomios \(\mathbb{C}(z)\) es un cuerpo</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div class="abstract" id="org16055d3">
+<div class="abstract" id="org1db9d9f">
 <p>
 Hoy veremos conceptos algebraicos usados en la modelización ARIMA de series temporales.
 </p>
 
 </div>
-<div id="outline-container-orgddf3926" class="outline-2">
-<h2 id="orgddf3926">Secuencias o sucesiones de números</h2>
-<div class="outline-text-2" id="text-orgddf3926">
+<div id="outline-container-orgf12654d" class="outline-2">
+<h2 id="orgf12654d">Secuencias o sucesiones de números</h2>
+<div class="outline-text-2" id="text-orgf12654d">
 </div>
-<div id="outline-container-orga11a82b" class="outline-3">
-<h3 id="orga11a82b">El espacio vectorial de las secuencias infinitas \(\big({\mathbb{R}}^\mathbb{Z},+,\cdot\big)\)</h3>
-<div class="outline-text-3" id="text-orga11a82b">
+<div id="outline-container-orgac99001" class="outline-3">
+<h3 id="orgac99001">El espacio vectorial de las secuencias infinitas \(\big({\mathbb{R}}^\mathbb{Z},+,\cdot\big)\)</h3>
+<div class="outline-text-3" id="text-orgac99001">
 <p>
 Consideremos el conjunto \({\mathbb{R}}^\mathbb{Z}\) de secuencias infinitas de números reales<br />
 \[
@@ -153,9 +153,9 @@ Si \(\;\boldsymbol{x},\boldsymbol{y}\in{\mathbb{R}}^\mathbb{Z}\;\) y \(\;a\in\ma
 El conjunto \({\mathbb{R}}^\mathbb{Z}\) junto con la suma elemento a elemento \((+)\) y el producto por escalares \((\cdot)\) constituye un <b>espacio vectorial</b>.
 </p>
 </div>
-<div id="outline-container-org02b9775" class="outline-4">
-<h4 id="org02b9775">Notación mediante funciones generatrices</h4>
-<div class="outline-text-4" id="text-org02b9775">
+<div id="outline-container-orgf62e9a5" class="outline-4">
+<h4 id="orgf62e9a5">Notación mediante funciones generatrices</h4>
+<div class="outline-text-4" id="text-orgf62e9a5">
 <p>
 Como estas secuencias son infinitas (en ambas direcciones), no hay un primer elemento. 
 </p>
@@ -207,9 +207,9 @@ Además, denotaremos con \(\boldsymbol{1}\) la secuencia constante uno: \((\ldot
 </p>
 </div>
 </div>
-<div id="outline-container-orga3060d5" class="outline-4">
-<h4 id="orga3060d5">Características de algunas secuencias</h4>
-<div class="outline-text-4" id="text-orga3060d5">
+<div id="outline-container-orge070cbd" class="outline-4">
+<h4 id="orge070cbd">Características de algunas secuencias</h4>
+<div class="outline-text-4" id="text-orge070cbd">
 <p>
 En una sucesión \(\boldsymbol{a}\) <span class="underline">no nula</span> llamamos:
 </p>
@@ -231,9 +231,9 @@ Una sucesión absolutamente sumable siempre es de cuadrado sumable, \(\ell^1\sub
 </p>
 </div>
 </div>
-<div id="outline-container-orgbc35c17" class="outline-4">
-<h4 id="orgbc35c17">Algunos subespacios vectoriales de \(\big({\mathbb{R}}^\mathbb{Z},+,\cdot\big)\)</h4>
-<div class="outline-text-4" id="text-orgbc35c17">
+<div id="outline-container-org4062857" class="outline-4">
+<h4 id="org4062857">Algunos subespacios vectoriales de \(\big({\mathbb{R}}^\mathbb{Z},+,\cdot\big)\)</h4>
+<div class="outline-text-4" id="text-org4062857">
 <dl class="org-dl">
 <dt>Secuencias con final</dt><dd>aquellas con grado (a partir de cierto índice son cero).
 \[\boldsymbol{a}(z) = (\ldots,\ a_{p-3},\ a_{p-2},\ a_{p-1},\ a_{p},\ 0,\ 0,\ 0,\ldots) = \sum_{t=-\infty}^p a_t z^t;\qquad p\in\mathbb{Z}\]</dd>
@@ -255,9 +255,9 @@ Los <b>polinomios</b> son series formales con grado finito: \(\quad\sum_{t=k}^p 
 </div>
 </div>
 </div>
-<div id="outline-container-org1027f29" class="outline-2">
-<h2 id="org1027f29">Producto convolución</h2>
-<div class="outline-text-2" id="text-org1027f29">
+<div id="outline-container-org74f3c77" class="outline-2">
+<h2 id="org74f3c77">Producto convolución</h2>
+<div class="outline-text-2" id="text-org74f3c77">
 <p>
 Sean \(\boldsymbol{a}\) y \(\boldsymbol{b}\) sucesiones <span class="underline">con principio</span> (con cogrado). 
 Su producto convolución es la sucesión cuyo elemento <i>t</i>-ésimo es:
@@ -279,13 +279,13 @@ La convolución también está definida entre sucesiones:
 </ul>
 </div>
 </div>
-<div id="outline-container-org08a8b3d" class="outline-2">
-<h2 id="org08a8b3d">Anillos conmutativos y cuerpos</h2>
-<div class="outline-text-2" id="text-org08a8b3d">
+<div id="outline-container-org384bb4a" class="outline-2">
+<h2 id="org384bb4a">Anillos conmutativos y cuerpos</h2>
+<div class="outline-text-2" id="text-org384bb4a">
 </div>
-<div id="outline-container-orgd86fea4" class="outline-3">
-<h3 id="orgd86fea4">Anillos conmutativos</h3>
-<div class="outline-text-3" id="text-orgd86fea4">
+<div id="outline-container-orge19372c" class="outline-3">
+<h3 id="orge19372c">Anillos conmutativos</h3>
+<div class="outline-text-3" id="text-orge19372c">
 <p>
 Un <b>anillo conmutativo</b> es un conjunto \(\mathsf{S}\) equipado con dos
 operaciones binarias, la suma \(+\) y el producto \(*\) que satisfacen
@@ -320,9 +320,9 @@ El producto es distributivo respecto de la suma: Para todo \(\boldsymbol{a}, \bo
 </ul>
 </div>
 </div>
-<div id="outline-container-org2606723" class="outline-3">
-<h3 id="org2606723">Cuerpos</h3>
-<div class="outline-text-3" id="text-org2606723">
+<div id="outline-container-org1793fb7" class="outline-3">
+<h3 id="org1793fb7">Cuerpos</h3>
+<div class="outline-text-3" id="text-org1793fb7">
 <p>
 Un <b>cuerpo</b> es un anillo conmutativo que adicionalmente satisface:
 </p>
@@ -347,9 +347,9 @@ y que \(\boldsymbol{a}\) es el inverso de \(\boldsymbol{b}\).
 </div>
 </div>
 </div>
-<div id="outline-container-orgcde6c34" class="outline-2">
-<h2 id="orgcde6c34">Clasificación de subconjuntos de sucesiones</h2>
-<div class="outline-text-2" id="text-orgcde6c34">
+<div id="outline-container-org7929cf0" class="outline-2">
+<h2 id="org7929cf0">Clasificación de subconjuntos de sucesiones</h2>
+<div class="outline-text-2" id="text-org7929cf0">
 <dl class="org-dl">
 <dt>Son anillos el conjunto de</dt><dd><p>
 <a href="https://en.wikipedia.org/wiki/Formal_power_series">series formales</a> (cogrado \(\geq0\)), <a href="https://en.wikipedia.org/wiki/Polynomial_ring">polinomios</a> y
@@ -366,7 +366,7 @@ Pero estas sucesiones o <i>no tienen inversa; o son sucesiones de otro tipo</i>
 </p></dd>
 
 <dt>Son cuerpos el conjunto de</dt><dd><p>
-secuencias con principio , las secuencias con final y las <a href="#org5bc114a">fracciones de polinomios</a>.
+secuencias con principio , las secuencias con final y las <a href="#org5f3bc93">fracciones de polinomios</a>.
 </p>
 
 <p>
@@ -383,13 +383,13 @@ Cuando una de estas dos inversas es una secuencia absolutamente sumable, dicha i
 </dl>
 </div>
 </div>
-<div id="outline-container-org7141142" class="outline-2">
-<h2 id="org7141142">Inversas</h2>
-<div class="outline-text-2" id="text-org7141142">
+<div id="outline-container-orgeabe06d" class="outline-2">
+<h2 id="orgeabe06d">Inversas</h2>
+<div class="outline-text-2" id="text-orgeabe06d">
 </div>
-<div id="outline-container-org19eea73" class="outline-3">
-<h3 id="org19eea73">Inversas de secuencias con principio</h3>
-<div class="outline-text-3" id="text-org19eea73">
+<div id="outline-container-org416e161" class="outline-3">
+<h3 id="org416e161">Inversas de secuencias con principio</h3>
+<div class="outline-text-3" id="text-org416e161">
 <p>
 Supongamos que \(\boldsymbol{a}\ne\boldsymbol{0}\) y que \(k = cogrado(\boldsymbol{a})\).
 Definimos \(\boldsymbol{b}\) del siguiente modo:
@@ -420,9 +420,9 @@ es decir
 </p>
 </div>
 </div>
-<div id="outline-container-org9371bb0" class="outline-3">
-<h3 id="org9371bb0">Inversas de secuencias con final</h3>
-<div class="outline-text-3" id="text-org9371bb0">
+<div id="outline-container-orgeee0ba1" class="outline-3">
+<h3 id="orgeee0ba1">Inversas de secuencias con final</h3>
+<div class="outline-text-3" id="text-orgeee0ba1">
 <p>
 Supongamos que \(\boldsymbol{a}\ne\boldsymbol{0}\) y que \(p =
 grado(\boldsymbol{a})\). Definimos \(\boldsymbol{b}\) del siguiente modo:
@@ -450,9 +450,9 @@ es decir
 </p>
 </div>
 </div>
-<div id="outline-container-orgc957e56" class="outline-3">
-<h3 id="orgc957e56">Inversas de polinomios</h3>
-<div class="outline-text-3" id="text-orgc957e56">
+<div id="outline-container-org6221e1f" class="outline-3">
+<h3 id="org6221e1f">Inversas de polinomios</h3>
+<div class="outline-text-3" id="text-org6221e1f">
 <p>
 Todo polinomio
 </p>
@@ -529,9 +529,9 @@ En los manuales de <i>series temporales</i> se dice que un polinomio \(\boldsymb
 </p>
 </div>
 </div>
-<div id="outline-container-orgb8c5f86" class="outline-3">
-<h3 id="orgb8c5f86">Cuerpo de fracciones de polinomios</h3>
-<div class="outline-text-3" id="text-orgb8c5f86">
+<div id="outline-container-org7b6d8b6" class="outline-3">
+<h3 id="org7b6d8b6">Cuerpo de fracciones de polinomios</h3>
+<div class="outline-text-3" id="text-org7b6d8b6">
 <p>
 El <i>cuerpo de fracciones de polinomios</i> 
 \[\left\{\boldsymbol{p}*\boldsymbol{q}^{-\triangleright} \mid \boldsymbol{p} \text{ y } \boldsymbol{q} \text{ son polinomios y } \boldsymbol{q}\ne\boldsymbol{0} \right\};\]
@@ -553,9 +553,9 @@ Este conjunto de sucesiones es uno de los pilares en la modelización ARIMA.
 </div>
 </div>
 </div>
-<div id="outline-container-org4c56a46" class="outline-2">
-<h2 id="org4c56a46">Operador retardo \(\mathsf{B}{}\) y secuencias sumables.</h2>
-<div class="outline-text-2" id="text-org4c56a46">
+<div id="outline-container-orgf6e8124" class="outline-2">
+<h2 id="orgf6e8124">Operador retardo \(\mathsf{B}{}\) y secuencias sumables.</h2>
+<div class="outline-text-2" id="text-orgf6e8124">
 <p>
 Es habitual usar el operador retardo \(\mathsf{B}\):
 \[\mathsf{B} x_t = x_{t-1},\quad \text{para } t\in\mathbb{Z}.\]
@@ -572,9 +572,9 @@ Así, si la secuencia \(\boldsymbol{x}(z)=\sum_{t=-\infty}^\infty x_t z^t\) es s
 tiene sentido como suma.
 </p>
 </div>
-<div id="outline-container-orge23b29b" class="outline-3">
-<h3 id="orge23b29b">Polinomios y secuencias en el operador retardo \(\boldsymbol{a}(\mathsf{B}{})\) actuando sobre secuencias</h3>
-<div class="outline-text-3" id="text-orge23b29b">
+<div id="outline-container-orga679c78" class="outline-3">
+<h3 id="orga679c78">Polinomios y secuencias en el operador retardo \(\boldsymbol{a}(\mathsf{B}{})\) actuando sobre secuencias</h3>
+<div class="outline-text-3" id="text-orga679c78">
 <p>
 Así, para el polinomio \(\boldsymbol{a}(z)=a_0+a_1z+a_2z^2+a_3z^3\), y la
 secuencia \(\boldsymbol{y}\), tenemos
@@ -600,9 +600,9 @@ Y en general, si \(\boldsymbol{a}\) e \(\boldsymbol{y}\) son secuencias sumables
 \end{align*}
 </div>
 </div>
-<div id="outline-container-org4d7f257" class="outline-3">
-<h3 id="org4d7f257">El operador retardo y el producto convolución de una secuencia \(\boldsymbol{x}\) por \(z\)</h3>
-<div class="outline-text-3" id="text-org4d7f257">
+<div id="outline-container-orge5e0c86" class="outline-3">
+<h3 id="orge5e0c86">El operador retardo y el producto convolución de una secuencia \(\boldsymbol{x}\) por \(z\)</h3>
+<div class="outline-text-3" id="text-orge5e0c86">
 <p>
 Del mismo modo que denotamos con \({1}\) la secuencia
 \[1=(\ldots,0,0,\fbox{$\color{blue}{1}$},0,0,\ldots)=1 z^0,\]
@@ -618,9 +618,9 @@ De ese modo
 </div>
 </div>
 </div>
-<div id="outline-container-org812f4df" class="outline-2">
-<h2 id="org812f4df">Convolución de una serie formal con el "<i>reverso</i>" de otra</h2>
-<div class="outline-text-2" id="text-org812f4df">
+<div id="outline-container-orgc475f18" class="outline-2">
+<h2 id="orgc475f18">Convolución de una serie formal con el "<i>reverso</i>" de otra</h2>
+<div class="outline-text-2" id="text-orgc475f18">
 <p>
 Por último, si tenemos dos series formales \(\boldsymbol{a}\) y
 \(\boldsymbol{b}\), entonces
@@ -645,76 +645,76 @@ es decir,
 \end{equation}
 </div>
 </div>
-<div id="outline-container-org7ba086f" class="outline-2">
-<h2 id="org7ba086f">Resultados preliminares sobre series sumables</h2>
-<div class="outline-text-2" id="text-org7ba086f">
+<div id="outline-container-orga6cac17" class="outline-2">
+<h2 id="orga6cac17">Resultados preliminares sobre series sumables</h2>
+<div class="outline-text-2" id="text-orga6cac17">
 <p style="color:red;"><strong>
 Esta sección contiene las demostraciones de los resultados empleados en la lección; y solo se puede ver de manera completa en la versión pdf de la lección.
 </strong></p>
 </div>
-<div id="outline-container-org138e3c4" class="outline-3">
-<h3 id="org138e3c4">Introducción y motivación del enfoque elegido</h3>
-<div class="outline-text-3" id="text-org138e3c4">
+<div id="outline-container-org13f469d" class="outline-3">
+<h3 id="org13f469d">Introducción y motivación del enfoque elegido</h3>
+<div class="outline-text-3" id="text-org13f469d">
 </div>
-<div id="outline-container-orgc4e7b4f" class="outline-4">
-<h4 id="orgc4e7b4f">Lo usual es interpretar las series como sumas ordenadas</h4>
-<div class="outline-text-4" id="text-orgc4e7b4f">
-</div>
-</div>
-<div id="outline-container-orgfc3d708" class="outline-4">
-<h4 id="orgfc3d708">La propuesta de Schwartz: independencia del orden</h4>
-<div class="outline-text-4" id="text-orgfc3d708">
+<div id="outline-container-org12e0eac" class="outline-4">
+<h4 id="org12e0eac">Lo usual es interpretar las series como sumas ordenadas</h4>
+<div class="outline-text-4" id="text-org12e0eac">
 </div>
 </div>
-</div>
-<div id="outline-container-orga8f019d" class="outline-3">
-<h3 id="orga8f019d">Series sumables</h3>
-<div class="outline-text-3" id="text-orga8f019d">
-</div>
-<div id="outline-container-orgb250be2" class="outline-4">
-<h4 id="orgb250be2">Propiedades de las series sumables</h4>
-<div class="outline-text-4" id="text-orgb250be2">
+<div id="outline-container-orgb32798e" class="outline-4">
+<h4 id="orgb32798e">La propuesta de Schwartz: independencia del orden</h4>
+<div class="outline-text-4" id="text-orgb32798e">
 </div>
 </div>
 </div>
+<div id="outline-container-orgcc79d19" class="outline-3">
+<h3 id="orgcc79d19">Series sumables</h3>
+<div class="outline-text-3" id="text-orgcc79d19">
 </div>
-<div id="outline-container-org1a06e06" class="outline-2">
-<h2 id="org1a06e06">Demostraciones de algunos resultados sobre series en general</h2>
-<div class="outline-text-2" id="text-org1a06e06">
-</div>
-<div id="outline-container-org0fe5d2c" class="outline-3">
-<h3 id="org0fe5d2c">Sumabilidad y convergencia absoluta</h3>
-<div class="outline-text-3" id="text-org0fe5d2c">
-</div>
-</div>
-<div id="outline-container-org54765a7" class="outline-3">
-<h3 id="org54765a7">Relación entre series absolutamente sumables y series de cuadrado sumable</h3>
-<div class="outline-text-3" id="text-org54765a7">
+<div id="outline-container-org2aaf562" class="outline-4">
+<h4 id="org2aaf562">Propiedades de las series sumables</h4>
+<div class="outline-text-4" id="text-org2aaf562">
 </div>
 </div>
-<div id="outline-container-orga092287" class="outline-3">
-<h3 id="orga092287">Convolución de series con principio. Convolución de series con final</h3>
-<div class="outline-text-3" id="text-orga092287">
 </div>
 </div>
-<div id="outline-container-org1cfa7e4" class="outline-3">
-<h3 id="org1cfa7e4">Convolución de series absolutamente sumables.</h3>
-<div class="outline-text-3" id="text-org1cfa7e4">
+<div id="outline-container-org28615c4" class="outline-2">
+<h2 id="org28615c4">Demostraciones de algunos resultados sobre series en general</h2>
+<div class="outline-text-2" id="text-org28615c4">
+</div>
+<div id="outline-container-orgbe587a3" class="outline-3">
+<h3 id="orgbe587a3">Sumabilidad y convergencia absoluta</h3>
+<div class="outline-text-3" id="text-orgbe587a3">
 </div>
 </div>
-<div id="outline-container-orgc8fe756" class="outline-3">
-<h3 id="orgc8fe756">El conjunto de series absolutamente sumables es un anillo conmutativo.</h3>
-<div class="outline-text-3" id="text-orgc8fe756">
+<div id="outline-container-org38248f6" class="outline-3">
+<h3 id="org38248f6">Relación entre series absolutamente sumables y series de cuadrado sumable</h3>
+<div class="outline-text-3" id="text-org38248f6">
 </div>
 </div>
-<div id="outline-container-org9a5941e" class="outline-3">
-<h3 id="org9a5941e">El conjunto de series con principio es un cuerpo</h3>
-<div class="outline-text-3" id="text-org9a5941e">
+<div id="outline-container-orga0f1970" class="outline-3">
+<h3 id="orga0f1970">Convolución de series con principio. Convolución de series con final</h3>
+<div class="outline-text-3" id="text-orga0f1970">
 </div>
 </div>
-<div id="outline-container-org5bc114a" class="outline-3">
-<h3 id="org5bc114a">El conjunto de fracciones de polinomios \(\mathbb{C}(z)\) es un cuerpo</h3>
-<div class="outline-text-3" id="text-org5bc114a">
+<div id="outline-container-orgd291270" class="outline-3">
+<h3 id="orgd291270">Convolución de series absolutamente sumables.</h3>
+<div class="outline-text-3" id="text-orgd291270">
+</div>
+</div>
+<div id="outline-container-org26838ab" class="outline-3">
+<h3 id="org26838ab">El conjunto de series absolutamente sumables es un anillo conmutativo.</h3>
+<div class="outline-text-3" id="text-org26838ab">
+</div>
+</div>
+<div id="outline-container-org1f58ab6" class="outline-3">
+<h3 id="org1f58ab6">El conjunto de series con principio es un cuerpo</h3>
+<div class="outline-text-3" id="text-org1f58ab6">
+</div>
+</div>
+<div id="outline-container-org5f3bc93" class="outline-3">
+<h3 id="org5f3bc93">El conjunto de fracciones de polinomios \(\mathbb{C}(z)\) es un cuerpo</h3>
+<div class="outline-text-3" id="text-org5f3bc93">
 <p>
 
 <a href="bibliography:bibliografia.bib">bibliography:bibliografia.bib</a>
@@ -724,7 +724,7 @@ Esta sección contiene las demostraciones de los resultados empleados en la lecc
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2025-08-03 Sun 19:37</p>
+<p class="date">Created: 2025-08-04 Mon 16:46</p>
 </div>
 </body>
 </html>
