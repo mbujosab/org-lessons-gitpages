@@ -22,7 +22,7 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y git emacs pandoc aspell aspell-en aspell-es
-        pip install jupyter nbconvert
+        pip install jupyter nbconvert zip gretl
 
     - name: Install Python modules
       run: |
