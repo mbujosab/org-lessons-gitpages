@@ -45,7 +45,7 @@ zip SerieCuentasFinancierasBE SerieCuentasFinancierasBE* SerieCuentasFinancieras
 # set workdir /home/marcos/SynologyDrive/ReposGH/Docencia/POM-EconometriaAplicada-SRC/GretlScripts/SerieCuentasFinancierasBE
 #+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :exports none
 # para que gretl guarde los ficheros en el directorio de la práctica
-set shellok on
+set shell_ok on
 string directory = $(pwd) ~ "/SerieCuentasFinancierasBE"
 set workdir "@directory" 
 #+end_src

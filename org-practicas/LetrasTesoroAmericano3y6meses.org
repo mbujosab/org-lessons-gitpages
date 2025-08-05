@@ -39,7 +39,7 @@ zip LetrasTesoroAmericano3y6meses LetrasTesoroAmericano3y6meses* LetrasTesoroAme
 
 #+begin_src R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :exports none
 # para que gretl guarde los ficheros en el directorio de la práctica
-set shellok on
+set shell_ok on
 string directory = $(pwd) ~ "/LetrasTesoroAmericano3y6meses" 
 set workdir "@directory" 
 #+end_src
