@@ -80,6 +80,7 @@ $(LECCIONES_tmp)/Practicas/%.done: org-practicas/%.org
 	mkdir -p $(LECCIONES_tmp)/Practicas/guiones
 	cp $< $(LECCIONES_tmp)/Practicas/
 	cp -a org-practicas/hansl.tex $(LECCIONES_tmp)/Practicas/
+	cp -a ./datos $(LECCIONES_tmp)/Practicas
 	echo "🧠 Ejecutando org-babel-tangle y eval..."
 	set -e; \
 	if emacs --batch \

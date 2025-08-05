@@ -35,8 +35,7 @@ En esta lección veremos algunas transformaciones de los datos para /"hacerlos e
 #+end_abstract
 
 - [[https://mbujosab.github.io/EconometriaAplicada-SRC/Lecc01.html][lección en html]]
-- [[https://mybinder.org/v2/gh/mbujosab/EconometriaAplicada-SRC/HEAD?labpath=Lecc01.ipynb][lección en mybinder]]
-
+- [[https://mybinder.org/v2/gh/mbujosab/org-lessons-gitpages/gh-pages?labpath=docs/CuadernosElectronicos/Lecc01.ipynb][lección en mybinder]]
 
 ***  Carga de algunos módulos de python y creación de directorios auxiliares
    :PROPERTIES:

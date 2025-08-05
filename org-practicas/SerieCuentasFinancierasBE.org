@@ -31,32 +31,31 @@
 # org-md-export-to-markdown
 
 #+name: gretl
-#+BEGIN_SRC sh  :exports none :results silent
+#+BEGIN_SRC sh  :exports none  :results silent
 rm -fr $(pwd)/SerieCuentasFinancierasBE 
 mkdir -p $(pwd)/SerieCuentasFinancierasBE 
-gretlcli -b /home/marcos/SynologyDrive/ReposGH/Docencia/EconometriaAplicada-SRC/EjerciciosHide/SerieCuentasFinancierasBE.inp
+gretlcli -b $(pwd)/guiones/SerieCuentasFinancierasBE.inp
 #+END_SRC
 
 
-#+BEGIN_SRC sh  :exports none :results silent
-zip mortality SerieCuentasFinancierasBE* SerieCuentasFinancierasBE/*
+#+BEGIN_SRC sh  :exports none :results silent :eval no
+zip SerieCuentasFinancierasBE SerieCuentasFinancierasBE* SerieCuentasFinancierasBE/*
 #+END_SRC
 
 # set workdir /home/marcos/SynologyDrive/ReposGH/Docencia/POM-EconometriaAplicada-SRC/GretlScripts/SerieCuentasFinancierasBE
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :exports none
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :exports none
 # para que gretl guarde los ficheros en el directorio de la práctica
 string directory = $(pwd) ~ "/SerieCuentasFinancierasBE"
 set workdir "@directory" 
 #+end_src
 
-#+RESULTS:
 
 
 # /Adquisiciones netas de
 # activos no financieros/. Zona euro. Total, Millones de Euros *Fuente
 # Banco de España*
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports none
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports none
 open be.bin
 data BE_1_2_1
 data BE_2_5_8_16
@@ -90,7 +89,7 @@ base de datos =be= y pulsar con el ratón dos veces sobre ella.
 
 ** Gráfico de la serie temporal y su correlograma:
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports code 
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports code 
 gnuplot BE_2_5_8_16 --time-series --with-lines --output="otros.png"
 corrgm BE_2_5_8_16 14 --plot="otrosACF-PACF.png"
 #+end_src
@@ -104,7 +103,7 @@ corrgm BE_2_5_8_16 14 --plot="otrosACF-PACF.png"
 
 *** COMMENT Estadístico Ljung-Box para los primeros retardos
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports none
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports none
 # añadido para guardar los resultados en un fichero de texto
 outfile --quiet otrosACF-PACF.txt
   corrgm BE_2_5_8_16 10 --quiet
@@ -118,11 +117,11 @@ end outfile
 *** Contraste Dickey-Fuller aumentado de raíz unitaria
 
 #+NAME: Test ADF Otros en niveles
-#+BEGIN_SRC R :tangle SerieCuentasFinancierasBE.inp :results none :exports code
+#+BEGIN_SRC R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports code
 adf 4 BE_2_5_8_16 --nc --test-down=AIC
 #+END_SRC
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports none :noweb no-export 
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports none :noweb no-export 
 # añadido para guardar los resultados en un fichero de texto
 outfile --quiet ADF_otros.txt
   <<Test ADF Otros en niveles>>
@@ -134,11 +133,11 @@ end outfile
 *** Contraste KPSS de estacionariedad
 
 #+NAME: Test KPSS Otros en niveles
-#+BEGIN_SRC R :tangle SerieCuentasFinancierasBE.inp :results none :exports code
+#+BEGIN_SRC R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports code
 kpss 4 BE_1_2_1
 #+END_SRC
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports none :noweb yes 
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports none :noweb yes 
 # añadido para guardar los resultados en un fichero de texto
 outfile --quiet KPSS_otros.txt
   <<Test KPSS Otros en niveles>>
@@ -150,13 +149,13 @@ end outfile
 
 * Datos en primeras diferencias
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports code 
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports code 
 diff BE_2_5_8_16
 #+end_src
 
 ** Gráfico de la serie temporal en diferencias y su correlograma:
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports code 
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports code 
 gnuplot d_BE_2_5_8_16 --time-series --with-lines --output="d_otros.png"
 corrgm d_BE_2_5_8_16 10 --plot="d_otrosACF-PACF.png"
 #+end_src
@@ -170,7 +169,7 @@ corrgm d_BE_2_5_8_16 10 --plot="d_otrosACF-PACF.png"
 
 *** COMMENT Estadístico Ljung-Box para los primeros retardos
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports none
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports none
 # añadido para guardar los resultados en un fichero de texto
 outfile --quiet d_otrosACF-PACF.txt
   corrgm d_BE_2_5_8_16 10 --quiet
@@ -183,11 +182,11 @@ end outfile
 *** Contraste Dickey-Fuller aumentado de raíz unitaria
 
 #+NAME: Test ADF Otros en diferencias
-#+BEGIN_SRC R :tangle SerieCuentasFinancierasBE.inp :results none :exports code
+#+BEGIN_SRC R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports code
 adf 4 d_BE_2_5_8_16 --nc --test-down=AIC
 #+END_SRC
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports none :noweb yes
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports none :noweb yes
 # añadido para guardar los resultados en un fichero de texto
 outfile --quiet ADF_d_otros.txt
   <<Test ADF Otros en diferencias>>
@@ -199,11 +198,11 @@ end outfile
 *** Contraste KPSS de estacionariedad
 
 #+NAME: Test KPSS Otros en diferencias
-#+BEGIN_SRC R :tangle SerieCuentasFinancierasBE.inp :results none :exports code
+#+BEGIN_SRC R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports code
 kpss 4 d_BE_2_5_8_16
 #+END_SRC
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports none :noweb yes
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports none :noweb yes
 # añadido para guardar los resultados en un fichero de texto
 outfile --quiet KPSS_d_otros.txt
   <<Test KPSS Otros en diferencias>>
@@ -219,11 +218,11 @@ end outfile
 
 
 #+NAME: Modelo ARIMA 2 1 0
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports none
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports none
 arima 2 1 0 ; BE_2_5_8_16 
 #+end_src
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports none :noweb yes
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports none :noweb yes
 # añadido para guardar los resultados en un fichero de texto
 outfile --quiet modelo1.txt
   <<Modelo ARIMA 2 1 0>>
@@ -234,7 +233,7 @@ end outfile
 
 ** Residuos y su correlograma
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports code 
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports code 
 res1 = $uhat
 gnuplot res1 --time-series --with-lines --output="res1.png"
 corrgm res1 10 --plot="res1_ACF-PACF.png"
@@ -249,7 +248,7 @@ corrgm res1 10 --plot="res1_ACF-PACF.png"
 
 *** Estadístico Ljung-Box para los residuos
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports none
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports none
 # añadido para guardar los resultados en un fichero de texto
 outfile --quiet res1_ACF-PACF.txt
     corrgm res1 10 --quiet
@@ -265,11 +264,11 @@ end outfile
 * Segundo modelo univariante tentativo
 
 #+NAME: Modelo ARIMA 0 1 2
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports none
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports none
 arima 0 1 2 ; BE_2_5_8_16 
 #+end_src
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports none :noweb yes
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports none :noweb yes
 # añadido para guardar los resultados en un fichero de texto
 outfile --quiet modelo2.txt
   <<Modelo ARIMA 0 1 2>>
@@ -281,7 +280,7 @@ end outfile
 
 ** Residuos y su correlograma
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports code 
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports code 
 res2 = $uhat
 gnuplot res2 --time-series --with-lines --output="res2.png"
 corrgm res1 10 --plot="res2_ACF-PACF.png"
@@ -296,7 +295,7 @@ corrgm res1 10 --plot="res2_ACF-PACF.png"
 
 *** Estadístico Ljung-Box para los residuos
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports none
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports none
 # añadido para guardar los resultados en un fichero de texto
 outfile --quiet res2_ACF-PACF.txt
     corrgm res2 10 --quiet
@@ -673,7 +672,7 @@ Redondeando:
 
 ** Gráfico de la serie temporal y su correlograma:
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports code 
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports code 
 gnuplot BE_1_2_1 --time-series --with-lines --output="adquisiciones.png"
 corrgm BE_1_2_1 12 --plot="adquisicionesACF-PACF.png"
 #+end_src
@@ -688,7 +687,7 @@ corrgm BE_1_2_1 12 --plot="adquisicionesACF-PACF.png"
 
 *** Estadístico Ljung-Box para los primeros retardos
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports none
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports none
 # añadido para guardar los resultados en un fichero de texto
 outfile --quiet adquisicionesACF-PACF.txt
   corrgm BE_1_2_1 12 --quiet
@@ -702,11 +701,11 @@ end outfile
 *** Contraste Dickey-Fuller aumentado de raíz unitaria
 
 #+NAME: Test ADF Adquisiciones en niveles
-#+BEGIN_SRC R :tangle SerieCuentasFinancierasBE.inp :results none :exports code
+#+BEGIN_SRC R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports code
 adf 4 BE_1_2_1 --nc --test-down=AIC
 #+END_SRC
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports none :noweb no-export 
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports none :noweb no-export 
 # añadido para guardar los resultados en un fichero de texto
 outfile --quiet ADF_adquisiciones.txt
   <<Test ADF Adquisiciones en niveles>>
@@ -718,11 +717,11 @@ end outfile
 *** Contraste KPSS de estacionariedad
 
 #+NAME: Test KPSS Adquisiciones en niveles
-#+BEGIN_SRC R :tangle SerieCuentasFinancierasBE.inp :results none :exports code
+#+BEGIN_SRC R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports code
 kpss 4 BE_1_2_1
 #+END_SRC
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports none :noweb yes 
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports none :noweb yes 
 # añadido para guardar los resultados en un fichero de texto
 outfile --quiet KPSS_adquisiciones.txt
   <<Test KPSS Adquisiciones en niveles>>
@@ -736,13 +735,13 @@ end outfile
 
 Veamos la serie temporal en primeras diferencias.
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports code 
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports code 
 diff BE_1_2_1
 #+end_src
 
 ** Gráfico de la serie temporal y su correlograma:
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports code 
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports code 
 gnuplot d_BE_1_2_1 --time-series --with-lines --output="d_adquisiciones.png"
 corrgm d_BE_1_2_1 10 --plot="d_adquisicionesACF-PACF.png"
 #+end_src
@@ -756,7 +755,7 @@ corrgm d_BE_1_2_1 10 --plot="d_adquisicionesACF-PACF.png"
 
 *** Estadístico Ljung-Box para los primeros retardos
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports none
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports none
 # añadido para guardar los resultados en un fichero de texto
 outfile --quiet d_adquisicionesACF-PACF.txt
   corrgm d_BE_1_2_1 10 --quiet
@@ -769,11 +768,11 @@ end outfile
 *** Contraste Dickey-Fuller aumentado de raíz unitaria
 
 #+NAME: Test ADF Adquisiciones en diferencias
-#+BEGIN_SRC R :tangle SerieCuentasFinancierasBE.inp :results none :exports code
+#+BEGIN_SRC R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports code
 adf 4 d_BE_1_2_1 --nc --test-down=AIC
 #+END_SRC
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports none :noweb yes
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports none :noweb yes
 # añadido para guardar los resultados en un fichero de texto
 outfile --quiet ADF_d_adquisiciones.txt
   <<Test ADF Adquisiciones en diferencias>>
@@ -785,11 +784,11 @@ end outfile
 *** Contraste KPSS de estacionariedad
 
 #+NAME: Test KPSS Adquisiciones en diferencias
-#+BEGIN_SRC R :tangle SerieCuentasFinancierasBE.inp :results none :exports code
+#+BEGIN_SRC R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports code
 kpss 4 BE_1_2_1
 #+END_SRC
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports none :noweb yes
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports none :noweb yes
 # añadido para guardar los resultados en un fichero de texto
 outfile --quiet KPSS_d_adquisiciones.txt
   <<Test KPSS Adquisiciones en diferencias>>
@@ -804,11 +803,11 @@ end outfile
 ** Modelo estimado 
 
 #+NAME: Modelo SARIMA 0 1 0 ; 1 0 0
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports code 
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports code 
 arima 0 1 0 ; 1 0 0 ; BE_1_2_1 --nc
 #+end_src
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports none :noweb yes
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports none :noweb yes
 # añadido para guardar los resultados en un fichero de texto
 outfile --quiet modelo1.txt
   <<Modelo SARIMA 0 1 0 ; 1 0 0>>
@@ -819,7 +818,7 @@ end outfile
 
 ** Residuos y su correlograma
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports code 
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports code 
 res1 = $uhat
 gnuplot res1 --time-series --with-lines --output="res1.png"
 corrgm res1 10 --plot="res1_ACF-PACF.png"
@@ -834,7 +833,7 @@ corrgm res1 10 --plot="res1_ACF-PACF.png"
 
 *** Estadístico Ljung-Box para los residuos
 
-#+begin_src R :tangle SerieCuentasFinancierasBE.inp :results none :exports none
+#+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :results none :exports none
 # añadido para guardar los resultados en un fichero de texto
 outfile --quiet res1_ACF-PACF.txt
     corrgm res1 10 --quiet
