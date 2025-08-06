@@ -31,6 +31,7 @@ rm -fr $(pwd)/LetrasTesoroAmericano3y6meses
 mkdir -p $(pwd)/LetrasTesoroAmericano3y6meses 
 gretlcli -b $(pwd)/guiones/LetrasTesoroAmericano3y6meses.inp
 #+END_SRC
+# echo "$(pwd)/guiones/LetrasTesoroAmericano3y6meses" > directorioDeTrabajo
 
 #+BEGIN_SRC sh  :exports none :results silent :eval no
 zip LetrasTesoroAmericano3y6meses LetrasTesoroAmericano3y6meses* LetrasTesoroAmericano3y6meses/*
@@ -38,10 +39,13 @@ zip LetrasTesoroAmericano3y6meses LetrasTesoroAmericano3y6meses* LetrasTesoroAme
 
 
 #+begin_src R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :exports none
-# para que gretl guarde los ficheros en el directorio de la práctica
-set shell_ok on
-string directory = $(pwd) ~ "/LetrasTesoroAmericano3y6meses" 
-set workdir "@directory" 
+# Necesario para que gretl guarde los ficheros en el directorio de la práctica.
+# Si no funciona, comente la primera línea y descomente la segunda:
+
+string directory = getenv("PWD")
+#string directory = $(pwd) ~ "/SerieCuentasFinancierasBE" 
+set workdir "@directory"
+ 
 #+end_src
 
 

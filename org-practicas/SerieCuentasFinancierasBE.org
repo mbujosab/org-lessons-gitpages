@@ -36,21 +36,23 @@ rm -fr $(pwd)/SerieCuentasFinancierasBE
 mkdir -p $(pwd)/SerieCuentasFinancierasBE 
 gretlcli -b $(pwd)/guiones/SerieCuentasFinancierasBE.inp
 #+END_SRC
+# echo "$(pwd)/guiones/SerieCuentasFinancierasBE" > directorioDeTrabajo
 
 
 #+BEGIN_SRC sh  :exports none :results silent :eval no
 zip SerieCuentasFinancierasBE SerieCuentasFinancierasBE* SerieCuentasFinancierasBE/*
 #+END_SRC
 
-# set workdir /home/marcos/SynologyDrive/ReposGH/Docencia/POM-EconometriaAplicada-SRC/GretlScripts/SerieCuentasFinancierasBE
 #+begin_src R :tangle guiones/SerieCuentasFinancierasBE.inp :exports none
-# para que gretl guarde los ficheros en el directorio de la práctica
-set shell_ok on
-string directory = $(pwd) ~ "/SerieCuentasFinancierasBE"
-set workdir "@directory" 
+# Necesario para que gretl guarde los ficheros en el directorio de la práctica.
+# Si no funciona, comente la primera línea y descomente la segunda:
+
+string directory = getenv("PWD")
+#string directory = $(pwd) ~ "/SerieCuentasFinancierasBE" 
+set workdir "@directory"
+ 
 #+end_src
-
-
+# string directory = readfile("../directorioDeTrabajo")
 
 # /Adquisiciones netas de
 # activos no financieros/. Zona euro. Total, Millones de Euros *Fuente
