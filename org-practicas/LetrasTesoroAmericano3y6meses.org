@@ -14,7 +14,7 @@
 
 # +SETUPFILE: simple_inlineUCM.theme  
 # +SETUPFILE: white_clean.theme  
-#+SETUPFILE: bigblow_inline.theme
+#+SETUPFILE: ../css/bigblow_inline.theme
 # +SETUPFILE: readtheorg_inline.theme
 # +SETUPFILE: darksun.theme
 # ###########
@@ -29,21 +29,37 @@
 #+BEGIN_SRC sh :exports none :results silent
 rm -fr $(pwd)/LetrasTesoroAmericano3y6meses
 mkdir -p $(pwd)/LetrasTesoroAmericano3y6meses 
-gretlcli -b $(pwd)/guiones/LetrasTesoroAmericano3y6meses.inp
+DIRECTORIO="$(pwd)/LetrasTesoroAmericano3y6meses" gretlcli -b guiones/LetrasTesoroAmericano3y6meses.inp 
+#gretlcli -c -b $(pwd)/guiones/LetrasTesoroAmericano3y6meses.inp
 #+END_SRC
 # echo "$(pwd)/guiones/LetrasTesoroAmericano3y6meses" > directorioDeTrabajo
 
-#+BEGIN_SRC sh  :exports none :results silent :eval no
-zip LetrasTesoroAmericano3y6meses LetrasTesoroAmericano3y6meses* LetrasTesoroAmericano3y6meses/*
+#+BEGIN_SRC sh  :exports none :results silent
+# zip LetrasTesoroAmericano3y6meses LetrasTesoroAmericano3y6meses* LetrasTesoroAmericano3y6meses/*#
 #+END_SRC
 
+#+BEGIN_SRC bash :exports none :results silent
+FICHERO_ORIGEN="$(pwd)/guiones/LetrasTesoroAmericano3y6meses.inp"
+
+# Eliminar /guiones/ del path
+SIN_GUIONES=$(echo "$FICHERO_ORIGEN" | sed 's:guiones/::')
+
+# Eliminar la extensión .inp
+SIN_EXTENSION=$(echo "$SIN_GUIONES" | sed 's:\.inp$::')
+
+# Guardar en un archivo
+printf "%s" "$SIN_EXTENSION" > guiones/LetrasTesoroAmericano3y6meses.workdir
+printf "%s" "$SIN_EXTENSION" > LetrasTesoroAmericano3y6meses.workdir
+#echo "$SIN_EXTENSION" > directorioPractica.txt
+#+END_SRC
 
 #+begin_src R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :exports none
 # Necesario para que gretl guarde los ficheros en el directorio de la práctica.
 # Si no funciona, comente la primera línea y descomente la segunda:
 
-string directory = getenv("PWD")
-#string directory = $(pwd) ~ "/SerieCuentasFinancierasBE" 
+string directory = getenv("DIRECTORIO")
+#string directory = $(pwd) ~ "/LetrasTesoroAmericano3y6meses" 
+#string directory = readfile(sprintf("./LetrasTesoroAmericano3y6meses.workdir"))
 set workdir "@directory"
  
 #+end_src
@@ -59,7 +75,7 @@ applications/ ([[https://www.chicagobooth.edu/-/media/faculty/ruey-s-tsay/teachi
 - =TB6= :: 6-month Treasury Bill
 
 
-#+begin_src R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :results none :exports code 
+#+begin_src R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :eval no :exports code 
 open ../datos/LetrasTesoroAmericano3y6meses.gdt
 gnuplot TB3 TB6  --time-series --with-lines --output="TB3yTB6.png"
 #+end_src
@@ -77,7 +93,7 @@ gnuplot TB3 TB6  --time-series --with-lines --output="TB3yTB6.png"
 * Letras a tres meses
 ** Gráfico y correlograma de la serie temporal TB3
 
-#+begin_src R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :results none :exports code 
+#+begin_src R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :eval no :exports code 
 gnuplot TB3 --time-series --with-lines --output="TB3.png"
 corrgm TB3 --plot="TB3ACF-PACF.png"
 #+end_src
@@ -99,12 +115,12 @@ siguiente hipótesis nula acerca del parámetro $\delta$:
 $\,H_0: \delta = 0$, frente a $H_1: \delta < 0$
 #+END_QUOTE
 
-#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :results none :exports code 
+#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :eval no :exports code 
 diff TB3
 RegresionAUX_TB3 <- ols d_TB3 0 TB3(-1) d_TB3(-1) d_TB3(-2) d_TB3(-3) 
 #+END_SRC
 
-#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :results none :exports none
+#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :eval no :exports none
 outfile --quiet RegresionAUX_TB3.txt
     ols d_TB3 0 TB3(-1) d_TB3(-1) d_TB3(-2) d_TB3(-3) 
 end outfile
@@ -127,11 +143,11 @@ valor crítico del contraste para un nivel de significación del 5% es
 
 ** Contraste aumentado de Dickey Fuller sobre la existencia de una raíz unitaria para TB3
 
-#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :results none :exports code 
+#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :eval no :exports code 
 adf 3 TB3 --c
 #+END_SRC
 
-#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :results none :exports none
+#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :eval no :exports none
 outfile --quiet adf_TB3.txt
     adf 3 TB3 --c
 end outfile
@@ -143,11 +159,11 @@ end outfile
 
 ** Conteste KPSS de estacionariedad para TB3
 
-#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :results none :exports code 
+#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :eval no :exports code 
 kpss 3 TB3
 #+END_SRC
 
-#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :results none :exports none
+#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :eval no :exports none
 outfile --quiet kpss_TB3.txt
     kpss 3 TB3
 end outfile
@@ -161,7 +177,7 @@ end outfile
 * Letras a seis meses
 ** Gráfico y correlograma de la serie temporal TB6
 
-#+begin_src R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :results none :exports code 
+#+begin_src R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :eval no :exports code 
 gnuplot TB6 --time-series --with-lines --output="TB6.png"
 corrgm TB6 --plot="TB6ACF-PACF.png"
 #+end_src
@@ -183,12 +199,12 @@ siguiente hipótesis nula acerca del parámetro $\delta$:
 $\,H_0: \delta = 0$, frente a $H_1: \delta < 0$
 #+END_QUOTE
 
-#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :results none :exports code 
+#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :eval no :exports code 
 diff TB6
 RegresionAUX_TB6 <- ols d_TB6 0 TB6(-1) d_TB6(-1) d_TB6(-2) d_TB6(-3) 
 #+END_SRC
 
-#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :results none :exports none
+#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :eval no :exports none
 outfile --quiet RegresionAUX_TB6.txt
     ols d_TB6 0 TB6(-1) d_TB6(-1) d_TB6(-2) d_TB6(-3) 
 end outfile
@@ -211,11 +227,11 @@ valor crítico del contraste para un nivel de significación del 5% es
 
 ** Contraste aumentado de Dickey Fuller sobre la existencia de una raíz unitaria para TB6
 
-#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :results none :exports code 
+#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :eval no :exports code 
 adf 3 TB6 --c
 #+END_SRC
 
-#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :results none :exports none
+#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :eval no :exports none
 outfile --quiet adf_TB6.txt
     adf 3 TB6 --c
 end outfile
@@ -227,11 +243,11 @@ end outfile
 
 ** Conteste KPSS de estacionariedad para TB6
 
-#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :results none :exports code 
+#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :eval no :exports code 
 kpss 3 TB6
 #+END_SRC
 
-#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :results none :exports none
+#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :eval no :exports none
 outfile --quiet kpss_TB6.txt
     kpss 3 TB6
 end outfile
@@ -244,11 +260,11 @@ end outfile
 
 * Contraste de cointegración de Engle y Granger
 
-#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :results none :exports code 
+#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :eval no :exports code 
 coint 3 TB3 TB6
 #+END_SRC
 
-#+begin_src R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :results none :exports none
+#+begin_src R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :eval no :exports none
 outfile --quiet test_cointegracion.txt
     coint 3 TB3 TB6
 end outfile
@@ -261,11 +277,11 @@ end outfile
 
 * COMMENT Contraste de cointegración de Johansen                   :noexport:
 
-#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :results none :exports code 
+#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :eval no :exports code 
 johansen 3 TB3 TB6 --rc
 #+END_SRC
 
-#+begin_src R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :results none :exports none
+#+begin_src R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :eval no :exports none
 outfile --quiet test_cointegracion_Johansen.txt
     johansen 3 TB3 TB6 --rc
 end outfile
@@ -278,7 +294,7 @@ end outfile
 
 * Regresión de los tipos a 3 meses sobre los tipos a 6 meses
 
-#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :results none :exports code 
+#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :eval no :exports code 
 MCO3sobre6 <- ols TB3 0 TB6
 modtest --normality --quiet
 modtest --white --quiet
@@ -289,7 +305,7 @@ modtest --autocorr 1 --quiet
 # scalar dwpval = $dwpval
 # print dwpval 
 
-#+begin_src R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :results none :exports none
+#+begin_src R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :eval no :exports none
 outfile --quiet modeloMCO.txt
   ols TB3 0 TB6
   modtest --normality --quiet
@@ -305,7 +321,7 @@ end outfile
 
 * Regresión en primeras diferencias
 
-#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :results none :exports code 
+#+BEGIN_SRC R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :eval no :exports code 
 diff TB3 TB6
 MCO3sobre6_en_Diff <- ols d_TB3 0 d_TB6
 modtest --normality --quiet
@@ -313,7 +329,7 @@ modtest --white --quiet
 modtest --autocorr 2 --quiet
 #+END_SRC
 
-#+begin_src R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :results none :exports none
+#+begin_src R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :eval no :exports none
 outfile --quiet modeloMCO_en_diff.txt
   ols d_TB3 0 d_TB6
   modtest --normality --quiet
