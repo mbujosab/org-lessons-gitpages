@@ -298,9 +298,6 @@ outfile --quiet test_cointegracion_Johansen.txt
 end outfile
 #+end_src
 
-#+latex: {\footnotesize
-#+include: ./LetrasTesoroAmericano3y6meses/test_cointegracion_Johansen.txt example
-#+latex: }
 
 
 * Regresión de los tipos a 3 meses sobre los tipos a 6 meses
