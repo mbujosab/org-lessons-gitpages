@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
 <head>
-<!-- 2025-08-08 Fri 17:05 -->
+<!-- 2025-08-08 Fri 18:34 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Tipos de interés a 3 y 6 meses en EEUU</title>
@@ -101,56 +101,56 @@ org_html_manager.setup();  // activate after the parameters are set
 <h2>&Iacute;ndice</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org129b38b">Datos</a></li>
-<li><a href="#org281ee0b">Letras a tres meses</a>
+<li><a href="#org57e89df">Datos</a></li>
+<li><a href="#org044a1e5">Letras a tres meses</a>
 <ul>
-<li><a href="#orgccf1193">Gráfico y correlograma de la serie temporal TB3</a></li>
-<li><a href="#org5ddc98f">Regresión auxiliar para TB3</a>
+<li><a href="#org9821956">Gráfico y correlograma de la serie temporal TB3</a></li>
+<li><a href="#orgb2b455e">Regresión auxiliar para TB3</a>
 <ul>
-<li><a href="#org6c5d1ef">Contraste de la hipótesis nula</a></li>
+<li><a href="#org8681457">Contraste de la hipótesis nula</a></li>
 </ul>
 </li>
-<li><a href="#org33a4254">Contraste aumentado de Dickey Fuller sobre la existencia de una raíz unitaria para TB3</a></li>
-<li><a href="#org7b58e8a">Conteste KPSS de estacionariedad para TB3</a></li>
+<li><a href="#org099ae84">Contraste aumentado de Dickey Fuller sobre la existencia de una raíz unitaria para TB3</a></li>
+<li><a href="#org5ad5296">Conteste KPSS de estacionariedad para TB3</a></li>
 </ul>
 </li>
-<li><a href="#orgd8d9e5e">Letras a seis meses</a>
+<li><a href="#orga27aac3">Letras a seis meses</a>
 <ul>
-<li><a href="#orgcf67bb3">Gráfico y correlograma de la serie temporal TB6</a></li>
-<li><a href="#orgb390954">Regresión auxiliar para TB6</a>
+<li><a href="#orgde4b336">Gráfico y correlograma de la serie temporal TB6</a></li>
+<li><a href="#org1336efa">Regresión auxiliar para TB6</a>
 <ul>
-<li><a href="#org9589e54">Contraste de la hipótesis nula</a></li>
+<li><a href="#orgc88793f">Contraste de la hipótesis nula</a></li>
 </ul>
 </li>
-<li><a href="#org164aabd">Contraste aumentado de Dickey Fuller sobre la existencia de una raíz unitaria para TB6</a></li>
-<li><a href="#orga76aa40">Conteste KPSS de estacionariedad para TB6</a></li>
+<li><a href="#orga5197ea">Contraste aumentado de Dickey Fuller sobre la existencia de una raíz unitaria para TB6</a></li>
+<li><a href="#org738620f">Conteste KPSS de estacionariedad para TB6</a></li>
 </ul>
 </li>
-<li><a href="#org9f84757">Contraste de cointegración de Engle y Granger</a></li>
-<li><a href="#orgce99563">Regresión de los tipos a 3 meses sobre los tipos a 6 meses</a></li>
-<li><a href="#org2859b51">Regresión en primeras diferencias</a></li>
-<li><a href="#orgde94b78">Preguntas</a>
+<li><a href="#org446601f">Contraste de cointegración de Engle y Granger</a></li>
+<li><a href="#orgbf9d44a">Regresión de los tipos a 3 meses sobre los tipos a 6 meses</a></li>
+<li><a href="#orgd7fe8c0">Regresión en primeras diferencias</a></li>
+<li><a href="#orgd3d37a8">Preguntas</a>
 <ul>
-<li><a href="#org520d0aa">Pregunta 1</a></li>
-<li><a href="#org66ff710">Pregunta 2</a></li>
-<li><a href="#orga9d71d5">Pregunta 3</a></li>
-<li><a href="#orgb0fb019">Pregunta 4</a></li>
+<li><a href="#orgd74c5a9">Pregunta 1</a></li>
+<li><a href="#org5e33f2e">Pregunta 2</a></li>
+<li><a href="#orgbdd4dc1">Pregunta 3</a></li>
+<li><a href="#orgf128300">Pregunta 4</a></li>
 </ul>
 </li>
-<li><a href="#org92ec7ce">Respuestas</a>
+<li><a href="#orge19d87c">Respuestas</a>
 <ul>
-<li><a href="#org5576041">Respuesta 1</a></li>
-<li><a href="#orgab7a758">Respuesta 2</a></li>
-<li><a href="#orgf9cfa53">Respuesta 3</a></li>
-<li><a href="#org95d8431">Respuesta 4</a></li>
+<li><a href="#orgfd515ab">Respuesta 1</a></li>
+<li><a href="#org92f0d65">Respuesta 2</a></li>
+<li><a href="#org85d5a8a">Respuesta 3</a></li>
+<li><a href="#orgcfae3f0">Respuesta 4</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org129b38b" class="outline-2">
-<h2 id="org129b38b">Datos</h2>
-<div class="outline-text-2" id="text-org129b38b">
+<div id="outline-container-org57e89df" class="outline-2">
+<h2 id="org57e89df">Datos</h2>
+<div class="outline-text-2" id="text-org57e89df">
 <p>
 Datos semanales desde el 12 de diciembre de 1958 al 6 de agosto de
 2004 (en total 2383 observaciones). <i>Fuente</i>: ejemplo 8.6.5 del libro
@@ -170,7 +170,7 @@ gnuplot TB3 TB6  --time-series --with-lines --output="TB3yTB6.png"
 </div>
 
 
-<div id="org9074a5a" class="figure">
+<div id="orgb12dc9c" class="figure">
 <p><img src="./LetrasTesoroAmericano3y6meses/TB3yTB6.png" alt="TB3yTB6.png" />
 </p>
 </div>
@@ -185,13 +185,13 @@ gnuplot TB3 TB6  --time-series --with-lines --output="TB3yTB6.png"
 </ul>
 </div>
 </div>
-<div id="outline-container-org281ee0b" class="outline-2">
-<h2 id="org281ee0b">Letras a tres meses</h2>
-<div class="outline-text-2" id="text-org281ee0b">
+<div id="outline-container-org044a1e5" class="outline-2">
+<h2 id="org044a1e5">Letras a tres meses</h2>
+<div class="outline-text-2" id="text-org044a1e5">
 </div>
-<div id="outline-container-orgccf1193" class="outline-3">
-<h3 id="orgccf1193">Gráfico y correlograma de la serie temporal TB3</h3>
-<div class="outline-text-3" id="text-orgccf1193">
+<div id="outline-container-org9821956" class="outline-3">
+<h3 id="org9821956">Gráfico y correlograma de la serie temporal TB3</h3>
+<div class="outline-text-3" id="text-org9821956">
 <div class="org-src-container">
 <pre class="src src-R"><code>gnuplot TB3 --time-series --with-lines --output="TB3.png"
 corrgm TB3 --plot="TB3ACF-PACF.png"
@@ -201,21 +201,21 @@ corrgm TB3 --plot="TB3ACF-PACF.png"
 
 <div class="org-center">
 
-<div id="orgbfe9d62" class="figure">
+<div id="org64128e3" class="figure">
 <p><img src="./LetrasTesoroAmericano3y6meses/TB3.png" alt="TB3.png" />
 </p>
 </div>
 
-<div id="org419ec55" class="figure">
+<div id="org752d1d3" class="figure">
 <p><img src="./LetrasTesoroAmericano3y6meses/TB3ACF-PACF.png" alt="TB3ACF-PACF.png" /> 
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org5ddc98f" class="outline-3">
-<h3 id="org5ddc98f">Regresión auxiliar para TB3</h3>
-<div class="outline-text-3" id="text-org5ddc98f">
+<div id="outline-container-orgb2b455e" class="outline-3">
+<h3 id="orgb2b455e">Regresión auxiliar para TB3</h3>
+<div class="outline-text-3" id="text-orgb2b455e">
 <p>
 Consideremos la regresión \[\nabla TB3_{t} = \nu + \delta TB3_{t-1} +
 \sum_{j=1}^3 \pi_j \nabla TB3_{t-j} + U_t.\] Y consideremos la
@@ -233,7 +233,7 @@ RegresionAUX_TB3 &lt;- ols d_TB3 0 TB3(-1) d_TB3(-1) d_TB3(-2) d_TB3(-3)
 </code></pre>
 </div>
 
-<pre class="example" id="org45cf87e">
+<pre class="example" id="orgc2fe39c">
 Model 2: OLS, using observations 1959-01-09:2004-08-06 (T = 2379)
 Dependent variable: d_TB3
 
@@ -256,9 +256,9 @@ rho                 -0.002760   Durbin's h          -4.320544
 Excluding the constant, p-value was highest for variable 6 (d_TB3_2)
 </pre>
 </div>
-<div id="outline-container-org6c5d1ef" class="outline-4">
-<h4 id="org6c5d1ef">Contraste de la hipótesis nula</h4>
-<div class="outline-text-4" id="text-org6c5d1ef">
+<div id="outline-container-org8681457" class="outline-4">
+<h4 id="org8681457">Contraste de la hipótesis nula</h4>
+<div class="outline-text-4" id="text-org8681457">
 <p>
 Respecto al contraste de la hipótesis nula sobre el parámetro \(\delta\)
 de la anterior regresión auxiliar:
@@ -276,15 +276,15 @@ valor crítico del contraste para un nivel de significación del 5% es
 </div>
 </div>
 </div>
-<div id="outline-container-org33a4254" class="outline-3">
-<h3 id="org33a4254">Contraste aumentado de Dickey Fuller sobre la existencia de una raíz unitaria para TB3</h3>
-<div class="outline-text-3" id="text-org33a4254">
+<div id="outline-container-org099ae84" class="outline-3">
+<h3 id="org099ae84">Contraste aumentado de Dickey Fuller sobre la existencia de una raíz unitaria para TB3</h3>
+<div class="outline-text-3" id="text-org099ae84">
 <div class="org-src-container">
 <pre class="src src-R"><code>adf 3 TB3 --c
 </code></pre>
 </div>
 
-<pre class="example" id="orge23f775">
+<pre class="example" id="org3b11de1">
 Augmented Dickey-Fuller test for TB3
 including 3 lags of (1-L)TB3
 sample size 2379
@@ -300,15 +300,15 @@ unit-root null hypothesis: a = 1
 </pre>
 </div>
 </div>
-<div id="outline-container-org7b58e8a" class="outline-3">
-<h3 id="org7b58e8a">Conteste KPSS de estacionariedad para TB3</h3>
-<div class="outline-text-3" id="text-org7b58e8a">
+<div id="outline-container-org5ad5296" class="outline-3">
+<h3 id="org5ad5296">Conteste KPSS de estacionariedad para TB3</h3>
+<div class="outline-text-3" id="text-org5ad5296">
 <div class="org-src-container">
 <pre class="src src-R"><code>kpss 3 TB3
 </code></pre>
 </div>
 
-<pre class="example" id="org3a25455">
+<pre class="example" id="orgf390470">
 KPSS test for TB3
 
 T = 2383
@@ -322,13 +322,13 @@ P-value &lt; .01
 </div>
 </div>
 </div>
-<div id="outline-container-orgd8d9e5e" class="outline-2">
-<h2 id="orgd8d9e5e">Letras a seis meses</h2>
-<div class="outline-text-2" id="text-orgd8d9e5e">
+<div id="outline-container-orga27aac3" class="outline-2">
+<h2 id="orga27aac3">Letras a seis meses</h2>
+<div class="outline-text-2" id="text-orga27aac3">
 </div>
-<div id="outline-container-orgcf67bb3" class="outline-3">
-<h3 id="orgcf67bb3">Gráfico y correlograma de la serie temporal TB6</h3>
-<div class="outline-text-3" id="text-orgcf67bb3">
+<div id="outline-container-orgde4b336" class="outline-3">
+<h3 id="orgde4b336">Gráfico y correlograma de la serie temporal TB6</h3>
+<div class="outline-text-3" id="text-orgde4b336">
 <div class="org-src-container">
 <pre class="src src-R"><code>gnuplot TB6 --time-series --with-lines --output="TB6.png"
 corrgm TB6 --plot="TB6ACF-PACF.png"
@@ -338,21 +338,21 @@ corrgm TB6 --plot="TB6ACF-PACF.png"
 
 <div class="org-center">
 
-<div id="org24b63f1" class="figure">
+<div id="orgd1fecc6" class="figure">
 <p><img src="./LetrasTesoroAmericano3y6meses/TB6.png" alt="TB6.png" /> 
 </p>
 </div>
 
-<div id="orgbbf3a67" class="figure">
+<div id="org916cbc8" class="figure">
 <p><img src="./LetrasTesoroAmericano3y6meses/TB6ACF-PACF.png" alt="TB6ACF-PACF.png" /> 
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgb390954" class="outline-3">
-<h3 id="orgb390954">Regresión auxiliar para TB6</h3>
-<div class="outline-text-3" id="text-orgb390954">
+<div id="outline-container-org1336efa" class="outline-3">
+<h3 id="org1336efa">Regresión auxiliar para TB6</h3>
+<div class="outline-text-3" id="text-org1336efa">
 <p>
 Consideremos la regresión \[\nabla TB6_{t} = \nu + \delta TB6_{t-1} +
 \sum_{j=1}^3 \pi_j \nabla TB6_{t-j} + U_t.\] Y consideremos la
@@ -370,7 +370,7 @@ RegresionAUX_TB6 &lt;- ols d_TB6 0 TB6(-1) d_TB6(-1) d_TB6(-2) d_TB6(-3)
 </code></pre>
 </div>
 
-<pre class="example" id="orgf8aef19">
+<pre class="example" id="org728b21e">
 Model 4: OLS, using observations 1959-01-09:2004-08-06 (T = 2379)
 Dependent variable: d_TB6
 
@@ -391,9 +391,9 @@ Schwarz criterion   -1359.661   Hannan-Quinn        -1378.025
 rho                 -0.001784   Durbin's h          -2.253222
 </pre>
 </div>
-<div id="outline-container-org9589e54" class="outline-4">
-<h4 id="org9589e54">Contraste de la hipótesis nula</h4>
-<div class="outline-text-4" id="text-org9589e54">
+<div id="outline-container-orgc88793f" class="outline-4">
+<h4 id="orgc88793f">Contraste de la hipótesis nula</h4>
+<div class="outline-text-4" id="text-orgc88793f">
 <p>
 Respecto al contraste de la hipótesis nula sobre el parámetro \(\delta\)
 de la anterior regresión auxiliar:
@@ -411,15 +411,15 @@ valor crítico del contraste para un nivel de significación del 5% es
 </div>
 </div>
 </div>
-<div id="outline-container-org164aabd" class="outline-3">
-<h3 id="org164aabd">Contraste aumentado de Dickey Fuller sobre la existencia de una raíz unitaria para TB6</h3>
-<div class="outline-text-3" id="text-org164aabd">
+<div id="outline-container-orga5197ea" class="outline-3">
+<h3 id="orga5197ea">Contraste aumentado de Dickey Fuller sobre la existencia de una raíz unitaria para TB6</h3>
+<div class="outline-text-3" id="text-orga5197ea">
 <div class="org-src-container">
 <pre class="src src-R"><code>adf 3 TB6 --c
 </code></pre>
 </div>
 
-<pre class="example" id="orgba64ad6">
+<pre class="example" id="org658b3a7">
 Augmented Dickey-Fuller test for TB6
 including 3 lags of (1-L)TB6
 sample size 2379
@@ -435,15 +435,15 @@ unit-root null hypothesis: a = 1
 </pre>
 </div>
 </div>
-<div id="outline-container-orga76aa40" class="outline-3">
-<h3 id="orga76aa40">Conteste KPSS de estacionariedad para TB6</h3>
-<div class="outline-text-3" id="text-orga76aa40">
+<div id="outline-container-org738620f" class="outline-3">
+<h3 id="org738620f">Conteste KPSS de estacionariedad para TB6</h3>
+<div class="outline-text-3" id="text-org738620f">
 <div class="org-src-container">
 <pre class="src src-R"><code>kpss 3 TB6
 </code></pre>
 </div>
 
-<pre class="example" id="org4c17f0a">
+<pre class="example" id="org5dc5113">
 KPSS test for TB6
 
 T = 2383
@@ -457,15 +457,15 @@ P-value &lt; .01
 </div>
 </div>
 </div>
-<div id="outline-container-org9f84757" class="outline-2">
-<h2 id="org9f84757">Contraste de cointegración de Engle y Granger</h2>
-<div class="outline-text-2" id="text-org9f84757">
+<div id="outline-container-org446601f" class="outline-2">
+<h2 id="org446601f">Contraste de cointegración de Engle y Granger</h2>
+<div class="outline-text-2" id="text-org446601f">
 <div class="org-src-container">
 <pre class="src src-R"><code>coint 3 TB3 TB6
 </code></pre>
 </div>
 
-<pre class="example" id="org0435fd0">
+<pre class="example" id="org563cf4e">
 Step 1: testing for a unit root in TB3
 
 Augmented Dickey-Fuller test for TB3
@@ -536,9 +536,9 @@ There is evidence for a cointegrating relationship if:
 </pre>
 </div>
 </div>
-<div id="outline-container-orgce99563" class="outline-2">
-<h2 id="orgce99563">Regresión de los tipos a 3 meses sobre los tipos a 6 meses</h2>
-<div class="outline-text-2" id="text-orgce99563">
+<div id="outline-container-orgbf9d44a" class="outline-2">
+<h2 id="orgbf9d44a">Regresión de los tipos a 3 meses sobre los tipos a 6 meses</h2>
+<div class="outline-text-2" id="text-orgbf9d44a">
 <div class="org-src-container">
 <pre class="src src-R"><code>MCO3sobre6 &lt;- ols TB3 0 TB6
 modtest --normality --quiet
@@ -547,7 +547,7 @@ modtest --autocorr 1 --quiet
 </code></pre>
 </div>
 
-<pre class="example" id="orgbde4d5c">
+<pre class="example" id="orgfcd6da4">
 Model 8: OLS, using observations 1958-12-12:2004-08-06 (T = 2383)
 Dependent variable: TB3
 
@@ -588,9 +588,9 @@ with p-value = P(Chi-square(1) &gt; 2008.6) = 0
 </pre>
 </div>
 </div>
-<div id="outline-container-org2859b51" class="outline-2">
-<h2 id="org2859b51">Regresión en primeras diferencias</h2>
-<div class="outline-text-2" id="text-org2859b51">
+<div id="outline-container-orgd7fe8c0" class="outline-2">
+<h2 id="orgd7fe8c0">Regresión en primeras diferencias</h2>
+<div class="outline-text-2" id="text-orgd7fe8c0">
 <div class="org-src-container">
 <pre class="src src-R"><code>diff TB3 TB6
 MCO3sobre6_en_Diff &lt;- ols d_TB3 0 d_TB6
@@ -600,7 +600,7 @@ modtest --autocorr 2 --quiet
 </code></pre>
 </div>
 
-<pre class="example" id="orgb555a2a">
+<pre class="example" id="orgc33949d">
 Model 10: OLS, using observations 1958-12-19:2004-08-06 (T = 2382)
 Dependent variable: d_TB3
 
@@ -641,63 +641,63 @@ with p-value = P(Chi-square(2) &gt; 108.32) = 3.01e-24
 </pre>
 </div>
 </div>
-<div id="outline-container-orgde94b78" class="outline-2">
-<h2 id="orgde94b78">Preguntas</h2>
-<div class="outline-text-2" id="text-orgde94b78">
+<div id="outline-container-orgd3d37a8" class="outline-2">
+<h2 id="orgd3d37a8">Preguntas</h2>
+<div class="outline-text-2" id="text-orgd3d37a8">
 </div>
-<div id="outline-container-org520d0aa" class="outline-3">
-<h3 id="org520d0aa">Pregunta 1</h3>
-<div class="outline-text-3" id="text-org520d0aa">
+<div id="outline-container-orgd74c5a9" class="outline-3">
+<h3 id="orgd74c5a9">Pregunta 1</h3>
+<div class="outline-text-3" id="text-orgd74c5a9">
 <p>
 Discuta de todas las formas posibles si las series temporales de
 letras del tesoro norteamericano a tres meses (<code>TB3</code>) y a seis meses
 (<code>TB6</code>) son estacionarias en media (i.e., son la realización de
 procesos estocásticos estacionarios en media), usando para ello los
-resultados de los apartados <a href="#org281ee0b">Letras a tres meses</a> y <a href="#orgd8d9e5e">Letras a seis meses</a>
+resultados de los apartados <a href="#org044a1e5">Letras a tres meses</a> y <a href="#orga27aac3">Letras a seis meses</a>
 así como sus subapartados.
 </p>
 
 <p>
-(<a href="#org5576041">Respuesta 1</a>)
+(<a href="#orgfd515ab">Respuesta 1</a>)
 </p>
 </div>
 </div>
-<div id="outline-container-org66ff710" class="outline-3">
-<h3 id="org66ff710">Pregunta 2</h3>
-<div class="outline-text-3" id="text-org66ff710">
+<div id="outline-container-org5e33f2e" class="outline-3">
+<h3 id="org5e33f2e">Pregunta 2</h3>
+<div class="outline-text-3" id="text-org5e33f2e">
 <p>
 Discuta si las series temporales <code>TB3</code> y <code>TB6</code> están cointegradas, a
-partir de los resultados del apartado <a href="#org9f84757">Contraste de cointegración de Engle y Granger</a>.
+partir de los resultados del apartado <a href="#org446601f">Contraste de cointegración de Engle y Granger</a>.
 </p>
 
 <p>
-(<a href="#orgab7a758">Respuesta 2</a>)
+(<a href="#org92f0d65">Respuesta 2</a>)
 </p>
 </div>
 </div>
-<div id="outline-container-orga9d71d5" class="outline-3">
-<h3 id="orga9d71d5">Pregunta 3</h3>
-<div class="outline-text-3" id="text-orga9d71d5">
+<div id="outline-container-orgbdd4dc1" class="outline-3">
+<h3 id="orgbdd4dc1">Pregunta 3</h3>
+<div class="outline-text-3" id="text-orgbdd4dc1">
 <p>
 ¿Qué relación existe entre el contraste de la hipótesis \(H_0: \delta =
-0\) para la <a href="#org5ddc98f">Regresión auxiliar para TB3</a> y el <a href="#org33a4254">Contraste aumentado de Dickey Fuller sobre la existencia de una raíz unitaria para TB3</a>?
+0\) para la <a href="#orgb2b455e">Regresión auxiliar para TB3</a> y el <a href="#org099ae84">Contraste aumentado de Dickey Fuller sobre la existencia de una raíz unitaria para TB3</a>?
 </p>
 
 <p>
 ¿Qué relación existe entre el contraste de la hipótesis \(H_0: \delta =
-0\) para la <a href="#orgb390954">Regresión auxiliar para TB6</a> y el <a href="#org164aabd">Contraste aumentado de Dickey Fuller sobre la existencia de una raíz unitaria para TB6</a>?
+0\) para la <a href="#org1336efa">Regresión auxiliar para TB6</a> y el <a href="#orga5197ea">Contraste aumentado de Dickey Fuller sobre la existencia de una raíz unitaria para TB6</a>?
 </p>
 
 <p>
-(<a href="#orgf9cfa53">Respuesta 3</a>)
+(<a href="#org85d5a8a">Respuesta 3</a>)
 </p>
 </div>
 </div>
-<div id="outline-container-orgb0fb019" class="outline-3">
-<h3 id="orgb0fb019">Pregunta 4</h3>
-<div class="outline-text-3" id="text-orgb0fb019">
+<div id="outline-container-orgf128300" class="outline-3">
+<h3 id="orgf128300">Pregunta 4</h3>
+<div class="outline-text-3" id="text-orgf128300">
 <p>
-Los listados de la <a href="#orgce99563">Regresión de los tipos a 3 meses sobre los tipos a 6 meses</a> y la <a href="#org2859b51">Regresión en primeras diferencias</a> muestran los
+Los listados de la <a href="#orgbf9d44a">Regresión de los tipos a 3 meses sobre los tipos a 6 meses</a> y la <a href="#orgd7fe8c0">Regresión en primeras diferencias</a> muestran los
 principales resultados obtenidos al estimar por MCO dos modelos de
 regresión.
 </p>
@@ -714,18 +714,18 @@ habituales en dichos modelos?
 </p>
 
 <p>
-(<a href="#org95d8431">Respuesta 4</a>)
+(<a href="#orgcfae3f0">Respuesta 4</a>)
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org92ec7ce" class="outline-2">
-<h2 id="org92ec7ce">Respuestas</h2>
-<div class="outline-text-2" id="text-org92ec7ce">
+<div id="outline-container-orge19d87c" class="outline-2">
+<h2 id="orge19d87c">Respuestas</h2>
+<div class="outline-text-2" id="text-orge19d87c">
 </div>
-<div id="outline-container-org5576041" class="outline-3">
-<h3 id="org5576041">Respuesta 1</h3>
-<div class="outline-text-3" id="text-org5576041">
+<div id="outline-container-orgfd515ab" class="outline-3">
+<h3 id="orgfd515ab">Respuesta 1</h3>
+<div class="outline-text-3" id="text-orgfd515ab">
 <p>
 Ambas series (<code>TB3</code> y <code>TB6</code>) parecen ser NO
 estacionarias en media,
@@ -747,7 +747,7 @@ hipótesis nula de existencia de una raíz unitaria ni al 1%, ni al
 contundentemente que las series sean estacionarias.</li>
 
 <li>Además (aunque el enunciado no hace referencia a la sección
-"<a href="#org9f84757">Contraste de cointegración de Engle y Granger</a>"), los test ADF
+"<a href="#org446601f">Contraste de cointegración de Engle y Granger</a>"), los test ADF
 calculados en las etapas 1 y 2 no rechazan la hipótesis (raíz
 unitaria) pues, de hecho, son los mismos test mostrados más arriba.</li>
 </ul>
@@ -789,13 +789,13 @@ que no lo sea</b>.
 
 
 <p>
-(<a href="#org520d0aa">Pregunta 1</a>)
+(<a href="#orgd74c5a9">Pregunta 1</a>)
 </p>
 </div>
 </div>
-<div id="outline-container-orgab7a758" class="outline-3">
-<h3 id="orgab7a758">Respuesta 2</h3>
-<div class="outline-text-3" id="text-orgab7a758">
+<div id="outline-container-org92f0d65" class="outline-3">
+<h3 id="org92f0d65">Respuesta 2</h3>
+<div class="outline-text-3" id="text-org92f0d65">
 <p>
 El resumen de las distintas etapas del test de cointegración son:
 </p>
@@ -849,13 +849,13 @@ decir, su interpretación <b>NO ES</b> que la media de <code>TB3</code> sea nega
 </blockquote>
 
 <p>
-(<a href="#org66ff710">Pregunta 2</a>)
+(<a href="#org5e33f2e">Pregunta 2</a>)
 </p>
 </div>
 </div>
-<div id="outline-container-orgf9cfa53" class="outline-3">
-<h3 id="orgf9cfa53">Respuesta 3</h3>
-<div class="outline-text-3" id="text-orgf9cfa53">
+<div id="outline-container-org85d5a8a" class="outline-3">
+<h3 id="org85d5a8a">Respuesta 3</h3>
+<div class="outline-text-3" id="text-org85d5a8a">
 <p>
 Precisamente, ambas regresiones auxiliares son las que se han empleado
 en los respectivos contrastes ADF (en este caso incluyendo tres
@@ -881,21 +881,21 @@ hipótesis el ratio debería tomar valores a la izquierda de <code>-2.86</code>)
 </p>
 
 <p>
-(<a href="#orga9d71d5">Pregunta 3</a>)
+(<a href="#orgbdd4dc1">Pregunta 3</a>)
 </p>
 </div>
 </div>
-<div id="outline-container-org95d8431" class="outline-3">
-<h3 id="org95d8431">Respuesta 4</h3>
-<div class="outline-text-3" id="text-org95d8431">
+<div id="outline-container-orgcfae3f0" class="outline-3">
+<h3 id="orgcfae3f0">Respuesta 4</h3>
+<div class="outline-text-3" id="text-orgcfae3f0">
 <dl class="org-dl">
-<dt><a href="#orgce99563">Regresión de los tipos a 3 meses sobre los tipos a 6 meses</a></dt><dd>Los
+<dt><a href="#orgbf9d44a">Regresión de los tipos a 3 meses sobre los tipos a 6 meses</a></dt><dd>Los
 coeficientes estimados son muy significativos. El ajuste del modelo,
 medido por el valor del \(R^2\) es muy elevado, pero los contrastes
 rechazan las hipótesis habituales de distribución normal,
 homocedasticidad y ausencia de autocorrelación en los residuos.</dd>
 
-<dt><a href="#org2859b51">Regresión en primeras diferencias</a></dt><dd>El único coeficiente
+<dt><a href="#orgd7fe8c0">Regresión en primeras diferencias</a></dt><dd>El único coeficiente
 significativo es la pendiente (es decir, al diferenciar las series
 NO desaparece la relación entre ellas; como cabe esperar entre
 series cointegradas), y el ajuste del modelo, medido por el valor
@@ -957,7 +957,7 @@ sentido de Gauss-Markov (tampoco en el máximo-verosímil).</li>
 </blockquote>
 
 <p>
-(<a href="#orgb0fb019">Pregunta 4</a>)
+(<a href="#orgf128300">Pregunta 4</a>)
 </p>
 
 
@@ -1045,7 +1045,7 @@ TIENE QUE VER CON LOS LOGARITMOS.</li>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2025-08-08 Fri 17:05</p>
+<p class="date">Created: 2025-08-08 Fri 18:34</p>
 </div>
 </body>
 </html>
