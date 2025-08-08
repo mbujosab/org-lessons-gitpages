@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<!-- 2025-08-04 Mon 18:11 -->
+<!-- 2025-08-08 Fri 15:52 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Curso de series temporales para la asignatura Econometría Aplicada</title>
@@ -21,26 +21,26 @@ html,button,input,select,textarea {margin: 0; background-image: url(https://www.
 <h2>&Iacute;ndice</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org358e0ae">Transformación de los datos (Lecc01)</a>
+<li><a href="#org8f4070e">Transformación de los datos (Lecc01)</a>
 <ul>
-<li><a href="#orgd38e10e">Practicas</a></li>
+<li><a href="#org1513656">Practicas</a></li>
 </ul>
 </li>
-<li><a href="#org260828b">Conceptos algebraicos (Lecc02)</a></li>
-<li><a href="#org3f7af5b">Procesos estocásticos débilmente estacionarios (Lecc03)</a></li>
-<li><a href="#orgd98e2a9">ACF, PACF y densidad espectral de algunos modelos lineales (Lecc04)</a></li>
-<li><a href="#org3e44ba2">ACF, PACF y densidad espectral de algunos modelos ARMA. Herramientas estadísticas (Lecc05)</a></li>
-<li><a href="#orgd8b466f">Modelos ARIMA y SARIMA. Identificación y diagnosis del análisis univariante (Lecc06)</a></li>
-<li><a href="#org16b8bde">Transformación de los datos (Lecc01)</a>
+<li><a href="#org95eda93">Conceptos algebraicos (Lecc02)</a></li>
+<li><a href="#org28316bc">Procesos estocásticos débilmente estacionarios (Lecc03)</a></li>
+<li><a href="#org6b9db37">ACF, PACF y densidad espectral de algunos modelos lineales (Lecc04)</a></li>
+<li><a href="#orgf9384df">ACF, PACF y densidad espectral de algunos modelos ARMA. Herramientas estadísticas (Lecc05)</a></li>
+<li><a href="#org045e897">Modelos ARIMA y SARIMA. Identificación y diagnosis del análisis univariante (Lecc06)</a></li>
+<li><a href="#org6c6c28a">Transformación de los datos (Lecc01)</a>
 <ul>
-<li><a href="#org9455955">Practicas</a></li>
+<li><a href="#org1087e77">Practicas</a></li>
 </ul>
 </li>
-<li><a href="#org3e5dc03">Conceptos algebraicos (Lecc02)</a></li>
-<li><a href="#orgb6b2878">Procesos estocásticos débilmente estacionarios (Lecc03)</a></li>
-<li><a href="#org2300ce6">ACF, PACF y densidad espectral de algunos modelos lineales (Lecc04)</a></li>
-<li><a href="#org63bc969">ACF, PACF y densidad espectral de algunos modelos ARMA. Herramientas estadísticas (Lecc05)</a></li>
-<li><a href="#org5b2906c">Modelos ARIMA y SARIMA. Identificación y diagnosis del análisis univariante (Lecc06)</a></li>
+<li><a href="#orgf147df7">Conceptos algebraicos (Lecc02)</a></li>
+<li><a href="#orgdb114e7">Procesos estocásticos débilmente estacionarios (Lecc03)</a></li>
+<li><a href="#org14b60fa">ACF, PACF y densidad espectral de algunos modelos lineales (Lecc04)</a></li>
+<li><a href="#orgcf6dbec">ACF, PACF y densidad espectral de algunos modelos ARMA. Herramientas estadísticas (Lecc05)</a></li>
+<li><a href="#orgeb9508c">Modelos ARIMA y SARIMA. Identificación y diagnosis del análisis univariante (Lecc06)</a></li>
 </ul>
 </div>
 </nav>
@@ -60,18 +60,18 @@ html,button,input,select,textarea {margin: 0; background-image: url(https://www.
 <p>
 <a href="sitemap.html">mapa del sitio</a>
 </p>
-<div id="outline-container-org358e0ae" class="outline-2">
-<h2 id="org358e0ae">Transformación de los datos (Lecc01)</h2>
-<div class="outline-text-2" id="text-org358e0ae">
+<div id="outline-container-org8f4070e" class="outline-2">
+<h2 id="org8f4070e">Transformación de los datos (Lecc01)</h2>
+<div class="outline-text-2" id="text-org8f4070e">
 <ul class="org-ul">
 <li>(<a href="./Transparencias/Lecc01.slides.html">slides</a>) &mdash; (<a href="./Lecciones/Lecc01.html">html</a>) &mdash; (<a href="./Lecciones/Lecc01.pdf">pdf</a>)</li>
 
 <li><a href="https://mybinder.org/v2/gh/mbujosab/EconometriaAplicada-SRC/HEAD?labpath=Lecc01.ipynb">notebook en mybinder</a></li>
 </ul>
 </div>
-<div id="outline-container-orgd38e10e" class="outline-3">
-<h3 id="orgd38e10e">Practicas</h3>
-<div class="outline-text-3" id="text-orgd38e10e">
+<div id="outline-container-org1513656" class="outline-3">
+<h3 id="org1513656">Practicas</h3>
+<div class="outline-text-3" id="text-org1513656">
 <ul class="org-ul">
 <li>(<a href="./Lecciones/Practicas/Prct-Lecc01.html">html</a>) &mdash; (<a href="./Lecciones/Practicas/Prct-Lecc01.pdf">pdf</a>)</li>
 <li>Guiones de gretl: 
@@ -82,9 +82,9 @@ html,button,input,select,textarea {margin: 0; background-image: url(https://www.
 </div>
 </div>
 </div>
-<div id="outline-container-org260828b" class="outline-2">
-<h2 id="org260828b">Conceptos algebraicos (Lecc02)</h2>
-<div class="outline-text-2" id="text-org260828b">
+<div id="outline-container-org95eda93" class="outline-2">
+<h2 id="org95eda93">Conceptos algebraicos (Lecc02)</h2>
+<div class="outline-text-2" id="text-org95eda93">
 <ul class="org-ul">
 <li><a href="./Transparencias/Lecc02.slides.html">slides</a></li>
 <li><a href="./Lecciones/Lecc02.html">html</a></li>
@@ -96,9 +96,9 @@ html,button,input,select,textarea {margin: 0; background-image: url(https://www.
 </p>
 </div>
 </div>
-<div id="outline-container-org3f7af5b" class="outline-2">
-<h2 id="org3f7af5b">Procesos estocásticos débilmente estacionarios (Lecc03)</h2>
-<div class="outline-text-2" id="text-org3f7af5b">
+<div id="outline-container-org28316bc" class="outline-2">
+<h2 id="org28316bc">Procesos estocásticos débilmente estacionarios (Lecc03)</h2>
+<div class="outline-text-2" id="text-org28316bc">
 <ul class="org-ul">
 <li><a href="./Lecc05.slides.html">slides</a></li>
 <li><a href="./Lecc05.html">html</a></li>
@@ -107,9 +107,9 @@ html,button,input,select,textarea {margin: 0; background-image: url(https://www.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd98e2a9" class="outline-2">
-<h2 id="orgd98e2a9">ACF, PACF y densidad espectral de algunos modelos lineales (Lecc04)</h2>
-<div class="outline-text-2" id="text-orgd98e2a9">
+<div id="outline-container-org6b9db37" class="outline-2">
+<h2 id="org6b9db37">ACF, PACF y densidad espectral de algunos modelos lineales (Lecc04)</h2>
+<div class="outline-text-2" id="text-org6b9db37">
 <ul class="org-ul">
 <li><a href="./Lecc06.slides.html">slides</a></li>
 <li><a href="./Lecc06.html">html</a></li>
@@ -118,9 +118,9 @@ html,button,input,select,textarea {margin: 0; background-image: url(https://www.
 </ul>
 </div>
 </div>
-<div id="outline-container-org3e44ba2" class="outline-2">
-<h2 id="org3e44ba2">ACF, PACF y densidad espectral de algunos modelos ARMA. Herramientas estadísticas (Lecc05)</h2>
-<div class="outline-text-2" id="text-org3e44ba2">
+<div id="outline-container-orgf9384df" class="outline-2">
+<h2 id="orgf9384df">ACF, PACF y densidad espectral de algunos modelos ARMA. Herramientas estadísticas (Lecc05)</h2>
+<div class="outline-text-2" id="text-orgf9384df">
 <ul class="org-ul">
 <li><a href="./Lecc07.slides.html">slides</a></li>
 <li><a href="./Lecc07.html">html</a></li>
@@ -129,9 +129,9 @@ html,button,input,select,textarea {margin: 0; background-image: url(https://www.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd8b466f" class="outline-2">
-<h2 id="orgd8b466f">Modelos ARIMA y SARIMA. Identificación y diagnosis del análisis univariante (Lecc06)</h2>
-<div class="outline-text-2" id="text-orgd8b466f">
+<div id="outline-container-org045e897" class="outline-2">
+<h2 id="org045e897">Modelos ARIMA y SARIMA. Identificación y diagnosis del análisis univariante (Lecc06)</h2>
+<div class="outline-text-2" id="text-org045e897">
 <ul class="org-ul">
 <li><a href="./Lecc08.slides.html">slides</a></li>
 <li><a href="./Lecc08.html">html</a></li>
@@ -140,9 +140,9 @@ html,button,input,select,textarea {margin: 0; background-image: url(https://www.
 </ul>
 </div>
 </div>
-<div id="outline-container-org16b8bde" class="outline-2">
-<h2 id="org16b8bde">Transformación de los datos (Lecc01)</h2>
-<div class="outline-text-2" id="text-org16b8bde">
+<div id="outline-container-org6c6c28a" class="outline-2">
+<h2 id="org6c6c28a">Transformación de los datos (Lecc01)</h2>
+<div class="outline-text-2" id="text-org6c6c28a">
 <ul class="org-ul">
 <li><a href="./Transparencias/Lecc01.slides.html">slides</a></li>
 <li><a href="./Lecc01.html">html</a></li>
@@ -150,9 +150,9 @@ html,button,input,select,textarea {margin: 0; background-image: url(https://www.
 <li><a href="https://mybinder.org/v2/gh/mbujosab/EconometriaAplicada-SRC/HEAD?labpath=Lecc01.ipynb">notebook en mybinder</a></li>
 </ul>
 </div>
-<div id="outline-container-org9455955" class="outline-3">
-<h3 id="org9455955">Practicas</h3>
-<div class="outline-text-3" id="text-org9455955">
+<div id="outline-container-org1087e77" class="outline-3">
+<h3 id="org1087e77">Practicas</h3>
+<div class="outline-text-3" id="text-org1087e77">
 <ul class="org-ul">
 <li><a href="./Practicas/PracticasGretl/pub/Prct-Lecc01.pdf">pdf file</a></li>
 <li>Guiones de gretl
@@ -163,9 +163,9 @@ html,button,input,select,textarea {margin: 0; background-image: url(https://www.
 </div>
 </div>
 </div>
-<div id="outline-container-org3e5dc03" class="outline-2">
-<h2 id="org3e5dc03">Conceptos algebraicos (Lecc02)</h2>
-<div class="outline-text-2" id="text-org3e5dc03">
+<div id="outline-container-orgf147df7" class="outline-2">
+<h2 id="orgf147df7">Conceptos algebraicos (Lecc02)</h2>
+<div class="outline-text-2" id="text-orgf147df7">
 <ul class="org-ul">
 <li><a href="./Transparencias/Lecc02.slides.html">slides</a></li>
 <li><a href="./Lecc02.html">html</a></li>
@@ -174,9 +174,9 @@ html,button,input,select,textarea {margin: 0; background-image: url(https://www.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb6b2878" class="outline-2">
-<h2 id="orgb6b2878">Procesos estocásticos débilmente estacionarios (Lecc03)</h2>
-<div class="outline-text-2" id="text-orgb6b2878">
+<div id="outline-container-orgdb114e7" class="outline-2">
+<h2 id="orgdb114e7">Procesos estocásticos débilmente estacionarios (Lecc03)</h2>
+<div class="outline-text-2" id="text-orgdb114e7">
 <ul class="org-ul">
 <li><a href="./Lecc05.slides.html">slides</a></li>
 <li><a href="./Lecc05.html">html</a></li>
@@ -185,9 +185,9 @@ html,button,input,select,textarea {margin: 0; background-image: url(https://www.
 </ul>
 </div>
 </div>
-<div id="outline-container-org2300ce6" class="outline-2">
-<h2 id="org2300ce6">ACF, PACF y densidad espectral de algunos modelos lineales (Lecc04)</h2>
-<div class="outline-text-2" id="text-org2300ce6">
+<div id="outline-container-org14b60fa" class="outline-2">
+<h2 id="org14b60fa">ACF, PACF y densidad espectral de algunos modelos lineales (Lecc04)</h2>
+<div class="outline-text-2" id="text-org14b60fa">
 <ul class="org-ul">
 <li><a href="./Lecc06.slides.html">slides</a></li>
 <li><a href="./Lecc06.html">html</a></li>
@@ -196,9 +196,9 @@ html,button,input,select,textarea {margin: 0; background-image: url(https://www.
 </ul>
 </div>
 </div>
-<div id="outline-container-org63bc969" class="outline-2">
-<h2 id="org63bc969">ACF, PACF y densidad espectral de algunos modelos ARMA. Herramientas estadísticas (Lecc05)</h2>
-<div class="outline-text-2" id="text-org63bc969">
+<div id="outline-container-orgcf6dbec" class="outline-2">
+<h2 id="orgcf6dbec">ACF, PACF y densidad espectral de algunos modelos ARMA. Herramientas estadísticas (Lecc05)</h2>
+<div class="outline-text-2" id="text-orgcf6dbec">
 <ul class="org-ul">
 <li><a href="./Lecc07.slides.html">slides</a></li>
 <li><a href="./Lecc07.html">html</a></li>
@@ -207,9 +207,9 @@ html,button,input,select,textarea {margin: 0; background-image: url(https://www.
 </ul>
 </div>
 </div>
-<div id="outline-container-org5b2906c" class="outline-2">
-<h2 id="org5b2906c">Modelos ARIMA y SARIMA. Identificación y diagnosis del análisis univariante (Lecc06)</h2>
-<div class="outline-text-2" id="text-org5b2906c">
+<div id="outline-container-orgeb9508c" class="outline-2">
+<h2 id="orgeb9508c">Modelos ARIMA y SARIMA. Identificación y diagnosis del análisis univariante (Lecc06)</h2>
+<div class="outline-text-2" id="text-orgeb9508c">
 <ul class="org-ul">
 <li><a href="./Lecc08.slides.html">slides</a></li>
 <li><a href="./Lecc08.html">html</a></li>
@@ -220,7 +220,7 @@ html,button,input,select,textarea {margin: 0; background-image: url(https://www.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2025-08-04 Mon 18:11</p>
+<p class="date">Created: 2025-08-08 Fri 15:52</p>
 </div>
 </body>
 </html>
