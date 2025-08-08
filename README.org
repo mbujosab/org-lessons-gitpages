@@ -47,12 +47,15 @@
 
 
 ** Conceptos algebraicos (Lecc02)
+    :PROPERTIES:  
+    :UNNUMBERED: nil
+    :END:  
 
-- [[file:./Transparencias/Lecc02.slides.html][slides]]
-- [[file:./Lecciones/Lecc02.html][html]]
-- [[file:./Lecciones/Lecc02.pdf][pdf]]
+- ([[file:./Transparencias/Lecc02.slides.html][slides]]) --- ([[file:./Lecciones/Lecc02.html][html]]) --- ([[file:./Lecciones/Lecc02.pdf][pdf]])
 
-[[https://mybinder.org/v2/gh/mbujosab/EconometriaAplicada-SRC/HEAD?labpath=Lecc04.ipynb][notebook en mybinder]]
+# - [[https://mybinder.org/v2/gh/mbujosab/EconometriaAplicada-SRC/HEAD?labpath=Lecc04.ipynb][notebook en mybinder]]
+
+- [[https://mybinder.org/v2/gh/mbujosab/org-lessons-gitpages/gh-pages?labpath=%2Fdoc%2Ftree%2Fdocs%2FCuadernosElectronicos%2FLecc02.ipynb][notebook en mybinder]]
 
 
 ** Procesos estocásticos débilmente estacionarios (Lecc03)
