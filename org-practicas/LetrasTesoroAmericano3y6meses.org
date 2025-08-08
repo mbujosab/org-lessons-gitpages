@@ -25,8 +25,21 @@
 
 #+LATEX: \maketitle
 
+
+#+NAME: if-no-guiones-makedir
+#+BEGIN_SRC emacs-lisp :exports none :results silent :tangle no
+(unless (file-directory-p "guiones")
+  (make-directory "guiones"))
+#+END_SRC
+
+#+NAME: tangle-all-code-blocks
+#+BEGIN_SRC emacs-lisp :exports none :results silent :tangle no
+(org-babel-tangle)
+#+END_SRC
+
+
 #+name: gretl
-#+BEGIN_SRC sh :exports none :results silent
+#+BEGIN_SRC sh :exports none :results silent :tangle no
 rm -fr $(pwd)/LetrasTesoroAmericano3y6meses
 mkdir -p $(pwd)/LetrasTesoroAmericano3y6meses 
 DIRECTORIO="$(pwd)/LetrasTesoroAmericano3y6meses" gretlcli -b guiones/LetrasTesoroAmericano3y6meses.inp 
@@ -34,11 +47,11 @@ DIRECTORIO="$(pwd)/LetrasTesoroAmericano3y6meses" gretlcli -b guiones/LetrasTeso
 #+END_SRC
 # echo "$(pwd)/guiones/LetrasTesoroAmericano3y6meses" > directorioDeTrabajo
 
-#+BEGIN_SRC sh  :exports none :results silent
+#+BEGIN_SRC sh  :exports none :results silent :tangle no :eval no
 # zip LetrasTesoroAmericano3y6meses LetrasTesoroAmericano3y6meses* LetrasTesoroAmericano3y6meses/*#
 #+END_SRC
 
-#+BEGIN_SRC bash :exports none :results silent
+#+BEGIN_SRC bash :exports none :results silent :tangle no :eval no
 FICHERO_ORIGEN="$(pwd)/guiones/LetrasTesoroAmericano3y6meses.inp"
 
 # Eliminar /guiones/ del path
@@ -59,7 +72,6 @@ printf "%s" "$SIN_EXTENSION" > LetrasTesoroAmericano3y6meses.workdir
 
 string directory = getenv("DIRECTORIO")
 #string directory = $(pwd) ~ "/LetrasTesoroAmericano3y6meses" 
-#string directory = readfile(sprintf("./LetrasTesoroAmericano3y6meses.workdir"))
 set workdir "@directory"
  
 #+end_src

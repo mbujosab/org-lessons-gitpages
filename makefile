@@ -75,6 +75,31 @@ PRACTICAS_DONE = $(patsubst org-practicas/%.org, $(LECCIONES_tmp)/Practicas/%.do
 practicas: $(PRACTICAS_DONE)
 	@echo "✅ Todas las prácticas actualizadas."
 
+#$(LECCIONES_tmp)/Practicas/%.done: org-practicas/%.org
+#	echo "➡️ Copiando y ejecutando $< ..."
+#	mkdir -p $(LECCIONES_tmp)/Practicas/guiones
+#	cp $< $(LECCIONES_tmp)/Practicas/
+#	cp -a org-practicas/hansl.tex $(LECCIONES_tmp)/Practicas/
+#	cp -a ./datos $(LECCIONES_tmp)/Practicas
+#	emacs --batch $< -l org -f org-babel-tangle
+#	ls -lR $(LECCIONES_tmp)/Practicas/guiones  # Debug para Actions
+#	echo "🧠 Ejecutando org-babel-tangle y eval..."
+#	set -e; \
+#	if emacs --batch \
+#	  --load ~/Software/scimax/init.el \
+#	  $(LECCIONES_tmp)/Practicas/$*.org \
+#	  --eval "(org-babel-tangle)" \
+#	  --eval "(org-babel-execute-buffer)" \
+#	  --eval "(save-buffer)" \
+#	  --kill; then \
+#	    echo "✅ Correcto: $<"; \
+#	    touch $@; \
+#	else \
+#	    echo "❌ Error al procesar $<"; \
+#	    rm -f $@; \
+#	    exit 1; \
+#	fi
+
 $(LECCIONES_tmp)/Practicas/%.done: org-practicas/%.org
 	echo "➡️ Copiando y ejecutando $< ..."
 	mkdir -p $(LECCIONES_tmp)/Practicas/guiones
@@ -86,7 +111,6 @@ $(LECCIONES_tmp)/Practicas/%.done: org-practicas/%.org
 	if emacs --batch \
 	  --load ~/Software/scimax/init.el \
 	  $(LECCIONES_tmp)/Practicas/$*.org \
-	  --eval "(org-babel-tangle)" \
 	  --eval "(org-babel-execute-buffer)" \
 	  --eval "(save-buffer)" \
 	  --kill; then \
@@ -97,6 +121,7 @@ $(LECCIONES_tmp)/Practicas/%.done: org-practicas/%.org
 	    rm -f $@; \
 	    exit 1; \
 	fi
+	ls -lR $(LECCIONES_tmp)/Practicas/guiones  # Debug para Actions
 
 ## Regla para copiar, tanglear y ejecutar cada práctica
 #$(LECCIONES_tmp)/Practicas/%.done: org-practicas/%.org
