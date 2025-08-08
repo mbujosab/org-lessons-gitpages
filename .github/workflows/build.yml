@@ -21,7 +21,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y emacs pandoc aspell aspell-en aspell-es
+        sudo apt-get install -y git emacs pandoc aspell aspell-en aspell-es zip gretl
         pip install jupyter nbconvert
 
     - name: Install Python modules
@@ -34,7 +34,7 @@ jobs:
 
     - name: Install LaTeX
       run: |
-        sudo apt-get install -y texlive  texlive-latex-recommended texlive-latex-extra  texlive-fonts-extra texlive-fonts-recommended texlive-xetex texlive-science python3-pygments texlive-lang-spanish texlive-bibtex-extra texlive-binaries texlive-extra-utils texlive-font-utils texlive-luatex texlive-xetex
+        sudo apt-get install -y texlive  texlive-latex-recommended texlive-latex-extra  texlive-fonts-extra texlive-fonts-recommended texlive-xetex texlive-science python3-pygments texlive-lang-spanish texlive-bibtex-extra texlive-binaries texlive-extra-utils texlive-font-utils texlive-luatex texlive-xetex dvipng
 
     - name: Disable tlmgr (prevent accidental calls)
       run: sudo mv /usr/bin/tlmgr /usr/bin/tlmgr.disabled || true
@@ -61,12 +61,10 @@ jobs:
         echo "(setq system-packages-use-sudo nil)" > ~/.emacs.d/no-tlmgr.el
         echo "(setq TeX-install-font-lock nil)" >> ~/.emacs.d/no-tlmgr.el
         echo "(setq TeX-live-install-texmf nil)" >> ~/.emacs.d/no-tlmgr.el
-        echo "(setq TeX-live-install-texmf nil)" >> ~/.emacs.d/no-tlmgr.el
 
     - name: Verify ox-ipynb Installation
       run: |
         emacs --batch \
-              --load ~/.emacs.d/no-tlmgr.el \
               --eval "(add-to-list 'load-path \"~/Software/scimax/\")" \
               --eval "(dolist (dir (directory-files \"~/.emacs.d/elpa/\" t \"^[^.]\")) (add-to-list 'load-path dir))" \
               --eval "(require 'ox-ipynb)"
@@ -75,21 +73,14 @@ jobs:
       run: |
         make notebooksYslides
 
-    - name: Inspección contenido de img
+    - name: Inspección contenido de Lecciones/img
       run: |
-        # emacs -q -l ~/Software/scimax/init.el ./lecciones/Lecc01.org --batch -f org-babel-execute-buffer --kill > docs/emacs_build.log 2>&1
-        emacs -Q -l ~/Software/scimax/init.el ./lecciones/Lecc01.org --batch --eval "(progn (org-babel-execute-buffer) (save-buffer))" --kill > docs/emacs_build.log 2>&1
-        cat docs/emacs_build.log
         echo "CONTENIDO DE IMG TRAS NOTEBOOK:"
-        find ./lecciones/img
-
-    - name: Copia del directorio de imagenes a docs
-      run: |
-        cp -a ./lecciones/img ./docs
+        find ./Lecciones/img
 
     - name: Execute Makefile publicacion
       run: |
-        make publicacion calendario
+        make practicas publicacion calendario
 
     - name: Deploy docs/ a gh-pages
       uses: peaceiris/actions-gh-pages@v4
