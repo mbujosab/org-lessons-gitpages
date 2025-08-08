@@ -18,9 +18,8 @@
 * Enlaces
 
 - Enlaces :: 
-  - [[https://mbujosab.github.io/EconometriaAplicada-SRC/][Web]] con el material
-  - [[https://github.com/mbujosab/EconometriaAplicada-SRC][Repositorio]] con el material
-
+  - [[https://mbujosab.github.io/org-lessons-gitpages/][Web]] con el material
+  - [[https://github.com/mbujosab/org-lessons-gitpages][Repositorio]] con el material
   - [[https://drive.google.com/open?id=0Bwa1A30pN0IwWUtNNzRQRFRJUTQ][Ficha]] de la asignatura
 
 [[file:Calendario-Econometria-Aplicada.pdf][Calendario tentativo]] 
@@ -36,7 +35,9 @@
 
 - ([[file:./Transparencias/Lecc01.slides.html][slides]]) --- ([[file:./Lecciones/Lecc01.html][html]]) --- ([[file:./Lecciones/Lecc01.pdf][pdf]])
 
-- [[https://mybinder.org/v2/gh/mbujosab/EconometriaAplicada-SRC/HEAD?labpath=Lecc01.ipynb][notebook en mybinder]]
+# - [[https://mybinder.org/v2/gh/mbujosab/EconometriaAplicada-SRC/HEAD?labpath=Lecc01.ipynb][notebook en mybinder]]
+
+- [[https://mybinder.org/v2/gh/mbujosab/org-lessons-gitpages/gh-pages?urlpath=%2Fdoc%2Ftree%2Fdocs%2FCuadernosElectronicos%2FLecc01.ipynb][notebook en mybinder]]
 
 *** Practicas
 
