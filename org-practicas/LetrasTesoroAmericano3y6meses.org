@@ -37,15 +37,14 @@
 (org-babel-tangle)
 #+END_SRC
 
-
 #+name: gretl
 #+BEGIN_SRC sh :exports none :results silent :tangle no
 rm -fr $(pwd)/LetrasTesoroAmericano3y6meses
 mkdir -p $(pwd)/LetrasTesoroAmericano3y6meses 
-DIRECTORIO="$(pwd)/LetrasTesoroAmericano3y6meses" gretlcli -b guiones/LetrasTesoroAmericano3y6meses.inp 
-#gretlcli -c -b $(pwd)/guiones/LetrasTesoroAmericano3y6meses.inp
+DIRECTORIO="$(pwd)/LetrasTesoroAmericano3y6meses" gretlcli -b $(pwd)/guiones/LetrasTesoroAmericano3y6meses.inp 
 #+END_SRC
 # echo "$(pwd)/guiones/LetrasTesoroAmericano3y6meses" > directorioDeTrabajo
+# gretlcli -c -b $(pwd)/guiones/LetrasTesoroAmericano3y6meses.inp
 
 #+BEGIN_SRC sh  :exports none :results silent :tangle no :eval no
 # zip LetrasTesoroAmericano3y6meses LetrasTesoroAmericano3y6meses* LetrasTesoroAmericano3y6meses/*#

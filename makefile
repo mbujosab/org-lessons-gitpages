@@ -112,7 +112,7 @@ $(LECCIONES_tmp)/Practicas/%.done: org-practicas/%.org
 	  --load ~/Software/scimax/init.el \
 	  $(LECCIONES_tmp)/Practicas/$*.org \
 	  --eval "(org-babel-execute-buffer)" \
-	  --eval "(save-buffer)" \
+	o  --eval "(save-buffer)" \
 	  --kill; then \
 	    echo "✅ Correcto: $<"; \
 	    touch $@; \
@@ -121,6 +121,7 @@ $(LECCIONES_tmp)/Practicas/%.done: org-practicas/%.org
 	    rm -f $@; \
 	    exit 1; \
 	fi
+	echo "➡️ listado de ficheros en el subdirectorio guiones"
 	ls -lR $(LECCIONES_tmp)/Practicas/guiones  # Debug para Actions
 
 ## Regla para copiar, tanglear y ejecutar cada práctica
