@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
 <head>
-<!-- 2025-08-08 Fri 15:52 -->
+<!-- 2025-08-08 Fri 17:05 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Lección 1 &mdash; Número de viajeros internacionales</title>
@@ -101,20 +101,20 @@ org_html_manager.setup();  // activate after the parameters are set
 <h2>&Iacute;ndice</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc1e46f9">Número de viajeros internacionales</a></li>
-<li><a href="#org4ee6157">Actividad 1 - mostrar datos</a></li>
-<li><a href="#org1bb85a5">Actividad 2 - Gráfico de series temporales</a></li>
-<li><a href="#org1f74263">Actividad 3 - Transformar logarítmicamente los datos</a></li>
-<li><a href="#org21ef803">Actividad 4 - Primera diferencia de los datos en logaritmos</a></li>
-<li><a href="#orgc17d847">Actividad 5 - El logaritmo no es una función lineal</a></li>
-<li><a href="#orgb6da829">Actividad 6 - Diferencia de orden 12 (o estacional) de la primera diferencia de los datos en logaritmos</a></li>
-<li><a href="#org839dd71">Actividad 5 - El orden en que se aplican los operadores diferencia y diferencia estacional es irrelevante</a></li>
+<li><a href="#orgfc03dae">Número de viajeros internacionales</a></li>
+<li><a href="#org3cbed29">Actividad 1 - mostrar datos</a></li>
+<li><a href="#orgf5c3053">Actividad 2 - Gráfico de series temporales</a></li>
+<li><a href="#org5cd45be">Actividad 3 - Transformar logarítmicamente los datos</a></li>
+<li><a href="#org49f85ce">Actividad 4 - Primera diferencia de los datos en logaritmos</a></li>
+<li><a href="#orge3b48a9">Actividad 5 - El logaritmo no es una función lineal</a></li>
+<li><a href="#orge12ab76">Actividad 6 - Diferencia de orden 12 (o estacional) de la primera diferencia de los datos en logaritmos</a></li>
+<li><a href="#orga8e157e">Actividad 5 - El orden en que se aplican los operadores diferencia y diferencia estacional es irrelevante</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc1e46f9" class="outline-2">
-<h2 id="orgc1e46f9">Número de viajeros internacionales</h2>
-<div class="outline-text-2" id="text-orgc1e46f9">
+<div id="outline-container-orgfc03dae" class="outline-2">
+<h2 id="orgfc03dae">Número de viajeros internacionales</h2>
+<div class="outline-text-2" id="text-orgfc03dae">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -159,18 +159,18 @@ Comencemos cargando los datos:
 <i>o bien teclee en linea de comandos</i>:
 </p>
 <div class="org-src-container">
-<pre class="src src-gretl" id="org89d7590"><code>open bjg
+<pre class="src src-gretl" id="org3c49c8a"><code>open bjg
 </code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org4ee6157" class="outline-2">
-<h2 id="org4ee6157">Actividad 1 - mostrar datos</h2>
-<div class="outline-text-2" id="text-org4ee6157">
+<div id="outline-container-org3cbed29" class="outline-2">
+<h2 id="org3cbed29">Actividad 1 - mostrar datos</h2>
+<div class="outline-text-2" id="text-org3cbed29">
 </div>
 <ul class="org-ul">
-<li><a id="org7d7d3e6"></a>Visualice los datos de precios y tamaños de las casas<br />
-<div class="outline-text-6" id="text-org7d7d3e6">
+<li><a id="orgf3d3163"></a>Visualice los datos de precios y tamaños de las casas<br />
+<div class="outline-text-6" id="text-orgf3d3163">
 <ul class="org-ul">
 <li>En la ventana principal de <a href="https://gretl.sourceforge.net/es.html">Gretl</a>, marque con el ratón la variable: <code>g</code>.</li>
 <li>``Pinche'' sobre ella con el botón derecho del ratón.</li>
@@ -182,14 +182,14 @@ Seleccione <b><i><code>mostrar valores</code></i></b> del menú desplegable que 
 <i>o bien teclee en linea de comandos</i>:
 </p>
 <div class="org-src-container">
-<pre class="src src-gretl" id="orga3a4736"><code>print -o g
+<pre class="src src-gretl" id="orgfd745b4"><code>print -o g
 </code></pre>
 </div></li>
 </ul>
 </div>
 </li>
-<li><a id="org392601c"></a>Ayuda<br />
-<div class="outline-text-6" id="text-org392601c">
+<li><a id="org8ed1db6"></a>Ayuda<br />
+<div class="outline-text-6" id="text-org8ed1db6">
 <p>
 Para consultar la documentación sobre cualquier comando, puede emplear el menú desplegable <b><i><code>Ayuda</code></i></b> que aparece arriba, a la derecha de la ventana principal de <a href="https://gretl.sourceforge.net/es.html">Gretl</a>.
 </p>
@@ -204,13 +204,13 @@ Para consultar la documentación sobre cualquier comando, puede emplear el menú
 </li>
 </ul>
 </div>
-<div id="outline-container-org1bb85a5" class="outline-2">
-<h2 id="org1bb85a5">Actividad 2 - Gráfico de series temporales</h2>
-<div class="outline-text-2" id="text-org1bb85a5">
+<div id="outline-container-orgf5c3053" class="outline-2">
+<h2 id="orgf5c3053">Actividad 2 - Gráfico de series temporales</h2>
+<div class="outline-text-2" id="text-orgf5c3053">
 </div>
 <ul class="org-ul">
-<li><a id="orga9386f6"></a>Scatter plot<br />
-<div class="outline-text-6" id="text-orga9386f6">
+<li><a id="orgeff878d"></a>Scatter plot<br />
+<div class="outline-text-6" id="text-orgeff878d">
 <ul class="org-ul">
 <li><p>
 Marque la variable <code>g</code> (pulsando <code>ctrl</code> y pinchando con el botón derecho del ratón sobre ella). Elija <b><i><code>Gráfico de series temporales</code></i></b>
@@ -222,8 +222,8 @@ Marque la variable <code>g</code> (pulsando <code>ctrl</code> y pinchando con el
 </ul>
 </div>
 </li>
-<li><a id="orga040f2c"></a>Guardar gráfico como <i>icono</i> para editarlo más tarde<br />
-<div class="outline-text-6" id="text-orga040f2c">
+<li><a id="orge59fac8"></a>Guardar gráfico como <i>icono</i> para editarlo más tarde<br />
+<div class="outline-text-6" id="text-orge59fac8">
 <ul class="org-ul">
 <li>``Pinche'' con el botón derecho sobre la ventana del gráfico.</li>
 <li><p>
@@ -234,7 +234,7 @@ Seleccione <b><i><code>Guardar a sesión como icono</code></i></b>
 <i>o bien teclee en linea de comandos</i>:
 </p>
 <div class="org-src-container">
-<pre class="src src-gretl" id="orgf99828a"><code>AirlinePassengers &lt;- gnuplot g --time-series --with-lines
+<pre class="src src-gretl" id="org51986d1"><code>AirlinePassengers &lt;- gnuplot g --time-series --with-lines
 </code></pre>
 </div>
 
@@ -250,9 +250,9 @@ En la zona inferior izquierda de la ventana principal puede ver una serie de ico
 </li>
 </ul>
 </div>
-<div id="outline-container-org1f74263" class="outline-2">
-<h2 id="org1f74263">Actividad 3 - Transformar logarítmicamente los datos</h2>
-<div class="outline-text-2" id="text-org1f74263">
+<div id="outline-container-org5cd45be" class="outline-2">
+<h2 id="org5cd45be">Actividad 3 - Transformar logarítmicamente los datos</h2>
+<div class="outline-text-2" id="text-org5cd45be">
 <p>
 Aunque el fichero ya contiene el logaritmo de la serie, vamos a transformar logarítmicamente los datos originales.
 </p>
@@ -269,7 +269,7 @@ Seleccione con el ratón la variable <code>g</code> y luego pulse en el menú de
 <i>o bien teclee en linea de comandos</i>: 
 </p>
 <div class="org-src-container">
-<pre class="src src-gretl" id="orgd8cbce5"><code>logs g
+<pre class="src src-gretl" id="orga9c3cf5"><code>logs g
 </code></pre>
 </div></li>
 </ul>
@@ -282,14 +282,14 @@ Genere el gráfico de series temporales de esta nueva serie y guárdelo como un 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-gretl" id="org0e3b76b"><code>LogsAirlinePassengers &lt;- gnuplot l_g --time-series --with-lines
+<pre class="src src-gretl" id="org740f991"><code>LogsAirlinePassengers &lt;- gnuplot l_g --time-series --with-lines
 </code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org21ef803" class="outline-2">
-<h2 id="org21ef803">Actividad 4 - Primera diferencia de los datos en logaritmos</h2>
-<div class="outline-text-2" id="text-org21ef803">
+<div id="outline-container-org49f85ce" class="outline-2">
+<h2 id="org49f85ce">Actividad 4 - Primera diferencia de los datos en logaritmos</h2>
+<div class="outline-text-2" id="text-org49f85ce">
 <p>
 Seleccione con el ratón la variable <code>l_g</code> y luego pulse en el menú desplegable <b><i><code>Añadir</code></i></b> que aparece arriba, en el centro de la ventana principal de <a href="https://gretl.sourceforge.net/es.html">Gretl</a>.
 </p>
@@ -321,9 +321,9 @@ Genere el gráfico de series temporales de esta nueva serie y guárdelo como un 
 </div>
 </div>
 </div>
-<div id="outline-container-orgc17d847" class="outline-2">
-<h2 id="orgc17d847">Actividad 5 - El logaritmo no es una función lineal</h2>
-<div class="outline-text-2" id="text-orgc17d847">
+<div id="outline-container-orge3b48a9" class="outline-2">
+<h2 id="orge3b48a9">Actividad 5 - El logaritmo no es una función lineal</h2>
+<div class="outline-text-2" id="text-orge3b48a9">
 <p>
 Aunque el operador primera diferencia es lineal, la función logaritmo no lo es. Comprobemos que no es lo mismo la primera diferencia del logaritmo (calculado en la actividad anterior) que el logaritmo de la
 diferencia. 
@@ -347,9 +347,9 @@ print -o d_l_g l_d_g
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb6da829" class="outline-2">
-<h2 id="orgb6da829">Actividad 6 - Diferencia de orden 12 (o estacional) de la primera diferencia de los datos en logaritmos</h2>
-<div class="outline-text-2" id="text-orgb6da829">
+<div id="outline-container-orge12ab76" class="outline-2">
+<h2 id="orge12ab76">Actividad 6 - Diferencia de orden 12 (o estacional) de la primera diferencia de los datos en logaritmos</h2>
+<div class="outline-text-2" id="text-orge12ab76">
 <p>
 Seleccione con el ratón la variable <code>d_l_g</code> y luego pulse en el menú desplegable <b><i><code>Añadir</code></i></b> que aparece arriba, en el centro de la ventana principal de <a href="https://gretl.sourceforge.net/es.html">Gretl</a>.
 </p>
@@ -384,9 +384,9 @@ Observe que en la serie obtenida ya no se observa ni tendencia ni un componente 
 </p>
 </div>
 </div>
-<div id="outline-container-org839dd71" class="outline-2">
-<h2 id="org839dd71">Actividad 5 - El orden en que se aplican los operadores diferencia y diferencia estacional es irrelevante</h2>
-<div class="outline-text-2" id="text-org839dd71">
+<div id="outline-container-orga8e157e" class="outline-2">
+<h2 id="orga8e157e">Actividad 5 - El orden en que se aplican los operadores diferencia y diferencia estacional es irrelevante</h2>
+<div class="outline-text-2" id="text-orga8e157e">
 <ol class="org-ol">
 <li><p>
 calcule la diferencia estacional de la serie en logaritmos <code>l_g</code> y genere su gráfico
@@ -432,7 +432,7 @@ Es decir, el orden en que se tomen la diferencia ordinaria y la diferencia estac
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2025-08-08 Fri 15:52</p>
+<p class="date">Created: 2025-08-08 Fri 17:05</p>
 </div>
 </body>
 </html>
