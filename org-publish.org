@@ -254,6 +254,10 @@ jobs:
               --eval "(dolist (dir (directory-files \"~/.emacs.d/elpa/\" t \"^[^.]\")) (add-to-list 'load-path dir))" \
               --eval "(require 'ox-ipynb)"
 
+    - name: Ficheros de configuracion
+      run: |
+        emacs --batch org-publish.org -l org -f org-babel-tangle
+
     - name: Execute Makefile notebooksYslides
       run: |
         make notebooksYslides
