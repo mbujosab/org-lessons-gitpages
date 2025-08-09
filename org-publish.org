@@ -82,7 +82,6 @@ $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 	cp -a $(LECCIONES_tmp)/$(@F) $(CUADERNOS)
 	ln -snf -r $(DOCS)/Lecciones/img/ $(TRANSPARENCIAS)/
 	ln -snf -r $(DOCS)/Lecciones/img/ $(CUADERNOS)/
-	ln -snf -r ./datos/ $(DOCS)
 #	# Ejecutar el notebook con jupyter nbconvert
 	echo "EJECUCION DEL NOTEBOOK DE JUPYTER..."
 	jupyter nbconvert --execute --inplace $(LECCIONES_tmp)/$(@F) 
@@ -106,6 +105,7 @@ $(LECCIONES_tmp)/Practicas/%.done: org-practicas/%.org
 	echo "➡️ Copiando y ejecutando $< ..."
 	mkdir -p $(LECCIONES_tmp)/Practicas/guiones
 	cp $< $(LECCIONES_tmp)/Practicas/
+	ln -snf -r $(LECCIONES_tmp)/datos $(LECCIONES_tmp)/Practicas/
 	cp -a org-practicas/hansl.tex $(LECCIONES_tmp)/Practicas/
 	echo "🧠 Ejecutando org-babel-tangle y eval..."
 	set -e; \
@@ -149,19 +149,21 @@ $(LECCIONES_tmp)/src/implementacion_series_formales.org: $(LECCIONES_SRC)/src/im
 directorios:
 	mkdir -v -p $(LECCIONES_tmp)/src
 	mkdir -v -p $(LECCIONES_tmp)/img
-	ln -snf -r ./css/ $(LECCIONES_tmp)/
 	mkdir -v -p $(DOCS)/pdfs
 	mkdir -v -p $(DOCS)/Lecciones/img
 	mkdir -v -p $(DOCS)/Lecciones/src
 	mkdir -v -p $(TRANSPARENCIAS)
 	mkdir -v -p $(CUADERNOS)/src
+	cp -a ./css $(LECCIONES_tmp)/
+	cp -a ./datos $(LECCIONES_tmp)/
+	cp -a ./datos $(DOCS)/
 	touch directorios
 
 clean:
 	rm -r -f $(LECCIONES_tmp)
 
 cleanAll: clean
-	find $(DOCS)/ -mindepth 1 ! -name 'README.org' -exec rm -rf {} +
+	find $(DOCS)/ -mindepth 1 ! -name 'README.org' ! -name '.binder' -exec rm -rf {} +
 	rm -f directorios
 	rm -f series_formales
 	rm -f publicacion
@@ -256,9 +258,6 @@ jobs:
     - name: Create .binder directory
       run: mkdir -p docs/.binder
 
-    - name: Copy .css directory
-      run: cp -a ./css ./docs
-
     - name: Ficheros de configuracion
       run: |
         emacs --batch org-publish.org -l org -f org-babel-tangle
@@ -274,9 +273,6 @@ jobs:
         find ./Lecciones
         echo "Contenido de ./docs:"
         find ./docs
-
-    - name: Copy .datos directory
-      run: cp -a ./datos ./Lecciones/Practicas 
 
     - name: Execute Makefile practicas
       run: |

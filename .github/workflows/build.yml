@@ -72,9 +72,6 @@ jobs:
     - name: Create .binder directory
       run: mkdir -p docs/.binder
 
-    - name: Copy .css directory
-      run: cp -a ./css ./docs
-
     - name: Ficheros de configuracion
       run: |
         emacs --batch org-publish.org -l org -f org-babel-tangle
@@ -90,9 +87,6 @@ jobs:
         find ./Lecciones
         echo "Contenido de ./docs:"
         find ./docs
-
-    - name: Copy .datos directory
-      run: cp -a ./datos ./Lecciones/Practicas 
 
     - name: Execute Makefile practicas
       run: |
