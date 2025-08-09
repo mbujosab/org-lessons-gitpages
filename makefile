@@ -19,7 +19,6 @@ $(DOCS)/Calendario-Econometria-Aplicada.pdf:
 publicacion: $(patsubst $(LECCIONES_SRC)/%.org,$(CUADERNOS)/%.ipynb,$(wildcard $(SRC_FILES))) README.org index.org
 	echo "FICHEROS EN CuadernosElectronicos y Transparencias?..."
 	cp -a $(LECCIONES_tmp)/Lecc*.slides.html $(TRANSPARENCIAS)
-	cp -a .binder $(DOCS)
 	ls $(CUADERNOS)
 	ls $(TRANSPARENCIAS)
 	echo "EJECUCIÓN DE publica.el..."
@@ -70,36 +69,9 @@ PRACTICAS_SRC = $(wildcard org-practicas/*.org)
 # Ficheros .done como señal de que fueron tanglados
 PRACTICAS_DONE = $(patsubst org-practicas/%.org, $(LECCIONES_tmp)/Practicas/%.done, $(PRACTICAS_SRC))
 
-#.PHONY: practicas
-
 # Objetivo principal
 practicas: $(PRACTICAS_DONE)
 	@echo "✅ Todas las prácticas actualizadas."
-
-#$(LECCIONES_tmp)/Practicas/%.done: org-practicas/%.org
-#	echo "➡️ Copiando y ejecutando $< ..."
-#	mkdir -p $(LECCIONES_tmp)/Practicas/guiones
-#	cp $< $(LECCIONES_tmp)/Practicas/
-#	cp -a org-practicas/hansl.tex $(LECCIONES_tmp)/Practicas/
-#	cp -a ./datos $(LECCIONES_tmp)/Practicas
-#	emacs --batch $< -l org -f org-babel-tangle
-#	ls -lR $(LECCIONES_tmp)/Practicas/guiones  # Debug para Actions
-#	echo "🧠 Ejecutando org-babel-tangle y eval..."
-#	set -e; \
-#	if emacs --batch \
-#	  --load ~/Software/scimax/init.el \
-#	  $(LECCIONES_tmp)/Practicas/$*.org \
-#	  --eval "(org-babel-tangle)" \
-#	  --eval "(org-babel-execute-buffer)" \
-#	  --eval "(save-buffer)" \
-#	  --kill; then \
-#	    echo "✅ Correcto: $<"; \
-#	    touch $@; \
-#	else \
-#	    echo "❌ Error al procesar $<"; \
-#	    rm -f $@; \
-#	    exit 1; \
-#	fi
 
 $(LECCIONES_tmp)/Practicas/%.done: org-practicas/%.org
 	echo "➡️ Copiando y ejecutando $< ..."
@@ -124,39 +96,6 @@ $(LECCIONES_tmp)/Practicas/%.done: org-practicas/%.org
 	fi
 	echo "➡️ listado de ficheros en el subdirectorio guiones"
 	ls -lR $(LECCIONES_tmp)/Practicas/guiones  # Debug para Actions
-
-## Regla para copiar, tanglear y ejecutar cada práctica
-#$(LECCIONES_tmp)/Practicas/%.done: org-practicas/%.org
-#	@echo "➡️ Copiando y ejecutando $< ..."
-#	@mkdir -p $(LECCIONES_tmp)/Practicas
-#	@cp $< $(LECCIONES_tmp)/Practicas/
-#	emacs --batch \
-#	  --load ~/Software/scimax/init.el \
-#	  $(LECCIONES_tmp)/Practicas/$*.org \
-#	  --eval "(org-babel-tangle)" \
-#	  --eval "(org-babel-execute-buffer)" \
-#	  --eval "(save-buffer)" \
-#	  --kill
-#	@touch $@
-
-
-#practicas:
-#	echo "➡️ Copiando prácticas desde org-practicas/ a $(LECCIONES_tmp)/Practicas..."
-#	mkdir -p $(LECCIONES_tmp)/Practicas/guiones
-#	cp -a org-practicas/*.org $(LECCIONES_tmp)/Practicas/
-#	cp -a org-practicas/hansl.tex $(LECCIONES_tmp)/Practicas/
-#	echo "🧠 Tangle y ejecución de cada práctica..."
-#	for f in $(LECCIONES_tmp)/Practicas/*.org; do \
-#	  echo "🔧 Procesando $$f..."; \
-#	  emacs --batch \
-#	        --load ~/Software/scimax/init.el \
-#	        $$f \
-#	        --eval "(org-babel-tangle)" \
-#	        --eval "(org-babel-execute-buffer)" \
-#	        --eval "(save-buffer)" \
-#	        --kill; \
-#	done
-#	touch practicas
 
 series_formales: $(LECCIONES_tmp)/src/implementacion_series_formales.org
 
