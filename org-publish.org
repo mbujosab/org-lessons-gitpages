@@ -281,15 +281,20 @@ jobs:
         echo "Contenido de ./Lecciones/Practicas:"
         find ./Lecciones/Practicas
 
+    - name: Execute Makefile calendario
+      run: |
+        set -e
+        make calendario
+
     - name: Execute Makefile publicacion
       run: |
         set -e
         make publicacion
 
-    - name: Execute Makefile calendario
+    - name: Comprobar contenido de docs antes de deploy
       run: |
-        set -e
-        make calendario
+        echo "Contenido de docs antes de deploy:"
+        ls -la docs
 
     - name: Deploy docs/ a gh-pages
       uses: peaceiris/actions-gh-pages@v4
@@ -1548,4 +1553,39 @@ $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 #+END_SRC
 
 #+RESULTS:
+
+Solución práctica para asegurar publicación:
+
+Verifica el flujo de publicación:
+
+Asegúrate de que los archivos en docs/ sean realmente nuevos o modificados en cada build, y que no estén descartados por .gitignore.
+El flujo actual está bien; los archivos están ahí.
+Para forzar la publicación aunque no haya cambios detectados:
+
+Puedes usar el parámetro allow_empty_commit: true en la acción peaceiris/actions-gh-pages para que se realice el commit aunque no haya cambios detectados.
+O usa force_orphan: true para recrear el historial cada vez (útil si quieres limpiar la rama gh-pages y publicar todo desde cero).
+Ejemplo modificado:
+
+YAML
+- name: Deploy docs to gh-pages
+  uses: peaceiris/actions-gh-pages@v4
+  with:
+    github_token: ${{ secrets.GITHUB_TOKEN }}
+    publish_dir: ./docs
+    publish_branch: gh-pages
+    allow_empty_commit: true
+O bien:
+
+YAML
+- name: Deploy docs to gh-pages
+  uses: peaceiris/actions-gh-pages@v4
+  with:
+    github_token: ${{ secrets.GITHUB_TOKEN }}
+    publish_dir: ./docs
+    publish_branch: gh-pages
+    force_orphan: true
+Opcional: Limpia la rama gh-pages antes de publicar. Si prefieres que solo se publique lo actual, el parámetro force_orphan: true borra todo lo anterior en gh-pages y sube solo lo de docs.
+
+Resumen:
+Tus archivos se generan correctamente. Si no se publica nada nuevo, usa allow_empty_commit: true para asegurar el commit, o force_orphan: true para limpiar y publicar siempre el contenido nuevo. Así garantizas que la acción de deploy siempre actualice la rama gh-pages, incluso si no hay cambios detectados por git.
 
