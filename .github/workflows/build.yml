@@ -95,15 +95,20 @@ jobs:
         echo "Contenido de ./Lecciones/Practicas:"
         find ./Lecciones/Practicas
 
+    - name: Execute Makefile calendario
+      run: |
+        set -e
+        make calendario
+
     - name: Execute Makefile publicacion
       run: |
         set -e
         make publicacion
 
-    - name: Execute Makefile calendario
+    - name: Comprobar contenido de docs antes de deploy
       run: |
-        set -e
-        make calendario
+        echo "Contenido de docs antes de deploy:"
+        ls -la docs
 
     - name: Deploy docs/ a gh-pages
       uses: peaceiris/actions-gh-pages@v4
@@ -112,3 +117,4 @@ jobs:
         publish_dir: ./docs
         publish_branch: gh-pages
         destination_dir: docs
+        allow_empty_commit: true
