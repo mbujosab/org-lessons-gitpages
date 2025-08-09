@@ -28,7 +28,7 @@
 
 Genera el directorio público =docs= con los ficheros para GitPages con subdirectorios para los =CuadernosElectronicos=, =pdfs=, =Transparencias= y los ficheros con las lecciones en ~html~.
 
-#+BEGIN_SRC makefile :noweb no-export :results silent :exports none :tangle makefile
+#+BEGIN_SRC makefile :noweb no-export :results silent :tangle makefile
 LECCIONES_SRC = ./org-lessons
 LECCIONES_tmp = ./Lecciones
 DOCS = ./docs
@@ -50,7 +50,6 @@ $(DOCS)/Calendario-Econometria-Aplicada.pdf:
 publicacion: $(patsubst $(LECCIONES_SRC)/%.org,$(CUADERNOS)/%.ipynb,$(wildcard $(SRC_FILES))) README.org index.org
 	echo "FICHEROS EN CuadernosElectronicos y Transparencias?..."
 	cp -a $(LECCIONES_tmp)/Lecc*.slides.html $(TRANSPARENCIAS)
-	cp -a .binder $(DOCS)
 	ls $(CUADERNOS)
 	ls $(TRANSPARENCIAS)
 	echo "EJECUCIÓN DE publica.el..."
@@ -101,36 +100,9 @@ PRACTICAS_SRC = $(wildcard org-practicas/*.org)
 # Ficheros .done como señal de que fueron tanglados
 PRACTICAS_DONE = $(patsubst org-practicas/%.org, $(LECCIONES_tmp)/Practicas/%.done, $(PRACTICAS_SRC))
 
-#.PHONY: practicas
-
 # Objetivo principal
 practicas: $(PRACTICAS_DONE)
 	@echo "✅ Todas las prácticas actualizadas."
-
-#$(LECCIONES_tmp)/Practicas/%.done: org-practicas/%.org
-#	echo "➡️ Copiando y ejecutando $< ..."
-#	mkdir -p $(LECCIONES_tmp)/Practicas/guiones
-#	cp $< $(LECCIONES_tmp)/Practicas/
-#	cp -a org-practicas/hansl.tex $(LECCIONES_tmp)/Practicas/
-#	cp -a ./datos $(LECCIONES_tmp)/Practicas
-#	emacs --batch $< -l org -f org-babel-tangle
-#	ls -lR $(LECCIONES_tmp)/Practicas/guiones  # Debug para Actions
-#	echo "🧠 Ejecutando org-babel-tangle y eval..."
-#	set -e; \
-#	if emacs --batch \
-#	  --load ~/Software/scimax/init.el \
-#	  $(LECCIONES_tmp)/Practicas/$*.org \
-#	  --eval "(org-babel-tangle)" \
-#	  --eval "(org-babel-execute-buffer)" \
-#	  --eval "(save-buffer)" \
-#	  --kill; then \
-#	    echo "✅ Correcto: $<"; \
-#	    touch $@; \
-#	else \
-#	    echo "❌ Error al procesar $<"; \
-#	    rm -f $@; \
-#	    exit 1; \
-#	fi
 
 $(LECCIONES_tmp)/Practicas/%.done: org-practicas/%.org
 	echo "➡️ Copiando y ejecutando $< ..."
@@ -155,39 +127,6 @@ $(LECCIONES_tmp)/Practicas/%.done: org-practicas/%.org
 	fi
 	echo "➡️ listado de ficheros en el subdirectorio guiones"
 	ls -lR $(LECCIONES_tmp)/Practicas/guiones  # Debug para Actions
-
-## Regla para copiar, tanglear y ejecutar cada práctica
-#$(LECCIONES_tmp)/Practicas/%.done: org-practicas/%.org
-#	@echo "➡️ Copiando y ejecutando $< ..."
-#	@mkdir -p $(LECCIONES_tmp)/Practicas
-#	@cp $< $(LECCIONES_tmp)/Practicas/
-#	emacs --batch \
-#	  --load ~/Software/scimax/init.el \
-#	  $(LECCIONES_tmp)/Practicas/$*.org \
-#	  --eval "(org-babel-tangle)" \
-#	  --eval "(org-babel-execute-buffer)" \
-#	  --eval "(save-buffer)" \
-#	  --kill
-#	@touch $@
-
-
-#practicas:
-#	echo "➡️ Copiando prácticas desde org-practicas/ a $(LECCIONES_tmp)/Practicas..."
-#	mkdir -p $(LECCIONES_tmp)/Practicas/guiones
-#	cp -a org-practicas/*.org $(LECCIONES_tmp)/Practicas/
-#	cp -a org-practicas/hansl.tex $(LECCIONES_tmp)/Practicas/
-#	echo "🧠 Tangle y ejecución de cada práctica..."
-#	for f in $(LECCIONES_tmp)/Practicas/*.org; do \
-#	  echo "🔧 Procesando $$f..."; \
-#	  emacs --batch \
-#	        --load ~/Software/scimax/init.el \
-#	        $$f \
-#	        --eval "(org-babel-tangle)" \
-#	        --eval "(org-babel-execute-buffer)" \
-#	        --eval "(save-buffer)" \
-#	        --kill; \
-#	done
-#	touch practicas
 
 series_formales: $(LECCIONES_tmp)/src/implementacion_series_formales.org
 
@@ -235,12 +174,12 @@ cleanAll: clean
 
 ** Aclaraciones
 
-El directorio =./Lecciones= es temporal. En dicho directorio se ejecutan los notebooks. Los ficheros creados se copian en distintos subdirectorios del directorio de publicación =./docs/= (es el directorio de donde "cuelgan" las páginas web; dichas páginas se distribuyen desde la rama =gh-pages= del repositorio).
+El directorio =./Lecciones= es temporal (en el fichero ~makefile~ se hace referencia a él con =$(LECCIONES_tmp)=). En dicho directorio se ejecutan los notebooks. Los ficheros creados se copian en distintos subdirectorios del directorio de publicación =./docs= (en el fichero ~makefile~ es referenciado con =$(DOCS)= ). El subdirectorio =./docs= es el directorio de donde "cuelgan" las páginas web; dichas páginas se distribuyen desde la rama =gh-pages= del repositorio.
 
 
 * Fichero =build.yml=
 
-Contiene las instrucciones que ejecutará GitHub Actions en el repositorio.
+Contiene las instrucciones que ejecutará GitHub Actions en el repositorio cada vez que éste sea actualizado.
 
 Usa el contenido de la rama =main=. 
 #+BEGIN_SRC yml :tangle .github/workflows/build.yml
@@ -337,58 +276,40 @@ jobs:
         destination_dir: docs
 #+END_SRC
 
-    - name: Copiar directorio .binder a docs
-      run: |
-        cp -r .binder docs/
-
-
-#    - name: Crear local-init.el para Emacs
-#      run: |
-#        mkdir -p ~/Software/scimax
-#        echo "(setq straight-vc-git-default-clone-depth nil)" > ~/Software/scimax/local-init.el
-#        echo "(condition-case err" >> ~/Software/scimax/local-init.el
-#        echo "    (straight-use-package 'nongnu-elpa)" > ~/Software/scimax/local-init.el
-#        echo "(error (message "straight.el failed: %s" err)))" > ~/Software/scimax/local-init.el
-
 
 ** Aclaraciones
 
 **** tlmgr
 Scimax intenta usar ~tlmgr~ para instalar paquetes de $\LaTeX{}$, pero =Actions= de =GitHub= no lo permite. Las medidas tomadas para evitar este problema han sido 
-1. crear un fichero =~/.emacs.d/no-tlmgr.el= con el siguiente contenido
+1. Al ejecutarse ~.github/workflows/build.yml~ en GitHub Actions se crea un fichero =~/.emacs.d/no-tlmgr.el= con el siguiente contenido
    #+BEGIN_SRC 
 (setq system-packages-use-sudo nil)
 (setq TeX-install-font-lock nil)
    #+END_SRC
-   De manera que al publicar se llama a scimax del siguiente modo
+   así, al publicar los ficheros, podemos llamar a scimax del siguiente modo
    #+BEGIN_SRC 
 emacs --batch \
   --load ~/.emacs.d/no-tlmgr.el \
   --load ~/Software/scimax/init.el \
   -l publica.el
    #+END_SRC
-2. En ~.github/workflows/build.yml~ he añadido
+2. Además en ~.github/workflows/build.yml~ he añadido
    #+BEGIN_SRC 
     - name: Disable tlmgr (prevent accidental calls)
       run: sudo mv /usr/bin/tlmgr /usr/bin/tlmgr.disabled || true
    #+END_SRC
 
-Quizá sea suficiente solo con esto segundo. Si quito el fichero =~/.emacs.d/no-tlmgr.el=, también he de omitirlo en las llamadas a emacs.
-
-**** Figuras en =.png=
-
-No lo tengo claro, pero creo que 
-#+BEGIN_SRC 
-    - name: Set MPLBACKEND (matplotlib)
-      run: echo "MPLBACKEND=Agg" >> $GITHUB_ENV
-#+END_SRC
-se puede borrar, puesto que al final he tenido que añadir ~plt.savefig(nombre_fichero, dpi=300, bbox_inches='tight')~ explícitamente en los bloques de python. En el notebook creo que también se puede quitar los de ~Agg~. Lo de ~Agg~ es una sugerencia de Copilot porque no se generaban los ficheros ~.png~. Pero como ahora se indica explícitamente en el código pyton con ~plt.savefig~, es posible que se pueda omitir (véase la conversación con Copilot a continuación).
-
+Quizá sea suficiente solo con esto segundo. Pero si quito el fichero =~/.emacs.d/no-tlmgr.el=, también he de omitirlo en las llamadas a emacs usando scimax (como así funciona... así se queda).
 
 *** Consulta a Copilot sobre la generación de figuras
 
+Tuve dificultades para que la ejecución en GitHub Actions de los de los cuadernos electrónicos de Scimax creara las figuras. A continuación copio mi consulta a copilot: 
+
 #+BEGIN_QUOTE
-Anteriormente faltaba por instalar el paquete dvipng. Una vez instalado dvipng, el bloque de código:
+-----
+-----
+*/Consulta/*:
+/Anteriormente faltaba por instalar el paquete dvipng. Una vez instalado dvipng, el bloque de código/:
 
 #+BEGIN_SRC jupyter-python :results file :exports results
 plt.plot([1,2,3],[4,5,6])
@@ -396,15 +317,16 @@ plt.savefig("img/prueba_action.png")
 "img/prueba_action.png"
 #+END_SRC
 
-ha creado correctamente el fichero "img/prueba_action.png" con la figura. Sin embargo, el bloque
+/ha creado correctamente el fichero "img/prueba_action.png" con la figura. Sin embargo, el bloque/
 
 #+BEGIN_SRC jupyter-python :results file :file ./img/lecc01/PIB_UEM.png
 df1.plot(x='obs',xlabel='',figsize=(15,4)).set_title('PIB zona euro',fontsize=18)
 #+END_SRC
 
-no ha creado el fichero ./img/lecc01/PIB_UEM.png con su correspondiente figura.
+/no ha creado el fichero ./img/lecc01/PIB_UEM.png con su correspondiente figura./
+-----
+-----
 #+END_QUOTE
-
 
 ¡Excelente que la instalación de dvipng haya solucionado la generación de imágenes para el primer bloque!  
 Ahora, pasemos a analizar por qué el segundo bloque *no genera* el archivo `./img/lecc01/PIB_UEM.png`.
@@ -477,10 +399,13 @@ plt.savefig("./img/lecc01/PIB_UEM.png")
 
 -----
 
-¿Te gustaría que te ayude a actualizar todos los bloques de tu .org para que usen esta técnica, o necesitas una guía para automatizar este patrón?
-
 #+BEGIN_QUOTE
-Sin embargo. Cuando ejecuto localmente el fichero org sí se crean las figuras en mi disco. ¿Hay algún modo de que también se creen con Actions sin modificar los bloques? Es decir, ¿hay algún modo de que funcionen tal y como están ahora mismo?
+-----
+-----
+*/Consulta/*:
+/Sin embargo. Cuando ejecuto localmente el fichero org sí se crean las figuras en mi disco. ¿Hay algún modo de que también se creen con Actions sin modificar los bloques? Es decir, ¿hay algún modo de que funcionen tal y como están ahora mismo?/
+-----
+-----
 #+END_QUOTE
 
 ¡Esta es una pregunta muy frecuente al usar org-babel/jupyter en entornos CI/CD!  
@@ -540,6 +465,17 @@ Pero esto requeriría modificar los bloques, que quieres evitar.
 - *El problema*: matplotlib necesita el backend "Agg" para funcionar headless.
 - *La solución sin modificar los bloques*: establece la variable de entorno `MPLBACKEND=Agg` en el workflow antes de ejecutar Emacs.
 - *Así*, los bloques que generan imágenes funcionarán igual en Actions que localmente, *sin necesidad de cambiar el código de los bloques*.
+
+-----
+-----
+-----
+*/SOLUCIÓN FINALMENTE ADOPTADA/*:
+
+El backend "Agg"  no me funcionó, por lo que opté por indicar explícitamente en el código de python el fichero donde se debe guardar cada figura.
+-----
+-----
+-----
+
 
 
 * Script =publica.el= de elisp para publicar los =.org= es formato =pdf= y ~html~
@@ -604,71 +540,23 @@ Este script transforma los ficheros org de las lecciones en pdfs y htmls.
   (org-publish "web-repositorio" t)
   (message "✅ Publicación del índice completada."))
 
-(unless (file-directory-p "logs")
-  (make-directory "logs"))
-(with-temp-file "logs/publica.log"
-  (insert (format "Publicado el %s\n" (current-time-string))))
-
 #+END_SRC
 
-Podemos chequear la versión local ejecutando el siguiente bloque
+# (unless (file-directory-p "logs")
+#   (make-directory "logs"))
+# (with-temp-file "logs/publica.log"
+#   (insert (format "Publicado el %s\n" (current-time-string))))
+
+Podemos chequear la versión local ejecutando en emacs el siguiente bloque
 
 #+BEGIN_SRC emacs-lisp :results silent
 (browse-url "docs/index.html")
 #+END_SRC
 
 
-# ("images"
-#                    :base-directory "./Lecciones/img/"
-#                    :base-extension "jpg\\|gif\\|png"
-#                    :publishing-directory ,(concat base-directory "docs/img")
-#                    :publishing-function org-publish-attachment)
-# 
-#                   
-# ;(let* ((base-directory "./lecciones/")
-# ;       (public-directory "./docs/"))
-# ;  (setq org-publish-project-alist
-# ;        `(("images"
-# ;           :base-directory "./lecciones/img/"
-# ;           :base-extension "jpg\\|gif\\|png"
-# ;           :publishing-directory ,(concat public-directory "img")
-# ;           :publishing-function org-publish-attachment)
-# ;
-# ;          ("html"
-# ;           :base-directory ,base-directory
-# ;           :base-extension "org"
-# ;           :publishing-directory ,public-directory
-# ;           :exclude "src"
-# ;           :recursive t
-# ;           :publishing-function org-html-publish-to-html
-# ;           :auto-preamble t)
-# ;
-# ;          ("pdf"
-# ;           :base-directory ,base-directory
-# ;           :base-extension "org"
-# ;           :publishing-directory ,(concat public-directory "pdfs")
-# ;           :exclude "src"
-# ;           :recursive t
-# ;           :publishing-function my-org-latex-publish-to-pdf
-# ;           :auto-preamble t)
-# ;
-# ;          ("static-html"
-# ;           :base-directory ,base-directory
-# ;           :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|dat\\|mov\\|txt\\|svg\\|aiff\\|csv\\|gdt\\|inp"
-# ;           :publishing-directory ,public-directory
-# ;           :exclude "src"
-# ;           :recursive t
-# ;           :publishing-function org-publish-attachment)
-# ;
-# ;          ("scimax-eln" :components ("html" "static-html" "pdf" "images"))))
-# ;
-# ;  (message "🟢 Iniciando publicación de lecciones (scimax-eln)...")
-# ;  (org-publish "scimax-eln" t)
-# ;  (message "✅ Publicación de lecciones completada."))
-
-
 * slides para GitHubpages
 
+Esta es la configuración para convertir los Notebooks de Jupyter en slides:
 #+BEGIN_SRC python :tangle mycfg-GitHubPages.py
 c = get_config()
 
@@ -694,6 +582,30 @@ https://emasuriano.com/til/2024-07-01-create-presentations-from-notebook/
 
 https://github.com/yjwen/org-reveal
 https://github.com/hexmode/ox-reveal
+
+
+* Directorio =.binder= con =environment.yml= para MyBinder
+
+Dado que los notebooks del curso emplean algunos módulos de python, la ejecución online en [[https://mybinder.org/][MyBinder]] de los correspondientes Notebooks de Jupyter requiere de la creación de un fichero que indique las dependencias necesarias para que se instale el software necesario (creo que =defaults= instala el latex necesario para los gráficos). 
+
+#+BEGIN_SRC yml :tangle docs/.binder/environment.yml
+name: binder-env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - ipykernel
+  - numpy
+  - pandas
+  - matplotlib
+  - seaborn
+  - sympy
+  - statsmodels
+  - pip:
+      - dataframe_image
+#+END_SRC
 
 
 * COMMENT Ñordas                                                   :noexport:
