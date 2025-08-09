@@ -90,13 +90,24 @@ jobs:
         find ./Lecciones
         echo "Contenido de ./docs:"
         find ./docs
-        echo "contenido de img/:"
-        find ./Lecciones/img
+
+    - name: Copy .datos directory
+      run: cp -a ./datos ./Lecciones/Practicas 
+
+    - name: Execute Makefile practicas
+      run: |
+        set -e
+        make practicas
 
     - name: Execute Makefile publicacion
       run: |
         set -e
-        make practicas publicacion calendario
+        make publicacion
+
+    - name: Execute Makefile calendario
+      run: |
+        set -e
+        make calendario
 
     - name: Deploy docs/ a gh-pages
       uses: peaceiris/actions-gh-pages@v4

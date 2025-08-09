@@ -26,8 +26,7 @@ publicacion: $(patsubst $(LECCIONES_SRC)/%.org,$(CUADERNOS)/%.ipynb,$(wildcard $
 	  --load ~/Software/scimax/init.el \
 	  -l publica.el
 	echo "FICHEROS EN Docs?..."
-	ls $(DOCS)
-	ls $(DOCS)/pdfs
+	find $(DOCS)
 	touch $@
 
 
@@ -46,7 +45,6 @@ $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 	echo "FICHEROS EN ./docs/Lecciones/img?..."
 	cp -a $(LECCIONES_tmp)/img $(DOCS)/Lecciones
 	find $(DOCS)/Lecciones/img
-	find $(DOCS)/Lecciones/img/lecc01
 	echo "Contenido de img tras notebook:"
 	find $(LECCIONES_tmp)/img
 	echo "COPIO LO QUE SE HA GENERADO (.ipynb sin ejecutar y las imágenes) A ./docs..."
@@ -78,7 +76,6 @@ $(LECCIONES_tmp)/Practicas/%.done: org-practicas/%.org
 	mkdir -p $(LECCIONES_tmp)/Practicas/guiones
 	cp $< $(LECCIONES_tmp)/Practicas/
 	cp -a org-practicas/hansl.tex $(LECCIONES_tmp)/Practicas/
-	cp -a ./datos $(LECCIONES_tmp)/Practicas
 	echo "🧠 Ejecutando org-babel-tangle y eval..."
 	set -e; \
 	if emacs --batch \
