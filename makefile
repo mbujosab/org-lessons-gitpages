@@ -85,7 +85,7 @@ $(LECCIONES_tmp)/Practicas/%.done: org-practicas/%.org
 	  --load ~/Software/scimax/init.el \
 	  $(LECCIONES_tmp)/Practicas/$*.org \
 	  --eval "(org-babel-execute-buffer)" \
-	o  --eval "(save-buffer)" \
+	  --eval "(save-buffer)" \
 	  --kill; then \
 	    echo "✅ Correcto: $<"; \
 	    touch $@; \
