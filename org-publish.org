@@ -166,6 +166,8 @@ cleanAll: clean
 	rm -f series_formales
 	rm -f publicacion
 	rm -f practicas
+	rm -f notebooksYslides
+	rm -f sitemap.org
 	rm -r -f logs
 #+END_SRC
 
@@ -280,6 +282,8 @@ jobs:
       run: |
         set -e
         make practicas
+        echo "Contenido de ./Lecciones/Practicas:"
+        find ./Lecciones/Practicas
 
     - name: Execute Makefile publicacion
       run: |

@@ -98,6 +98,8 @@ jobs:
       run: |
         set -e
         make practicas
+        echo "Contenido de ./Lecciones/Practicas:"
+        find ./Lecciones/Practicas
 
     - name: Execute Makefile publicacion
       run: |
