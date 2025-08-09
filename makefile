@@ -42,11 +42,11 @@ $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 	echo "EJECUCION DEL NOTEBOOK DE ORG: $(LECCIONES_tmp)/$(@F:.ipynb=.org)..."
 	emacs -Q -l ~/Software/scimax/init.el $(LECCIONES_tmp)/$(@F:.ipynb=.org) --batch --eval "(org-babel-execute-buffer)" --eval "(save-buffer)" --kill
 	echo "FICHEROS EN ./lecciones?..."
-	ls $(LECCIONES_tmp)
+	find $(LECCIONES_tmp)
 	echo "FICHEROS EN ./docs/Lecciones/img?..."
 	cp -a $(LECCIONES_tmp)/img $(DOCS)/Lecciones
-	ls $(DOCS)/Lecciones/img
-	ls $(DOCS)/Lecciones/img/lecc01
+	find $(DOCS)/Lecciones/img
+	find $(DOCS)/Lecciones/img/lecc01
 	echo "Contenido de img tras notebook:"
 	find $(LECCIONES_tmp)/img
 	echo "COPIO LO QUE SE HA GENERADO (.ipynb sin ejecutar y las imágenes) A ./docs..."
@@ -59,8 +59,8 @@ $(CUADERNOS)/%.ipynb $(TRANSPARENCIAS)/%.slides.html: $(LECCIONES_SRC)/%.org
 	jupyter nbconvert --execute --inplace $(LECCIONES_tmp)/$(@F) 
 	echo "CREACIÓN DE LAS SLIDES..."
 	jupyter nbconvert --config mycfg-GitHubPages.py --to slides --reveal-prefix "https://unpkg.com/reveal.js@5.2.1" --execute $(LECCIONES_tmp)/$(@F) 
-	echo "FICHEROS EN Docs ANTES DE PUBLICAR?..."
-	ls $(DOCS)
+	echo "➡️ FICHEROS EN docs/ TRAS GENERAR SLIDES Y NOTEBOOKS DE JUPYTER..."
+	find $(DOCS)
 
 
 # Lista de archivos fuente .org en org-practicas
