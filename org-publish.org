@@ -642,7 +642,9 @@ dependencies:
 texlive
 texlive-latex-extra
 texlive-fonts-recommended
+texlive-fonts-extra
 dvipng
+cm-super
 #+END_SRC
 
 * COMMENT Ñordas                                                   :noexport:
