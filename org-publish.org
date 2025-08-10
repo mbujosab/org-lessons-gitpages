@@ -302,8 +302,8 @@ jobs:
         github_token: ${{ secrets.GH_PAGES_TOKEN }}
         publish_dir: ./docs
         publish_branch: gh-pages
-        destination_dir: docs
         force_orphan: true
+#        destination_dir: docs
 #        allow_empty_commit: true
 #+END_SRC
 
