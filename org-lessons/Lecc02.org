@@ -74,9 +74,7 @@
 Hoy veremos conceptos algebraicos usados en la modelización ARIMA de series temporales.
 #+end_abstract
 
-- [[https://mbujosab.github.io/org-lessons-gitpages/Lecciones/Lecc02.html][lección en html]]
-- [[https://mybinder.org/v2/gh/mbujosab/org-lessons-gitpages/gh-pages?labpath=CuadernosElectronicos/Lecc02.ipynb][lección en mybinder]]
-  + [[https://mybinder.org/v2/gh/mbujosab/org-lessons-gitpages/gh-pages?labpath=CuadernosElectronicos/implementacion_series_formales.ipynb][implementacion_series_formales]] 
+- ([[https://mbujosab.github.io/org-lessons-gitpages/Transparencias/Lecc02.slides.html][slides]]) --- ([[https://mbujosab.github.io/org-lessons-gitpages/Lecciones/Lecc02.html][html]]) --- ([[https://mbujosab.github.io/org-lessons-gitpages/pdfs/Lecc02.pdf][pdf]]) --- ([[https://mybinder.org/v2/gh/mbujosab/org-lessons-gitpages/gh-pages?labpath=CuadernosElectronicos/Lecc02.ipynb][lección en mybinder]]) --- ([[https://mybinder.org/v2/gh/mbujosab/org-lessons-gitpages/gh-pages?labpath=CuadernosElectronicos/implementacion_series_formales.ipynb][implementacion_series_formales]])
 
 # - [[https://mbujosab.github.io/EconometriaAplicada-SRC/Lecc04.html][lección en html]]
 # - [[https://mybinder.org/v2/gh/mbujosab/EconometriaAplicada-SRC/HEAD?labpath=Lecc04.ipynb][lección en mybinder]]

@@ -638,9 +638,11 @@ dependencies:
       - dataframe_image
 #+END_SRC
 
-
-#+BEGIN_SRC text :tangle docs/.binder/requirements.txt
+#+BEGIN_SRC text :tangle docs/.binder/apt.txt
 texlive
+texlive-latex-extra
+texlive-fonts-recommended
+dvipng
 #+END_SRC
 
 * COMMENT Ñordas                                                   :noexport:

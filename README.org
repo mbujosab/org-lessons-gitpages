@@ -37,7 +37,7 @@
 
 # - [[https://mybinder.org/v2/gh/mbujosab/EconometriaAplicada-SRC/HEAD?labpath=Lecc01.ipynb][notebook en mybinder]]
 
-- [[https://mybinder.org/v2/gh/mbujosab/org-lessons-gitpages/gh-pages?urlpath=%2Fdoc%2Ftree%2Fdocs%2FCuadernosElectronicos%2FLecc01.ipynb][notebook en mybinder]]
+# - [[https://mybinder.org/v2/gh/mbujosab/org-lessons-gitpages/gh-pages?urlpath=%2Fdoc%2Ftree%2Fdocs%2FCuadernosElectronicos%2FLecc01.ipynb][notebook en mybinder]]
 
 *** Practicas
 
@@ -56,7 +56,7 @@
 
 # - [[https://mybinder.org/v2/gh/mbujosab/EconometriaAplicada-SRC/HEAD?labpath=Lecc04.ipynb][notebook en mybinder]]
 
-- [[https://mybinder.org/v2/gh/mbujosab/org-lessons-gitpages/gh-pages?labpath=%2Fdoc%2Ftree%2Fdocs%2FCuadernosElectronicos%2FLecc02.ipynb][notebook en mybinder]]
+# - [[https://mybinder.org/v2/gh/mbujosab/org-lessons-gitpages/gh-pages?labpath=%2Fdoc%2Ftree%2Fdocs%2FCuadernosElectronicos%2FLecc02.ipynb][notebook en mybinder]]
 
 
 ** Procesos estocásticos débilmente estacionarios (Lecc03)
