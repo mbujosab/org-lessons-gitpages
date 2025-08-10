@@ -615,7 +615,9 @@ https://github.com/yjwen/org-reveal
 https://github.com/hexmode/ox-reveal
 
 
-* Directorio =.binder= con =environment.yml= para MyBinder
+* Directorio =.binder= para MyBinder
+
+** Fichero =environment.yml= 
 
 Dado que los notebooks del curso emplean algunos módulos de python, la ejecución online en [[https://mybinder.org/][MyBinder]] de los correspondientes Notebooks de Jupyter requiere de la creación de un fichero que indique las dependencias necesarias para que se instale el software necesario (creo que =defaults= instala el latex necesario para los gráficos). 
 
@@ -638,6 +640,11 @@ dependencies:
       - dataframe_image
 #+END_SRC
 
+
+** Fichero =apt.txt= 
+
+Algunos gráficos de los notebooks usan \LaTeX{}. Este fichero indica a MyBinder qué paquetes debe instalar para cubrir las dependencias.
+
 #+BEGIN_SRC text :tangle docs/.binder/apt.txt
 texlive
 texlive-latex-extra
@@ -646,6 +653,8 @@ texlive-fonts-extra
 dvipng
 cm-super
 #+END_SRC
+
+
 
 * COMMENT Ñordas                                                   :noexport:
 
