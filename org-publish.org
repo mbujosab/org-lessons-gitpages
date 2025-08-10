@@ -150,6 +150,7 @@ directorios:
 	mkdir -v -p $(LECCIONES_tmp)/src
 	mkdir -v -p $(LECCIONES_tmp)/img
 	mkdir -v -p $(DOCS)/pdfs
+	mkdir -v -p $(DOCS)/.binder
 	mkdir -v -p $(DOCS)/Lecciones/img
 	mkdir -v -p $(DOCS)/Lecciones/src
 	mkdir -v -p $(TRANSPARENCIAS)
