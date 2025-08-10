@@ -34,8 +34,8 @@
 En esta lección veremos algunas transformaciones de los datos para /"hacerlos estacionarios"/; y daremos interpretación a los datos transformados.
 #+end_abstract
 
-- [[https://mbujosab.github.io/EconometriaAplicada-SRC/Lecc01.html][lección en html]]
-- [[https://mybinder.org/v2/gh/mbujosab/org-lessons-gitpages/gh-pages?labpath=docs/CuadernosElectronicos/Lecc01.ipynb][lección en mybinder]]
+- [[https://mbujosab.github.io/org-lessons-gitpages/Lecciones/Lecc01.html][lección en html]]
+- [[https://mybinder.org/v2/gh/mbujosab/org-lessons-gitpages/gh-pages?labpath=CuadernosElectronicos/Lecc01.ipynb][lección en mybinder]]
 
 ***  Carga de algunos módulos de python y creación de directorios auxiliares
    :PROPERTIES:

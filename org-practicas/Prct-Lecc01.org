@@ -273,9 +273,9 @@ print -o sd_d_l_g  d_sd_l_g
 Es decir, el orden en que se tomen la diferencia ordinaria y la diferencia estacional es irrelevante (pero recuerde que no pasa lo mismo con la transformación logarítmica, que debe la primera transformación aplicada a los datos).
 
 # +LATEX: \clearpage
-#+latex: \vspace{10pt}
+#+latex: {\vspace{10pt}
 #+latex: \noindent
 *Código completo de la práctica* ~lecc01-airlinePass.inp~
 #+latex: \vspace{10pt}
 \lstinputlisting{guiones/lecc01-airlinePass.inp}
-#+LATEX: \clearpage
+#+LATEX: \clearpage }

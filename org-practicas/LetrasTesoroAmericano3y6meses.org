@@ -47,22 +47,7 @@ DIRECTORIO="$(pwd)/LetrasTesoroAmericano3y6meses" gretlcli -b $(pwd)/guiones/Let
 # gretlcli -c -b $(pwd)/guiones/LetrasTesoroAmericano3y6meses.inp
 
 #+BEGIN_SRC sh  :exports none :results silent :tangle no :eval no
-# zip LetrasTesoroAmericano3y6meses LetrasTesoroAmericano3y6meses* LetrasTesoroAmericano3y6meses/*#
-#+END_SRC
-
-#+BEGIN_SRC bash :exports none :results silent :tangle no :eval no
-FICHERO_ORIGEN="$(pwd)/guiones/LetrasTesoroAmericano3y6meses.inp"
-
-# Eliminar /guiones/ del path
-SIN_GUIONES=$(echo "$FICHERO_ORIGEN" | sed 's:guiones/::')
-
-# Eliminar la extensión .inp
-SIN_EXTENSION=$(echo "$SIN_GUIONES" | sed 's:\.inp$::')
-
-# Guardar en un archivo
-printf "%s" "$SIN_EXTENSION" > guiones/LetrasTesoroAmericano3y6meses.workdir
-printf "%s" "$SIN_EXTENSION" > LetrasTesoroAmericano3y6meses.workdir
-#echo "$SIN_EXTENSION" > directorioPractica.txt
+zip LetrasTesoroAmericano3y6meses LetrasTesoroAmericano3y6meses* LetrasTesoroAmericano3y6meses/*#
 #+END_SRC
 
 #+begin_src R :tangle guiones/LetrasTesoroAmericano3y6meses.inp :exports none
@@ -94,10 +79,12 @@ gnuplot TB3 TB6  --time-series --with-lines --output="TB3yTB6.png"
 #+ATTR_LATEX: :width 0.35\textwidth :center
 [[./LetrasTesoroAmericano3y6meses/TB3yTB6.png]]
 
-- Ficheros [[https://github.com/mbujosab/EconometriaAplicada-SRC/tree/main/Ejercicios]]
-   - Versión en [[https://github.com/mbujosab/EconometriaAplicada-SRC/blob/main/LetrasTesoroAmericano3y6meses.pdf][pdf]]
-   - Datos: [[file:./datos/LetrasTesoroAmericano3y6meses.gdt]]
-   - Guión de gretl: [[file:./guiones/LetrasTesoroAmericano3y6meses.inp]]
+- Ficheros 
+# [[https://github.com/mbujosab/EconometriaAplicada-SRC/tree/main/Ejercicios]]
+   - Versión en [[https://mbujosab.github.io/org-lessons-gitpages/Lecciones/PracticasLetrasTesoroAmericano3y6meses.pdf][pdf]]
+   - Datos: [[https://mbujosab.github.io/org-lessons-gitpages/datos/LetrasTesoroAmericano3y6meses.gdt]]
+   - Guión de gretl: [[https://mbujosab.github.io/org-lessons-gitpages/Lecciones/Practicas/guiones/lecc01-airlinePass.inp][LetrasTesoroAmericano3y6meses.inp]]
+
 
 # +latex: \newpage
 

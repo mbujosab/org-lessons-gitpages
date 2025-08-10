@@ -33,7 +33,7 @@
     :UNNUMBERED: nil
     :END:  
 
-- ([[file:./Transparencias/Lecc01.slides.html][slides]]) --- ([[file:./Lecciones/Lecc01.html][html]]) --- ([[file:./Lecciones/Lecc01.pdf][pdf]])
+- ([[file:./Transparencias/Lecc01.slides.html][slides]]) --- ([[file:./Lecciones/Lecc01.html][html]]) --- ([[file:./Lecciones/Lecc01.pdf][pdf]]) --- ([[https://mybinder.org/v2/gh/mbujosab/org-lessons-gitpages/gh-pages?labpath=CuadernosElectronicos/Lecc01.ipynb][lección en mybinder]])
 
 # - [[https://mybinder.org/v2/gh/mbujosab/EconometriaAplicada-SRC/HEAD?labpath=Lecc01.ipynb][notebook en mybinder]]
 
@@ -51,7 +51,8 @@
     :UNNUMBERED: nil
     :END:  
 
-- ([[file:./Transparencias/Lecc02.slides.html][slides]]) --- ([[file:./Lecciones/Lecc02.html][html]]) --- ([[file:./Lecciones/Lecc02.pdf][pdf]])
+- ([[file:./Transparencias/Lecc02.slides.html][slides]]) --- ([[file:./Lecciones/Lecc02.html][html]]) --- ([[file:./Lecciones/Lecc02.pdf][pdf]]) --- ([[https://mybinder.org/v2/gh/mbujosab/org-lessons-gitpages/gh-pages?labpath=CuadernosElectronicos/Lecc02.ipynb][lección en mybinder]])
+  + [[https://mybinder.org/v2/gh/mbujosab/org-lessons-gitpages/gh-pages?labpath=CuadernosElectronicos/implementacion_series_formales.ipynb][implementacion_series_formales]] 
 
 # - [[https://mybinder.org/v2/gh/mbujosab/EconometriaAplicada-SRC/HEAD?labpath=Lecc04.ipynb][notebook en mybinder]]
 
